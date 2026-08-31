@@ -24,7 +24,7 @@
     <main class="login-wrapper">
         @yield('content')
 
-        <footer class="footer">
+        {{-- <footer class="footer">
 
             <div class="container-fluid">
                 <div class="row">
@@ -37,7 +37,7 @@
                 </div>
             </div>
 
-        </footer>
+        </footer> --}}
 
     </main>
 

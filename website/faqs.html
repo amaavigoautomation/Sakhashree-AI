@@ -1,0 +1,712 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">	
+<title>Sakhashree</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<link href="css/menu.css" rel="stylesheet" type="text/css">
+<link href="css/form.css" rel="stylesheet" type="text/css">
+<link href="fonts/fontawesome/css/all.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@300;400;500;600;700&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet">
+
+<script type="text/javascript" src="js/jquery-latest.min.js"></script> 		
+<script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+
+<!-- Fixed Header script start--> 
+<script>
+    $(window).on("scroll", function () {
+      if ($(window).scrollTop() > 50) {
+        $(".topband").addClass("active");
+      } else {
+        //remove the background property so it comes transparent again (defined in your css)
+        $(".topband").removeClass("active");
+      }
+    });
+  </script> 
+<!-- Fixed Header script end-->
+
+<script>
+document.addEventListener('click', function(e) {
+  
+  // Allow link click
+  if (e.target.closest('.useforbtn a')) {
+    return;
+  }
+
+  const acc = e.target.closest('.accordion-button');
+  if (acc) {
+    const target = acc.getAttribute('data-bs-target');
+    const collapseEl = document.querySelector(target);
+
+    if (collapseEl) {
+      const bsCollapse = new bootstrap.Collapse(collapseEl, {
+        toggle: true
+      });
+
+      // 🔥 TOGGLE ARROW STATE
+      acc.classList.toggle('collapsed');
+    }
+  }
+
+});
+</script>
+
+<!-- Toggle start here-->
+<script type="text/javascript">
+function toggleSlides(){
+$('.toggler').click(function(e){
+    var id=$(this).attr('id');
+    var widgetId=id.substring(id.indexOf('-')+1,id.length);
+    $('#'+widgetId).slideToggle();
+    $(this).toggleClass('sliderExpanded');
+    $('.closeSlider').click(function(){
+            $(this).parent().hide('slow');
+            var relatedToggler='toggler-'+$(this).parent().attr('id');
+            $('#'+relatedToggler).removeClass('sliderExpanded');
+    });
+});
+};
+$(function(){
+toggleSlides();
+});
+</script>
+<!-- Toggle end here-->
+
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+</head>	
+
+<body>
+
+<main class="mainwrapper"> 
+
+<div class="innercontbg">
+<!-- Top header start -->
+<header class="topband">
+  <div class="container">
+    <div class="logomenuarea">
+      <div class="logo"><a href="default.html"><img src="img/logo.svg" alt="Sakhashree" title="Sakhashree"></a></div>
+      <div class="topmenuarea">
+        <div>
+          <!-- menu start here -->
+          <div class="header">
+            <div class="menuarea">
+              <div class="menu-overlay"></div>
+                <nav class="menu">
+                  <div class="mobile-menu-head">
+                    <div class="go-back"><i class="fa fa-angle-left"></i></div>
+                    <div class="current-menu-title"></div>
+                    <div class="mobile-menu-close">&times;</div>
+                  </div>
+                  <ul class="menu-main">
+                    <li><a href="default.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="rrct.html">RRCT®</a></li>
+                    <li><a href="spiritual_tours.html">Spiritual Tours</a></li>
+                    <li><a href="workshops.html">Workshops</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li class="menu-item-has-children">
+		                  <a href="#">Resources <i class="fa fa-angle-down"></i></a>
+		                  <div class="sub-menu single-column-menu">
+                        <ul>
+                          <li><a href="blogs.html">Blogs</a></li>
+                          <li><a href="videos.html">Videos</a></li>
+                          <li><a href="faqs.html">FAQ’s</a></li>
+                          <li><a href="testimonials.html">Testimonials</a></li>
+                          <li><a href="news.html">News</a></li>                                
+                        </ul>
+		                  </div>
+		                </li>
+                    <li><a href="contact.html">Contact</a></li>
+                  </ul>
+                </nav>				
+            </div>
+            <div class="mobile-menu-trigger"><span></span></div>
+          </div>
+          <!-- menu end here -->
+        </div>
+        <div class="bookconsultbtnarea"><a href="consultation.html"><button class="bookconsultbtn">Book Chakra Consultation</button></a></div>
+      </div>
+    </div>
+  </div>  
+</header> 
+<!-- Top header end -->
+
+<!-- Middle section start here -->
+<section class="innermidcontarea">
+  <div class="container">
+    <!--Breadcrumb start here-->
+    <div class="breadcrumbarea">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active" aria-current="page">FAQ’s</li>
+        </ol>
+      </nav>
+    </div>
+    <!--Breadcrumb end here-->
+
+    <div class="mainheading topmargin5"><h1 class="text-uppercase"><span class="second-color">Everything You</span><br>Need to Know</h1></div>
+
+    <div class="faq-tabs-sticky topmargin40">
+			<div class="faqcatboxes">
+				<div class="faqcatbox">
+					<a href="javascript:void(0)" class="faqcategory-item active" data-target="#FaqCat01">
+						<div class="faqiconcircle"><img src="img/faqcate_icon01.svg"></div>
+						<h6>Understanding RRCT®</h6>
+						<div class="faqcatquestext">3 Questions</div>
+					</a>
+				</div>
+				<div class="faqcatbox">
+					<a href="javascript:void(0)" class="faqcategory-item" data-target="#FaqCat02">
+						<div class="faqiconcircle"><img src="img/faqcate_icon02.svg"></div>
+						<h6>Chakra Consultation</h6>
+						<div class="faqcatquestext">5 Questions</div>
+					</a>
+				</div>
+				<div class="faqcatbox">
+					<a href="javascript:void(0)" class="faqcategory-item" data-target="#FaqCat03">
+						<div class="faqiconcircle"><img src="img/faqcate_icon03.svg"></div>
+						<h6>RRCT® Recommendations</h6>
+						<div class="faqcatquestext">4 Questions</div>
+					</a>
+				</div>
+				<div class="faqcatbox">
+					<a href="javascript:void(0)" class="faqcategory-item" data-target="#FaqCat04">
+						<div class="faqiconcircle"><img src="img/faqcate_icon04.svg"></div>
+						<h6>Results, Support...</h6>
+						<div class="faqcatquestext">4 Questions</div>
+					</a>
+				</div>
+				<div class="faqcatbox">
+					<a href="javascript:void(0)" class="faqcategory-item" data-target="#FaqCat05">
+						<div class="faqiconcircle"><img src="img/faqcate_icon05.svg"></div>
+						<h6>Privacy & Confidentiality</h6>
+						<div class="faqcatquestext">1 Questions</div>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="faqaccordionbox">
+			<div class="faq-section" id="FaqCat01">
+				<div class="faqiconarea">
+					<div class="faqiconcircle"><img src="img/faqcate_icon01.svg"></div>
+				</div>
+				<div class="faqcontarea">
+					<div class="faqheadarea">
+						<div><h4>Understanding RRCT®</h4></div>
+						<div>
+							<div class="faqsqueslabel">
+								<span class="toggler" id="toggler-slideOne1"><span class="expandSlider" id="" style="cursor:pointer;">3 Questions <i class="fa-solid fa-chevron-up"></i></span><span class="collapseSlider" id="" style="cursor:pointer;">3 Questions <i class="fa-solid fa-chevron-down"></i></span></span>
+							</div>
+						</div>
+					</div>
+					<!-- Toggle Hidden Content Start -->
+					<div class="slider2open" id="slideOne1">
+						<div class="faqacctogglearea">
+							<div class="accordion faq-accordion" id="accordionMain">
+								<!-- Main Accordion Item -->
+								<div class="accordion-item">
+									<h2 class="accordion-header">
+										<div class="accordion-button collapsed" data-bs-target="#facqcat01_acc01" role="button">
+											<div class="faqheading">What is Rudraksha Ratna Chakra Therapy (RRCT®)?</div>
+										</div>
+									</h2>							
+									<div id="facqcat01_acc01" class="accordion-collapse collapse show" data-bs-parent="#accordionMain">
+										<div class="accordion-body">
+											<div class="faqinfobox">RRCT® is a holistic chakra-balancing therapy developed by Sakhashree Neeta. It uses specific combinations of Rudraksha beads and Vedic gemstones, worn as specially designed bracelets and pendants at corresponding chakra locations on the body. RRCT® is designed to identify and balance chakra imbalances associated with emotional blocks, limiting beliefs, stress, and various life challenges.</div>
+										</div>
+									</div>
+								</div>							
+								<div class="accordion-item">
+									<h2 class="accordion-header">
+										<div class="accordion-button collapsed" data-bs-target="#facqcat01_acc02" role="button">
+											<div class="row align-items-center">
+												<div class="col-md-12">
+													<div class="faqheading">How is RRCT® different from other healing methods?</div>
+												</div>
+											</div>
+										</div>
+									</h2>							
+									<div id="facqcat01_acc02" class="accordion-collapse collapse" data-bs-parent="#accordionMain">
+										<div class="accordion-body">
+											<div class="faqinfobox">RRCT® is a simple and personalised approach that uses Rudraksha and Vedic gemstones to balance the chakras. It is easy to wear, reasonably priced, requires no complicated practices, and creates no ongoing dependency on a therapist.</div>
+										</div>
+									</div>
+								</div>							
+								<div class="accordion-item">
+									<h2 class="accordion-header">
+										<div class="accordion-button collapsed" data-bs-target="#facqcat01_acc03" role="button">
+											<div class="row align-items-center">
+												<div class="col-md-12">
+													<div class="faqheading">Is RRCT® a medical treatment?</div>
+												</div>
+											</div>
+										</div>
+									</h2>							
+									<div id="facqcat01_acc03" class="accordion-collapse collapse" data-bs-parent="#accordionMain">
+										<div class="accordion-body">
+											<div class="faqinfobox">No. RRCT® is a complementary chakra-balancing therapy, not a medical treatment. Some individuals use it to support their overall well-being while experiencing concerns such as headaches, migraines, sinus discomfort, back or bone pain, digestive discomfort, and circulatory concerns. Individual experiences vary, and RRCT® should not replace professional medical advice, diagnosis, or treatment.</div>
+										</div>
+									</div>
+								</div>							
+							</div>
+						</div>
+					</div>
+					<!-- Toggle Hidden Content End -->
+				</div>			
+			</div>
+
+			<div class="faq-section" id="FaqCat02">
+				<div class="faqiconarea">
+					<div class="faqiconcircle"><img src="img/faqcate_icon02.svg"></div>
+				</div>
+				<div class="faqcontarea">
+					<div class="faqheadarea">
+						<div><h4>Chakra Consultation</h4></div>
+						<div>
+							<div class="faqsqueslabel">
+								<span class="toggler" id="toggler-slideOne3"><span class="expandSlider" id="" style="cursor:pointer;">5 Questions <i class="fa-solid fa-chevron-down"></i></span><span class="collapseSlider" id="" style="cursor:pointer;">5 Questions <i class="fa-solid fa-chevron-up"></i></span></span>
+							</div>
+						</div>
+					</div>
+					<!-- Toggle Hidden Content Start -->
+					<div class="slider2" id="slideOne3">
+						<div class="faqacctogglearea">
+							<div class="accordion faq-accordion" id="accordionMain">
+								<!-- Main Accordion Item -->
+								<div class="accordion-item">
+									<h2 class="accordion-header">
+										<div class="accordion-button collapsed" data-bs-target="#facqcat02_acc01" role="button">
+											<div class="faqheading">What happens during a Chakra Consultation?</div>
+										</div>
+									</h2>							
+									<div id="facqcat02_acc01" class="accordion-collapse collapse show" data-bs-parent="#accordionMain">
+										<div class="accordion-body">
+											<div class="faqinfobox">During your consultation, Sakhashree Neeta will understand your current concerns, assess your chakra energies, identify imbalances, and provide personalised guidance along with suitable RRCT® recommendations to support your journey towards greater balance and well-being.</div>
+										</div>
+									</div>
+								</div>							
+								<div class="accordion-item">
+									<h2 class="accordion-header">
+										<div class="accordion-button collapsed" data-bs-target="#facqcat02_acc02" role="button">
+											<div class="faqheading">Who should book a Chakra Consultation?</div>
+										</div>
+									</h2>							
+									<div id="facqcat02_acc02" class="accordion-collapse collapse" data-bs-parent="#accordionMain">
+										<div class="accordion-body">
+											<div class="faqinfobox">A consultation may be suitable for anyone experiencing stress or anxiety, emotional imbalance, relationship difficulties, career or business challenges, financial blocks, lack of confidence, low energy or burnout, repeating negative patterns, or a lack of spiritual direction.</div>
+										</div>
+									</div>
+								</div>							
+								<div class="accordion-item">
+									<h2 class="accordion-header">
+										<div class="accordion-button collapsed" data-bs-target="#facqcat02_acc03" role="button">
+											<div class="faqheading">Do I need to bring my astrology report?</div>
+										</div>
+									</h2>							
+									<div id="facqcat02_acc03" class="accordion-collapse collapse" data-bs-parent="#accordionMain">
+										<div class="accordion-body">
+											<div class="faqinfobox">No. An astrology report or birth chart is not required. RRCT® works with the chakra system, in which each chakra is associated with specific planets and deities. Chakra science takes a deeper and more holistic approach by working with these energies through the chakra system itself. The consultation focuses on identifying chakra imbalances and recommending appropriate Rudraksha and Vedic gemstone combinations rather than relying on horoscope analysis.</div>
+										</div>
+									</div>
+								</div>							
+								<div class="accordion-item">
+									<h2 class="accordion-header">
+										<div class="accordion-button collapsed" data-bs-target="#facqcat02_acc04" role="button">
+											<div class="faqheading">Is the consultation online or in person?</div>
+										</div>
+									</h2>
+									<div id="facqcat02_acc04" class="accordion-collapse collapse" data-bs-parent="#accordionMain">
+										<div class="accordion-body">
+											<div class="faqinfobox">Both options are available. You can choose an online or in-person RRCT® consultation based on your preference and availability. Simply select the option most convenient for you when booking.</div>
+										</div>
+									</div>
+								</div>
+								<div class="accordion-item">
+									<h2 class="accordion-header">
+										<div class="accordion-button collapsed" data-bs-target="#facqcat02_acc05" role="button">
+											<div class="faqheading">How long does a consultation last?</div>
+										</div>
+									</h2>
+									<div id="facqcat02_acc05" class="accordion-collapse collapse" data-bs-parent="#accordionMain">
+										<div class="accordion-body">
+											<div class="faqinfobox">Most consultations last between <span>45 and 90 minutes,</span> depending on your concerns and the level of guidance required.</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Toggle Hidden Content End -->
+				</div>
+
+			</div>
+
+			<div class="faq-section" id="FaqCat03">
+				<div class="faqiconarea">
+					<div class="faqiconcircle"><img src="img/faqcate_icon03.svg"></div>
+				</div>
+				<div class="faqcontarea">
+					<div class="faqheadarea">
+						<div><h4>RRCT® Recommendations</h4></div>
+						<div>
+							<div class="faqsqueslabel">
+								<span class="toggler" id="toggler-slideOne2"><span class="expandSlider" id="" style="cursor:pointer;">4 Questions <i class="fa-solid fa-chevron-down"></i></span><span class="collapseSlider" id="" style="cursor:pointer;">4 Questions <i class="fa-solid fa-chevron-up"></i></span></span>
+							</div>
+						</div>
+					</div>
+					<!-- Toggle Hidden Content Start -->
+					<div class="slider2" id="slideOne2">
+						<div class="faqacctogglearea">
+							<div class="accordion faq-accordion" id="accordionMain">
+								<!-- Main Accordion Item -->
+								<div class="accordion-item">
+									<h2 class="accordion-header">
+										<div class="accordion-button collapsed" data-bs-target="#facqcat03_acc01" role="button">
+											<div class="faqheading">How are the Rudraksha and gemstones selected for me?</div>
+										</div>
+									</h2>							
+									<div id="facqcat03_acc01" class="accordion-collapse collapse show" data-bs-parent="#accordionMain">
+										<div class="accordion-body">
+											<div class="faqinfobox">Rudraksha and Vedic gemstones are recommended based on your individual chakra assessment and the imbalances identified during your consultation. The combination and placement are personalised according to your specific needs.</div>
+										</div>
+									</div>
+								</div>							
+								<div class="accordion-item">
+									<h2 class="accordion-header">
+										<div class="accordion-button collapsed" data-bs-target="#facqcat03_acc02" role="button">
+											<div class="faqheading">What will I receive after my consultation?</div>
+										</div>
+									</h2>							
+									<div id="facqcat03_acc02" class="accordion-collapse collapse" data-bs-parent="#accordionMain">
+										<div class="accordion-body">
+											<div class="faqinfobox">You will receive personalised guidance based on your chakra assessment and life chart along with recommendations for suitable Rudraksha and Vedic gemstone combinations and guidance on how and where they should be worn.</div>
+										</div>
+									</div>
+								</div>							
+								<div class="accordion-item">
+									<h2 class="accordion-header">
+										<div class="accordion-button collapsed" data-bs-target="#facqcat03_acc03" role="button">
+											<div class="faqheading">Do I have to purchase Rudraksha or gemstones after the consultation?</div>
+										</div>
+									</h2>							
+									<div id="facqcat03_acc03" class="accordion-collapse collapse" data-bs-parent="#accordionMain">
+										<div class="accordion-body">
+											<div class="faqinfobox">No. Your consultation provides personalised recommendations and guidance. You can decide whether and when you wish to obtain the recommended Rudraksha or gemstones.</div>
+										</div>
+									</div>
+								</div>							
+								<div class="accordion-item">
+									<h2 class="accordion-header">
+										<div class="accordion-button collapsed" data-bs-target="#facqcat03_acc04" role="button">
+											<div class="faqheading">Can I use Rudraksha or gemstones that I already own?</div>
+										</div>
+									</h2>
+									<div id="facqcat03_acc04" class="accordion-collapse collapse" data-bs-parent="#accordionMain">
+										<div class="accordion-body">
+											<div class="faqinfobox">Yes. If you already own Rudraksha beads or gemstones, you can discuss them during your consultation. Their suitability and appropriate placement can be considered as part of your personalised guidance.</div>
+										</div>
+									</div>
+								</div>							
+							</div>
+						</div>
+					</div>
+					<!-- Toggle Hidden Content End -->
+				</div>
+
+			</div>
+
+			<div class="faq-section" id="FaqCat04">
+				<div class="faqiconarea">
+					<div class="faqiconcircle"><img src="img/faqcate_icon04.svg"></div>
+				</div>
+				<div class="faqcontarea">
+					<div class="faqheadarea">
+						<div><h4>Results, Support & Ongoing Practice</h4></div>
+						<div>
+							<div class="faqsqueslabel">
+								<span class="toggler" id="toggler-slideOne5"><span class="expandSlider" id="" style="cursor:pointer;">4 Questions <i class="fa-solid fa-chevron-down"></i></span><span class="collapseSlider" id="" style="cursor:pointer;">4 Questions <i class="fa-solid fa-chevron-up"></i></span></span>
+							</div>
+						</div>
+					</div>
+					<!-- Toggle Hidden Content Start -->
+					<div class="slider2" id="slideOne5">
+						<div class="faqacctogglearea">
+							<div class="accordion faq-accordion" id="accordionMain">
+								<!-- Main Accordion Item -->
+								<div class="accordion-item">
+									<h2 class="accordion-header">
+										<div class="accordion-button collapsed" data-bs-target="#facqcat04_acc01" role="button">
+											<div class="faqheading">What areas of life can RRCT® support?</div>
+										</div>
+									</h2>							
+									<div id="facqcat04_acc01" class="accordion-collapse collapse show" data-bs-parent="#accordionMain">
+										<div class="accordion-body">
+											<div class="faqinfobox">RRCT® is designed to support chakra balance across different areas of life, including emotional well-being, relationships, confidence, career, finances, personal growth, and spiritual development. Recommendations are personalised according to the chakra imbalances identified during your consultation.</div>
+										</div>
+									</div>
+								</div>							
+								<div class="accordion-item">
+									<h2 class="accordion-header">
+										<div class="accordion-button collapsed" data-bs-target="#facqcat04_acc02" role="button">
+											<div class="faqheading">How soon can I expect to notice results from RRCT®?</div>
+										</div>
+									</h2>							
+									<div id="facqcat04_acc02" class="accordion-collapse collapse" data-bs-parent="#accordionMain">
+										<div class="accordion-body">
+											<div class="faqinfobox">Every individual’s experience is different. Some people may notice changes sooner, while for others the process may be more gradual. Results can vary depending on the individual, the nature of the imbalance, and consistent use of the recommended RRCT® combination.</div>
+										</div>
+									</div>
+								</div>							
+								<div class="accordion-item">
+									<h2 class="accordion-header">
+										<div class="accordion-button collapsed" data-bs-target="#facqcat04_acc03" role="button">
+											<div class="faqheading">Will I need repeated consultations or regular therapy sessions?</div>
+										</div>
+									</h2>							
+									<div id="facqcat04_acc03" class="accordion-collapse collapse" data-bs-parent="#accordionMain">
+										<div class="accordion-body">
+											<div class="faqinfobox">RRCT® is designed to be simple and self-supportive once your personalised combination has been recommended. It does not require ongoing dependency on a therapist. You may choose a follow-up consultation if your circumstances change or you feel you need further guidance.</div>
+										</div>
+									</div>
+								</div>
+								<div class="accordion-item">
+									<h2 class="accordion-header">
+										<div class="accordion-button collapsed" data-bs-target="#facqcat04_acc04" role="button">
+											<div class="faqheading">Can I continue meditation, yoga, or other spiritual practices while using RRCT®?</div>
+										</div>
+									</h2>							
+									<div id="facqcat04_acc04" class="accordion-collapse collapse" data-bs-parent="#accordionMain">
+										<div class="accordion-body">
+											<div class="faqinfobox">Yes. RRCT® can be used alongside meditation, yoga, mantra chanting, prayer, and other spiritual or wellness practices. It can complement your existing practices as part of your personal journey towards balance and self-awareness.</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Toggle Hidden Content End -->
+				</div>
+			</div>
+
+			<div class="faq-section" id="FaqCat05">
+				<div class="faqiconarea">
+					<div class="faqiconcircle"><img src="img/faqcate_icon05.svg"></div>
+				</div>
+				<div class="faqcontarea">
+					<div class="faqheadarea">
+						<div><h4>Privacy & Confidentiality</h4></div>
+						<div>
+							<div class="faqsqueslabel">
+								<span class="toggler" id="toggler-slideOne6"><span class="expandSlider" id="" style="cursor:pointer;">1 Questions <i class="fa-solid fa-chevron-down"></i></span><span class="collapseSlider" id="" style="cursor:pointer;">1 Questions <i class="fa-solid fa-chevron-up"></i></span></span>
+							</div>
+						</div>
+					</div>
+					<!-- Toggle Hidden Content Start -->
+					<div class="slider2" id="slideOne6">
+						<div class="faqacctogglearea">
+							<div class="accordion faq-accordion" id="accordionMain">
+								<!-- Main Accordion Item -->
+								<div class="accordion-item">
+									<h2 class="accordion-header">
+										<div class="accordion-button collapsed" data-bs-target="#facqcat05_acc01" role="button">
+											<div class="row align-items-center">
+												<div class="col-md-12">
+													<div class="faqheading">Is my consultation confidential?</div>
+												</div>
+											</div>
+										</div>
+									</h2>							
+									<div id="facqcat05_acc01" class="accordion-collapse collapse show" data-bs-parent="#accordionMain">
+										<div class="accordion-body">
+											<div class="faqinfobox">Absolutely. Every consultation is conducted with privacy, compassion, and confidentiality. Your personal concerns and information are treated with care and respect.</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Toggle Hidden Content End -->
+				</div>
+			</div>
+		</div>
+
+  </div>
+</section>
+<!-- Middle section end here -->
+</div>   
+
+<!-- Footer section start -->
+<footer class="footer">
+  <div class="footerpurplearea">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="footertagline">
+            <div><img src="img/footer_tagline_icon.png"></div>
+            <div>
+              <h3>Awaken. Align. Transform.</h3>
+              <div>Let’s awaken the divine within you.</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 rowmargintabmob20">
+          <div class="row padding5pxarea">
+            <div class="col-md-5 col-12 padding5px"><a href="consultation.html"><button class="primarybtn btnlgfullwidth">Book Chakra Consultation</button></a></div>
+            <div class="col-md-3 col-5 padding5px rowmargin10"><a href="spiritual_tours.html"><button class="whitebtnol btnlgfullwidth">Join Retreats</button></a></div>
+            <div class="col-md-4 col-7 padding5px rowmargin10"><a href="workshops.html"><button class="whitebtnol btnlgfullwidth">Attend Workshops</button></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footercontarea">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-12">
+          <div class="row">
+            <div class="col-lg-10">
+              <h4>Sakhashree Neeta</h4>
+              <div class="footer-chakratext topmargin5">Global Chakra Healer</div>
+              <div class="footerdesc topmargin20">Transforming lives through the power of chakras, Rudraksha and spiritual wisdom.</div>
+              <div class="socilaicons topmargin30">
+                <ul>
+                  <li><a href="https://www.facebook.com/SakhashreeNeeta" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                  <li><a href="https://www.instagram.com/sakhashree/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                  <li><a href="https://www.youtube.com/rudracentre" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+                  <li><a href="https://twitter.com/SakhashreeNeeta" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>            
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 col-md-7 rowmargintabmob30">
+          <div class="row">
+            <div class="col-6">
+              <h4>Quick Links</h4>
+              <div class="footertext topmargin20">
+                <ul>
+                  <li><a href="about.html">About</a></li>
+                  <li><a href="rrct.html">RRCT®</a></li>
+                  <li><a href="spiritual_tours.html">Spiritual Tours</a></li>
+                  <li><a href="workshops.html">Workshops</a></li>
+                  <li><a href="events.html">Events</a></li>
+                  <li><a href="contact.html">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-6">
+              <h4>Resources</h4>
+              <div class="footertext topmargin20">
+                <ul>
+                  <li><a href="blogs.html">Blogs</a></li>
+                  <li><a href="videos.html">Videos</a></li>
+                  <li><a href="faqs.html">FAQ’s</a></li>
+                  <li><a href="testimonials.html">Testimonials</a></li>
+                  <li><a href="news.html">News</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-5 rowmargintabmob30">
+          <h4>Connect</h4>
+          <div class="d-flex gap-2 align-items-center mb-2 topmargin20">
+            <div><img src="img/phone_icon.svg"></div>
+            <div class="footertext"><a href="tel:+919876543210">+91 98 7654 3210</a></div>
+          </div>
+          <div class="d-flex gap-2 align-items-center mb-2">
+            <div><img src="img/email_icon.svg"></div>
+            <div class="footertext"><a href="mailto:info@sakhashreeneeta.com">info@sakhashreeneeta.com</a></div>
+          </div>
+          <div class="d-flex gap-2">
+            <div><img src="img/location_icon.svg"></div>
+            <div class="footertext">D-319/320, Neelkanth Business Park, Nathani Road, Near Vidyavihar Station Skywalk, Vidyavihar (West) Mumbai, Maharashtra 400086.</div>
+          </div>          
+        </div>
+      </div>
+      <div class="copyrightarea">Ⓒ <script>document.write(new Date().getFullYear())</script> Sakhashree Neeta. All Rights Reserved.</div>
+    </div> 
+  </div>
+</footer>
+<!-- Footer section end --> 
+
+</main>
+
+<script type="text/javascript" src="js/menu.js"></script>
+
+<script>
+$(document).ready(function () {
+
+    // Space above section after scrolling (adjust if needed)
+    var headerOffset = $('.faq-tabs-sticky').outerHeight() + 120;
+
+    // Click on FAQ Category
+    $('.faqcategory-item').on('click', function (e) {
+        e.preventDefault();
+
+        var target = $($(this).data('target'));
+
+        // Active class
+        $('.faqcategory-item').removeClass('active');
+        $('.faqcatbox').removeClass('active');
+
+        $(this).addClass('active');
+        $(this).closest('.faqcatbox').addClass('active');
+
+        // Smooth vertical scroll
+        $('html, body').stop().animate({
+            scrollTop: target.offset().top - headerOffset
+        }, 600);
+
+        // Smooth horizontal tab scroll
+        $('.faqcatboxes').stop().animate({
+            scrollLeft: $(this).closest('.faqcatbox').position().left +
+                        $('.faqcatboxes').scrollLeft() - 20
+        }, 300);
+    });
+
+    // Change active tab while scrolling
+    $(window).on('scroll', function () {
+
+        var scrollPos = $(window).scrollTop() + headerOffset + 10;
+
+        $('.faq-section').each(function () {
+
+            var top = $(this).offset().top;
+            var bottom = top + $(this).outerHeight();
+
+            if (scrollPos >= top && scrollPos < bottom) {
+
+                var id = "#" + $(this).attr('id');
+
+                $('.faqcategory-item').removeClass('active');
+                $('.faqcatbox').removeClass('active');
+
+                var activeLink = $('.faqcategory-item[data-target="' + id + '"]');
+
+                activeLink.addClass('active');
+                activeLink.closest('.faqcatbox').addClass('active');
+
+                // Auto center active tab horizontally
+                $('.faqcatboxes').stop().animate({
+                    scrollLeft: activeLink.closest('.faqcatbox').position().left +
+                                $('.faqcatboxes').scrollLeft() - 20
+                }, 200);
+
+                return false;
+            }
+        });
+
+    });
+
+});
+</script>
+
+</body>
+</html>

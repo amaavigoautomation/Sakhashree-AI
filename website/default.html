@@ -1,0 +1,922 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">	
+<title>Sakhashree</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link href="css/main.css" rel="stylesheet" type="text/css">
+<link href="css/menu.css" rel="stylesheet" type="text/css">
+<link href="css/form.css" rel="stylesheet" type="text/css">
+<link href="fonts/fontawesome/css/all.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@300;400;500;600;700&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet">
+
+<script type="text/javascript" src="js/jquery-latest.min.js"></script> 		
+<script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+
+<!-- Fixed Header script start--> 
+<script>
+    $(window).on("scroll", function () {
+      if ($(window).scrollTop() > 50) {
+        $(".topband").addClass("active");
+      } else {
+        //remove the background property so it comes transparent again (defined in your css)
+        $(".topband").removeClass("active");
+      }
+    });
+  </script> 
+<!-- Fixed Header script end-->
+
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+</head>	
+
+<body>
+
+<!-- Success Stories Modal start -->
+<div class="modal fade" id="SuccessStories" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Success Stories</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/nlBqht22MOM?si=k-WDv9euCoNe1y-w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Success Stories Modal end -->
+
+<!-- Add Reviews Modal start -->
+<div class="modal fade" id="AddReviews" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Reviews</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <input class="form-control form-control-lg" placeholder="Your Full Name">
+        </div>
+        <div class="mb-3">
+          <input class="form-control form-control-lg" placeholder="Enter Your Email ID">
+        </div>
+        <div class="mb-3">
+          <input class="form-control form-control-lg" placeholder="Mobile / Telephone">
+        </div>
+        <div class=""><textarea class="form-control" rows="5">Tell us about your challenges or concerns</textarea></div>
+        <div class="topmargin20"><button class="secondrybtn btnmdfullwidth">Send</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Add Reviews Modal end -->
+
+<main class="mainwrapper"> 
+
+<!-- Top header & collage start -->
+<section class="homecollagebg">
+  <div class="homecollageimg">
+    <div class="homecollagebtmbg">
+      <!-- Top header & collage start -->
+      <header class="topband">
+        <div class="container">
+          <div class="logomenuarea">
+            <div class="logo"><a href="default.html"><img src="img/logo.svg" alt="Sakhashree" title="Sakhashree"></a></div>
+            <div class="topmenuarea">
+              <div>
+                <!-- menu start here -->
+                <div class="header">
+                  <div class="menuarea">
+                    <div class="menu-overlay"></div>
+                      <nav class="menu">
+                        <div class="mobile-menu-head">
+                          <div class="go-back"><i class="fa fa-angle-left"></i></div>
+                          <div class="current-menu-title"></div>
+                          <div class="mobile-menu-close">&times;</div>
+                        </div>
+                        <ul class="menu-main">
+                          <li><a href="default.html">Home</a></li>
+                          <li><a href="about.html">About</a></li>
+                          <li><a href="rrct.html">RRCT®</a></li>
+                          <li><a href="spiritual_tours.html">Spiritual Tours</a></li>
+                          <li><a href="workshops.html">Workshops</a></li>
+                          <li><a href="events.html">Events</a></li>
+                          <li class="menu-item-has-children">
+  				                  <a href="#">Resources <i class="fa fa-angle-down"></i></a>
+  				                  <div class="sub-menu single-column-menu">
+                              <ul>
+                                <li><a href="blogs.html">Blogs</a></li>
+                                <li><a href="videos.html">Videos</a></li>
+                                <li><a href="faqs.html">FAQ’s</a></li>
+                                <li><a href="testimonials.html">Testimonials</a></li>
+                                <li><a href="news.html">News</a></li>                                
+                              </ul>
+  				                  </div>
+  				                </li>
+                          <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                      </nav>				
+                  </div>
+                  <div class="mobile-menu-trigger"><span></span></div>
+                </div>
+                <!-- menu end here -->
+              </div>
+              <div class="bookconsultbtnarea"><a href="consultation.html"><button class="bookconsultbtn">Book Chakra Consultation</button></a></div>
+            </div>
+          </div>
+        </div>  
+      </header> 
+      <!-- Top header & collage end -->
+
+      <!--Collage section start -->
+      <section class="collagearea">
+        <div class="container">
+          <div class="collagecontarea">
+            <div class="row">
+              <div class="col-lg-7">
+                <div class="collagetagline">You Are<br class="hidetabmob"> More<span>TM</span></div>
+                <div class="collagetaglinesm">Walk on the path of your true potential</div>
+                <div class="collagetaglinetext">Helping seekers across the world restore balance, clarity, abundance, and<br class="hidetabmob"> spiritual alignment through chakra healing and RRCT®.</div>
+                <div class="collagebtnarea">
+                  <div><a href="consultation.html"><button class="secondrybtn btnlgfullwidth">Book Chakra Consultation</button></a></div>
+                  <div><a href="spiritual_tours.html"><button class="secondrybtnol btnlgfullwidth">Join Retreats</button></a></div>
+                  <div><a href="workshops.html"><button class="secondrybtnol btnlgfullwidth">Attend Workshops</button></a></div>
+                </div>  
+              </div>
+              <div class="col-lg-5">
+                <div class="homecollageimgmob">
+                  <img src="img/homecollageimgmob.png">
+                </div>               
+                <div class="collageservice"><img src="img/collage_service.png"></div> 
+                <div class="collagebtnareamob">
+                  <div class="row padding5pxarea">
+                    <div class="col-md-4 col-12 padding5px"><a href="consultation.html"><button class="secondrybtn btnlgfullwidth">Book Chakra Consultation</button></a></div>
+                    <div class="col-md-4 col-5 padding5px rowmargin10"><a href="spiritual_tours.html"><button class="secondrybtnol btnlgfullwidth">Join Retreats</button></a></div>
+                    <div class="col-md-4 col-7 padding5px rowmargin10"><a href="workshops.html"><button class="secondrybtnol btnlgfullwidth">Attend Workshops</button></a></div>
+                  </div>              
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="collagebtmtext">Sakhashree created the world's first dedicated Rudraksha website and pioneered Mahayantras, metal-sheet Yantras and<br class="hidetabmob"> personalized online puja services, making authentic Vedic practices accessible worldwide.</div>
+        </div>
+      </section>
+      <!-- Collage section end -->
+    </div>
+  </div>
+</section>
+<!-- Top header & collage start -->
+
+<!-- Stats section start here -->
+<section class="statsarea">
+  <div class="container">
+    <div class="statsboxarea" id="statsSection">
+      <div class="statsbox">
+        <div><img src="img/founder.png"></div>
+        <div>
+          <div class="statsnumber">Founder</div>
+          <div class="statsboxtext">Rudra Centre & RRCT®</div>
+        </div>
+      </div>
+      <div class="statsbox">
+        <div><img src="img/clients_healed.png"></div>
+        <div>
+          <div class="statsnumber"><span class="count" data-target="33000">33,000</span>+</div>
+          <div class="statsboxtext">Clients Healed</div>
+        </div>
+      </div>
+      <div class="statsbox">
+        <div><img src="img/countries_reached.png"></div>
+        <div>
+          <div class="statsnumber"><span class="count" data-target="22">22</span>+</div>
+          <div class="statsboxtext">Countries Reached</div>
+        </div>
+      </div>
+      <div class="statsbox">
+        <div><img src="img/experience.png"></div>
+        <div>
+          <div class="statsnumber"><span class="count" data-target="25">25</span>+</div>
+          <div class="statsboxtext">Years of Experience</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Stats section end here -->
+
+<!-- Middle section start here -->
+<section class="homemidcontarea">
+  <div class="container">
+    <!-- Healing Offerings section start here -->
+    <div class="mainheading text-center"><h2>Healing Offerings</h2></div>
+    <div class="offeringsarea topmargin25">
+      <div class="offeringsboxarea">
+        <div class="offeringsboxborder">
+          <div class="offeringsbox">
+            <div class="offeringsboxicon"><img src="img/relationships.svg"></div>
+            <h6>Relationships</h6>
+            <div class="topmargin10 hidetabmob">Heal patterns and create harmony</div>
+          </div>
+        </div>
+      </div>
+      <div class="offeringsboxarea">
+        <div class="offeringsboxborder">
+          <div class="offeringsbox">
+            <div class="offeringsboxicon"><img src="img/emotional_stress.svg"></div>
+            <h6>Emotional Stress</h6>
+            <div class="topmargin10 hidetabmob">Release anxiety, stress and fear</div>
+          </div>
+        </div>
+      </div>
+      <div class="offeringsboxarea">
+        <div class="offeringsboxborder">
+          <div class="offeringsbox">
+            <div class="offeringsboxicon"><img src="img/spiritual_growth.svg"></div>
+            <h6>Spiritual Growth</h6>
+            <div class="topmargin10 hidetabmob">Deepen connection and inner awareness</div>
+          </div>
+        </div>
+      </div>
+      <div class="offeringsboxarea">
+        <div class="offeringsboxborder">
+          <div class="offeringsbox">
+            <div class="offeringsboxicon"><img src="img/prosperity_blocks.svg"></div>
+            <h6>Prosperity Blocks</h6>
+            <div class="topmargin10 hidetabmob">Remove blocks and attract abundance</div>
+          </div>
+        </div>
+      </div>
+      <div class="offeringsboxarea">
+        <div class="offeringsboxborder">
+          <div class="offeringsbox">
+            <div class="offeringsboxicon"><img src="img/life_direction.svg"></div>
+            <h6>Life Direction</h6>
+            <div class="topmargin10 hidetabmob">Gain clarity and make better choices</div>
+          </div>
+        </div>
+      </div>
+      <div class="offeringsboxarea">
+        <div class="offeringsboxborder">
+          <div class="offeringsbox">
+            <div class="offeringsboxicon"><img src="img/energy_imbalance.svg"></div>
+            <h6>Energy Imbalance</h6>
+            <div class="topmargin10 hidetabmob">Balance chakras and restore energy flow</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="topmargin30 text-center"><a href="consultation.html"><button class="secondrybtn btnmd">Book Chakra Consultation</button></a></div>
+    <!-- Healing Offerings section end here -->
+
+    <!-- Consultation section start here -->
+    <div class="consultationarea topmargin60">
+      <div class="consultationbox">
+        <div class="row">
+          <div class="col-lg-7 col-md-7">
+            <div class="consurudraboxcont">
+              <h6>Begin your transformation</h6>
+              <h3>Personal Consultation</h3>
+              <div>Private 1-on-1 sessions to identify chakra imbalances and receive personalized guidance with Rudraksha, Ratna (gemstone), and chakra healing remedies for greater balance, clarity, and transformation.</div>
+            </div>
+          </div>
+        </div>
+        <div class="topmargin30"><a href="consultation.html"><button class="secondrybtn btnmd">Book Consultation</button></a></div>
+      </div>
+      <div class="rudrakshabox">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="consurudraboxcont">
+              <h6>The Science of RRCT®</h6>
+              <h3>Rudraksha Ratna<br>Chakra Therapy®</h3>
+              <div>RRCT® is a proprietary chakra healing and energy alignment methodology developed through decades of spiritual research and healing experience.</div>
+            </div>
+          </div>
+        </div>
+        <div class="row topmargin15">
+          <div class="col-md-8 col-8">
+            <div class="row padding5pxarea">
+              <div class="col-md-3 col-6 padding5px">
+                <div class="rudrakshaserbox">
+                  <div class="rudrakshasericon"><img src="img/ancient_vedic_wisdom.svg"></div>
+                  <div>Ancient Vedic Wisdom</div>
+                </div>
+              </div>
+              <div class="col-md-3 col-6 padding5px">
+                <div class="rudrakshaserbox">
+                  <div class="rudrakshasericon"><img src="img/chakra_diagnosis_healing.svg"></div>
+                  <div>Chakra Diagnosis & Healing</div>
+                </div>
+              </div>
+              <div class="col-md-3 col-6 padding5px rowmargin20">
+                <div class="rudrakshaserbox">
+                  <div class="rudrakshasericon"><img src="img/personalized_healing.svg"></div>
+                  <div>Personalized Healing</div>
+                </div>
+              </div>
+              <div class="col-md-3 col-6 padding5px rowmargin20">
+                <div class="rudrakshaserbox">
+                  <div class="rudrakshasericon"><img src="img/holistic_transformation.svg"></div>
+                  <div>Holistic Transformation</div>
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="topmargin20"><a href="rrct.html"><button class="secondrybtnol btnmd">Discover RRCT®</button></a></div>
+      </div>
+    </div>
+    <!-- Consultation section end here -->
+
+    <!-- Workshops & Retreats section start here -->
+    <div class="row topmargin60">
+      <div class="col-lg-6">
+        <div class="d-flex gap-3">
+          <div class="mainheading"><h2>Workshops</h2></div>
+          <div class="viewalltext topmargin10">| <a href="workshops.html">View all Events</a></div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="wrvbcardarea">
+              <a href="workshops_details.html">
+                <div class="wrvbcard">
+                  <div class="wrvbcardimg"><img src="img/workshops_img01.jpg"></div>
+                  <div class="wrcardtitle"><h6>You Are More™ Workshop</h6></div>              
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="wrvbcardarea">
+              <a href="workshops_details.html">
+                <div class="wrvbcard">
+                  <div class="wrvbcardimg"><img src="img/workshops_img02.jpg"></div>
+                  <div class="wrcardtitle"><h6>Chakra Sadhna Intensive</h6></div>              
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 rowmargin10">
+        <div class="d-flex gap-3">
+          <div class="mainheading"><h2>Retreats</h2></div>
+          <div class="viewalltext topmargin10">| <a href="spiritual_tours.html">View all Retreats</a></div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="wrvbcardarea">
+              <a href="spiritual_tours_details.html">
+                <div class="wrvbcard">
+                  <div class="wrvbcardimg"><img src="img/retreats_img01.jpg"></div>
+                  <div class="wrcardtitle"><h6>Kailash Mansarovar Journey</h6></div>              
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="wrvbcardarea">
+              <a href="spiritual_tours_details.html">
+                <div class="wrvbcard">
+                  <div class="wrvbcardimg"><img src="img/retreats_img02.jpg"></div>
+                  <div class="wrcardtitle"><h6>Varanasi Spiritual Retreat</h6></div>              
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Workshops & Retreats section end here -->
+
+    <!-- Transformation Stories section start here -->
+
+    <!-- Transformation Stories Desktop start -->
+    <div class="sucstoriesvidarea">
+      <div class="sucstoriesarea">
+        <div class="sucstoriesbox">
+          <div class="sucstoriesborder red-border"></div>
+          <div class="sucstoriesimg">
+            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#SuccessStories">
+              <div class="playbtn"><img src="img/playbtn.svg"></div>
+              <img src="img/sucstories_img01.png">
+            </a>
+          </div>
+          <div class="sucstoriesimg">
+            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#SuccessStories">
+              <div class="playbtn"><img src="img/playbtn.svg"></div>
+              <img src="img/sucstories_img02.png">
+            </a>
+          </div>
+        </div>
+        <div class="sucstoriesbox">
+          <div class="sucstoriesborder orange-border"></div>
+          <div class="sucstoriesimg">
+            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#SuccessStories">
+              <div class="playbtn"><img src="img/playbtn.svg"></div>
+              <img src="img/sucstories_img03.png">
+            </a>
+          </div>
+          <div class="sucstoriesimg">
+            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#SuccessStories">
+              <div class="playbtn"><img src="img/playbtn.svg"></div>
+              <img src="img/sucstories_img04.png">
+            </a>
+          </div>
+        </div>
+        <div class="sucstoriesbox">
+          <div class="sucstoriesborder yellow-border"></div>
+          <div class="sucstoriesimg">
+            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#SuccessStories">
+              <div class="playbtn"><img src="img/playbtn.svg"></div>
+              <img src="img/sucstories_img05.png">
+            </a>
+          </div>
+        </div>
+        <div class="sucstoriesbox">
+          <div class="sucstoriesborder green-border"></div>
+          <div class="sucstoriesimg">
+            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#SuccessStories">
+              <div class="playbtn"><img src="img/playbtn.svg"></div>
+              <img src="img/sucstories_img06.png">
+            </a>
+          </div>
+        </div>
+        <div class="sucstoriesbox">
+          <div class="sucstoriesborder cyan-border"></div>
+          <div class="sucstoriesimg">
+            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#SuccessStories">
+              <div class="playbtn"><img src="img/playbtn.svg"></div>
+              <img src="img/sucstories_img07.png">
+            </a>
+          </div>
+        </div>
+        <div class="sucstoriesbox">
+          <div class="sucstoriesborder blue-border"></div>
+          <div class="sucstoriesimg">
+            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#SuccessStories">
+              <div class="playbtn"><img src="img/playbtn.svg"></div>
+              <img src="img/sucstories_img08.png">
+            </a>
+          </div>
+          <div class="sucstoriesimg">
+            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#SuccessStories">
+              <div class="playbtn"><img src="img/playbtn.svg"></div>
+              <img src="img/sucstories_img09.png">
+            </a>
+          </div>
+        </div>
+        <div class="sucstoriesbox">
+          <div class="sucstoriesborder purple-border"></div>
+          <div class="sucstoriesimg">
+            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#SuccessStories">
+              <div class="playbtn"><img src="img/playbtn.svg"></div>
+              <img src="img/sucstories_img10.png">
+            </a>
+          </div>
+          <div class="sucstoriesimg">
+            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#SuccessStories">
+              <div class="playbtn"><img src="img/playbtn.svg"></div>
+              <img src="img/sucstories_img11.png">
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="sucstoriesbtnarea"><a href="testimonials_videos.html"><button class="secondrybtn btnmd">Watch Success Stories</button></a></div>
+    </div>
+    <!-- Transformation Stories Desktop start -->
+
+    <!-- Transformation Stories Mobile start -->
+    <div class="sucstoriesvidarea-mob">
+      <div class="mainheading text-center hidedesktab"><h2>Transformation Stories</h2></div>
+      <div class="videos-slider">
+        <div id="VideosSlider" class="carousel slide topmargin25" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="d-flex gap-3">
+                <div class="sucstoriesimg w-100">
+                  <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#SuccessStories">
+                    <div class="playbtn"><img src="img/playbtn.svg"></div>
+                    <img src="img/sucstories_img01.png">
+                  </a>
+                </div>
+                <div class="sucstoriesimg w-100">
+                  <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#SuccessStories">
+                    <div class="playbtn"><img src="img/playbtn.svg"></div>
+                    <img src="img/sucstories_img02.png">
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="d-flex gap-3">
+                <div class="sucstoriesimg w-100">
+                  <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#SuccessStories">
+                    <div class="playbtn"><img src="img/playbtn.svg"></div>
+                    <img src="img/sucstories_img03.png">
+                  </a>
+                </div>
+                <div class="sucstoriesimg w-100">
+                  <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#SuccessStories">
+                    <div class="playbtn"><img src="img/playbtn.svg"></div>
+                    <img src="img/sucstories_img04.png">
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="d-flex gap-3">
+                <div class="sucstoriesimg w-100">
+                  <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#SuccessStories">
+                    <div class="playbtn"><img src="img/playbtn.svg"></div>
+                    <img src="img/sucstories_img05.png">
+                  </a>
+                </div>
+                <div class="sucstoriesimg w-100">
+                  <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#SuccessStories">
+                    <div class="playbtn"><img src="img/playbtn.svg"></div>
+                    <img src="img/sucstories_img06.png">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#VideosSlider" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#VideosSlider" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Transformation Stories Mobile start -->
+
+    <div class="transtoriesarea">
+      <div class="mainheading text-center hidemob"><h2>Transformation Stories</h2></div>
+      <div class="stories-slider">
+        <div id="StoriesSlider" class="carousel slide topmargin40" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="transtoriescont">
+                <div class="transtoriesimg hidetabmob"><img src="img/sucstories_img08.png"></div>
+                <div class="transtoriesinfo">
+                  <div class="d-flex gap-3 align-items-center">
+                    <div class="transtoriesimg hidedesk"><img src="img/sucstories_img08.png"></div>
+                    <div>
+                      <h5>Sadhna Sargam</h5>
+                      <div class="transtoriesdesig">Singer</div>
+                      <div class="transtoriesline"></div>
+                    </div>
+                  </div>
+                  <div class="transtoriestext topmargin20">I have successfully upgraded adding one after the other by purchasing and finally reached wearing my Sarva Siddha bracelet combination (2-16) from (Rudraksha Ratna)Rudra Centre. Will reach Indrakshi combination for sure in future. What an amazing results seriously. Siddarth sir assisted me, answered each and every query of mine and clarified, such a great person with lots of patience and knowledge, sorry sir if I have bothered you much. As me, being a living example, I feel This is a place where from a common man, middle class to rich person can afford authentic and genuine rudrakshas... <a href="testimonials.html">Read More</a></div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="transtoriescont">
+                <div class="transtoriesimg hidetabmob"><img src="img/sucstories_img01.png"></div>
+                <div class="transtoriesinfo">
+                  <div class="d-flex gap-3 align-items-center">
+                    <div class="transtoriesimg hidedesk"><img src="img/sucstories_img01.png"></div>
+                    <div>
+                      <h5>Sadhna Sargam</h5>
+                      <div class="transtoriesdesig">Singer</div>
+                      <div class="transtoriesline"></div>
+                    </div>
+                  </div>
+                  <div class="transtoriestext topmargin20">I have successfully upgraded adding one after the other by purchasing and finally reached wearing my Sarva Siddha bracelet combination (2-16) from (Rudraksha Ratna)Rudra Centre. Will reach Indrakshi combination for sure in future. What an amazing results seriously. Siddarth sir assisted me, answered each and every query of mine and clarified, such a great person with lots of patience and knowledge, sorry sir if I have bothered you much. As me, being a living example, I feel This is a place where from a common man, middle class to rich person can afford authentic and genuine rudrakshas... <a href="testimonials.html">Read More</a></div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="transtoriescont">
+                <div class="transtoriesimg hidetabmob"><img src="img/sucstories_img02.png"></div>
+                <div class="transtoriesinfo">
+                  <div class="d-flex gap-3 align-items-center">
+                    <div class="transtoriesimg hidedesk"><img src="img/sucstories_img02.png"></div>
+                    <div>
+                      <h5>Sadhna Sargam</h5>
+                      <div class="transtoriesdesig">Singer</div>
+                      <div class="transtoriesline"></div>
+                    </div>
+                  </div>
+                  <div class="transtoriestext topmargin20">I have successfully upgraded adding one after the other by purchasing and finally reached wearing my Sarva Siddha bracelet combination (2-16) from (Rudraksha Ratna)Rudra Centre. Will reach Indrakshi combination for sure in future. What an amazing results seriously. Siddarth sir assisted me, answered each and every query of mine and clarified, such a great person with lots of patience and knowledge, sorry sir if I have bothered you much. As me, being a living example, I feel This is a place where from a common man, middle class to rich person can afford authentic and genuine rudrakshas... <a href="testimonials.html">Read More</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#StoriesSlider" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#StoriesSlider" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex gap-2 justify-content-center flex-column flex-md-row topmargin30">
+      <div><a href="testimonials.html"><button class="secondrybtn btnmdfullwidth">Read Client Experience</button></a></div>
+      <div><button class="secondrybtnol btnmdfullwidth" data-bs-toggle="modal" data-bs-target="#AddReviews">Add Your Review</button></div>
+    </div>
+    <!-- Transformation Stories section end here -->
+
+    <!-- Videos section start here -->
+    <div class="mainheading text-center topmargin60"><h2>Videos</h2></div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="videosbox">
+          <iframe src="https://www.youtube.com/embed/TgRuZz_Cjk8?si=WO8vIH2Wb1Nh7Bri" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="videosbox">
+          <iframe src="https://www.youtube.com/embed/_CuWfqmlZPQ?si=fb7fVg_kcTgL4U65" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="videosbox">
+          <iframe src="https://www.youtube.com/embed/soj7N7b5ZPA?si=hswKXeLR1NE-xIBv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="topmargin10 text-center"><a href="videos.html"><button class="secondrybtn btnmd">View All Videos</button></a></div>
+    <!-- Videos section end here -->
+
+    <!-- Blogs section start here -->
+    <div class="mainheading text-center topmargin60"><h2>Blogs</h2></div>
+    <div class="row">
+      <div class="col-lg-3 col-md-6">
+        <div class="wrvbcardarea">
+          <a href="blogdetails.html">
+            <div class="wrvbcard">
+              <div class="wrvbcardimg"><img src="img/blog_img01.jpg"></div>
+              <div class="bncardtitlearea">
+                <div class="blogscardtitle"><h6>The Art of Give and Take</h6></div>
+                <div class="viewalltext">Read More <i class="fa-solid fa-arrow-right"></i></div>
+              </div>              
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="wrvbcardarea">
+          <a href="blogdetails.html">
+            <div class="wrvbcard">
+              <div class="wrvbcardimg"><img src="img/blog_img02.jpg"></div>
+              <div class="bncardtitlearea">
+                <div class="blogscardtitle"><h6>A Meditation on My Mother, the Earth</h6></div>
+                <div class="viewalltext">Read More <i class="fa-solid fa-arrow-right"></i></div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="wrvbcardarea">
+          <a href="blogdetails.html">
+            <div class="wrvbcard">
+              <div class="wrvbcardimg"><img src="img/blog_img03.jpg"></div>
+              <div class="bncardtitlearea">
+                <div class="blogscardtitle"><h6>How to Deal with Stress</h6></div>
+                <div class="viewalltext">Read More <i class="fa-solid fa-arrow-right"></i></div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="wrvbcardarea">
+          <a href="blogdetails.html">
+            <div class="wrvbcard">
+              <div class="wrvbcardimg"><img src="img/blog_img04.jpg"></div>
+              <div class="bncardtitlearea">
+                <div class="blogscardtitle"><h6>The Importance of Having a Guru</h6></div>
+                <div class="viewalltext">Read More <i class="fa-solid fa-arrow-right"></i></div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="topmargin10 text-center"><a href="blogs.html"><button class="secondrybtn btnmd">View All Blogs</button></a></div>
+    <!-- Blogs section end here -->
+
+    <!-- News section start here -->
+    <div class="mainheading text-center topmargin60"><h2>News</h2></div>
+    <div class="row">
+      <div class="col-lg-3 col-md-6">
+        <div class="wrvbcardarea">
+          <a href="newsdetails.html">
+            <div class="wrvbcard">
+              <div class="wrvbcardimg"><img src="img/news_img01.jpg"></div>
+              <div class="bncardtitlearea">
+                <div class="newscardtitle"><h6>Sakhashree Neeta was honoured and felicitated by District Governer at Lions...</h6></div>
+                <div class="viewalltext">Read More <i class="fa-solid fa-arrow-right"></i></div>
+              </div>              
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="wrvbcardarea">
+          <a href="newsdetails.html">
+            <div class="wrvbcard">
+              <div class="wrvbcardimg"><img src="img/news_img02.jpg"></div>
+              <div class="bncardtitlearea">
+                <div class="newscardtitle"><h6>Sakhashree’s interview in Cine blitz published about her holistic journey.</h6></div>
+                <div class="viewalltext">Read More <i class="fa-solid fa-arrow-right"></i></div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="wrvbcardarea">
+          <a href="newsdetails.html">
+            <div class="wrvbcard">
+              <div class="wrvbcardimg"><img src="img/news_img03.jpg"></div>
+              <div class="bncardtitlearea">
+                <div class="newscardtitle"><h6>Sakhashree Neeta awarded by Srishti News Channel for outstanding research...</h6></div>
+                <div class="viewalltext">Read More <i class="fa-solid fa-arrow-right"></i></div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="wrvbcardarea">
+          <a href="newsdetails.html">
+            <div class="wrvbcard">
+              <div class="wrvbcardimg"><img src="img/news_img04.jpg"></div>
+              <div class="bncardtitlearea">
+                <div class="newscardtitle"><h6>Life Insurance Corporation of India honoured Sakhashree Neeta on...</h6></div>
+                <div class="viewalltext">Read More <i class="fa-solid fa-arrow-right"></i></div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="topmargin10 text-center"><a href="news.html"><button class="secondrybtn btnmd">View All</button></a></div>
+    <!-- News section end here -->
+  </div>
+</section>
+<!-- Middle section end here -->
+
+<!-- Footer section start -->
+<footer class="footer">
+  <div class="footerpurplearea">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="footertagline">
+            <div><img src="img/footer_tagline_icon.png"></div>
+            <div>
+              <h3>Awaken. Align. Transform.</h3>
+              <div>Let’s awaken the divine within you.</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 rowmargintabmob20">
+          <div class="row padding5pxarea">
+            <div class="col-md-5 col-12 padding5px"><a href="consultation.html"><button class="primarybtn btnlgfullwidth">Book Chakra Consultation</button></a></div>
+            <div class="col-md-3 col-5 padding5px rowmargin10"><a href="spiritual_tours.html"><button class="whitebtnol btnlgfullwidth">Join Retreats</button></a></div>
+            <div class="col-md-4 col-7 padding5px rowmargin10"><a href="workshops.html"><button class="whitebtnol btnlgfullwidth">Attend Workshops</button></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footercontarea">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-12">
+          <div class="row">
+            <div class="col-lg-10">
+              <h4>Sakhashree Neeta</h4>
+              <div class="footer-chakratext topmargin5">Global Chakra Healer</div>
+              <div class="footerdesc topmargin20">Transforming lives through the power of chakras, Rudraksha and spiritual wisdom.</div>
+              <div class="socilaicons topmargin30">
+                <ul>
+                  <li><a href="https://www.facebook.com/SakhashreeNeeta" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+                  <li><a href="https://www.instagram.com/sakhashree/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                  <li><a href="https://www.youtube.com/rudracentre" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+                  <li><a href="https://twitter.com/SakhashreeNeeta" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>            
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 col-md-7 rowmargintabmob30">
+          <div class="row">
+            <div class="col-6">
+              <h4>Quick Links</h4>
+              <div class="footertext topmargin20">
+                <ul>
+                  <li><a href="about.html">About</a></li>
+                  <li><a href="rrct.html">RRCT®</a></li>
+                  <li><a href="spiritual_tours.html">Spiritual Tours</a></li>
+                  <li><a href="workshops.html">Workshops</a></li>
+                  <li><a href="events.html">Events</a></li>
+                  <li><a href="contact.html">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-6">
+              <h4>Resources</h4>
+              <div class="footertext topmargin20">
+                <ul>
+                  <li><a href="blogs.html">Blogs</a></li>
+                  <li><a href="videos.html">Videos</a></li>
+                  <li><a href="faqs.html">FAQ’s</a></li>
+                  <li><a href="testimonials.html">Testimonials</a></li>
+                  <li><a href="news.html">News</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-5 rowmargintabmob30">
+          <h4>Connect</h4>
+          <div class="d-flex gap-2 align-items-center mb-2 topmargin20">
+            <div><img src="img/phone_icon.svg"></div>
+            <div class="footertext"><a href="tel:+919876543210">+91 98 7654 3210</a></div>
+          </div>
+          <div class="d-flex gap-2 align-items-center mb-2">
+            <div><img src="img/email_icon.svg"></div>
+            <div class="footertext"><a href="mailto:info@sakhashreeneeta.com">info@sakhashreeneeta.com</a></div>
+          </div>
+          <div class="d-flex gap-2">
+            <div><img src="img/location_icon.svg"></div>
+            <div class="footertext">D-319/320, Neelkanth Business Park, Nathani Road, Near Vidyavihar Station Skywalk, Vidyavihar (West) Mumbai, Maharashtra 400086.</div>
+          </div>          
+        </div>
+      </div>
+      <div class="copyrightarea">Ⓒ <script>document.write(new Date().getFullYear())</script> Sakhashree Neeta. All Rights Reserved.</div>
+    </div> 
+  </div>
+</footer>
+<!-- Footer section end --> 
+
+</main>
+
+<script type="text/javascript" src="js/menu.js"></script>
+
+<script>
+    const counters = document.querySelectorAll(".count");
+    let hasAnimated = false;
+
+    function animateCounters() {
+        const duration = 2000; // smooth + slow
+
+        counters.forEach(counter => {
+            const target = +counter.getAttribute("data-target");
+            const startTime = performance.now();
+
+            function updateCounter(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+
+                const eased = progress * (2 - progress); // smooth easing
+
+                counter.innerText = Math.floor(eased * target);
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.innerText = target;
+                }
+            }
+
+            requestAnimationFrame(updateCounter);
+        });
+    }
+
+    // Scroll trigger
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    animateCounters();
+                    hasAnimated = true;
+                }
+            });
+        },
+        { threshold: 0.4 } // 40% visible
+    );
+
+    observer.observe(document.getElementById("statsSection"));
+</script>
+
+</body>
+</html>

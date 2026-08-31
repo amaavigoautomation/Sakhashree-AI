@@ -19,26 +19,24 @@
 .header .menu > ul > li {
   display: inline-block;
   line-height: normal;
-  font-family: "Roboto Serif", serif;;
 }
 .header .menu > ul > li > a {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
-  color: #fff;
+  color: #353535;
   position: relative;
   transition: color 0.3s ease;
   text-decoration: none !important;
-  padding: 10px 15px;
-  border-radius: 5px;
+  padding: 10px 10px;
+  border-radius: 6px;
   transition: 0.4s;
 }
 .header .menu > ul > li > a:hover {
-  background: #fff;
-  border-radius: 5px; 
-  color: #36327B !important;
+  color: #C38B23 !important;
 }
 .menu-main {
   margin: 0 !important;
+  padding: 0px;
 }
 .header .menu > ul > li .sub-menu {
   position: absolute;
@@ -51,6 +49,7 @@
   opacity: 0;
   visibility: hidden
 }
+
 @media(min-width:992px) {
   .header .menu > ul > li.menu-item-has-children:hover .sub-menu {
     margin-top: 0;
@@ -68,24 +67,27 @@
 }
 .header .menu > ul > li .sub-menu > ul > li {
   line-height: 1;
-  list-style: none
+  list-style: none;
+  text-align: start;
 }
 .header .menu > ul > li .sub-menu > ul > li > a {
   display: inline-block;
   padding: 8px 0;
-  font-size: 13px;
-  color: #d4d4d4;
+  font-size: 14px;
+  color: #353535;
   transition: color 0.3s ease;
   text-decoration: none;
-  text-transform: capitalize
+  text-transform: capitalize;
+  text-align: start;
 }
 .header .menu > ul > li .sub-menu > ul > li > a:hover {
-  color: #fff !important;
+  color: #B6770A !important;
 }
 .header .menu > ul > li .single-column-menu {
-  min-width: 280px;
-  max-width: 350px;
-  border-radius: 5px
+  background: #fff;
+  min-width: 200px;
+  max-width: 300px;
+  border-radius: 10px
 }
 .header .menu > ul > li .sub-menu.mega-menu > .list-item > ul > li {
   line-height: 1;
@@ -98,7 +100,7 @@
   padding: 6px 0;
   display: inline-block;
   font-size: 14px;
-  color: #555;
+  color: #353535;
   transition: color 0.3s ease;
   text-decoration: none
 }
@@ -191,7 +193,7 @@
   .header .mobile-menu-trigger span {
     display: block;
     height: 3px;
-    background-color: #fff;
+    background-color: #B6770A;
     width: 25px;
     position: relative;
     margin-top: 8px;
@@ -203,7 +205,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #fff;
+    background-color: #B6770A;
     border-radius: 5px;
   }
   .header .mobile-menu-trigger span:before {
@@ -218,7 +220,7 @@
   .header .menu {
     position: fixed;
     width: 320px;
-    background-color: #36327b;
+    background-color: #f4efe6;
     left: 0;
     top: 0;
     height: 100%;
@@ -239,10 +241,13 @@
   .header .menu > ul > li > a {
     line-height: 50px;
     height: 50px;
-    padding: 0 30px;
+    padding: 0 20px;
     display: block;
     border-bottom: 1px solid rgb(0 0 0 / .1);
-    color: #fff;
+    font-size: 16px !important;
+    color: #353535;
+    font-weight: 500;
+    border-radius: 0px;
   }
   .header .menu > ul > li > a i {
     position: absolute;
@@ -263,7 +268,7 @@
     position: relative;
     z-index: 501;
     position: sticky;
-    background-color: #36327b;
+    background-color: #f4efe6;
     top: 0
   }
   .header .menu .mobile-menu-head .go-back {
@@ -273,7 +278,7 @@
     cursor: pointer;
     line-height: 50px;
     text-align: center;
-    color: #fff;
+    color: #C88549;
     font-size: 16px;
     display: none
   }
@@ -283,7 +288,7 @@
   .header .menu .mobile-menu-head .current-menu-title {
     font-size: 15px;
     font-weight: 500;
-    color: #fff;
+    color: #C88549;
   }
   .header .menu .mobile-menu-head .mobile-menu-close {
     height: 50px;
@@ -292,7 +297,7 @@
     cursor: pointer;
     line-height: 50px;
     text-align: center;
-    color: #fff;
+    color: #C88549;
     font-size: 25px
   }
   .header .menu .menu-main {
@@ -379,14 +384,25 @@
   }
 }
 
+@media (min-width: 1920px) {
+
+.header .menu > ul > li > a {
+  font-size: 16px;
+  padding: 10px 15px;
+}  
+
+}  
+
+
+@media(max-width: 1080px) {
+.header .menu > ul > li > a {
+  font-size: 13px;
+}
+}
 
 @media(max-width:992px) {
-
-}
-
-@media(max-width:767px) {
   
 }
-@media(max-width:360px) {
+@media(max-width:568px) {
   
 }

@@ -2304,7 +2304,7 @@ h6,
 
 /* ============ signin css ============= */
 .auth-row {
-    background: #36327b;
+    background: #f4efe6;
     border-radius: 4px;
     overflow: hidden;
 }
@@ -2346,7 +2346,7 @@ h6,
 }
 
 .signin-wrapper {
-    background: #36327b;
+    background: #f4efe6;
     padding: 60px;
     min-height: 600px;
     display: flex;
@@ -2354,7 +2354,7 @@ h6,
     justify-content: center;
 }
 .reset-wrapper {
-    background: #36327b;
+    background: #f4efe6;
     padding: 30px;
     min-height: 300px;
     display: flex;
@@ -2407,7 +2407,7 @@ h6,
 
 /* ============ signup css ============= */
 .auth-row {
-    background: #36327b;
+    background: #f4efe6;
     border-radius: 4px;
     overflow: hidden;
 }
@@ -3140,7 +3140,7 @@ h6,
     padding: 25px 0;
     justify-items: flex-end;
     position: absolute;
-    background: #383279;
+    background: #f4efe6;
     bottom: 0;
     width: 100%;
 }
@@ -5570,7 +5570,7 @@ Scrollbar css start here
     font-size: 14px;
     font-weight: 400;
     padding-top: 5px;
-    color: #36327b;
+    color: #f4efe6;
 }
 .total_records span {
     font-size: 14px;

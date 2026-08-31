@@ -22,7 +22,7 @@
                             @endif
                             <div class="title mb-30">
                                 <div class="title mb-30 mt-20 text-center">
-                                    <img src="{{ asset('dist/img/logo.png') }}" alt="Logo" style="width: 50%;" />
+                                    <img src="{{ asset('dist/img/logo.svg') }}" alt="Logo" style="width: 100%; height:100px;" />
                                 </div>
 
                             </div>
@@ -31,14 +31,14 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="input-style-1">
-                                            <label style="color: white;">Username</label>
+                                            <label style="color: black;">Username</label>
                                             <input type="text" placeholder="Username" name="email" required />
                                         </div>
                                     </div>
 
                                     <div class="col-12">
                                         <div class="input-style-1">
-                                            <label style="color: white;">Password</label>
+                                            <label style="color: black;">Password</label>
                                             <input type="password" placeholder="Password" id="password" name="password"
                                                 required />
                                         </div>

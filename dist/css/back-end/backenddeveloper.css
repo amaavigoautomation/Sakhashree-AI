@@ -13,19 +13,57 @@
 }
 
 .ModuleBox {
-    padding: 10px 5px 5px 5px;
-    background: #f1f5f9;
+    position: relative;
+    height: 125px;
+    padding: 18px 12px;
+    background: #ffffff;
     text-align: center;
-    font-size: 14px;
-    height: 100px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    line-height: 20px;
-    box-shadow: 0px 5px 10px -4px rgba(0, 0, 0, 0.8);
+    border: 1px solid #e9ecef;
+    border-radius: 14px;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    overflow: hidden;
+}
+
+.ModuleBox:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
 }
 
 .ModuleBox a {
-    color: #5d657b;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #334155;
+    text-decoration: none;
+}
+
+.ModuleBox i {
+    margin-bottom: 10px;
+    transition: transform 0.25s ease;
+}
+
+.ModuleBox:hover i {
+    transform: scale(1.12);
+}
+
+.ModuleBox div:nth-of-type(1) {
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 5px;
+}
+
+.ModuleBox div:nth-of-type(2) {
+    min-width: 30px;
+    padding: 2px 9px;
+    background: #f1f5f9;
+    border-radius: 20px;
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 600;
 }
 
 .select2-container {
@@ -122,12 +160,12 @@
 }
 /* Login */
 .signin-section {
-    background: #383279;
+    background: #f4efe6;
     padding: 60px 0;
 }
 /*For Backend Color Layout*/
 .primary-btn {
-    background: #a46b8f !important;
+    background: #4a274e !important;
     color: #fff;
 }
 
@@ -139,7 +177,7 @@
 
 .primary-btn-outline:hover {
     color: #fff !important;
-    background: #a46b8f !important;
+    background: #4a274e !important;
 }
 
 .sidebar-nav-wrapper
@@ -280,7 +318,7 @@
     font-size: 14px;
     padding: 0 7px 0 0;
     vertical-align: middle;
-    color: blue;
+    color: black;
 }
 
 /* Horizontal Menu */
@@ -347,7 +385,7 @@
 
 .header {
     padding: 10px 0;
-    background: #36327b !important;
+    background: #f4efe6 !important;
 }
 
 #imageBox {

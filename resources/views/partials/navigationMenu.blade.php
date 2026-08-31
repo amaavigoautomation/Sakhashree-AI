@@ -11,13 +11,13 @@
 <form action="#" style="position: relative;">
     <input type="text" placeholder="Search..." id="searchInput" autocomplete="off" />
     <button type="button"><i class="lni lni-search-alt"></i></button>
-    
+
     <div class="search-results">
         <ul class="menu-list">
-            <?php foreach ($menuLinks as $key => $menuLink) { 
+            <?php foreach ($menuLinks as $key => $menuLink) {
                 foreach ($menuLink->children as $childLink) {
                     $routeKey1 = $childLink->link;
-                    $url1 = ($routeKey1 != '#') ? route($routeKey1) : '#';    
+                    $url1 = ($routeKey1 != '#') ? route($routeKey1) : '#';
             ?>
             <li data-url="<?php echo $url1; ?>"><?php echo $childLink->title; ?></li>
             <?php }} ?>
@@ -39,14 +39,14 @@
                     $id = Auth::user()->id;
                     $imagePath = $firstImage ? asset("public/images/users/image/$id/$firstImage") : asset('dist/images/no-image.png');
                 @endphp
-                <p class="hidden-xs">{{ (isset(Auth::user()->name)) ? Auth::user()->name : ''; }}</p>
+                <p class="hidden-xs" style="color: black;">{{ isset(Auth::user()->name) ? Auth::user()->name : '' }}</p>
                 <div class="image" style="background: #fff">
                     <img src="{{ $imagePath }}" alt="image" />
                     <span class="status"></span>
                 </div>
             </div>
         </div>
-        <i class="lni lni-chevron-down"></i>
+        <i class="lni lni-chevron-down" style="color: black;"></i>
     </button>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
         <div class="profileboxinner">

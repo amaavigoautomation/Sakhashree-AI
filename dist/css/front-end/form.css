@@ -3,194 +3,202 @@ Radio Button and Checkbox css start here
 ****************************************************************************************************/
 
 .form-control {
-    font-size: 14px;
-    color: #333436;
-    border: 1px solid #E4E4E4;
-    padding: 10px 10px;
-    border-radius: 6px;
+	background: #FEF9F5;
+	font-size: 14px;
+	color: #353535;
+	border: 1px solid #D7CAAE;
+	padding: 10px 10px;
+	border-radius: 6px;
 }
 @media (prefers-reduced-motion: reduce) {
 .form-control {
-    transition: none;
+	transition: none;
 }
 }
 .form-control[type="file"] {
-    overflow: hidden;
+	overflow: hidden;
 }
 .form-control[type="file"]:not(:disabled):not([readonly]) {
-    cursor: pointer;
+	cursor: pointer;
 }
 .form-control:focus {
-    color: #333436;
-    background-color: #fff;
-    border-color: #35317a;
-    outline: 0;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	color: #353535;
+	background-color: #FEF9F5;
+	border-color: #C88549;
+	outline: 0;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .form-control::placeholder {
-    color: #A4A4A4;
+	color: #353535;
+}
+.form-control-lg {
+	background: #FEF9F5;
+	font-size: 14px;
+	color: #353535;
+	border: 1px solid #D7CAAE;
+	padding: 15px 10px;
+	border-radius: 6px;
 }
 .form-select {
-    padding: 10px 35px 10px 10px;
-    font-size: 13px;
-    color: #616161;
-    background-color: #fff;
-    border: 1px solid #DFE6EA;
-    border-radius: 6px;
+	padding: 10px 35px 10px 10px;
+	font-size: 13px;
+	color: #353535;
+	background-color: #FEF9F5;
+	border: 1px solid #D7CAAE;
+	border-radius: 6px;
 }
 @media (prefers-reduced-motion: reduce) {
-    .form-select {
-        transition: none;
-    }
+.form-select {
+	transition: none;
+}
 }
 .form-select:focus {
-    border-color: #86b7fe;
-    outline: 0;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	border-color: #C88549;
+	outline: 0;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.form-select-lg {
+	font-size: 14px;
+	color: #353535;
+	background-color: #FEF9F5;
+	border: 1px solid #D7CAAE;
+	padding: 15px 10px;
+	border-radius: 6px;
 }
 .input-group-addon {
-    padding: 6px 10px 6px 10px;
-    font-size: 14px;
-    font-weight: normal;
-    line-height: 1;
-    color: #000;
-    text-align: center;
-    background-color: #fff;
-    border-top: 0px solid #cfcfcf;
-    border-right: 0px solid #cfcfcf;
-    border-bottom: 0px solid #cfcfcf;
-    border-left: 0px solid #cfcfcf;
-    border-radius: 0px;
-    min-height: 40px;
+	padding: 6px 10px 6px 10px;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1;
+	color: #000;
+	text-align: center;
+	background-color: #fff;
+	border-top: 0px solid #cfcfcf;
+	border-right: 0px solid #cfcfcf;
+	border-bottom: 0px solid #cfcfcf;
+	border-left: 0px solid #cfcfcf;
+	border-radius: 0px;
+	min-height: 40px;
 }
 .checkboxfilter {
-    margin-bottom: 5px;
-} 
-.fw_mob {
-    
+	margin-bottom: 5px;
 }
-
-
+.formfieldicon {
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+.fieldicon {
+	position: absolute;
+	right: 0px;
+	margin-right: 10px;
+	background: #fff;
+}
 
 /****************************************************************************************************
 Textfield & Button css start here
 ****************************************************************************************************/
 .primarybtn {
-    font-family: "Roboto Serif", serif;
-    color: #fff;
-    font-weight: 400;
-    text-align: center;
-    line-height: normal;
-    border: solid 1px #35317A;
-    background: #35317A;
-    border-radius: 10px;
-    transition:0.4s;
-}
-.primarybtn:hover, .primarybtn:focus, .primarybtn.focus {
-	text-decoration: none;
-	background:#292566;
-    border: solid 1px #292566;
 	color: #fff;
+	font-weight: 500;
+	text-align: center;
+	line-height: normal;
+	border: solid 1px transparent;
+	background: #B27002;
+	background: linear-gradient(0deg,rgba(178, 112, 2, 1) 0%, rgba(206, 157, 57, 1) 100%);
+	border-radius: 6px;
+	transition: 0.4s;
+}
+.primarybtn svg {
+	fill: #fff;
+	margin-right: 5px;
+}
+.primarybtn:hover,
+.primarybtn:focus,
+.primarybtn.focus {
+	text-decoration: none;
+	background: #CE9D39;
+	background: linear-gradient(0deg,rgba(206, 157, 57, 1) 0%, rgba(178, 112, 2, 1) 100%);
+	color: #fff;
+	border: solid 1px transparent;
 }
 .primarybtnol {
-    font-family: "Roboto Serif", serif;
-    color: #35317A;
-    font-weight: 400;
-    text-align: center;
-    line-height: normal;
-    border: solid 1px #35317A;
-    background: #fff;
-    border-radius: 10px;
-    transition:0.4s;
+	color: #B27002;
+	font-weight: 500;
+	text-align: center;
+	line-height: normal;
+	border: solid 1px #B27002;
+	background: transparent;
+	border-radius: 6px;
+	transition: 0.4s;
 }
-.primarybtnol:hover, .primarybtnol:focus, .primarybtnol.focus {
+.primarybtnol svg {
+	fill: #C38B23;
+	margin-right: 5px;
+}
+.primarybtnol:hover,
+.primarybtnol:focus,
+.primarybtnol.focus {
 	text-decoration: none;
-	background:#35317A;
+	background: #B27002;
 	color: #fff;
 }
 .secondrybtn {
-    font-family: "Roboto Serif", serif;
-    color: #fff;
-    font-weight: 400;
-    text-align: center;
-    line-height: normal;
-    border: solid 1px #838383;
-    background: #838383;
-    border-radius: 10px;
-    transition:0.4s;
+	font-size: 13px;
+	color: #fff;
+	font-weight: 500;
+	text-align: center;
+	line-height: normal;
+	padding: 10px 10px;
+	border: solid 1px transparent;
+	background: #61316C;
+	background: linear-gradient(0deg,rgba(97, 49, 108, 1) 0%, rgba(121, 48, 116, 1) 100%);
+	border-radius: 6px;
+	transition: 0.4s;
 }
-.secondrybtn:hover, .secondrybtn:focus, .secondrybtn.focus {
+.secondrybtn:hover,
+.secondrybtn:focus,
+.secondrybtn.focus {
 	text-decoration: none;
-	background:#494949;
-    border: solid 1px #494949;
+	background: #793074;
+	background: linear-gradient(0deg,rgba(121, 48, 116, 1) 0%, rgba(97, 49, 108, 1) 100%);
+	border: solid 1px transparent;
 	color: #fff;
 }
 .secondrybtnol {
-    font-family: "Roboto Serif", serif;
-    color: #838383;
-    font-weight: 400;
-    text-align: center;
-    line-height: normal;
-    border: solid 1px #838383;
-    background: #fff;
-    border-radius: 10px;
-    transition:0.4s;
+	color: #793074;
+	font-weight: 500;
+	text-align: center;
+	line-height: normal;
+	border: solid 1px #793074;
+	background: transparent;
+	border-radius: 6px;
+	transition: 0.4s;
 }
-.secondrybtnol:hover, .secondrybtnol:focus, .secondrybtnol.focus {
+.secondrybtnol:hover,
+.secondrybtnol:focus,
+.secondrybtnol.focus {
 	text-decoration: none;
-	background:#838383;
+	background: #61316C;
+	background: linear-gradient(0deg,rgba(97, 49, 108, 1) 0%, rgba(121, 48, 116, 1) 100%);
 	color: #fff;
 }
-.orangebtn {
-    font-family: "Roboto Serif", serif;
-    color: #fff;
-    font-weight: 400;
-    text-align: center;
-    line-height: normal;
-    border: solid 1px #fff;
-    background: #D97C4C;
-    border-radius:10px;
-    transition:0.4s;
+.whitebtnol {
+	color: #FAEEE0;
+	font-weight: 500;
+	text-align: center;
+	line-height: normal;
+	border: solid 1px #FAEEE0;
+	background: transparent;
+	border-radius: 6px;
+	transition: 0.4s;
 }
-.orangebtn:hover, .orangebtn:focus, .orangebtn.focus {
+.whitebtnol:hover,
+.whitebtnol:focus,
+.whitebtnol.focus {
 	text-decoration: none;
-	background:#be693e;
-    border: solid 1px #fff;
-	color: #fff;
-}
-.greenbtn {
-    font-family: "Roboto Serif", serif;
-    color: #fff;
-    font-weight: 400;
-    text-align: center;
-    line-height: normal;
-    border: solid 1px #fff;
-    background: #6F8F72;
-    border-radius:10px;
-    transition:0.4s;
-}
-.greenbtn:hover, .greenbtn:focus, .greenbtn.focus {
-	text-decoration: none;
-	background:#455c47;
-    border: solid 1px #fff;
-	color: #fff;
-}
-.purplebtn {
-    font-family: "Roboto Serif", serif;
-    color: #fff;
-    font-weight: 400;
-    text-align: center;
-    line-height: normal;
-    border: solid 1px #fff;
-    background: #A46B8F;
-    border-radius:10px;
-    transition:0.4s;
-}
-.purplebtn:hover, .purplebtn:focus, .purplebtn.focus {
-	text-decoration: none;
-	background:#835271;
-    border: solid 1px #fff;
-	color: #fff;
+	background: #FAEEE0;
+	color: #B27002;
 }
 .btnsm {
 	font-size: 13px;
@@ -202,72 +210,72 @@ Textfield & Button css start here
 }
 .btnlg {
 	font-size: 15px;
-	padding: 12px 20px;
+	padding: 10px 20px;
 }
 .btnsmfullwidth {
 	width: 100%;
-    font-size: 13px;
-    padding: 8px 10px;
+	font-size: 13px;
+	padding: 8px 10px;
 }
 .btnmdfullwidth {
 	width: 100%;
-    font-size: 14px;
-    padding: 10px 10px;
+	font-size: 14px;
+	padding: 10px 15px;
 }
 .btnlgfullwidth {
 	width: 100%;
-    font-size: 15px;
-    padding: 12px 10px;
+	font-size: 15px;
+	padding: 10px 10px;
 }
-.callbtn {
-    font-size: 14px;
-    color: #36327B;
-    font-weight: 500;
-    text-align: center;
-    line-height: normal;
-    border: solid 1px #fff;
-    background: #fff;
-    border-radius: 10px;
-    transition:0.4s;
-    padding: 4px 10px;
+.bookconsultbtn {
+	font-size: 13px;
+	color: #fff;
+	font-weight: 500;
+	text-align: center;
+	line-height: normal;
+	padding: 10px 10px;
+	border: none;
+	background: #61316C;
+	background: linear-gradient(0deg,rgba(97, 49, 108, 1) 0%, rgba(121, 48, 116, 1) 100%);
+	border-radius: 6px;
+	transition: 0.4s;
 }
-.callbtn:hover, .callbtn:focus, .callbtn.focus {
-    text-decoration: none;
-    background: #fff;
-    color: #36327B;
-}
-.closebtn {
-    background: none;
-    border: none;
-    font-size: 20px;
-    color: #fff !important;
-}
-.blogreadmore {
-    font-family: "Roboto Serif", serif;
-    font-size: 14px;
-    color: #252525;
-    font-weight: 400;
-    text-align: center;
-    line-height: normal;
-    border: solid 1px #252525;
-    background: none;
-    border-radius: 10px;
-    transition:0.4s;
-    padding: 10px 15px;
+.bookconsultbtn:hover,
+.bookconsultbtn:focus,
+.bookconsultbtn.focus {
+	text-decoration: none;
+	background: #793074;
+	background: linear-gradient(0deg,rgba(121, 48, 116, 1) 0%, rgba(97, 49, 108, 1) 100%);
+	color: #fff;
 }
 
+
+@media (min-width: 1920px) {
+
+.bookconsultbtn {
+	font-size: 15px;
+	padding: 9px 15px;
+}
+
+}
+
+@media screen and (max-width : 1080px) {
+
+.bookconsultbtn {
+	font-size: 13px;
+	padding: 9px 7px;
+}
+
+
+}
 
 
 @media screen and (max-width : 568px) {
 
-.callbtn {
-    width: 24px;
-    height: 24px;
-    border-radius: 100%;
-    font-size: 12px;
-    transition:0.4s;
-    padding: 0px 0px;
+.bookconsultbtn {
+	padding: 6px 7px;
 }
+
 
 
 }

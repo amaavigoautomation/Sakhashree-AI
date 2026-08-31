@@ -4,7 +4,7 @@
     <div class="searchscroller">
         <div class="navbar-logo">
             <a href="{{ route('dashboards.index') }}">
-                <img src="{{ asset('dist/img/admin_logo.png') }} " alt="Gopinathan" />
+                <img src="{{ asset('dist/img/logo.svg') }} " alt="Sakhashree" />
             </a>
         </div>
         <nav class="sidebar-nav">

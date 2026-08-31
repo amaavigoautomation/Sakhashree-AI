@@ -1,0 +1,281 @@
+/****************************************************************************************************
+Radio Button and Checkbox css start here
+****************************************************************************************************/
+
+.form-control {
+	background: #FEF9F5;
+	font-size: 14px;
+	color: #353535;
+	border: 1px solid #D7CAAE;
+	padding: 10px 10px;
+	border-radius: 6px;
+}
+@media (prefers-reduced-motion: reduce) {
+.form-control {
+	transition: none;
+}
+}
+.form-control[type="file"] {
+	overflow: hidden;
+}
+.form-control[type="file"]:not(:disabled):not([readonly]) {
+	cursor: pointer;
+}
+.form-control:focus {
+	color: #353535;
+	background-color: #FEF9F5;
+	border-color: #C88549;
+	outline: 0;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.form-control::placeholder {
+	color: #353535;
+}
+.form-control-lg {
+	background: #FEF9F5;
+	font-size: 14px;
+	color: #353535;
+	border: 1px solid #D7CAAE;
+	padding: 15px 10px;
+	border-radius: 6px;
+}
+.form-select {
+	padding: 10px 35px 10px 10px;
+	font-size: 13px;
+	color: #353535;
+	background-color: #FEF9F5;
+	border: 1px solid #D7CAAE;
+	border-radius: 6px;
+}
+@media (prefers-reduced-motion: reduce) {
+.form-select {
+	transition: none;
+}
+}
+.form-select:focus {
+	border-color: #C88549;
+	outline: 0;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.form-select-lg {
+	font-size: 14px;
+	color: #353535;
+	background-color: #FEF9F5;
+	border: 1px solid #D7CAAE;
+	padding: 15px 10px;
+	border-radius: 6px;
+}
+.input-group-addon {
+	padding: 6px 10px 6px 10px;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1;
+	color: #000;
+	text-align: center;
+	background-color: #fff;
+	border-top: 0px solid #cfcfcf;
+	border-right: 0px solid #cfcfcf;
+	border-bottom: 0px solid #cfcfcf;
+	border-left: 0px solid #cfcfcf;
+	border-radius: 0px;
+	min-height: 40px;
+}
+.checkboxfilter {
+	margin-bottom: 5px;
+}
+.formfieldicon {
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+.fieldicon {
+	position: absolute;
+	right: 0px;
+	margin-right: 10px;
+	background: #fff;
+}
+
+/****************************************************************************************************
+Textfield & Button css start here
+****************************************************************************************************/
+.primarybtn {
+	color: #fff;
+	font-weight: 500;
+	text-align: center;
+	line-height: normal;
+	border: solid 1px transparent;
+	background: #B27002;
+	background: linear-gradient(0deg,rgba(178, 112, 2, 1) 0%, rgba(206, 157, 57, 1) 100%);
+	border-radius: 6px;
+	transition: 0.4s;
+}
+.primarybtn svg {
+	fill: #fff;
+	margin-right: 5px;
+}
+.primarybtn:hover,
+.primarybtn:focus,
+.primarybtn.focus {
+	text-decoration: none;
+	background: #CE9D39;
+	background: linear-gradient(0deg,rgba(206, 157, 57, 1) 0%, rgba(178, 112, 2, 1) 100%);
+	color: #fff;
+	border: solid 1px transparent;
+}
+.primarybtnol {
+	color: #B27002;
+	font-weight: 500;
+	text-align: center;
+	line-height: normal;
+	border: solid 1px #B27002;
+	background: transparent;
+	border-radius: 6px;
+	transition: 0.4s;
+}
+.primarybtnol svg {
+	fill: #C38B23;
+	margin-right: 5px;
+}
+.primarybtnol:hover,
+.primarybtnol:focus,
+.primarybtnol.focus {
+	text-decoration: none;
+	background: #B27002;
+	color: #fff;
+}
+.secondrybtn {
+	font-size: 13px;
+	color: #fff;
+	font-weight: 500;
+	text-align: center;
+	line-height: normal;
+	padding: 10px 10px;
+	border: solid 1px transparent;
+	background: #61316C;
+	background: linear-gradient(0deg,rgba(97, 49, 108, 1) 0%, rgba(121, 48, 116, 1) 100%);
+	border-radius: 6px;
+	transition: 0.4s;
+}
+.secondrybtn:hover,
+.secondrybtn:focus,
+.secondrybtn.focus {
+	text-decoration: none;
+	background: #793074;
+	background: linear-gradient(0deg,rgba(121, 48, 116, 1) 0%, rgba(97, 49, 108, 1) 100%);
+	border: solid 1px transparent;
+	color: #fff;
+}
+.secondrybtnol {
+	color: #793074;
+	font-weight: 500;
+	text-align: center;
+	line-height: normal;
+	border: solid 1px #793074;
+	background: transparent;
+	border-radius: 6px;
+	transition: 0.4s;
+}
+.secondrybtnol:hover,
+.secondrybtnol:focus,
+.secondrybtnol.focus {
+	text-decoration: none;
+	background: #61316C;
+	background: linear-gradient(0deg,rgba(97, 49, 108, 1) 0%, rgba(121, 48, 116, 1) 100%);
+	color: #fff;
+}
+.whitebtnol {
+	color: #FAEEE0;
+	font-weight: 500;
+	text-align: center;
+	line-height: normal;
+	border: solid 1px #FAEEE0;
+	background: transparent;
+	border-radius: 6px;
+	transition: 0.4s;
+}
+.whitebtnol:hover,
+.whitebtnol:focus,
+.whitebtnol.focus {
+	text-decoration: none;
+	background: #FAEEE0;
+	color: #B27002;
+}
+.btnsm {
+	font-size: 13px;
+	padding: 8px 10px;
+}
+.btnmd {
+	font-size: 14px;
+	padding: 10px 15px;
+}
+.btnlg {
+	font-size: 15px;
+	padding: 10px 20px;
+}
+.btnsmfullwidth {
+	width: 100%;
+	font-size: 13px;
+	padding: 8px 10px;
+}
+.btnmdfullwidth {
+	width: 100%;
+	font-size: 14px;
+	padding: 10px 15px;
+}
+.btnlgfullwidth {
+	width: 100%;
+	font-size: 15px;
+	padding: 10px 10px;
+}
+.bookconsultbtn {
+	font-size: 13px;
+	color: #fff;
+	font-weight: 500;
+	text-align: center;
+	line-height: normal;
+	padding: 10px 10px;
+	border: none;
+	background: #61316C;
+	background: linear-gradient(0deg,rgba(97, 49, 108, 1) 0%, rgba(121, 48, 116, 1) 100%);
+	border-radius: 6px;
+	transition: 0.4s;
+}
+.bookconsultbtn:hover,
+.bookconsultbtn:focus,
+.bookconsultbtn.focus {
+	text-decoration: none;
+	background: #793074;
+	background: linear-gradient(0deg,rgba(121, 48, 116, 1) 0%, rgba(97, 49, 108, 1) 100%);
+	color: #fff;
+}
+
+
+@media (min-width: 1920px) {
+
+.bookconsultbtn {
+	font-size: 15px;
+	padding: 9px 15px;
+}
+
+}
+
+@media screen and (max-width : 1080px) {
+
+.bookconsultbtn {
+	font-size: 13px;
+	padding: 9px 7px;
+}
+
+
+}
+
+
+@media screen and (max-width : 568px) {
+
+.bookconsultbtn {
+	padding: 6px 7px;
+}
+
+
+
+}

@@ -5,20 +5,20 @@
     <?php $defaultImage = secure_asset('/'); ?>
     <base href="{{ url('/') }}/">
     <meta charset="UTF-8">
-    <title>{{ !empty($seoData['page_title']) ? $seoData['page_title'] : 'Gopinathan Chakra Healer' }}</title>
+    <title>{{ !empty($seoData['page_title']) ? $seoData['page_title'] : 'Sakhashree' }}</title>
     <link rel="canonical" href="{{ !empty($seoData['page_url']) ? $seoData['page_url'] : '' }}">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="keywords" content="{{ $seoData['meta_keyword'] ?? 'Gopinathan Chakra Healer' }}">
-    <meta name="description" content="{{ $seoData['meta_description'] ?? 'Gopinathan Chakra Healer' }}">
+    <meta name="keywords" content="{{ $seoData['meta_keyword'] ?? 'Sakhashree' }}">
+    <meta name="description" content="{{ $seoData['meta_description'] ?? 'Sakhashree' }}">
     <meta data-react-helmet="true" property="og:image" content="{{ $seoData['meta_image'] ?? $defaultImage }}" />
 
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="websites" />
-    <meta property="og:title" content="{{ $seoData['page_title'] ?? 'Gopinathan Chakra Healer' }}" />
-    <meta property="og:description" content="{{ $seoData['meta_description'] ?? 'Gopinathan Chakra Healer' }}" />
-    <meta property="og:url" content="{{ $seoData['page_url'] ?? 'Gopinathan Chakra Healer' }}" />
-    <meta property="og:site_name" content="Gopinathan Chakra Healer" />
+    <meta property="og:title" content="{{ $seoData['page_title'] ?? 'Sakhashree' }}" />
+    <meta property="og:description" content="{{ $seoData['meta_description'] ?? 'Sakhashree' }}" />
+    <meta property="og:url" content="{{ $seoData['page_url'] ?? 'Sakhashree' }}" />
+    <meta property="og:site_name" content="Sakhashree" />
 
 
     <!-- Favicon -->
@@ -38,9 +38,7 @@
     <link rel="stylesheet" href="{{ asset('/dist/js/Frontend/swipperslider/swiper.min.css') }}" />
 
     <link rel="stylesheet" href="{{ asset('/dist/fonts/frontend-fonts/fonts/css/all.css') }}" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet">
 
 
     <!-- Script -->
@@ -103,19 +101,6 @@
         @include('partials.frontend.footer')
     </main>
 
-    <!-- Email Consultation Modal start -->
-    @include('partials.frontend.emailConsultant')
-    <!-- Email Consultation Modal end -->
-
-    <!-- Video Consultation Modal start -->
-    @include('partials.frontend.videoConsultant')
-    <!-- Video Consultation Modal end -->
-
-    <!-- Whatsapp fixed icon start -->
-    <div class="whatsappfixedicon"><a
-            href="https://api.whatsapp.com/send?phone=+16473000249&amp;text=Hi,%20I%20came%20across%20your%20website%20and%20I%20want%20to%20know%20more%20about%20chakra%20healing%20with%20rudraksha%20and%20gemstone."
-            target="_blank"><img src="{{ asset('dist/img/whatsapp_icon.svg') }}"></a></div>
-    <!-- Whatsapp fixed icon end -->
 
 
 
