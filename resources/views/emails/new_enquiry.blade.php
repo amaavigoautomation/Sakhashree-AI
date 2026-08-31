@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Gopinathan Chakra Healer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="x-apple-disable-message-reformatting">
+    <meta name="color-scheme" content="light dark">
+    <meta name="supported-color-schemes" content="light dark">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-width: 100% !important;
+            font-family: sans-serif;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .wrapper {
+                width: 100% !important;
+            }
+
+            .stack-column {
+                display: block !important;
+                width: 100% !important;
+            }
+
+            .mobile-center {
+                text-align: center !important;
+            }
+
+            .mobile-padding {
+                padding: 15px !important;
+            }
+        }
+
+        img {
+            -ms-interpolation-mode: bicubic;
+        }
+
+        a[x-apple-data-detectors],
+        a[href^="tel"],
+        a[href^="sms"] {
+            color: inherit !important;
+            text-decoration: none !important;
+        }
+    </style>
+
+    <!--[if mso]>
+    <style>
+        body, table, td { font-family: Arial, sans-serif !important; }
+        table { border-collapse: collapse !important; }
+    </style>
+    <![endif]-->
+</head>
+
+<body style="margin:0; padding:0; background-color:#f6f6f6;">
+
+    <center style="width:100%; background-color:#f6f6f6;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <td align="center">
+                    <!-- MAIN CONTAINER START -->
+                    <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0"
+                        class="wrapper" style="width:600px; max-width:600px; margin:30px auto;">
+
+                        <!-- HEADER START -->
+                        <tr>
+                            <td valign="middle" style="background:#36327b; border-radius:10px 10px 0 0; padding:20px;">
+                                <img src="{{ asset('dist/email_templates/img/logo.png') }}"
+                                    alt="Gopinathan Chakra Healer" style="display:block;"
+                                    title="Gopinathan Chakra Healer" />
+                            </td>
+                        </tr>
+                        <!-- HEADER END -->
+
+                        <!-- MIDDLE SECTION START -->
+                        <tr>
+                            <td style="background:#fff; padding:25px;">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tbody>
+                                        {{-- <tr>
+                                            <td style="font-size:14px; line-height:18px; color:#252525;">
+                                                Thank You <strong>{{ $consultation->name }},</strong>
+                                            </td>
+                                        </tr> --}}
+                                        <tr>
+                                            <td height="25">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size:25px; line-height:25px; color:#36327b;">
+                                                <strong>Consultation Submitted</strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="25">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size:13px; line-height:18px; color:#252525;">
+                                                Your consultation request has been submitted successfully. We will
+                                                contact you soon.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="25" valign="top">&nbsp;</td>
+                                        </tr>
+
+                                        <!-- DETAILS BOX -->
+                                        <tr>
+                                            <td valign="top"
+                                                style="background:#EDEDED; border-radius:10px; padding:20px;">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td
+                                                                style="font-size:16px; line-height:18px; color:#36327b;">
+                                                                <strong>Your Details:</strong>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td height="10" valign="top"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td valign="top">
+                                                                <table width="100%" border="0" cellspacing="0"
+                                                                    cellpadding="0">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td width="100"
+                                                                                style="font-size:13px; line-height:18px; color:#252525; padding:5px 0;">
+                                                                                <strong>Email:</strong>
+                                                                            </td>
+                                                                            <td
+                                                                                style="font-size:13px; line-height:18px; color:#252525; padding:5px 0;">
+                                                                                <a href="mailto:{{ $consultation->email }}"
+                                                                                    style="color:#252525;">{{ $consultation->email }}</a>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td
+                                                                                style="font-size:13px; line-height:18px; color:#252525; padding:5px 0;">
+                                                                                <strong>Phone:</strong>
+                                                                            </td>
+                                                                            <td
+                                                                                style="font-size:13px; line-height:18px; color:#252525; padding:5px 0;">
+                                                                                {{ $consultation->phone }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td
+                                                                                style="font-size:13px; line-height:18px; color:#252525; padding:5px 0;">
+                                                                                <strong>DOB:</strong>
+                                                                            </td>
+                                                                            <td
+                                                                                style="font-size:13px; line-height:18px; color:#252525; padding:5px 0;">
+                                                                                {{ $consultation->dob }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td
+                                                                                style="font-size:13px; line-height:18px; color:#252525; padding:5px 0;">
+                                                                                <strong>Concerns:</strong>
+                                                                            </td>
+                                                                            <td
+                                                                                style="font-size:13px; line-height:18px; color:#252525; padding:5px 0;">
+                                                                                {{ $consultation->concerns }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td
+                                                                                style="font-size:13px; line-height:18px; color:#252525; padding:5px 0;">
+                                                                                <strong>Message:</strong>
+                                                                            </td>
+                                                                            <td
+                                                                                style="font-size:13px; line-height:18px; color:#252525; padding:5px 0;">
+                                                                                {{ $consultation->message }}
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td height="25" valign="top">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size:13px; line-height:18px; color:#36327b;">
+                                                <strong>While you wait for our expert to connect:</strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size:13px; line-height:18px; color:#252525;">
+                                                You can explore the website
+                                                <a href="http://www.gopinathan.ca" target="_blank"
+                                                    style="color:#252525;">www.gopinathan.ca</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="25" valign="top">&nbsp;</td>
+                                        </tr>
+
+                                        <!-- SOCIAL -->
+                                        <tr>
+                                            <td valign="top">
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="95" valign="middle"
+                                                                style="font-size:14px; line-height:20px; color:#252525;">
+                                                                <strong>Follow us on</strong>
+                                                            </td>
+                                                            <td width="29" valign="middle">
+                                                                <a href="https://www.facebook.com/profile.php?id=100011059427285"
+                                                                    target="_blank">
+                                                                    <img src="{{ asset('dist/email_templates/img/facebook.png') }}"
+                                                                        alt="Facebook" style="display:block;"
+                                                                        title="Facebook" />
+                                                                </a>
+                                                            </td>
+                                                            <td valign="middle">
+                                                                <a href="https://www.instagram.com/chakrayog.ca/"
+                                                                    target="_blank">
+                                                                    <img src="{{ asset('dist/email_templates/img/instagram.png') }}"
+                                                                        alt="Instagram" style="display:block;"
+                                                                        title="Instagram" />
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <!-- MIDDLE SECTION END -->
+
+                        <!-- FOOTER START -->
+                        <tr>
+                            <td valign="middle"
+                                style="background:#7b7b7b; border-radius:0 0 10px 10px; padding:20px;">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tbody>
+                                        <tr>
+                                            <td style="font-size:18px; line-height:18px; color:#fff;">
+                                                <strong>Rudraksha Ratna Canada Inc.</strong>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size:12px; line-height:16px; color:#fff;">
+                                                <strong>Address:</strong> Suite 137 - 425 Britannia Road East,
+                                                Mississauga, Ontario, L4Z 3E7, Canada.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="10"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size:12px; line-height:18px; color:#fff;">
+                                                <strong>Email:</strong> <a href="mailto:gopinathan@chakrayog.ca"
+                                                    style="color:#fff;">gopinathan@chakrayog.ca</a><br>
+                                                <strong>Phone:</strong> +1 647 300 0249, +1 647 530 1600, +1 905 890
+                                                0733<br>
+                                                <strong>Toll Free:</strong> +1 844 842 5028
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <!-- FOOTER END -->
+
+                    </table>
+                    <!-- MAIN CONTAINER END -->
+                </td>
+            </tr>
+        </table>
+    </center>
+
+</body>
+
+</html>

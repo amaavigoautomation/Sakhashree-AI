@@ -1,0 +1,384 @@
+.addAppendBtn {
+    border-radius: 0px;
+    border: 1px solid #e5e5e5;
+    min-height: 42px;
+}
+
+.countryIcon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+
+.ModuleBox {
+    padding: 10px 5px 5px 5px;
+    background: #f1f5f9;
+    text-align: center;
+    font-size: 14px;
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    line-height: 20px;
+    box-shadow: 0px 5px 10px -4px rgba(0, 0, 0, 0.8);
+}
+
+.ModuleBox a {
+    color: #5d657b;
+}
+
+.select2-container {
+    /*      padding: 10px 10px;*/
+    font-size: 13px;
+    border-radius: 4px !important;
+    background: rgb(247 247 247 / 50%) !important;
+    width: 100%;
+    color: #5d657b !important;
+}
+
+.select2-container .select2-choice .select2-arrow b {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: none !important;
+}
+
+.select2-container .select2-choice .select2-arrow {
+    width: 0px !important;
+    height: 0px !important;
+}
+
+.select2-container .select2-choice {
+    height: 42px !important;
+    padding: 5px !important;
+    border: 1px solid #e5e5e5 !important;
+    color: #5d657b !important;
+}
+
+.select2-container-multi .select2-choices {
+    height: auto !important;
+    margin: 0;
+    padding: 5px !important;
+    position: relative;
+    border: 1px solid #e5e5e5 !important;
+    cursor: text;
+    overflow: hidden;
+    background: rgb(247 247 247 / 50%) !important;
+}
+
+.select2-container-multi .select2-choices .select2-search-choice {
+    padding: 3px 18px;
+    margin: 3px 0 3px 5px;
+    position: relative;
+    line-height: 13px;
+    color: #333;
+    cursor: default;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    background: #e5e5e5 !important;
+}
+
+#imageBox {
+    width: 100px;
+    height: 50px;
+    object-fit: cover;
+    object-position: 50% 100%;
+    margin-bottom: 10px;
+}
+
+#bannerBox {
+    width: 200px;
+    height: 70px;
+    object-fit: cover;
+    object-position: 50% 100%;
+    margin-bottom: 10px;
+}
+
+#iconBox {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    object-position: 50% 0%;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid #000;
+    padding: 3px;
+    margin-bottom: 10px;
+}
+
+/* add this in edit and add page image section */
+#selectedImage {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    /* object-position: 70% 30%; */
+}
+
+#selectedIcon {
+    max-width: 100%;
+    max-height: 100%;
+}
+/* Login */
+.signin-section {
+    background: #383279;
+    padding: 60px 0;
+}
+/*For Backend Color Layout*/
+.primary-btn {
+    background: #a46b8f !important;
+    color: #fff;
+}
+
+.primary-btn-outline {
+    background: transparent;
+    color: blue !important;
+    border-color: blue !important;
+}
+
+.primary-btn-outline:hover {
+    color: #fff !important;
+    background: #a46b8f !important;
+}
+
+.sidebar-nav-wrapper
+    .sidebar-nav
+    ul
+    .nav-item.nav-item-has-children
+    ul
+    li
+    a.active,
+.sidebar-nav-wrapper
+    .sidebar-nav
+    ul
+    .nav-item.nav-item-has-children
+    ul
+    li
+    a:hover {
+    color: blue !important;
+    border-color: none;
+    background: rgba(74, 108, 247, 0.1);
+}
+
+.search-results {
+    display: none;
+    border: 1px solid #ddd;
+    max-height: 200px;
+    overflow-y: auto;
+    background: #fff;
+    width: 200px;
+    z-index: 1000;
+}
+.search-results ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.search-results li {
+    padding: 8px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+.search-results li:hover {
+    background: #f0f0f0;
+}
+
+#blog_results {
+    background: #fff;
+    width: 100%;
+    z-index: 1000;
+    border: 1px solid #ccc;
+    display: none;
+}
+
+#blog_results ul {
+    list-style: none;
+    padding: 10px;
+}
+
+#blog_results li {
+    padding: 5px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+}
+
+#blog_results a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 5px;
+}
+
+/* Condensed style for the dropdown button */
+.dropdown button {
+    padding: 0;
+    font-size: 20px;
+    background: none;
+    border: none;
+}
+
+.dropdown-menu {
+    min-width: 120px;
+    padding: 2px !important;
+    border: none !important;
+}
+
+/* Hide default checkbox */
+.toggle-checkbox {
+    display: none;
+}
+
+/* Switch container */
+.toggle-label {
+    display: flex;
+    align-items: center;
+    width: 50px;
+    height: 25px;
+    background: #ccc;
+    border-radius: 25px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+/* The round slider */
+.toggle-slider {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    top: 50%;
+    left: 4px;
+    transform: translateY(-50%);
+    transition: 0.3s;
+}
+
+/* Checked state */
+.toggle-checkbox:checked + .toggle-label {
+    background: #4caf50;
+}
+
+.toggle-checkbox:checked + .toggle-label .toggle-slider {
+    left: 26px;
+}
+
+/* Make the button and icons more compact */
+.btn-link {
+    padding: 0;
+    color: #000; /* Adjust color */
+    text-decoration: none;
+}
+
+/* If you want to make the dropdown items tighter */
+.dropdown-item {
+    padding: 4px 8px;
+}
+
+.text i {
+    font-size: 14px;
+    padding: 0 7px 0 0;
+    vertical-align: middle;
+    color: blue;
+}
+
+/* Horizontal Menu */
+.horizontal-menu {
+    background: #2e3f50;
+    padding: 0px 0;
+    text-align: center;
+    border-radius: 10px;
+    margin: 5px 0px;
+}
+
+.horizontal-menu ul {
+    list-style: none;
+    display: flex;
+}
+
+.horizontal-menu ul li {
+    margin: 0px;
+    border-right: 1px solid #fff;
+}
+
+.horizontal-menu ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    padding: 7px;
+    transition: 0.3s;
+}
+
+.horizontal-menu ul li a:hover {
+    background: #555;
+    border-radius: 5px;
+}
+
+.horizontal-menu ul li a.active {
+    background: #000;
+    border-radius: 5px;
+}
+
+/* Margin Bottm 5 */
+.mgbt5 {
+    margin-bottom: 5px;
+}
+
+/* */
+/*For Side Hover Color*/
+.sidebar-nav-wrapper .sidebar-nav ul .nav-item a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: black !important;
+    border-radius: 0 3px 3px 0px;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 0.3s ease-out 0s;
+    -moz-transition: all 0.3s ease-out 0s;
+    -ms-transition: all 0.3s ease-out 0s;
+    -o-transition: all 0.3s ease-out 0s;
+    transition: all 0.3s ease-out 0s;
+}
+
+.header {
+    padding: 10px 0;
+    background: #36327b !important;
+}
+
+#imageBox {
+    width: 80px;
+    height: auto;
+}
+
+td img {
+    transition: 0.2s;
+}
+
+td img:hover {
+    transform: scale(1.05);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    /* color: black !important; */
+    margin: 0;
+}
+
+.breadcrumb-wrapper .breadcrumb li a {
+    color: black !important;
+}

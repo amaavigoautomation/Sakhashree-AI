@@ -1,0 +1,33 @@
+﻿<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
+use App\Models\MenuLink;
+
+class MenuLinksServiceProvider extends ServiceProvider
+{
+    /**
+     * Register services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
+    /**
+     * Bootstrap services.
+     *
+     * @return void
+     */
+    public function boot(): void
+    {
+        View::composer('partials.adminMenu', function ($view) {
+            $menuLinks = MenuLink::all(); 
+            $view->with('menuLinks', $menuLinks);
+        });
+    }
+}
