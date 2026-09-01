@@ -29,51 +29,23 @@
     <link rel="stylesheet" href="{{ asset('/dist/css/front-end/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('/dist/css/front-end/developer.css') }}" />
     <link rel="stylesheet" href="{{ asset('/dist/css/front-end/form.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/dist/css/front-end/fancybox.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/dist/css/front-end/gallerypopup.css') }}" />
     <link rel="stylesheet" href="{{ asset('/dist/css/front-end/main.css') }}" />
     <link rel="stylesheet" href="{{ asset('/dist/css/front-end/menu.css') }}" />
-    <link rel="stylesheet" href="{{ asset('/dist/css/front-end/fancybox/fancybox.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/dist/css/front-end/swiper.min.css') }}" />
 
     <link rel="stylesheet" href="{{ asset('/dist/css/front-end/font-awesome.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('/dist/css/front-end/developer.css') }}" />
-    <link rel="stylesheet" href="{{ asset('/dist/js/Frontend/swipperslider/swiper.min.css') }}" />
+
 
     <link rel="stylesheet" href="{{ asset('/dist/fonts/frontend-fonts/fonts/css/all.css') }}" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet">
 
 
     <!-- Script -->
-    <script src="{{ asset('dist/js/jquery-latest.min.js') }} "></script>
     <script src="{{ asset('dist/js/Frontend/bootstrap.bundle.min.js') }} "></script>
+    <script src="{{ asset('dist/js/Frontend/jquery-latest.min.js') }} "></script>
     <script src="{{ asset('/dist/css/front-end/fancybox/fancybox.umd.js') }} "></script>
-
-
-    <script>
-        $(document).ready(function() {
-            $('#search_blogs').keyup(function() {
-                let keyword = $(this).val();
-
-                var data = {
-                    search: keyword,
-                    _token: '{{ csrf_token() }}'
-                }
-
-                if (keyword.length >= 3) {
-                    $.ajax({
-                        url: 'search-blogs',
-                        method: 'POST',
-                        data: data,
-                        success: function(response) {
-                            $("#blog_results").html(response).show();
-                        }
-                    });
-                } else {
-                    $("#blog_results").hide();
-                }
-
-            });
-        });
-    </script>
-
 
     <!-- Fixed Header script start-->
     <script>
@@ -92,21 +64,17 @@
 
 <body>
     <main class="mainwrapper">
-        <!-- Header Section -->
         @include('partials.frontend.header')
-        <!-- Page Content -->
+
         @yield('content')
-        <!-- Footer Section -->
 
         @include('partials.frontend.footer')
     </main>
 
-
-
-
     <script src="{{ asset('dist/js/Frontend/menu.js') }} "></script>
-    <script type="text/javascript" src="{{ asset('/dist/js/Frontend/swipperslider/swiper.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/dist/js/Frontend/swipperslider/swiper.js') }}"></script>
+    <script src="{{ asset('dist/js/Frontend/swiper.js') }} "></script>
+    <script src="{{ asset('dist/js/Frontend/swiper.min.js') }} "></script>
+    <script src="{{ asset('dist/js/Frontend/fancybox.umd.js') }} "></script>
     <script src="{{ asset('dist/js/jq/jquery.select2.min.js') }}"></script>
 
     <script>

@@ -15,8 +15,8 @@
                                     <div class="mobile-menu-close">&times;</div>
                                 </div>
                                 <ul class="menu-main">
-                                    <li><a href="default.html">Home</a></li>
-                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="{{ route('home') }}">Home</a></li>
+                                    <li><a href="{{ route('about') }}">About</a></li>
                                     <li><a href="rrct.html">RRCT®</a></li>
                                     <li><a href="spiritual_tours.html">Spiritual Tours</a></li>
                                     <li><a href="workshops.html">Workshops</a></li>

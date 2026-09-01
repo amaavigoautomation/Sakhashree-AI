@@ -1,285 +1,578 @@
 @extends('layouts.frontend')
 
 @section('content')
-    <div class="maincontarea">
-        <!-- Breadcrumb section start -->
-        <section class="breadcrumbarea">
+    <div class="innercontbg1">
+    <section class="about-collage">
+        <div class="innercollagecont">
             <div class="container">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">About Me</li>
-                    </ol>
-                </nav>
-            </div>
-        </section>
-        <!-- Breadcrumb section end -->
-
-        <!-- About Me Collage section start -->
-        <section class="aboutcollagearea">
-            <div class="container">
-                <div class="aboutcollage">
-                    <div class="aboutcollagetop">
-                        <div class="row align-items-end align-items-lg-center">
-                            <div class="col-md-6">
-                                <div class="aboutcollagecontarea">
-                                    <div class="mainheading">
-                                        <h2>A Journey of Healing, Energy & Inner Transformation</h2>
-                                    </div>
-                                    <div class="textblack16">Discover the purpose, philosophy, and personalized approach
-                                        behind
-                                        guiding individuals toward chakra balance, clarity and lasting well-being.</div>
-                                    <div class="d-flex gap-2 topmargin30">
-                                        <div><button class="orangebtn btnmd" data-bs-toggle="modal"
-                                                data-bs-target="#EmailConsult">Email Consult</button></div>
-                                        <div><button class="greenbtn btnmd" data-bs-toggle="modal"
-                                                data-bs-target="#VideoConsult">Video Consult</button></div>
-                                        <div><a href="{{ route('contact') }}"><button class="purplebtn btnmd">Visit the
-                                                    Store</button></a></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 text-end"><img src="{{ asset('dist/img/about_collage.png') }}"
-                                    class="img-fluid"></div>
-                        </div>
-                    </div>
-                    <div class="aboutcollagebottom">
-                        <div class="textwhite14">I am a dedicated Chakra Therapist and energy healing practitioner,
-                            committed to
-                            helping individuals restore balance in their lives through ancient spiritual sciences. My work
-                            is
-                            centered around understanding the deep connection between your mind, body, and energy, and
-                            guiding
-                            you toward a more aligned and harmonious life.</div>
-                        <div class="row topmargin30">
-                            <div class="col-md-3">
-                                <div class="aboutcollagepointers">
-                                    <div><i class="fa-solid fa-check"></i></div>
-                                    <div>15 Years of <br class="hidetabmob">Research & Testing</div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 rowmargin20">
-                                <div class="aboutcollagepointers">
-                                    <div><i class="fa-solid fa-check"></i></div>
-                                    <div>Experience World <br class="hidetabmob">Fastest Healing Therapy</div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 rowmargin20">
-                                <div class="aboutcollagepointers">
-                                    <div><i class="fa-solid fa-check"></i></div>
-                                    <div>Balance Chakras & <br class="hidetabmob">Awaken your True Self</div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 rowmargin20">
-                                <div class="aboutcollagepointers">
-                                    <div><i class="fa-solid fa-check"></i></div>
-                                    <div>20,000+ Healed & <br class="hidetabmob">Satisfied Clients Globally</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mainheading">
-                    <h2>About Me</h2>
-                </div>
-                <div class="infotxt">As a chakra healer with over 15 years of experience, I support individuals in
-                    cultivating
-                    holistic balance and inner well‑being. My work is grounded in presence, compassion, and a deep respect
-                    for
-                    each person’s unique life journey. Through chakra healing, I help clients connect with the body’s subtle
-                    energy system to identify and gently release blockages that may appear as emotional stress, mental
-                    fatigue,
-                    or physical tension. When energy flows freely, the body’s natural capacity to restore harmony and
-                    clarity is
-                    strengthened.
-                    <br><br>My sessions emphasize grounding, emotional balance, and heart‑centered awareness—encouraging
-                    alignment between mind, body, and spirit. In a safe and non‑judgmental space, clients are invited to
-                    reconnect with themselves, gain insight, and experience a sense of calm and renewal. Healing, to me, is
-                    not
-                    about fixing; it is about awareness, release, and realignment. I approach each session with integrity,
-                    care,
-                    and a commitment to supporting transformation that unfolds naturally.
-                </div>
-                <div class="clientvideoarea">
-                    <div class="mainheading text-center">
-                        <h4>Transformations Shared by Clients</h4>
-                    </div>
-                    <div class="infotxt text-center">See how individuals have benefited from personalized chakra
-                        consultations
-                        with Gopinathan Ponmanadiyil.</div>
-                    <div class="row topmargin30">
-
-                        @foreach ($videos as $video)
-                            @php
-                                preg_match(
-                                    '/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([^&]+)/',
-                                    $video->video_link,
-                                    $matches,
-                                );
-                                $videoId = $matches[1] ?? null;
-
-                                $thumbnail = !empty($video->image_file)
-                                    ? asset('public/images/videos/image_file/' . $video->id . '/' . $video->image_file)
-                                    : asset('dist/img/no-image.png');
-                            @endphp
-
-                            <div class="col-lg-3 col-md-6 mb-4">
-                                <div class="vidgalleryboxarea">
-
-                                    <a href="#" class="video-trigger" data-bs-toggle="modal"
-                                        data-bs-target="#GalleryVideo" data-video="{{ $videoId }}">
-
-                                        <div class="vidgalleryboximg">
-
-                                            <div class="vidgallerybtnarea">
-                                                <button class="vidgallerybtn">
-                                                    <img src="{{ asset('dist/img/playbtn.png') }}">
-                                                </button>
-                                            </div>
-
-                                            <div class="vidgallerycontarea">
-                                                {{ $video->title }} <br>
-                                                <span>{{ $video->profession ?? '' }}</span>
-                                            </div>
-
-                                            <img src="{{ $thumbnail }}" class="img-fluid">
-
-                                        </div>
-                                    </a>
-
-                                </div>
-                            </div>
-                        @endforeach
-
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- About Me Collage section end -->
-
-
-        <!-- Highlights of the Consultation section start -->
-        <section class="highcosularea">
-            <div class="container">
-                <div class="mainheading text-center">
-                    <h2 class="mb-0">Highlights of the Consultation</h2>
-                </div>
-                <div class="highcosuliconarea">
-                    <div class="highcosuliconbox">
-                        <div class="highcosulicon"><img src="{{ asset('dist/img/chakra_report.svg') }}"></div>
-                        <div class="textblack15med">Chakra Report</div>
-                    </div>
-                    <div class="highcosuliconbox">
-                        <div class="highcosulicon"><img src="{{ asset('dist/img/horoscope_analysis.svg') }}"></div>
-                        <div class="textblack15med">Horoscope Analysis</div>
-                    </div>
-                    <div class="highcosuliconbox">
-                        <div class="highcosulicon"><img src="{{ asset('dist/img/rudraksha_icon.svg') }}"></div>
-                        <div class="textblack15med">Rudrakshat</div>
-                    </div>
-                    <div class="highcosuliconbox">
-                        <div class="highcosulicon"><img src="{{ asset('dist/img/gemstone_icon.svg') }}"></div>
-                        <div class="textblack15med">Gemstone</div>
-                    </div>
-                    <div class="highcosuliconbox">
-                        <div class="highcosulicon"><img src="{{ asset('dist/img/yantra_icon.svg') }}"></div>
-                        <div class="textblack15med">Yantra</div>
-                    </div>
-                    <div class="highcosuliconbox">
-                        <div class="highcosulicon"><img src="{{ asset('dist/img/mantras_daily.svg') }}"></div>
-                        <div class="textblack15med">Mantras & Daily Affirmations</div>
-                    </div>
-                    <div class="highcosuliconbox">
-                        <div class="highcosulicon"><img src="{{ asset('dist/img/meditation_techniques.svg') }}"></div>
-                        <div class="textblack15med">Meditation Techniques</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Highlights of the Consultation section end -->
-
-        <!-- Precise diagnosis & Video section start -->
-        <section class="precisediagnosisarea">
-            <div class="container">
-                <div class="mainheading text-center">
-                    <h2>Precise diagnosis. Sacred remedies. Proven peace.</h2>
-                </div>
                 <div class="row">
-                    <div class="col-lg-7">
-                        <div class="chakrasinfluencebg">
-                            <div class="chakrasinfluencebg1">
-                                <div class="row">
-                                    <div class="col-md-7">
-                                        <div class="mainheading">
-                                            <h2>Your chakras influence every area of your life...</h2>
-                                        </div>
-                                        <div class="textblack15">From confidence and clarity to love, health and success,
-                                            your
-                                            energy centers shape how you think, feel and act.When aligned, life flows
-                                            effortlessly.</div>
-                                    </div>
-                                </div>
-                                <div class="chakrasinfluencelabel">
-                                    <div>Restore Balance.</div>
-                                    <div>Harmonize Feelings.</div>
-                                    <div>Secure Focus.</div>
-                                    <div>Realign Your Life.</div>
-                                </div>
-                                {{-- <div><a href="{{ route('blogs') }}"><button class="primarybtn btnmd">Choose Your Starting
-                                            Point</button></a></div> --}}
-                                <button class="primarybtn btnmd" data-bs-toggle="modal"
-                                    data-bs-target="#AboutConsult">Choose Your Starting Point</button>
-                            </div>
+                    <div class="col-lg-7 col-md-8">
+                        <div class="mainheading">
+                            <h1 class="text-uppercase gredientcolotext mb-1">Sakhashree Neeta</h1>
                         </div>
-                    </div>
-                    <div class="col-lg-5 rowmargintabmob20">
-                        <div class="chakrasinfobox">
-                            <div class="row nopaddingarea align-items-center">
-                                <div class="col-md-6 nopadding">
-                                    <div class="chakrasinfoboximg"><img src="{{ asset('dist/img/chakrasinfoimg.jpg') }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 nopadding">
-                                    <div class="chakrasinfotext">“Chakras are not mystical ideas, they are energetic
-                                        centers
-                                        that influence yourt houghts, emotions, decisions and destiny”</div>
-                                </div>
-                            </div>
+                        <div class="innercoltaglinesm">A life Devoted to Healing, Wisdom & Humanity</div>
+                        <div class="topmargin30"><img src="dist/img/innercolhead.svg" class="img-fluid"></div>
+                        <div class="innercolinfotext topmargin30">Spiritual healer <span
+                                class="innercolinfotextbold">Sakhashree Neeta</span> is a globally recognised authority in
+                            Chakra Healing and the creator of <span class="innercolinfotextbold">Rudraksha Ratna Chakra
+                                Therapy (RRCT<sup>®️</sup>),</span> a unique healing system that uses Rudraksha beads and
+                            gemstones to balance and harmonise the chakras. For over two decades, she has dedicated her life
+                            to helping people overcome emotional pain, stress, anxiety, limiting beliefs, and life's
+                            challenges by realigning their thoughts, beliefs, and energy patterns, guiding them towards
+                            holistic health, inner strength, and spiritual awakening.<br><br>
+                            People from all walks of life including CEOs, entrepreneurs, professionals, homemakers,
+                            students, and spiritual seekers from across India and around the world seek her guidance. Over
+                            the years, more than 20,000 testimonials have reflected the profound transformation experienced
+                            by those she has helped. Known for her compassionate approach and ability to listen without
+                            judgement, she is lovingly regarded by many as a mentor, and trusted friend, creating a safe
+                            space where people feel understood, supported, and empowered to transform their lives.<span
+                                class="slider" id="slideOne1"><br>Sakhashree founded Rudraksha Ratna Chakra Therapy
+                                (RRCT<sup>®️</sup>) after years of research into the subtle effects of Rudraksha and
+                                gemstones on the human body, mind, and chakras. She created the world's first dedicated
+                                Rudraksha website in the year 2000 and has been practising and teaching this sacred science
+                                ever since. Her expertise also includes personally sourcing authentic, premium-quality
+                                Rudraksha from trusted farms in Nepal and Indonesia, ensuring that every seeker receives
+                                genuine and spiritually potent Rudraksha for their healing journey.</span>
+                            <span class="toggler read-more" id="toggler-slideOne1"><span class="expandSlider" id=""
+                                    style="cursor:pointer;">Read More</span><span class="collapseSlider" id=""
+                                    style="cursor:pointer;">Read Less</span></span>
                         </div>
-                        <div class="chakrasessionbox">
-                            <div>
-                                <h3>One session to uncover the root. A lifetime to feel the flow.</h3>
-                            </div>
-                            {{-- <div><a href="{{ route('contact') }}"><button class="primarybtn btnmd">Discover
-                                        You</button></a></div> --}}
-                            <div><button class="primarybtn btnmd" data-bs-toggle="modal"
-                                    data-bs-target="#AboutConsult">Discover You</button></div>
-                        </div>
-                        @include('partials.frontend.aboutusNewForm')
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Precise diagnosis & Video section end -->
-    </div>
 
-    <!-- Gallery Video Modal start -->
-    <div class="modal fade" id="GalleryVideo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-md">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Gallery Video</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <iframe width="100%" height="315"
-                        src="https://www.youtube.com/embed/xN1MVlExLjo?si=X2KvXgGY-xgw5upI" title="YouTube video player"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
+            <div class="innercolmobpadd"></div>
         </div>
+    </section>
+
+    <section class="innermidcontarea1">
+        <div class="container">
+            <div class="missionbox">
+                <div><img src="dist/img/about_icon.svg"></div>
+                <div>My Mission: To awaken the divine within you and help live a life of purpose, peace and abundance.</div>
+            </div>
+            <div class="statsareainner">
+                <div class="statsboxarea" id="statsSection">
+                    <div class="statsbox">
+                        <div><img src="dist/img/founder.png"></div>
+                        <div>
+                            <div class="statsnumber">Founder</div>
+                            <div class="statsboxtext">Rudra Centre & RRCT®</div>
+                        </div>
+                    </div>
+                    <div class="statsbox">
+                        <div><img src="dist/img/clients_healed.png"></div>
+                        <div>
+                            <div class="statsnumber"><span class="count" data-target="33000">33,000</span>+</div>
+                            <div class="statsboxtext">Clients Healed</div>
+                        </div>
+                    </div>
+                    <div class="statsbox">
+                        <div><img src="dist/img/countries_reached.png"></div>
+                        <div>
+                            <div class="statsnumber"><span class="count" data-target="22">22</span>+</div>
+                            <div class="statsboxtext">Countries Reached</div>
+                        </div>
+                    </div>
+                    <div class="statsbox">
+                        <div><img src="dist/img/experience.png"></div>
+                        <div>
+                            <div class="statsnumber"><span class="count" data-target="25">25</span>+</div>
+                            <div class="statsboxtext">Years of Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row topmargin40">
+                <div class="col-lg-9">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="text-center">
+                                <img src="dist/img/aboutimg.png" class="img-fluid">
+                            </div>
+                        </div>
+                        <div class="col-md-8 rowmargin20">
+                            <div class="mainheading">
+                                <h4>Her Story, Her Purpose.</h4>
+                            </div>
+                            <div class="aboutinfotext">With over a decade of experience in aura healing and counselling,
+                                Sakhashree Neeta has impacted the lives of thousands across the globe. Her sessions help
+                                individuals discover thier inner strength, release blockages, and lead a life filled with
+                                purpose and joy.</div>
+                            <div class="d-flex flex-column gap-2 topmargin20">
+                                <div class="d-flex gap-3 flex-row align-items-center">
+                                    <div class="aboutcheckicon"><i class="fa-solid fa-check"></i></div>
+                                    <div class="aboutinfotext">Pioneered Chakra Yog workshops and revealed deep insights
+                                        into the science of chakras.</div>
+                                </div>
+                                <div class="d-flex gap-3 flex-row align-items-center">
+                                    <div class="aboutcheckicon"><i class="fa-solid fa-check"></i></div>
+                                    <div class="aboutinfotext">Combines ancient wisdom with modern understanding for
+                                        holistic transformation.</div>
+                                </div>
+                                <div class="d-flex gap-3 flex-row align-items-center">
+                                    <div class="aboutcheckicon"><i class="fa-solid fa-check"></i></div>
+                                    <div class="aboutinfotext">Consults with physicians and psychologists to bring
+                                        alternative healing into practice.</div>
+                                </div>
+                                <div class="d-flex gap-3 flex-row align-items-center">
+                                    <div class="aboutcheckicon"><i class="fa-solid fa-check"></i></div>
+                                    <div class="aboutinfotext">Sessions have benefitted CEOs. business owners, homemakers,
+                                        and celebrities.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 rowmargintabmob30">
+                    <div class="aboutqoutebox">
+                        <div><img src="dist/img/about_icon.svg"></div>
+                        <div class="topmargin20">Her work is a beautiful blend of ancient wisdom and modern
+                            understanding dedicated to holistic healing and the awakening of human potential.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="innerheadarea topmargin50">
+                <div class="innerheadcont">
+                    <div class="ornament" aria-hidden="true"><img src="dist/img/sidebarhead1.svg"></div>
+                    <div class="mainheading text-center">
+                        <h2 class="mb-0">Awards & Honors</h2>
+                    </div>
+                    <div class="ornament" aria-hidden="true"><img src="dist/img/sidebarhead.svg"></div>
+                </div>
+            </div>
+            <div class="awardinfotext text-center topmargin15">Sakhashree Neeta has been recognised and honoured for her
+                exceptional contributions to holistic healing, spiritual wellness and the awareness of Rudraksha worldwide.
+            </div>
+
+            <div class="swiper-container1 topmargin30">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="awardsbox">
+                            <div class="awardsimg"><img src="dist/img/awards_img01.png"></div>
+                            <div>
+                                <h6>Best Research in Rudraksha Ratna Science Therapy</h6>
+                                <div>Gratefully received in recognition of dedicated research and contribution to Rudraksha
+                                    Ratna Science Therapy and holistic healing.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="awardsbox">
+                            <div class="awardsimg"><img src="dist/img/awards_img02.png"></div>
+                            <div>
+                                <h6>Service Excellence Award</h6>
+                                <div>Gratefully received in recognition of dedicated service to holistic wellness, spiritual
+                                    guidance and community well-being.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="awardsbox">
+                            <div class="awardsimg"><img src="dist/img/awards_img03.png"></div>
+                            <div>
+                                <h6>Indian Achiever – Jyothish Shiromani</h6>
+                                <div>Gratefully received in recognition of contributions to Vedic astrology, spiritual
+                                    wisdom and holistic development.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="awardsbox">
+                            <div class="awardsimg"><img src="dist/img/awards_img04.png"></div>
+                            <div>
+                                <h6>Jyotish Vaghdevi Award</h6>
+                                <div>Gratefully received in ecognition of dedication to astrological knowledge, meaningful
+                                    guidance and the preservation of ancient Vedic sciences.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="swiper-pagination"></div>-->
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+
+            <div class="featuredinbox topmargin50">
+                <div class="mainheading text-center">
+                    <h2>Featured in</h2>
+                </div>
+                <div class="clientslogos">
+                    <div class="logos-track">
+                        <!-- Original set -->
+                        <div class="logo-item"><img src="dist/img/featured_logo01.png"></div>
+                        <div class="logo-item"><img src="dist/img/featured_logo02.png"></div>
+                        <div class="logo-item"><img src="dist/img/featured_logo03.png"></div>
+                        <div class="logo-item"><img src="dist/img/featured_logo04.png"></div>
+                        <div class="logo-item"><img src="dist/img/featured_logo05.png"></div>
+
+                        <!-- Duplicate set -->
+                        <div class="logo-item"><img src="dist/img/featured_logo01.png"></div>
+                        <div class="logo-item"><img src="dist/img/featured_logo02.png"></div>
+                        <div class="logo-item"><img src="dist/img/featured_logo03.png"></div>
+                        <div class="logo-item"><img src="dist/img/featured_logo04.png"></div>
+                        <div class="logo-item"><img src="dist/img/featured_logo05.png"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rudrachakraboxarea topmargin50">
+                <div class="rudrachakrabox">
+                    <div class="rudrachakracont">
+                        <h3>Rudra Center</h3>
+                        <div class="rudrachakrasubhead">A Legacy of Authenticity, Knowledge & Spiritual Wisdom</div>
+                        <div class="rudrachakrainfotext topmargin15">Founded in 1997, Rudra Centre makes authentic
+                            Rudraksha, gemstones and Vedic spiritual knowledge accessible to people around the world. With
+                            decades of experience, research and a focus on authenticity, it continues to preserve and share
+                            ancient wisdom for modern seekers.</div>
+                        <div class="rudrachakrabtmtext topmargin20">Today, Rudra Centre represents a journey of preserving
+                            ancient wisdom while making it accessible, practical and relevant to the modern world.</div>
+                    </div>
+                    <div class="rudrachakraimg">
+                        <div class="rudrachakrabtnarea"><a href="discover_rudra_center.html"><button
+                                    class="primarybtn btnmd">Discover Rudra Center</button></a></div>
+                        <img src="dist/img/rudra_center.jpg">
+                    </div>
+                </div>
+                <div class="rudrachakrabox">
+                    <div class="rudrachakracont">
+                        <h3>Chakra Yog</h3>
+                        <div class="rudrachakrasubhead">A Path to Inner Awareness, Balance & Transformation</div>
+                        <div class="rudrachakrainfotext topmargin15">Founded by Sakhashree Neeta in 2012, Chakra Yog brings
+                            together Chakra Science and ancient Vedic wisdom to help individuals understand themselves at a
+                            deeper level. Through meditation, self-introspection and practical spiritual practices, it
+                            encourages greater awareness, balance and inner growth.</div>
+                        <div class="rudrachakrabtmtext topmargin20">At its heart, Chakra Yog is a journey inward—towards
+                            greater awareness, inner freedom and the realisation that You Are More.</div>
+                    </div>
+                    <div class="rudrachakraimg">
+                        <div class="rudrachakrabtnarea"><a href="discover_chakra_yog.html"><button
+                                    class="secondrybtn btnmd">Discover Chakra Yog</button></a></div>
+                        <img src="dist/img/chakra_yog.jpg">
+                    </div>
+                </div>
+            </div>
+
+            <div class="innerheadarea topmargin50">
+                <div class="innerheadcont">
+                    <div class="ornament" aria-hidden="true"><img src="dist/img/sidebarhead1.svg"></div>
+                    <div class="mainheading text-center">
+                        <h2 class="mb-0">A Journey of Healing & Transformation</h2>
+                    </div>
+                    <div class="ornament" aria-hidden="true"><img src="dist/img/sidebarhead.svg"></div>
+                </div>
+            </div>
+            <div class="consultjourarea1 topmargin30">
+                <div class="consultjourbox">
+                    <div class="consultjouricon consultjouricon-purple"><img src="dist/img/early_interest.svg"></div>
+                    <h6>Early Interest</h6>
+                    <div>Deeply connected to spirituality and energy healing from a young age.</div>
+                </div>
+                <div class="consultjourbox">
+                    <div class="consultjouricon consultjouricon-brown"><img src="dist/img/academic_excellence.svg"></div>
+                    <h6>Academic Excellence</h6>
+                    <div>B.Sc in Computer Science from Miranda House, MCA from Delhi University.</div>
+                </div>
+                <div class="consultjourbox">
+                    <div class="consultjouricon consultjouricon-purple"><img src="dist/img/path_discovery.svg"></div>
+                    <h6>Path of Discovery</h6>
+                    <div>Explored meditation, ancient scriptures and healing sciences.</div>
+                </div>
+                <div class="consultjourbox">
+                    <div class="consultjouricon consultjouricon-brown"><img src="dist/img/healing_begins.svg"></div>
+                    <h6>Healing Begins</h6>
+                    <div>Started aura/counselling sessions and guided individuals.</div>
+                </div>
+                <div class="consultjourbox">
+                    <div class="consultjouricon consultjouricon-purple"><img src="dist/img/chakrayog_workshops.svg"></div>
+                    <h6>Chakra Yog Workshops</h6>
+                    <div>Conducting workshops worldwide on the science of Chakras.</div>
+                </div>
+                <div class="consultjourbox">
+                    <div class="consultjouricon consultjouricon-brown"><img src="dist/img/global_impact.svg"></div>
+                    <h6>Global Impact</h6>
+                    <div>Transformed thousands of lives across the globe with love and wisdom.</div>
+                </div>
+            </div>
+
+            <div class="innerheadarea topmargin50">
+                <div class="innerheadcont">
+                    <div class="ornament" aria-hidden="true"><img src="dist/img/sidebarhead1.svg"></div>
+                    <div class="mainheading text-center">
+                        <h2 class="mb-0">Photo Gallery</h2>
+                    </div>
+                    <div class="ornament" aria-hidden="true"><img src="dist/img/sidebarhead.svg"></div>
+                </div>
+            </div>
+            <div class="swiper-container topmargin30">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="pgcardarea">
+                            <a href="javascript:void(0)" onclick="openModal();currentSlide(1)" class="cursor">
+                                <div class="pgcard">
+                                    <div class="pgcardimg"><img src="dist/img/pg_img01.jpg"></div>
+                                    <div class="pgcardtitle">
+                                        <h6>Mahamandaleshwar Swami Kailashanand Giri Ji Maharaj graciously blesses
+                                            Sakhashree Neeta with a Rudraksha mala and a shawl, honoring her contributions
+                                            to the field of Rudraksha.</h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="pgcardarea">
+                            <a href="javascript:void(0)" onclick="openModal();currentSlide(2)" class="cursor">
+                                <div class="pgcard">
+                                    <div class="pgcardimg"><img src="dist/img/pg_img02.jpg"></div>
+                                    <div class="pgcardtitle">
+                                        <h6>Sakhashree Neeta presents Rudraksha to Singer Kailash Kher</h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="pgcardarea">
+                            <a href="javascript:void(0)" onclick="openModal();currentSlide(3)" class="cursor">
+                                <div class="pgcard">
+                                    <div class="pgcardimg"><img src="dist/img/pg_img03.jpg"></div>
+                                    <div class="pgcardtitle">
+                                        <h6>Sakhashree Neeta with Juhi Chawla for a TV show</h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="pgcardarea">
+                            <a href="javascript:void(0)" onclick="openModal();currentSlide(4)" class="cursor">
+                                <div class="pgcard">
+                                    <div class="pgcardimg"><img src="dist/img/pg_img04.jpg"></div>
+                                    <div class="pgcardtitle">
+                                        <h6>Sakhashree with Uddhav Thackeray ji</h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="pgcardarea">
+                            <a href="javascript:void(0)" onclick="openModal();currentSlide(5)" class="cursor">
+                                <div class="pgcard">
+                                    <div class="pgcardimg"><img src="dist/img/pg_img01.jpg"></div>
+                                    <div class="pgcardtitle">
+                                        <h6>Mahamandaleshwar Swami Kailashanand Giri Ji Maharaj graciously blesses
+                                            Sakhashree Neeta with a Rudraksha mala and a shawl, honoring her contributions
+                                            to the field of Rudraksha.</h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="pgcardarea">
+                            <a href="javascript:void(0)" onclick="openModal();currentSlide(6)" class="cursor">
+                                <div class="pgcard">
+                                    <div class="pgcardimg"><img src="dist/img/pg_img02.jpg"></div>
+                                    <div class="pgcardtitle">
+                                        <h6>Sakhashree Neeta presents Rudraksha to Singer Kailash Kher</h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="pgcardarea">
+                            <a href="javascript:void(0)" onclick="openModal();currentSlide(7)" class="cursor">
+                                <div class="pgcard">
+                                    <div class="pgcardimg"><img src="dist/img/pg_img03.jpg"></div>
+                                    <div class="pgcardtitle">
+                                        <h6>Sakhashree Neeta with Juhi Chawla for a TV show</h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="pgcardarea">
+                            <a href="javascript:void(0)" onclick="openModal();currentSlide(8)" class="cursor">
+                                <div class="pgcard">
+                                    <div class="pgcardimg"><img src="dist/img/pg_img04.jpg"></div>
+                                    <div class="pgcardtitle">
+                                        <h6>Sakhashree with Uddhav Thackeray ji</h6>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="swiper-pagination"></div>-->
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+
+            <!-- Gallery Popup start here-->
+            <div id="myModalgallery" class="modalgallery"> <span class="closegallery cursor"
+                    onclick="closeModal()">&times;</span>
+                <div class="modalgallery-content">
+                    <div class="mySlides">
+                        <div class="numbertext">1 / 8</div>
+                        <img src="dist/img/pg_img01.jpg">
+                    </div>
+                    <div class="mySlides">
+                        <div class="numbertext">2 / 8</div>
+                        <img src="dist/img/pg_img02.jpg">
+                    </div>
+                    <div class="mySlides">
+                        <div class="numbertext">3 / 8</div>
+                        <img src="dist/img/pg_img03.jpg">
+                    </div>
+                    <div class="mySlides">
+                        <div class="numbertext">4 / 8</div>
+                        <img src="dist/img/pg_img04.jpg">
+                    </div>
+                    <div class="mySlides">
+                        <div class="numbertext">5 / 8</div>
+                        <img src="dist/img/pg_img01.jpg">
+                    </div>
+                    <div class="mySlides">
+                        <div class="numbertext">6 / 8</div>
+                        <img src="dist/img/pg_img02.jpg">
+                    </div>
+                    <div class="mySlides">
+                        <div class="numbertext">7 / 8</div>
+                        <img src="dist/img/pg_img03.jpg">
+                    </div>
+                    <div class="mySlides">
+                        <div class="numbertext">8 / 8</div>
+                        <img src="dist/img/pg_img04.jpg">
+                    </div>
+                    <a class="prevgallery" onclick="plusSlides(-1)">&#10094;</a> <a class="nextgallery"
+                        onclick="plusSlides(1)">&#10095;</a>
+                    <div class="caption-container">
+                        <p id="caption"></p>
+                    </div>
+                    <div class="thumbnails">
+                        <img class="demo cursor" src="dist/img/pg_img01.jpg" onclick="currentSlide(1)"
+                            alt="Mahamandaleshwar Swami Kailashanand Giri Ji Maharaj graciously blesses Sakhashree Neeta with a Rudraksha mala and a shawl, honoring her contributions to the field of Rudraksha.">
+                        <img class="demo cursor" src="dist/img/pg_img02.jpg" onclick="currentSlide(2)"
+                            alt="Sakhashree Neeta presents Rudraksha to Singer Kailash Kher">
+                        <img class="demo cursor" src="dist/img/pg_img03.jpg" onclick="currentSlide(3)"
+                            alt="Sakhashree Neeta with Juhi Chawla for a TV show">
+                        <img class="demo cursor" src="dist/img/pg_img04.jpg" onclick="currentSlide(4)"
+                            alt="Sakhashree with Uddhav Thackeray ji">
+                        <img class="demo cursor" src="dist/img/pg_img01.jpg" onclick="currentSlide(5)"
+                            alt="Mahamandaleshwar Swami Kailashanand Giri Ji Maharaj graciously blesses Sakhashree Neeta with a Rudraksha mala and a shawl, honoring her contributions to the field of Rudraksha.">
+                        <img class="demo cursor" src="dist/img/pg_img02.jpg" onclick="currentSlide(6)"
+                            alt="Sakhashree Neeta presents Rudraksha to Singer Kailash Kher">
+                        <img class="demo cursor" src="dist/img/pg_img03.jpg" onclick="currentSlide(7)"
+                            alt="Sakhashree Neeta with Juhi Chawla for a TV show">
+                        <img class="demo cursor" src="dist/img/pg_img04.jpg" onclick="currentSlide(8)"
+                            alt="Sakhashree with Uddhav Thackeray ji">
+                    </div>
+                </div>
+            </div>
+            <!-- Gallery Popup end here-->
+
+        </div>
+    </section>
     </div>
-    <!-- Gallery Video Modal end -->
 @endsection
+<script>
+    const counters = document.querySelectorAll(".count");
+    let hasAnimated = false;
+
+    function animateCounters() {
+        const duration = 2000; // smooth + slow
+
+        counters.forEach(counter => {
+            const target = +counter.getAttribute("data-target");
+            const startTime = performance.now();
+
+            function updateCounter(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+
+                const eased = progress * (2 - progress); // smooth easing
+
+                counter.innerText = Math.floor(eased * target);
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.innerText = target;
+                }
+            }
+
+            requestAnimationFrame(updateCounter);
+        });
+    }
+
+    // Scroll trigger
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    animateCounters();
+                    hasAnimated = true;
+                }
+            });
+        }, {
+            threshold: 0.4
+        } // 40% visible
+    );
+
+    observer.observe(document.getElementById("statsSection"));
+</script>
+
+<!-- Photo Gallery script start here -->
+<script>
+    function openModal() {
+        document.getElementById('myModalgallery').style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById('myModalgallery').style.display = "none";
+    }
+
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        var captionText = document.getElementById("caption");
+        if (n > slides.length) {
+            slideIndex = 1
+        }
+        if (n < 1) {
+            slideIndex = slides.length
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+    }
+</script>
+<!-- Photo Gallery script end here -->

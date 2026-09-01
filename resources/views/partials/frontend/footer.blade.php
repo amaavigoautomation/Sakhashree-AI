@@ -55,7 +55,7 @@
                             <h4>Quick Links</h4>
                             <div class="footertext topmargin20">
                                 <ul>
-                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="{{ route('about') }}">About</a></li>
                                     <li><a href="rrct.html">RRCT®</a></li>
                                     <li><a href="spiritual_tours.html">Spiritual Tours</a></li>
                                     <li><a href="workshops.html">Workshops</a></li>
