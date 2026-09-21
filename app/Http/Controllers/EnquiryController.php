@@ -27,8 +27,8 @@ class EnquiryController extends Controller
         $request->validate([
             'full_name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'country_code' => 'required',
-            'mobile_no' => 'required',
+            'c_code' => 'required',
+            'phone' => 'required',
             'country_id' => 'required',
             'description' => 'required|string',
         ]);
@@ -37,7 +37,7 @@ class EnquiryController extends Controller
             'full_name' => $request->full_name,
             'email' => $request->email,
             'country_code' => $request->country_code,
-            'mobile_no' => $request->mobile_no ,
+            'phone' => $request->phone,
             'country_id' => $request->country_id,
             'description' => $request->description,
         ]);
