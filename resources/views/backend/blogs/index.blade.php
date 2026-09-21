@@ -145,7 +145,8 @@
                                 @foreach ($blogs as $blog)
                                     <tr>
                                         <td>
-                                            <p> @php
+                                            <p> 
+                                            @php
                                                 $firstImage = $blog->image_file;
                                                 $id = $blog->id;
                                                 $imagePath = $firstImage

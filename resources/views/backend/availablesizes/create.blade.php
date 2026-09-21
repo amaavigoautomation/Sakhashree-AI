@@ -19,7 +19,7 @@
          <div class="col-sm-4">
             <div class="input-style-1">
             <label>Name <span class="mandatory">*</span></label>
-            <input type="text" name="name" placeholder="Name" required />
+            <input type="text" name="name" placeholder="Name" value="{{ old('name') }}" required />
             </div>   
          </div>
 
@@ -27,10 +27,10 @@
             <!-- Active Code --> 
              <label>Active</label><br> 
              <label class="radio-inline">
-             <input type="radio" name="active" class="radio-inline" value="1"> Yes
+             <input type="radio" name="active" class="radio-inline"  value="1" {{ old('active') == 1 ? 'checked' : '' }}> Yes
              </label>
             <label class="radio-inline">
-            <input type="radio" name="active" class="radio-inline" value="0" checked> No
+            <input type="radio" name="active" class="radio-inline" value="0" {{ old('active') == 0 ? 'checked' : '' }}> No
             </label>
          </div>
       </div> 

@@ -55,21 +55,21 @@
                         <div class="col-sm-3">
                             <div class="input-style-1">
                                 <label>Page Name <span class="mandatory">*</span></label>
-                                <input type="text" name="page_name" placeholder="Enter Page Name" id="model_name" data-model="" required />
+                                <input type="text" name="page_name" value="{{ old('page_name') }}" placeholder="Enter Page Name" id="model_name" data-model=""  required />
                             </div>
                         </div>
 
                         <div class="col-sm-3">
                             <div class="input-style-1">
                                 <label for="page_slug">Page Slug </label>
-                                <input type="text" id="page_slug" data-model="" name="page_slug" placeholder="Page Slug" />
+                                <input type="text" id="page_slug" data-model="" name="page_slug" value="{{ old('page_slug') }}" placeholder="Page Slug" />
                             </div>
                         </div>
 
                         <div class="col-sm-6">
                            <div class="input-style-1">
                               <label for="page_title">Page Title <span class="mandatory">*</span></label>
-                              <input type="text" id="page_title" name="page_title" placeholder="Page Title" required />
+                              <input type="text" id="page_title" name="page_title" value="{{ old('page_title') }}" placeholder="Page Title" required />
                           </div>
                         </div>
 
@@ -83,7 +83,7 @@
                         <div class="input-group">
                         <input type="hidden" placeholder="" name='controller' id="controller" class="form-control">
                         <input type="hidden" placeholder="" name='action' id="actionName" class="form-control">
-                        <input type="text" placeholder="" name='link' id="menuLinkUrl" class="form-control" required>
+                        <input type="text" placeholder="" name='link' id="menuLinkUrl" class="form-control" value="{{ old('link') }}" required>
                             <div class="input-group-append">
                             <button class="btn btn-outline-secondary addAppendBtn" type="button">
                                 <i class="fa fa-plus"></i>
@@ -97,10 +97,10 @@
                         <!-- Active Code -->
                             <label>Active</label><br>
                             <label class="radio-inline">
-                            <input type="radio" name="active" class="radio-inline" value="1"> Yes
+                            <input type="radio" name="active" class="radio-inline" value="1" {{ old('active', 0) == 1 ? 'checked' : '' }}> Yes
                             </label>
                         <label class="radio-inline">
-                        <input type="radio" name="active" class="radio-inline" value="0" checked> No
+                        <input type="radio" name="active" class="radio-inline" value="0" {{ old('active', 0) == 0 ? 'checked' : '' }}> No
                         </label>
                         </div>
                     </div>
@@ -110,7 +110,7 @@
                         <div class="col-sm-12">
                            <div class="input-style-1">
                               <label for="page_url">Page Url</label>
-                              <input type="url" id="page_url" data-model="" name="page_url" placeholder="Page URL" readonly />
+                              <input type="url" id="page_url" data-model="" name="page_url" value="{{ old('page_url') }}" placeholder="Page URL" readonly />
                           </div>
                         </div>
                     </div>
@@ -119,13 +119,13 @@
                         <div class="col-sm-6">
                             <div class="input-style-1">
                                 <label>Meta Keyword </label>
-                                <textarea rows="5" name="meta_keyword" placeholder="Meta Keyword"></textarea>
+                                <textarea rows="5" name="meta_keyword" placeholder="Meta Keyword">{{ old('meta_keyword') }}</textarea>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="input-style-1">
                                 <label>Meta Description</label>
-                                <textarea rows="5" name="meta_description" placeholder="Meta Description"></textarea>
+                                <textarea rows="5" name="meta_description" placeholder="Meta Description">{{ old('meta_description') }}</textarea>
                             </div>
                         </div>
                     </div>

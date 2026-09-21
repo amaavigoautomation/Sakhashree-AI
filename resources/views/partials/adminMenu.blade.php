@@ -1,5 +1,5 @@
-<?php 
-foreach ($menuLinks as $key => $menuLink) { 
+<?php
+foreach ($menuLinks as $key => $menuLink) {
 	$hasChildren = $menuLink->children->isNotEmpty();
 	$routeKey = $menuLink->link;
 	$url = ($routeKey != '#') ? route($routeKey) : '#';
@@ -18,11 +18,11 @@ foreach ($menuLinks as $key => $menuLink) {
 ?>
 <li class="nav-item {{ $hasChildren ? 'nav-item-has-children' : '' }}">
 @if ($hasChildren)
-<a href="{{ $url }}" class="collapsed" 
-	data-bs-toggle="collapse" 
-	data-bs-target="#ddmenu_{{ $menuLink->id }}" 
-	aria-controls="ddmenu_{{ $menuLink->id }}" 
-	aria-expanded="false" 
+<a href="{{ $url }}" class="collapsed"
+	data-bs-toggle="collapse"
+	data-bs-target="#ddmenu_{{ $menuLink->id }}"
+	aria-controls="ddmenu_{{ $menuLink->id }}"
+	aria-expanded="false"
 	aria-label="Toggle navigation">
 	<div class="text"><i><?php echo $finalTitle;?></i>{{ $menuTitle }}</div>
 </a>

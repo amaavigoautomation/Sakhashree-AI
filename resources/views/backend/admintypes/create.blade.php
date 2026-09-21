@@ -19,7 +19,7 @@
          <div class="col-sm-4">
             <div class="input-style-1">
             <label>Name<span class="mandatory">*</span></label>
-            <input type="text"  name="name" placeholder="Name" required="true" />
+            <input type="text"  name="name" placeholder="Name" value="{{ old('name') }}" required />
             </div>
          </div>
          <div class="col-sm-4">

@@ -34,7 +34,7 @@
                     <div class="col-sm-4">
                         <div class="input-style-1">
                             <label>Subcategory Name </label>
-                            <input type="text" name="name" placeholder="Enter Subcategory Name" />
+                            <input type="text" name="name" value="{{ old('name') }}" placeholder="Enter Subcategory Name" />
                         </div>
                     </div>
 
@@ -42,10 +42,10 @@
                     <div class="col-sm-4">
                         <label>Active</label><br>
                         <label class="radio-inline">
-                            <input type="radio" name="active" value="1"> Yes
+                            <input type="radio" name="active" value="1" {{ old('active', 0) == 1 ? 'checked' : '' }}> Yes
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="active" value="0" checked> No
+                            <input type="radio" name="active" value="0" {{ old('active', 0) == 0 ? 'checked' : '' }}> No
                         </label>
                     </div>
                 </div>

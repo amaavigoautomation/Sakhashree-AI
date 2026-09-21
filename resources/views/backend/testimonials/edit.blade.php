@@ -5,7 +5,7 @@
         <div class="container-fluid">
             @include('partials.breadcrumb')
 
-            <form method="POST" action="{{ route('testimonials.update', $testimonial->id) }}">
+            <form method="POST" action="{{ route('testimonials.update', $testimonial->id) }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -20,12 +20,6 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-3">
-                            <div class="input-style-1">
-                                <label>Email</label>
-                                <input type="email" name="email" value="{{ $testimonial->email }}" />
-                            </div>
-                        </div>
 
                         <div class="col-sm-3">
                             <div class="input-style-1">
@@ -41,36 +35,6 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-3">
-                            <div class="select-style-1">
-                                <label>Rating <span class="mandatory">*</span></label>
-                                <div class="select-position select-sm">
-                                    <select class="jSelectbox" name="rating" required>
-                                        <option value="">Select Rating</option>
-                                        @foreach ($ratings as $rating)
-                                            <option value="{{ $rating }}"
-                                                {{ $testimonial->rating == $rating ? 'selected' : '' }}>
-                                                {{ $rating }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-2">
-                            <label>Active</label><br>
-
-                            <label class="radio-inline">
-                                <input type="radio" name="active" value="1"
-                                    {{ $testimonial->active == 1 ? 'checked' : '' }}> Yes
-                            </label>
-
-                            <label class="radio-inline">
-                                <input type="radio" name="active" value="0"
-                                    {{ $testimonial->active == 0 ? 'checked' : '' }}> No
-                            </label>
-                        </div>
 
                         <div class="row mt-15">
                             <div class="col-sm-12">
@@ -83,7 +47,33 @@
                             </div>
                         </div>
 
+                        <<div class="col-sm-3">
+                            <label>Image</label>
+                            <div>
+                                <img id="selectedImage" class="addedImage"
+                                    src="{{ $testimonial->icon ? asset('public/images/testimonials/' . $testimonial->id . '/' . $testimonial->icon) : asset('dist/images/no-image.png') }}"
+                                    alt="Selected Image">
+                            </div>
+                            <input type="file" name="icon" id="imageInput" onchange="displayImage(this)">
+                            <span id="iconImage">{{ $testimonial->icon }}</span>
+
                     </div>
+
+                    <div class="col-sm-2">
+                        <label>Active</label><br>
+
+                        <label class="radio-inline">
+                            <input type="radio" name="active" value="1"
+                                {{ $testimonial->active == 1 ? 'checked' : '' }}> Yes
+                        </label>
+
+                        <label class="radio-inline">
+                            <input type="radio" name="active" value="0"
+                                {{ $testimonial->active == 0 ? 'checked' : '' }}> No
+                        </label>
+                    </div>
+
+
 
                     <hr>
 

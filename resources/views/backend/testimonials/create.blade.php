@@ -11,58 +11,61 @@
                         <div class="col-sm-3">
                             <div class="input-style-1">
                                 <label>Name <span class="mandatory"> *</span></label>
-                                <input type="text" name="name" placeholder="Name" required />
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="input-style-1">
-                                <label>Email</label>
-                                <input type="email" name="email" placeholder="Email" />
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="input-style-1">
-                                <label>Country</label>
-                                <input type="text" name="country" placeholder="Enter Country" />
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="input-style-1">
-                                <label>City</label>
-                                <input type="text" name="city" placeholder="Enter City" />
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="select-style-1">
-                                <label>Rating <span class="mandatory"> *</span></label>
-                                <div class="select-position select-sm">
-                                    <select class="jSelectbox" id="actionDropdown" name="rating" required>
-                                        <option value="">Select Rating</option>
-                                        <?php foreach ($ratings as $rating){ ?>
-                                        <option value="{{ $rating }}">{{ $rating }}</option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
+                                <input type="text" name="name" value="{{ old('name') }}" placeholder="Name"
+                                    required />
                             </div>
                         </div>
 
-                        <div class="col-sm-2">
-                            <label>Active</label><br>
-                            <label class="radio-inline">
-                                <input type="radio" name="active" class="radio-inline" value="1" checked> Yes
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="active" class="radio-inline" value="0"> No
-                            </label>
+                        <div class="col-sm-3">
+                            <div class="input-style-1">
+                                <label>Country</label>
+                                <input type="text" name="country" value="{{ old('country') }}"
+                                    placeholder="Enter Country" />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="input-style-1">
+                                <label>City</label>
+                                <input type="text" name="city" value="{{ old('city') }}" placeholder="Enter City" />
+                            </div>
                         </div>
 
                         <div class="row mt-15">
                             <div class="col-sm-12">
                                 <div class="input-style-1">
                                     <label>Description</label>
-                                    <textarea name="description" rows="10" class="rich-editor"></textarea>
+                                    <textarea name="description" rows="10" class="rich-editor">{{ old('description') }}</textarea>
                                 </div>
                             </div>
+                        </div>
+
+                        
+                        <div class="col-sm-3">
+                            <div class="input-style-1">
+                                <label>Image</label>
+
+                                <div>
+                                    <img id="selectedImage" class="addedImage" src="{{ asset('dist/images/no-image.png') }}"
+                                        alt="Selected Image">
+                                </div>
+
+                                <input type="file" name="icon" id="imageInput" accept="image/*"
+                                    onchange="displayImage(this)">
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-2">
+                            <label>Active</label><br>
+                            <label class="radio-inline">
+                                <input type="radio" name="active" class="radio-inline" value="1"
+                                    {{ old('active', 0) == 1 ? 'checked' : '' }}> Yes
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="active" class="radio-inline" value="0"
+                                    {{ old('active', 0) == 0 ? 'checked' : '' }}> No
+                            </label>
                         </div>
 
 

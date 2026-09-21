@@ -13,11 +13,11 @@
                                     and<br class="hidetabmob"> spiritual alignment through chakra healing and RRCT®.
                                 </div>
                                 <div class="collagebtnarea">
-                                    <div><a href="#"><button class="secondrybtn btnlgfullwidth">Book Chakra
+                                    <div><a href="{{ route('consultations') }}"><button class="secondrybtn btnlgfullwidth">Book Chakra
                                                 Consultation</button></a></div>
-                                    <div><a href="#"><button class="secondrybtnol btnlgfullwidth">Join
+                                    <div><a href="{{ route('spiritual_tours') }}"><button class="secondrybtnol btnlgfullwidth">Join
                                                 Retreats</button></a></div>
-                                    <div><a href="#"><button class="secondrybtnol btnlgfullwidth">Attend
+                                    <div><a href="{{ route('workshop') }}"><button class="secondrybtnol btnlgfullwidth">Attend
                                                 Workshops</button></a></div>
                                 </div>
                             </div>
@@ -29,13 +29,13 @@
                                 </div>
                                 <div class="collagebtnareamob">
                                     <div class="row padding5pxarea">
-                                        <div class="col-md-4 col-12 padding5px"><a href="#"><button
+                                        <div class="col-md-4 col-12 padding5px"><a href="{{ route('consultations') }}"><button
                                                     class="secondrybtn btnlgfullwidth">Book Chakra
                                                     Consultation</button></a></div>
-                                        <div class="col-md-4 col-5 padding5px rowmargin10"><a href="#"><button
+                                        <div class="col-md-4 col-5 padding5px rowmargin10"><a href="{{ route('spiritual_tours') }}"><button
                                                     class="secondrybtnol btnlgfullwidth">Join Retreats</button></a>
                                         </div>
-                                        <div class="col-md-4 col-7 padding5px rowmargin10"><a href="#"><button
+                                        <div class="col-md-4 col-7 padding5px rowmargin10"><a href="{{ route('workshop') }}"><button
                                                     class="secondrybtnol btnlgfullwidth">Attend Workshops</button></a>
                                         </div>
                                     </div>

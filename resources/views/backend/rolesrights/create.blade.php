@@ -21,7 +21,7 @@
          <div class="col-sm-4">
             <div class="input-style-1">
             <label>Role Name<span class="mandatory">*</span></label>
-            <input type="text"  name="role_name" placeholder="Role Name"  />
+            <input type="text"  name="role_name" value="{{ old('role_name') }}" placeholder="Role Name"  />
             </div>
          </div>
         <!-- Menulink Name -->
@@ -46,17 +46,17 @@
          <div class="col-sm-4">
              <label>Active</label><br>
              <label class="radio-inline">
-             <input type="radio" name="active" class="radio-inline" value="1"> Yes
+             <input type="radio" name="active" class="radio-inline" value="1" {{ old('active', 0) == 1 ? 'checked' : '' }}> Yes
              </label>
             <label class="radio-inline">
-            <input type="radio" name="active" class="radio-inline" value="0" checked> No
+            <input type="radio" name="active" class="radio-inline" value="0" {{ old('active', 0) == 0 ? 'checked' : '' }}> No
             </label>
          </div>
         <hr>
          <div class="col-sm-12">
             <div class="input-style-1">
             <label>Role Description<span class="mandatory">*</span></label>
-            <textarea rows="5" name="role_description" placeholder="Role Description"></textarea>
+            <textarea rows="5" name="role_description" placeholder="Role Description">{{ old('role_description') }}</textarea>
             </div>
          </div>
       </div>

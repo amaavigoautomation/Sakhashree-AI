@@ -18,22 +18,20 @@
                     <table class="table striped-table">
                         <thead>
                             <tr>
-
+                                <th>
+                                    <h6>Icon</h6>
+                                </th>
                                 <th>
                                     <h6>Name</h6>
                                 </th>
-                                <th>
-                                    <h6>Email</h6>
-                                </th>
+
                                 <th>
                                     <h6>Country</h6>
                                 </th>
                                 <th>
                                     <h6>City</h6>
                                 </th>
-                                <th>
-                                    <h6>Rating</h6>
-                                </th>
+
                                 <th>
                                     <h6>Status</h6>
                                 </th>
@@ -48,11 +46,18 @@
                                 <tr>
 
                                     <td>
-                                        <p> {{ $testimonial->name ?? '' }} </p>
+                                        <p>
+                                            @if (!empty($testimonial->icon))
+                                                <img src="{{ asset('public/images/testimonials/' . $testimonial->id . '/' . $testimonial->icon) }}"
+                                                    width="50" height="50" alt="{{ $testimonial->icon }}">
+                                            @else
+                                                <img src="{{ asset('dist/images/no-image.png') }}" width="50"
+                                                    height="50" alt="No Image">
+                                            @endif
+                                        </p>
                                     </td>
-
                                     <td>
-                                        <p> {{ $testimonial->email ?? '-' }} </p>
+                                        <p> {{ $testimonial->name ?? '' }} </p>
                                     </td>
 
                                     <td>
@@ -61,10 +66,6 @@
 
                                     <td>
                                         <p> {{ $testimonial->city ?? '-' }} </p>
-                                    </td>
-
-                                    <td>
-                                        <p> {{ $testimonial->rating ?? '' }} </p>
                                     </td>
 
                                     <td class="text-center">

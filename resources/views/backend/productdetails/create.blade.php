@@ -16,7 +16,7 @@
         <div class="col-sm-4">
             <div class="input-style-1">
                 <label>Title</label>
-                <input type="text" name="title" placeholder="Title" />
+                <input type="text" name="title"  placeholder="Title" value="{{ old('title') }}" />
             </div>
         </div>
 
@@ -30,20 +30,20 @@
         <div class="col-sm-2">
             <label>Active</label><br>
             <label class="radio-inline">
-                <input type="radio" name="active" value="1"> Yes
+                <input type="radio" name="active" value="1" {{ old('active', 0) == 1 ? 'checked' : '' }}> Yes
             </label>
             <label class="radio-inline">
-                <input type="radio" name="active" value="0" checked> No
+                <input type="radio" name="active" value="0" {{ old('active', 0) == 0 ? 'checked' : '' }}> No
             </label>
         </div>
 
         <div class="col-sm-2">
             <label>Its Video</label><br>
             <label class="radio-inline">
-                <input type="radio" name="its_video" value="1"> Yes
+                <input type="radio" name="its_video" value="1" {{ old('its_video', 0) == 1 ? 'checked' : '' }}> Yes
             </label>
             <label class="radio-inline">
-                <input type="radio" name="its_video" value="0" checked> No
+                <input type="radio" name="its_video" value="0" {{ old('its_video', 0) == 0 ? 'checked' : '' }}> No
             </label>
         </div>
     </div>
@@ -54,7 +54,7 @@
         <div class="col-sm-12">
             <div class="input-style-1">
                 <label>Description</label>
-                <textarea name="description" rows="10" class="rich-editor"></textarea>
+                <textarea name="description" rows="10" class="rich-editor">{{ old('description') }}</textarea>
             </div>
         </div>
     </div>

@@ -60,7 +60,7 @@
                 </div>
             </div>
         </div>
-        <div class="topmargin30 text-center"><a href="consultation.html"><button class="secondrybtn btnmd">Book Chakra
+        <div class="topmargin30 text-center"><a href="{{ route('consultations') }}"><button class="secondrybtn btnmd">Book Chakra
                     Consultation</button></a></div>
         <!-- Healing Offerings section end here -->
 
@@ -78,7 +78,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="topmargin30"><a href="consultation.html"><button class="secondrybtn btnmd">Book
+                <div class="topmargin30"><a href="{{ route('consultations') }}"><button class="secondrybtn btnmd">Book
                             Consultation</button></a></div>
             </div>
             <div class="rudrakshabox">
@@ -122,7 +122,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="topmargin20"><a href="rrct.html"><button class="secondrybtnol btnmd">Discover
+                <div class="topmargin20"><a href="{{ route('rrct') }}"><button class="secondrybtnol btnmd">Discover
                             RRCT®</button></a></div>
             </div>
         </div>
@@ -135,7 +135,7 @@
                     <div class="mainheading">
                         <h2>Workshops</h2>
                     </div>
-                    <div class="viewalltext topmargin10">| <a href="workshops.html">View all Events</a></div>
+                    <div class="viewalltext topmargin10">| <a href="{{ route('workshop') }}">View all Events</a></div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -169,7 +169,7 @@
                     <div class="mainheading">
                         <h2>Retreats</h2>
                     </div>
-                    <div class="viewalltext topmargin10">| <a href="spiritual_tours.html">View all Retreats</a></div>
+                    <div class="viewalltext topmargin10">| <a href="{{ route('spiritual_tours') }}">View all Retreats</a></div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -292,7 +292,7 @@
                     </div>
                 </div>
             </div>
-            <div class="sucstoriesbtnarea"><a href="testimonials_videos.html"><button class="secondrybtn btnmd">Watch
+            <div class="sucstoriesbtnarea"><a href="{{ route('testimonials_video_list') }}"><button class="secondrybtn btnmd">Watch
                         Success Stories</button></a></div>
         </div>
         <!-- Transformation Stories Desktop start -->
@@ -403,7 +403,7 @@
                                         such a great person with lots of patience and knowledge, sorry sir if I have
                                         bothered you much. As me, being a living example, I feel This is a place where
                                         from a common man, middle class to rich person can afford authentic and genuine
-                                        rudrakshas... <a href="testimonials.html">Read More</a></div>
+                                        rudrakshas... <a href="{{ route('testimonials_list') }}">Read More</a></div>
                                 </div>
                             </div>
                         </div>
@@ -428,7 +428,7 @@
                                         such a great person with lots of patience and knowledge, sorry sir if I have
                                         bothered you much. As me, being a living example, I feel This is a place where
                                         from a common man, middle class to rich person can afford authentic and genuine
-                                        rudrakshas... <a href="testimonials.html">Read More</a></div>
+                                        rudrakshas... <a href="{{ route('testimonials_list') }}">Read More</a></div>
                                 </div>
                             </div>
                         </div>
@@ -453,7 +453,7 @@
                                         such a great person with lots of patience and knowledge, sorry sir if I have
                                         bothered you much. As me, being a living example, I feel This is a place where
                                         from a common man, middle class to rich person can afford authentic and genuine
-                                        rudrakshas... <a href="testimonials.html">Read More</a></div>
+                                        rudrakshas... <a href="{{ route('testimonials_list') }}">Read More</a></div>
                                 </div>
                             </div>
                         </div>
@@ -472,7 +472,7 @@
             </div>
         </div>
         <div class="d-flex gap-2 justify-content-center flex-column flex-md-row topmargin30">
-            <div><a href="testimonials.html"><button class="secondrybtn btnmdfullwidth">Read Client
+            <div><a href="{{ route('testimonials_list') }}"><button class="secondrybtn btnmdfullwidth">Read Client
                         Experience</button></a></div>
             <div><button class="secondrybtnol btnmdfullwidth" data-bs-toggle="modal" data-bs-target="#AddReviews">Add
                     Your Review</button></div>
@@ -509,7 +509,7 @@
                 </div>
             </div>
         </div>
-        <div class="topmargin10 text-center"><a href="videos.html"><button class="secondrybtn btnmd">View All
+        <div class="topmargin10 text-center"><a href="{{route('videos_list')}}"><button class="secondrybtn btnmd">View All
                     Videos</button></a></div>
         <!-- Videos section end here -->
 

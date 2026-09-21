@@ -13,19 +13,23 @@
 
                             <tr>
                                 <th>
+                                    <h6>Icon</h6>
+                                </th>
+                                <td>
+                                    @if ($testimonial->icon)
+                                        <img src="{{ asset('public/images/testimonials/' . $testimonial->id . '/' . $testimonial->icon) }}"
+                                            width="60" height="60" alt="{{ $testimonial->icon }}">
+                                    @else
+                                        <p>---</p>
+                                    @endif
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
                                     <h6>Name</h6>
                                 </th>
                                 <td>
                                     <p>{{ $testimonial->name }}</p>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th>
-                                    <h6>Email</h6>
-                                </th>
-                                <td>
-                                    <p>{{ $testimonial->email ?? '---' }}</p>
                                 </td>
                             </tr>
 
@@ -47,14 +51,6 @@
                                 </td>
                             </tr>
 
-                            <tr>
-                                <th>
-                                    <h6>Rating</h6>
-                                </th>
-                                <td>
-                                    <p>{{ $testimonial->rating }}</p>
-                                </td>
-                            </tr>
 
                             <tr>
                                 <th>
@@ -79,7 +75,7 @@
                                     <h6>Description</h6>
                                 </th>
                                 <td>
-                                    <p>{!! $testimonial->description ?? '---' !!}</p>
+                                    <<p>{ ! $testimonial->description ?? '---' !}</p>
                                 </td>
                             </tr>
 

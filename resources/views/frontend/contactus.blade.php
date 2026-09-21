@@ -1,6 +1,7 @@
 @extends('layouts.frontend')
 
 @section('content')
+
     <div class="maincontarea">
         <!-- Breadcrumb section start -->
         <section class="breadcrumbarea">

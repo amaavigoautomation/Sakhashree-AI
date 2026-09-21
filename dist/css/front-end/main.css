@@ -5,6 +5,7 @@
   --brand-primary-color: #B6770A;
   --brand-second-color: #793074;
   --gray-color: #616161;
+  --darkgray-color: #434343;
   --text-color: #2D2520;
   --primary-font: "Poppins", sans-serif;
   --secondry-font: "Roboto Serif", serif;
@@ -148,16 +149,19 @@ hr {
   display: block;
 }
 .primary-color {
-  color: var(--brand-primary-color);
+  color: var(--brand-primary-color) !important;
 }
 .second-color {
-  color: var(--brand-second-color);
+  color: var(--brand-second-color) !important;
 }
 .black-color {
-  color: var(--text-color);
+  color: var(--text-color) !important;
 }
 .white-color {
-  color: var(--white-color);
+  color: var(--white-color) !important;
+}
+.darkgray-color {
+  color: var(--darkgray-color) !important;
 }
 .text20px {
   font-size: 18px;
@@ -194,7 +198,12 @@ hr {
   line-height: 16px;
   font-weight: 400;
 }
-
+.textmedbold {
+  font-weight: 500 !important;
+}
+.textsemibold {
+  font-weight: 600 !important;
+}
 
 
 /****************************************************************************************************
@@ -206,10 +215,10 @@ Topband start here
   background: linear-gradient(90deg,rgba(254, 242, 227, 1) 0%, rgba(253, 248, 242, 1) 30%, rgba(250, 243, 233, 1) 60%, rgba(252, 247, 241, 1) 100%);
 }
 .homecollagebtmbg {
-  background: url('../../img/homecollagebtmbg.png') no-repeat center bottom;
+  background: url(../../img/homecollagebtmbg.png) no-repeat center bottom;
 }
 .homecollageimg {
-  background-image: url('../../img/homecollageimg.png');
+  background-image: url(../../img/homecollageimg.png);
   background-repeat: no-repeat;
   background-position: right top;
   background-size: contain;
@@ -327,10 +336,19 @@ Topband start here
   text-align: center;
   font-style: italic;
 }
-
+.coltmtext {
+  position: relative;
+  top: -20px;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--brand-primary-color) !important;
+}
 /****************************************************************************************************
 Common Css start here
 ****************************************************************************************************/
+/* .maincontarea {
+  margin-top: 90px;
+} */
 .mainheading {
   padding: 0px;
 }
@@ -380,12 +398,13 @@ Common Css start here
   margin-bottom: 0px;
 }
 .mainheading h6 {
-  font-size: 16px;
-  color: var(--brand-primary-color);
+  font-family: var(--secondry-font);
+  font-size: 18px;
+  color: var(--brand-second-color);
   line-height: 20px;
-  font-weight: 600;
+  font-weight: 400;
   margin-top: 0px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 .subheadtext {
   font-size: 15px;
@@ -395,9 +414,10 @@ Common Css start here
   letter-spacing: 2px;
 }
 .infotxt {
-	font-size: 13px;
+	font-size: 14px;
 	color: var(--text-color);
 	line-height: 20px;
+  font-weight: 400;
 }
 .infotxt a {
 	color: var(--text-color);
@@ -424,7 +444,7 @@ Other Css start here
 ****************************************************************************************************/
 
 .statsarea {
-  background: url('../../img/purplebg.png') no-repeat center top #4a274e;
+  background: url(../../img/purplebg.png) no-repeat center top #4a274e;
   border-radius: 40px 40px 0px 0px;
   margin-top: -40px;
   padding: 30px 0px 70px 0px;
@@ -458,9 +478,9 @@ Other Css start here
 }
 .statsnumber {
   font-family: var(--third-font);
-  font-size: 40px;
+  font-size: 38px;
   color: var(--white-color);
-  line-height: 38px;
+  line-height: 36px;
   font-weight: 400;
 }
 .statsboxtext {
@@ -470,7 +490,7 @@ Other Css start here
   font-weight: 400;
 }
 .homemidcontarea {
-  background: url('../../img/homemidcontbg.png') no-repeat center top #FAF3EB;
+  background: url(../../img/homemidcontbg.png) no-repeat center top #FAF3EB;
   border-radius: 40px;
   padding: 50px 0px;
   margin-top: -40px;
@@ -530,7 +550,7 @@ Other Css start here
   gap: 20px;
 }
 .consultationbox {
-  background: url('../../img/consultationbg.jpg') no-repeat right -20px center #fce8dd;
+  background: url(../../img/consultationbg.jpg) no-repeat right -20px center #fce8dd;
   background-size: contain;
   border-radius: 20px;
   padding: 30px 30px;
@@ -563,7 +583,7 @@ Other Css start here
   margin-bottom: 5px;
 }
 .rudrakshabox {
-  background: url('../../img/rudrakshabg.jpg') no-repeat right -80px center #fdede0;
+  background: url(../../img/rudrakshabg.jpg) no-repeat right -80px center #fdede0;
   background-size: contain;
   border-radius: 20px;
   padding: 30px 30px;
@@ -631,7 +651,7 @@ Other Css start here
 }
 .wrvbcardimg {
 	height: 180px;
-	background: url('../../img/noimage.png') no-repeat center center #F0F0F0;
+	background: url(../../img/noimage.png) no-repeat center center #F0F0F0;
 	border-radius: 20px;
   position: relative;
   overflow: hidden;
@@ -766,7 +786,7 @@ Other Css start here
 }
 .sucstoriesimg {
   height: 170px;
-  background: url('../../img/noimage.png') no-repeat center center #F0F0F0;
+  background: url(../../img/noimage.png) no-repeat center center #F0F0F0;
   border-radius: 20px;
   margin-bottom: 10px;
   position: relative;
@@ -807,7 +827,7 @@ Other Css start here
   gap: 30px;
 }
 .transtoriesimg {
-  background: url('../../img/noimage.png') no-repeat center center #f9f0e4;
+  background: url(../../img/noimage.png) no-repeat center center #f9f0e4;
   border: solid 2px #936715;
   width: 220;
   height: 220px;
@@ -872,7 +892,7 @@ Footer Css start here
   background: #F9F0E6;
 }
 .footerpurplearea {
-  background: url('../../img/purplebg.png') no-repeat center top #4a274e;
+  background: url(../../img/purplebg.png) no-repeat center top #4a274e;
   border-radius: 0px 0px 40px 40px;
   padding: 70px 0px 30px 0px;
   margin-top: -40px;
@@ -1165,10 +1185,10 @@ Bootsrap Custom Table css start here
   height: 38px;
 }
 .carousel-control-prev-icon {
-  background-image: url('../../img/arrow_left.png');
+  background-image: url(../../img/arrow_left.png);
 }
 .carousel-control-next-icon {
-  background-image: url('../../img/arrow_right.png');
+  background-image: url(../img/arrow_right.png);
 }
 
 .stories-slider .carousel-control-next,
@@ -1202,11 +1222,11 @@ Bootsrap Custom Table css start here
 }
 
 .stories-slider .carousel-control-prev-icon {
-  background-image: url('../../img/arrow_left.png');
+  background-image: url("../../img/arrow_left.png");
 }
 
 .stories-slider .carousel-control-next-icon {
-  background-image: url('../../img/arrow_right.png');
+  background-image: url("../../img/arrow_right.png");
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1248,11 +1268,11 @@ Bootsrap Custom Table css start here
 }
 
 .videos-slider .carousel-control-prev-icon {
-  background-image: url('../../img/arrow_left.png');
+  background-image: url("../../img/arrow_left.png");
 }
 
 .videos-slider .carousel-control-next-icon {
-  background-image: url('../../img/arrow_right.png');
+  background-image: url("../../img/arrow_right.png");
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1416,7 +1436,7 @@ Bootsrap Custom Table css start here
   box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0);
 }
 .accordion-button:not(.collapsed)::after {
-  background-image: url('../../img/minus.png');
+  background-image: url(../../img/minus.png);
   transform: none;
 }
 .accordion-button::after {
@@ -1424,7 +1444,7 @@ Bootsrap Custom Table css start here
   height: 10px;
   margin-left: auto;
   content: "";
-  background-image: url('../../img/plus.png');
+  background-image: url(../../img/plus.png);
   background-size: contain;
 }
 .accordion-body {
@@ -1511,7 +1531,7 @@ Bootsrap Custom Table css start here
 Inner page css start here
 ****************************************************************************************************/
 .innercontbg {
-  background: url('../../img/innercontbg.png') no-repeat left top #FAF3EB;
+  background: url(../../img/innercontbg.png) no-repeat left top #FAF3EB;
   border-radius: 0px 0px 40px 40px;
   position: relative;
   z-index: 1;
@@ -1618,7 +1638,7 @@ Inner page css start here
   outline: none;
 }
 .blogcatboximg {
-  background: url('../../img/noimage.png') no-repeat center center #ecf5f4;
+  background: url(../../img/noimage.png) no-repeat center center #ecf5f4;
   width: 80px;
   height: 60px;
   border-radius: 15px 0px 0px 15px;
@@ -1772,7 +1792,7 @@ Inner page css start here
   transform: translateY(-2px);
 }
 .testimonialshead {
-  background: url('../../img/testimonialsheadbg.png') no-repeat left bottom;
+  background: url(../../img/testimonialsheadbg.png) no-repeat left bottom;
   margin-top: 20px;
   padding-left: 25px;
   padding-right: 25px;
@@ -1839,7 +1859,7 @@ Inner page css start here
 }
 .vtestimocardimg {
 	height: 200px;
-	background: url('../../img/noimage.png') no-repeat center center #F0F0F0;
+	background: url(../../img/noimage.png) no-repeat center center #F0F0F0;
 	border-radius: 20px;
   position: relative;
   overflow: hidden;
@@ -1903,7 +1923,7 @@ Inner page css start here
 }
 .videoscardimg {
 	height: 240px;
-	background: url('../../img/noimage.png') no-repeat center center #F0F0F0;
+	background: url(../../img/noimage.png) no-repeat center center #F0F0F0;
 	border-radius: 20px;
   position: relative;
   overflow: hidden;
@@ -2089,7 +2109,7 @@ Inner page css start here
   background-color: #fff;
 }
 .accordion-button:not(.collapsed)::after {
-  background-image: url('../../img/minus.png');
+  background-image: url(../../img/minus.png);
   transform: none;
 }
 .accordion-button::after {
@@ -2097,7 +2117,7 @@ Inner page css start here
   height: 30px;
   margin-left: auto;
   content: "";
-  background-image: url('../../img/plus.png');
+  background-image: url(../../img/plus.png);
   background-size: contain;
 }
 .faq-accordion .accordion-body {
@@ -2139,7 +2159,7 @@ Inner page css start here
   padding: 0px 0px;
 }
 .workshopbanner {
-  background: url('../../img/workshopbannerbg.jpg') no-repeat center center #ffe7c1;
+  background: url(../../img/workshopbannerbg.jpg) no-repeat center center #ffe7c1;
   border-radius: 20px;
   padding: 40px 40px;
 }
@@ -2258,7 +2278,7 @@ Inner page css start here
 }
 .pwcardimg {
 	height: 240px;
-	background: url('../../img/noimage.png') no-repeat center center #F0F0F0;
+	background: url(../../img/noimage.png) no-repeat center center #F0F0F0;
 	border-radius: 20px;
   position: relative;
   overflow: hidden;
@@ -2342,7 +2362,7 @@ Inner page css start here
 }
 .pecardimg {
 	height: 240px;
-	background: url('../../img/noimage.png') no-repeat center center #F0F0F0;
+	background: url(../../img/noimage.png) no-repeat center center #F0F0F0;
 	border-radius: 20px;
   position: relative;
   overflow: hidden;
@@ -2488,7 +2508,7 @@ Inner page css start here
   border-radius: 20px;
 }
 .consultation-collage {
-  background: url('../../img/consultation_collage.jpg') no-repeat right top;
+  background: url(../../img/consultation_collage.jpg) no-repeat right top;
   background-size: cover;
 }
 .innercolmobpadd {
@@ -2608,13 +2628,13 @@ Inner page css start here
 	padding: 0px 0px;
 }
 .checkicontext ul li {
-  background: url('../../img/check_icon.png') no-repeat left top 1px;
+  background: url(../../img/check_icon.png) no-repeat left top 1px;
 	list-style-type: none;
 	margin: 0px 0px 0px 0px;
 	padding: 0px 0px 10px 25px;
 }
 .consultbtmbanner {
-  background: url('../../img/consultbtmbanner.jpg') no-repeat right center #431C0B;
+  background: url(../../img/consultbtmbanner.jpg) no-repeat right center #431C0B;
   border-radius: 20px;
   padding: 30px 30px;
   font-size: 16px;
@@ -2632,7 +2652,7 @@ Inner page css start here
   margin-bottom: 10px;
 }
 .about-collage {
-  background: url('../../img/about-collage.jpg') no-repeat right 30% top;
+  background: url(../../img/about-collage.jpg) no-repeat right 30% top;
 }
 .gredientcolotext {
   background: linear-gradient(-185deg, #CD8914, #CD8914, #974C5F, #7C2D84, #7C2D84);
@@ -2676,7 +2696,7 @@ Inner page css start here
   height: 60px;
 }
 .statsareainner {
-  background: url('../../img/purplebg.png') no-repeat center top #4a274e;
+  background: url(../../img/purplebg.png) no-repeat center top #4a274e;
   border-radius: 0px 0px 40px 40px;
   margin-top: -40px;
   padding: 70px 0px 30px 30px;
@@ -2748,7 +2768,7 @@ Inner page css start here
   flex: 0 0 90px;
   text-align: center;
 }
-.awardsimg {
+.awardsimg img {
   width: 90px;
   height: auto;
 }
@@ -2869,7 +2889,7 @@ Inner page css start here
 }
 .pgcardimg {
 	height: 180px;
-	background: url('../../img/noimage.png') no-repeat center center #F0F0F0;
+	background: url(../../img/noimage.png) no-repeat center center #F0F0F0;
 	border-radius: 20px;
   position: relative;
   overflow: hidden;
@@ -2905,7 +2925,7 @@ Inner page css start here
   margin-bottom: 0px;
 }
 .rrct-collage {
-  background: url('../../img/rrct-collage.jpg') no-repeat right 30% top;
+  background: url(../../img/rrct-collage.jpg) no-repeat right 30% top;
 }
 .rrctcolcont {
   padding-bottom: 50px;
@@ -2933,6 +2953,564 @@ Inner page css start here
 .rrctcolimg img {
   height: 70px;
 }
+.rrctinfobox {
+  background: #fff;
+  border: solid 1px #F3E1CC;
+  border-radius: 20px;
+  padding: 30px 30px;
+  font-size: 14px;
+  color: var(--text-color);
+  line-height: 20px;
+  font-weight: 400;
+}
+.rrctinfotext {
+  font-size: 14px;
+  color: var(--text-color);
+  line-height: 20px;
+  font-weight: 400;
+}
+.rrctproductarea {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 30px minmax(0, 1fr);
+  gap: 0;
+  align-items: center;
+}
+.rrctproductbox {
+  background: #FDF1E1;
+  background: linear-gradient(0deg,rgba(253, 241, 225, 1) 0%, rgba(253, 248, 244, 1) 100%);
+  border: solid 1px #F3E1CC;
+  border-radius: 20px;
+  padding: 20px 30px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 14px;
+  color: var(--text-color);
+  line-height: 20px;
+  font-weight: 400;
+  min-height: 235px;
+}
+.rrctproductbox h6 {
+  font-family: var(--secondry-font);
+  font-size: 18px;
+  color: var(--brand-second-color);
+  line-height: 20px;
+  font-weight: 400;
+  margin-top: 0px;
+  margin-bottom: 10px
+}
+.rrctproductimg {
+  width: 120px;
+  flex: 0 0 120px;
+}
+.rrctproductimg img {
+  width: 100%;
+}
+.rrctplusicon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #793074;
+  background: linear-gradient(0deg,rgba(121, 48, 116, 1) 0%, rgba(172, 88, 165, 1) 100%);
+  border: 2px solid #B6770A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+.rrctplusicon i {
+  color: #fff;
+  font-size: 20px;
+}
+.whyrrctarea {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 30px minmax(0, 1fr);
+  gap: 0;
+  align-items: center;
+}
+.whyrrctbox {
+  padding: 0px;
+}
+.whyrrctboxhead {
+  background: var(--brand-second-color);
+  border-radius: 20px 20px 0px 0px;
+  padding: 20px 30px 40px 30px;
+  font-size: 14px;
+  color: var(--white-color);
+  line-height: 18px;
+  font-weight: 400;
+}
+.whyrrctboxhead h4 {
+  font-family: var(--secondry-font);
+  font-size: 24px;
+  color: #F2D9A8;
+  line-height: 26px;
+  font-weight: 400;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+.whyrrctcontbox {
+  background: #FDF8F4;
+  border-radius: 20px 0px 20px 20px;
+  padding: 30px 30px;
+  position: relative;
+  z-index: 1;
+  margin-top: -20px;
+}
+.whyrrctcontbox1 {
+  background: #FDF8F4;
+  border-radius: 0px 20px 20px 20px;
+  padding: 30px 30px;
+  position: relative;
+  z-index: 1;
+  margin-top: -20px;
+}
+.whyrrctinfoarea {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.whyrrctinfobox {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  font-size: 14px;
+  color: var(--text-color);
+  line-height: 18px;
+  font-weight: 400;
+}
+.whyrrctinfobox h6 {
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 500;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+.whyrrcticon {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  flex: 0 0 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.whyrrcticon img {
+  height: 35px;
+}
+.whyrrcticon_purple {
+  background: #4A2650;
+  background: linear-gradient(0deg,rgba(74, 38, 80, 1) 0%, rgba(141, 52, 138, 1) 100%);
+}
+.whyrrcticon_gray {
+  background: #6C6C6C;
+  background: linear-gradient(0deg,rgba(108, 108, 108, 1) 0%, rgba(170, 170, 170, 1) 100%);
+}
+.whyrrctcircle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #EADED4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  margin-left: -20px;
+  margin-right: -20px;
+  font-family: var(--secondry-font);
+  font-size: 26px;
+  color: var(--brand-second-color);
+}
+.benefitsrrctbox {
+  background: #FDF8F4;
+  border: solid 1px #F3E1CC;
+  border-radius: 20px;
+  padding: 30px 30px;
+}
+.benefitsrrctarea {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+.benefitsrrctarea .benefitsrrctcard {
+  padding: 0px 20px;
+}
+.benefitsrrctarea .benefitsrrctcard:nth-child(1) {
+  border-right: solid 1px #E5CFA1;
+  padding: 0px 20px 0px 0px;
+}
+.benefitsrrctarea .benefitsrrctcard:nth-child(2) {
+  border-right: solid 1px #E5CFA1
+}
+.benefitsrrctarea .benefitsrrctcard:nth-child(3) {
+  border-right: solid 1px #E5CFA1
+}
+.benefitsrrctarea .benefitsrrctcard:nth-child(4) {
+  border-right: solid 1px #E5CFA1
+}
+.benefitsrrctarea .benefitsrrctcard:nth-child(5) {
+  border-right: solid 0px #E5CFA1;
+  padding: 0px 0px 0px 20px;
+}
+.benefitsrrctcard h6 {
+  font-size: 17px;
+  color: var(--black-color);
+  line-height: 20px;
+  font-weight: 600;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.benefitsrrcticon {
+  margin-bottom: 20px;
+}
+.benefitsrrcticon img {
+  width: auto;
+  height: 50px;
+}
+.benefitsrrcttext {
+  font-size: 14px;
+  color: var(--brand-primary-color);
+  line-height: 18px;
+  font-weight: 400;
+}
+.benefitsrrcttext ul {
+  margin: 0px 0px 0px 15px;
+  padding: 0px 0px 0px 0px;
+}
+.benefitsrrcttext ul li {
+  list-style-type: disc;
+  margin: 10px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+.benefitsrrcttext ul li span {
+  color: var(--text-color);
+}
+.whoisrrctarea {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.whoisrrctbg {
+  background: url(../../img/whoisrrctbg.png) no-repeat right center;
+  border-radius: 0px 20px 20px 0px;
+}
+.whoisrrctbg1 {
+  background: url(../../img/whoisrrctbg1.png) no-repeat right center;
+  border-radius: 0px 20px 20px 0px;
+}
+.whoisrrctshade {
+  background: #FBEADD;
+  background: linear-gradient(90deg,rgba(251, 234, 221, 1) 0%, rgba(251, 234, 221, 0) 49%, rgba(251, 234, 221, 0) 100%);
+  min-height: 375px;
+}
+.whoisrrctbox {
+  background: #FBEADD;
+  border: solid 1px #F3E1CC;
+  border-radius: 20px;
+}
+.whoisrrctcont {
+  padding: 20px 0px 20px 20px;
+  font-size: 14px;
+  color: var(--text-color);
+  line-height: 20px;
+  font-weight: 400;
+}
+.whoisrrctcont ul {
+  margin: 0px 0px 0px 17px;
+  padding: 0px 0px 0px 0px;
+}
+.whoisrrctcont ul li {
+  list-style-type: disc;
+  margin: 10px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  color: var(--brand-primary-color);
+  line-height: 18px;
+}
+.whoisrrctcont ul li span {
+  color: var(--text-color);
+}
+.whoisrrctcont h4 {
+  font-family: var(--secondry-font);
+  font-size: 24px;
+  color: var(--text-color);
+  line-height: 26px;
+  font-weight: 400;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.powerfulrrctbox {
+  background: #FEFBF6;
+  padding: 20px 20px;
+  border-radius: 20px;
+  text-align: center;
+}
+.powerfulrrctbox h6 {
+  font-size: 16px;
+  color: var(--text-color);
+  line-height: 20px;
+  font-weight: 600;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.powerfulrrctimg {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.powerfulrrctimg img {
+  width: auto;
+  height: 180px;
+}
+.rudra-collage {
+  background: url(../../img/rudra-collage.jpg) no-repeat right 40% top;
+}
+.rudrajourneybox {
+  background: #FDF8F4;
+  border: solid 1px #F3E1CC;
+  border-radius: 20px;
+  padding: 30px 30px;
+}
+.rudrajourneyarea {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.rudrajourneyarea .rudrajourneycard {
+  position: relative;
+  padding: 0px 30px;
+  border-right: solid 1px #DFD1B1;
+  font-size: 14px;
+  color: var(--text-color);
+  line-height: 20px;
+  font-weight: 400;
+}
+.rudrajourneyarea .rudrajourneycard:first-child {
+  padding: 0px 30px 0px 0px;
+}
+.rudrajourneyarea .rudrajourneycard:last-child {
+  padding: 0px 0px 0px 30px;
+  border-right: none;
+}
+.rudrajourneycard h4 {
+  font-family: var(--secondry-font);
+  font-size: 22px;
+  color: var(--brand-second-color);
+  line-height: 26px;
+  font-weight: 400;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+.rudrajourneycard h6 {
+  font-family: var(--secondry-font);
+  font-size: 18px;
+  color: var(--brand-primary-color);
+  line-height: 20px;
+  font-weight: 400;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+.rudrajourneyicon {
+  margin-bottom: 20px;
+}
+.rudrajourneyicon img {
+  height: 50px;
+}
+.rcoarea {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.rcocard {
+  background: #FFF0DF;
+  border: solid 1px #E9DCBE;
+  border-radius: 20px;
+}
+.rcocardimg {
+	height: 180px;
+	background: url(../../img/noimage.png) no-repeat center center #F0F0F0;
+	border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.rcocardimg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 20px;
+}
+.rcocardcont {
+  padding: 15px 20px 20px 20px;
+  font-size: 14px;
+  color: var(--text-color);
+  line-height: 20px;
+  font-weight: 400;
+  text-align: center;
+}
+.rcocardcont h6 {
+  font-family: var(--secondry-font);
+  font-size: 18px;
+  color: var(--text-color);
+  line-height: 22px;
+  font-weight: 400;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+.rudrchakraimg {
+  position: relative;
+}
+.rudrchakraimg img {
+  width: 100%;
+  border-radius: 20px;
+}
+.chakrayog-collage {
+  background: url(../../img/chakrayog-collage.jpg) no-repeat right top;
+}
+.chakrayog-collage h1 {
+  font-family: var(--secondry-font);
+  font-size: 56px;
+  color: var(--brand-primary-color);
+  line-height: 58px;
+  font-weight: 400;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+.chakracoltext {
+  font-family: var(--secondry-font);
+  font-size: 18px;
+  color: var(--brand-second-color);
+  line-height: 24px;
+  font-weight: 400;
+}
+.chakracolbullet {
+  font-size: 4px;
+  vertical-align: text-top;
+  color: var(--brand-primary-color);
+}
+.sevenchakrabox {
+  background: #FDF8F4;
+  border: solid 1px #F3E1CC;
+  border-radius: 20px;
+  padding: 30px 30px;
+}
+.spiritual-collage {
+  background: url(../../img/spiritual_tours_collage.jpg) no-repeat right 10% top;
+}
+.stjourneyarea {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.stjourneyarea .stjourneycard {
+  position: relative;
+  padding: 0px 30px;
+  border-right: solid 1px #DFD1B1;
+  font-size: 14px;
+  color: var(--text-color);
+  line-height: 20px;
+  font-weight: 400;
+  text-align: center;
+}
+.stjourneyarea .stjourneycard:first-child {
+  padding: 0px 30px 0px 0px;
+}
+.stjourneyarea .stjourneycard:last-child {
+  padding: 0px 0px 0px 30px;
+  border-right: none;
+}
+.stjourneycard h4 {
+  font-family: var(--secondry-font);
+  font-size: 22px;
+  color: var(--brand-second-color);
+  line-height: 26px;
+  font-weight: 400;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+.stjourneyicon {
+  margin-bottom: 20px;
+}
+.stjourneyicon img {
+  height: 60px;
+}
+.jwsnbox {
+  background: #FBEADD;
+  border: solid 1px #F3E1CC;
+  border-radius: 20px;
+}
+.jwsnimg {
+  position: relative;
+}
+.jwsnimg img {
+  width: 100%;
+  height: 430px;
+  object-fit: cover;
+  object-position: 50% 50%;
+  border-radius: 20px 0px 0px 20px;
+}
+.jwsnimgshade {
+  position: absolute;
+  width: 100%;
+  height: 430px;
+  background: #FBEADD;
+  background: linear-gradient(90deg,rgba(251, 234, 221, 0) 60%, rgba(251, 234, 221, 1) 100%);
+}
+.jwsnboxcont {
+  padding: 30px 30px;
+}
+.jwsnpointers {
+  font-family: var(--secondry-font);
+  font-size: 16px;
+  color: var(--text-color);
+  line-height: 20px;
+  font-weight: 400;
+}
+.jwsnpointers i {
+  font-size: 4px;
+  color: #DE2D8C;
+  vertical-align: middle;
+  margin: 0px 5px;
+}
+.pastjourneybox {
+  background: #FEFAF6;
+  border: solid 1px #D9D9D9;
+  border-radius: 12px;
+}
+.pastjourneybox:hover {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.pastjourneyimg {
+	height: 200px;
+	background: url(../../img/noimage.png) no-repeat center center #F0F0F0;
+	border-radius: 12px 12px 0px 0px;
+  position: relative;
+  overflow: hidden;
+}
+.pastjourneyimg img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: 50% 50%;
+	border-radius: 12px 12px 0px 0px;
+}
+.pastjourneycont {
+  padding: 20px 20px;
+  font-size: 14px;
+  color: var(--text-color);
+  line-height: 18px;
+  font-weight: 400;
+}
+.pastjourneycont h6 {
+  font-family: var(--secondry-font);
+  font-size: 18px;
+  color: var(--text-color);
+  line-height: 22px;
+  font-weight: 500;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+
 
 
 /****************************************************************************************************
@@ -2961,6 +3539,10 @@ Media Query css start here
   font-size: 22px;
   line-height: 24px;
 }
+.mainheading h6 {
+  font-size: 20px;
+  line-height: 22px;
+}
 .text20px {
   font-size: 20px;
   line-height: 24px;
@@ -2972,6 +3554,10 @@ Media Query css start here
 .text16px {
   font-size: 15px;
   line-height: 20px;
+}
+.infotxt {
+	font-size: 16px;
+	line-height: 22px;
 }
 .collagecontarea {
   margin-bottom: 30px;
@@ -3275,6 +3861,144 @@ Media Query css start here
   font-size: 20px;
   line-height: 24px;
 }
+.rrctinfobox {
+  font-size: 16px;
+  line-height: 22px;
+}
+.rrctinfotext {
+  font-size: 16px;
+  line-height: 22px;
+}
+.rrctproductimg {
+  width: 140px;
+  flex: 0 0 140px;
+}
+.rrctproductbox {
+  min-height: 200px;
+}
+.whyrrctboxhead {
+  font-size: 16px;
+  line-height: 20px;
+}
+.whyrrctboxhead h4 {
+  font-size: 26px;
+  line-height: 28px;
+}
+.whyrrctinfobox {
+  font-size: 16px;
+  line-height: 20px;
+}
+.whyrrctinfobox h6 {
+  font-size: 20px;
+  line-height: 22px;
+}
+.whyrrcticon {
+  width: 70px;
+  height: 70px;
+  flex: 0 0 70px;
+}
+.whyrrcticon img {
+  height: 40px;
+}
+.whyrrctcircle {
+  width: 80px;
+  height: 80px;
+  margin-left: -25px;
+  margin-right: -25px;
+  font-size: 28px;
+}
+.benefitsrrctcard h6 {
+  font-size: 20px;
+  line-height: 22px;
+}
+.benefitsrrcticon img {
+  height: 55px;
+}
+.benefitsrrcttext {
+  font-size: 15px;
+  line-height: 20px;
+}
+.whoisrrctcont {
+  padding: 30px 0px 30px 30px;
+  font-size: 16px;
+  line-height: 22px;
+}
+.whoisrrctcont h4 {
+  font-size: 26px;
+  line-height: 28px;
+}
+.powerfulrrctbox h6 {
+  font-size: 18px;
+}
+.powerfulrrctimg img {
+  height: 200px;
+}
+.rudrajourneyarea .rudrajourneycard {
+  font-size: 16px;
+  line-height: 22px;
+}
+.rudrajourneycard h4 {
+  font-size: 26px;
+  line-height: 30px;
+}
+.rudrajourneycard h6 {
+  font-size: 20px;
+  line-height: 22px;
+}
+.rudrajourneyicon img {
+  height: 60px;
+}
+.rcocardimg {
+	height: 200px;
+}
+.rcocardcont {
+  font-size: 15px;
+  line-height: 22px;
+}
+.rcocardcont h6 {
+  font-size: 20px;
+  line-height: 22px;
+}
+.chakrayog-collage h1 {
+  font-size: 65px;
+  line-height: 67px;
+}
+.stjourneyarea .stjourneycard {
+  font-size: 16px;
+  line-height: 22px;
+}
+.stjourneycard h4 {
+  font-size: 26px;
+  line-height: 30px;
+}
+.stjourneyicon img {
+  height: 75px;
+}
+.jwsnimg img {
+  height: 470px;
+}
+.jwsnimgshade {
+  height: 470px;
+}
+.pastjourneyimg {
+	height: 200px;
+	background: url(../../img/noimage.png) no-repeat center center #F0F0F0;
+	border-radius: 12px 12px 0px 0px;
+  position: relative;
+  overflow: hidden;
+}
+.pastjourneyimg {
+	height: 230px;
+}
+.pastjourneycont {
+  font-size: 15px;
+  line-height: 20px;
+}
+.pastjourneycont h6 {
+  font-size: 20px;
+  line-height: 22px;
+}
+
 
 
 }
@@ -3434,11 +4158,11 @@ Media Query css start here
   grid-template-columns: repeat(1, 1fr);
 }
 .consultationbox {
-  background: url('../../img/consultationbg.jpg') no-repeat right 0px center #fce8dd;
+  background: url(../../img/consultationbg.jpg) no-repeat right 0px center #fce8dd;
   background-size: contain;
 }
 .rudrakshabox {
-  background: url('../../img/rudrakshabg.jpg') no-repeat right -20px center #fce8dd;
+  background: url(../../img/rudrakshabg.jpg) no-repeat right -20px center #fce8dd;
   background-size: contain;
 }
 .wrvbcardimg {
@@ -3482,7 +4206,7 @@ Media Query css start here
   grid-template-columns: repeat(2, 1fr);
 }
 .workshopbanner {
-  background: url('../../img/workshopbannerbg.jpg') no-repeat right 45% center;
+  background: url(../../img/workshopbannerbg.jpg) no-repeat right 45% center;
 }
 .pwcardarea {
   grid-template-columns: repeat(2, 1fr);
@@ -3500,7 +4224,7 @@ Media Query css start here
   grid-template-columns: 1fr;
 }
 .consultation-collage {
-  background: url('../../img/consultation_collage.jpg') no-repeat right 15% top;
+  background: url(../../img/consultation_collage.jpg) no-repeat right 15% top;
 }
 .rudrachakracont {
   padding: 20px 20px;
@@ -3514,6 +4238,67 @@ Media Query css start here
 }
 .pgcardtitle {
   min-height: 210px;
+}
+.rrct-collage {
+  background: url(../../img/rrct-collage.jpg) no-repeat right 25% top;
+}
+.rrctcolimgarea {
+  flex-direction: row;
+  gap: 5px;
+  margin-left: 0px;
+}
+.rrctproductarea {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+.rrctproductbox {
+  min-height: auto;
+}
+.rrctplusicon {
+  margin: -10px auto;
+}
+.whyrrctarea {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+.whyrrctcircle {
+  margin: -20px auto;
+}
+.benefitsrrctarea {
+  grid-template-columns: repeat(3, 1fr);
+}
+.benefitsrrctarea .benefitsrrctcard:nth-child(1) {
+  border-right: solid 1px #E5CFA1;
+  padding: 0px 20px 0px 0px;
+}
+.benefitsrrctarea .benefitsrrctcard:nth-child(2) {
+  border-right: solid 1px #E5CFA1;
+}
+.benefitsrrctarea .benefitsrrctcard:nth-child(3) {
+  border-right: solid 0px #E5CFA1;
+}
+.benefitsrrctarea .benefitsrrctcard:nth-child(4) {
+  border-right: solid 1px #E5CFA1;
+  padding: 20px 20px 0px 0px;
+}
+.benefitsrrctarea .benefitsrrctcard:nth-child(5) {
+  border-right: solid 1px #E5CFA1;
+  padding: 20px 20px 0px 20px;
+}
+.whoisrrctarea {
+  grid-template-columns: repeat(1, 1fr);
+}
+.whoisrrctshade {
+  min-height: 300px;
+}
+.rcoarea {
+  grid-template-columns: repeat(2, 1fr);
+}
+.rcocardimg {
+	height: 200px;
+}
+.jwsnboxcont {
+  padding: 20px 20px;
 }
 
 
@@ -3615,7 +4400,7 @@ Media Query css start here
   line-height: 18px;
 }
 .statsarea {
-  background: url('../../img/purplebgmob.jpg') no-repeat center top #4a274e;
+  background: url(../../img/purplebgmob.jpg) no-repeat center top #4a274e;
   border-radius: 20px 20px 0px 0px;
   padding: 30px 10px 50px 10px;
   margin-top: -20px;
@@ -3642,8 +4427,8 @@ Media Query css start here
   height: 50px;
 }
 .statsnumber {
-  font-size: 30px;
-  line-height: 28px;
+  font-size: 28px;
+  line-height: 26px;
 }
 .statsboxtext {
   font-size: 13px;
@@ -3660,7 +4445,7 @@ Media Query css start here
   padding: 35px 5px 10px 5px;
 }
 .consultationbox {
-  background: url('../../img/consultationbg_mob.jpg') no-repeat right 0px center #FEE9DE;
+  background: url(../../img/consultationbg_mob.jpg) no-repeat right 0px center #FEE9DE;
   background-size: auto;
 }
 .consurudraboxcont h3 {
@@ -3668,7 +4453,7 @@ Media Query css start here
   line-height: 26px;
 }
 .rudrakshabox {
-  background: url('../../img/rudrakshabg_mob.jpg') no-repeat right 0px bottom #FCEEE2;
+  background: url(../../img/rudrakshabg_mob.jpg) no-repeat right 0px bottom #FCEEE2;
   background-size: auto;
 }
 .wrcardtitle {
@@ -3723,7 +4508,7 @@ Media Query css start here
   display: block;
 }
 .footerpurplearea {
-  background: url('../../img/purplebgmob.jpg') no-repeat center top #4a274e;
+  background: url(../../img/purplebgmob.jpg) no-repeat center top #4a274e;
   padding: 40px 0px 30px 0px;
   margin-top: -20px;
   border-radius: 0px 0px 20px 20px;
@@ -3802,7 +4587,7 @@ Media Query css start here
   line-height: 20px;
 }
 .workshopbanner {
-  background: url('../../img/workshopbannerbg.jpg') no-repeat left 50% center;
+  background: url(../../img/workshopbannerbg.jpg) no-repeat left 50% center;
   padding: 20px 20px;
 }
 .uwinfoarea {
@@ -3863,7 +4648,7 @@ Media Query css start here
   padding: 20px 20px;
 }
 .consultation-collage {
-  background: url('../../img/consultation_collage_mob.jpg') no-repeat right bottom;
+  background: url(../../img/consultation_collage_mob.jpg) no-repeat right bottom;
 }
 .innercolmobpadd {
   min-height: 300px;
@@ -3879,15 +4664,15 @@ Media Query css start here
   gap: 30px;
 }
 .consultjourarea1 {
-  grid-template-columns: repeat(1, 1fr);
-  gap: 30px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 .consultbtmbanner {
-  background: url('../../img/consultbtmbanner_mob.jpg') no-repeat bottom center #431C0B;
+  background: url(../../img/consultbtmbanner_mob.jpg) no-repeat bottom center #431C0B;
   padding: 20px 20px 250px 20px;
 }
 .about-collage {
-  background: url('../../img/about_collage_mob.jpg') no-repeat right 30% bottom;
+  background: url(../../img/about_collage_mob.jpg) no-repeat center bottom;
 }
 .missionbox {
   flex-direction: column;
@@ -3895,7 +4680,8 @@ Media Query css start here
   text-align: center;
 }
 .statsareainner {
-  background: url('../../img/purplebgmob.jpg') no-repeat center top #4a274e;
+  background: url(../../img/purplebgmob.jpg) no-repeat center top #4a274e;
+  background-size: cover;
   border-radius: 0px 0px 20px 20px;
   padding: 50px 15px 20px 15px;
   margin-top: -20px;
@@ -3903,6 +4689,140 @@ Media Query css start here
 .rudrachakraboxarea {
   grid-template-columns: repeat(1, 1fr);
 }
+.rrct-collage {
+  background: url(../../img/rrct-collage_mob.jpg) no-repeat center bottom;
+}
+.rrctcolcont {
+  padding-bottom: 0px;
+}
+.rrctcolimgbg {
+  width: 80px;
+}
+.rrctcolimg img {
+  height: 40px;
+}
+.rrctinfobox {
+  padding: 30px 20px;
+}
+.rrctproductbox {
+  flex-direction: column;
+  text-align: center;
+  padding: 30px 20px;
+  min-height: auto;
+}
+.whyrrctcontbox {
+  padding: 20px 20px;
+}
+.whyrrctcontbox1 {
+  padding: 20px 20px;
+}
+.whyrrctinfobox {
+  gap: 15px;
+}
+.benefitsrrctarea {
+  grid-template-columns: repeat(1, 1fr);
+}
+.benefitsrrctbox {
+  padding: 20px 20px;
+}
+.benefitsrrctarea .benefitsrrctcard:nth-child(1) {
+  border-right: none;
+  border-bottom: solid 1px #E5CFA1;
+  padding: 0px 0px 20px 0px;
+}
+.benefitsrrctarea .benefitsrrctcard:nth-child(2) {
+  border-right: none;
+  border-bottom: solid 1px #E5CFA1;
+  padding: 20px 0px 20px 0px;
+}
+.benefitsrrctarea .benefitsrrctcard:nth-child(3) {
+  border-right: none;
+  border-bottom: solid 1px #E5CFA1;
+  padding: 20px 0px 20px 0px;
+}
+.benefitsrrctarea .benefitsrrctcard:nth-child(4) {
+  border-right: none;
+  border-bottom: solid 1px #E5CFA1;
+  padding: 20px 0px 20px 0px;
+}
+.benefitsrrctarea .benefitsrrctcard:nth-child(5) {
+  border-right: none;
+  border-bottom: solid 0px #E5CFA1;
+  padding: 20px 0px 0px 0px;
+}
+.whoisrrctbg {
+  border-radius: 0px 0px 20px 20px;
+}
+.whoisrrctbg1 {
+  border-radius: 0px 0px 20px 20px;
+}
+.whoisrrctshade {
+  background: #FBEADD;
+  background: linear-gradient(180deg,rgba(251, 234, 221, 1) 0%, rgba(251, 234, 221, 0) 50%, rgba(251, 234, 221, 0) 100%);
+  min-height: 300px;
+  border-radius: 0px 0px 20px 20px;
+}
+.rudra-collage {
+  background: url(../../img/rudra-collage_mob.jpg) no-repeat center bottom;
+}
+.rudrajourneybox {
+  padding: 20px 20px;
+}
+.rudrajourneyarea {
+  grid-template-columns: repeat(1, 1fr);
+}
+.rudrajourneyarea .rudrajourneycard {
+  padding: 20px 0px;
+  border-right: none;
+  border-bottom: solid 1px #DFD1B1;
+}
+.rudrajourneyarea .rudrajourneycard:first-child {
+  padding: 0px 0px 20px 0px;
+}
+.rudrajourneyarea .rudrajourneycard:last-child {
+  padding: 20px 0px 0px 0px;
+  border-right: none;
+  border-bottom: none;
+}
+.rcoarea {
+  grid-template-columns: repeat(1, 1fr);
+}
+.chakrayog-collage {
+  background: url(../../img/chakrayog-collage_mob.jpg) no-repeat right bottom;
+}
+.sevenchakrabox {
+  padding: 20px 20px;
+}
+.spiritual-collage {
+  background: url(../../img/spiritual_tours_collage_mob.jpg) no-repeat right bottom;
+}
+.stjourneyarea {
+  grid-template-columns: repeat(1, 1fr);
+}
+.stjourneyarea .stjourneycard {
+  padding: 20px 0px;
+  border-right: none;
+  border-bottom: solid 1px #DFD1B1;
+}
+.stjourneyarea .stjourneycard:first-child {
+  padding: 0px 0px 20px 0px;
+}
+.stjourneyarea .stjourneycard:last-child {
+  padding: 20px 0px 0px 0px;
+  border-right: none;
+  border-bottom: none;
+}
+.jwsnimg img {
+  height: 250px;
+  border-radius: 20px 20px 0px 0px;
+}
+.jwsnimgshade {
+  border-radius: 20px 20px 0px 0px;
+  height: 250px;
+  background: #FBEADD;
+  background: linear-gradient(-180deg,rgba(251, 234, 221, 0) 60%, rgba(251, 234, 221, 1) 100%);
+}
+
 
 
 }
@@ -3916,3 +4836,5 @@ Media Query css start here
 
 
 }
+
+

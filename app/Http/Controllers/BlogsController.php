@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 
+
 class BlogsController extends Controller
 {
     public function getSeoData($url, $controller, $action, $params, $slug)
@@ -146,8 +147,7 @@ class BlogsController extends Controller
         if (!empty($blogAuthor)) {
             $blogAuthorId = $blogAuthor->id;
         }
-
-        $blog->update([
+       $blog->update([
             'user_id' => Auth::id(),
             'blog_author_id' => $blogAuthorId,
             'blog_date' =>  $request->input('blog_date'),
@@ -234,7 +234,11 @@ class BlogsController extends Controller
 
         $blogtags = BlogTag::has('blogs')->get();
 
-        return view('frontend.blog_list', compact('blogs','blogtags','otherBlogs'));
+        $blogCategories = BlogCategory::where('active', true)
+        ->orderBy('id', 'asc')
+        ->get();
+
+        return view('frontend.blog_list', compact('blogs','blogtags','otherBlogs','blogCategories'));
     }
 
     /* Blog Tags Route */

@@ -14,7 +14,7 @@
                     <div class="col-sm-3">
                         <div class="input-style-1">
                             <label>Order <span class="mandatory">*</span></label>
-                            <input type="number" name="order" placeholder="Enter order" required />
+                            <input type="number" name="order" placeholder="Enter order"  required value="{{ old('order') }}" />
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -34,14 +34,14 @@
                         <div class="input-style-1">
                             <label>Name <span class="mandatory">*</span></label>
                             <input type="text" name="name" id="model_name" data-model="destinations"
-                                placeholder="Enter Name" required />
+                                placeholder="Enter Name"  required value="{{ old('name') }}" />
                         </div>
                     </div>
 
                     <div class="col-sm-3">
                         <div class="input-style-1">
                             <label for="page_slug">Page Slug <span class="mandatory">*</span></label>
-                            <input type="text" id="page_slug" data-model="destinations" name="page_slug" placeholder="Page Slug" />
+                            <input type="text" id="page_slug" data-model="destinations" name="page_slug" placeholder="Page Slug" value="{{ old('page_slug') }}" />
                         </div>
                     </div>
 
@@ -65,7 +65,7 @@
                     <div class="col-sm-6">
                         <div class="input-style-1">
                             <label for="page_title">Page Title</label>
-                            <input type="text" id="page_title" name="page_title"  placeholder="Page Title" required />
+                            <input type="text" id="page_title" name="page_title"  placeholder="Page Title"  required value="{{ old('page_title') }}" />
                         </div>
                     </div>
                     <div>
@@ -76,7 +76,7 @@
                     <div class="col-sm-12">
                        <div class="input-style-1">
                           <label>Meta Description</label>
-                          <textarea rows="5" name="meta_description" placeholder="Meta Description"></textarea>
+                          <textarea rows="5" name="meta_description" placeholder="Meta Description">{{ old('meta_description') }}</textarea>
                       </div>
                      </div>
                  </div>
@@ -86,7 +86,7 @@
                     <div class="col-sm-12">
                         <div class="input-style-1">
                             <label>Description</label>
-                            <textarea name="description" rows="10" class="rich-editor"></textarea>
+                            <textarea name="description" rows="10" class="rich-editor">{{ old('description') }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -107,10 +107,10 @@
                     <div class="col-sm-3">
                         <label>Display on HomePage</label><br>
                         <label class="radio-inline">
-                            <input type="radio" name="display_on_homepage" class="radio-inline" value="1"> Yes
+                            <input type="radio" name="display_on_homepage" class="radio-inline" value="1" {{ old('display_on_homepage', 0) == 1 ? 'checked' : '' }}> Yes
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="display_on_homepage" class="radio-inline" value="0" checked> No
+                            <input type="radio" name="display_on_homepage" class="radio-inline" value="0" {{ old('display_on_homepage', 0) == 0 ? 'checked' : '' }}> No
                         </label>
                     </div>
 
@@ -127,10 +127,10 @@
                     <div class="col-sm-2">
                         <label>Active</label><br>
                         <label class="radio-inline">
-                            <input type="radio" name="active" value="1"> Yes
+                            <input type="radio" name="active" value="1" {{ old('active', 0) == 1 ? 'checked' : '' }}> Yes
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="active" value="0" checked> No
+                            <input type="radio" name="active" value="0" {{ old('active', 0) == 0 ? 'checked' : '' }}> No
                         </label>
                     </div>
 

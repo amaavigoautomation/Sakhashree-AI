@@ -13,6 +13,7 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
 
+
         $query = Category::query();
 
         if ($request->filled('id')) {
@@ -161,12 +162,12 @@ class CategoryController extends Controller
                 $coverImage = $category->cover_image;
                 $thumbImage = $category->thumbnail_image;
 
-                $coverImagePath = $coverImage 
-                    ? secure_asset("public/images/categories/cover_image/{$id}/{$coverImage}") 
+                $coverImagePath = $coverImage
+                    ? secure_asset("public/images/categories/cover_image/{$id}/{$coverImage}")
                     : secure_asset("public/images/no-image.png");
 
-                $thumbImagePath = $thumbImage 
-                    ? secure_asset("public/images/categories/thumbnail_image/{$id}/{$thumbImage}") 
+                $thumbImagePath = $thumbImage
+                    ? secure_asset("public/images/categories/thumbnail_image/{$id}/{$thumbImage}")
                     : secure_asset("public/images/no-image.png");
 
                 $categoryArr[] = [

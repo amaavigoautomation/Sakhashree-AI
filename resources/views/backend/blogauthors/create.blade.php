@@ -15,24 +15,24 @@
                             <div class="input-style-1">
                                 <label>Author Name <span class="mandatory">*</span></label>
                                 <input type="text" name="author_name" id="model_name" data-model="BlogAuthor"
-                                    placeholder="Enter Author Name" required />
+                                    placeholder="Enter Author Name" value="{{ old('author_name') }}" required />
                             </div>
                         </div>
 
                         <div class="col-sm-4">
                             <div class="input-style-1">
                                 <label for="page_slug">Page Slug </label>
-                                <input type="text" id="page_slug" data-model="BlogAuthor" name="page_slug" placeholder="Page Slug" />
+                                <input type="text" id="page_slug" data-model="BlogAuthor" name="page_slug" placeholder="Page Slug" value="{{ old('page_slug') }}" />
                             </div>
                         </div>
 
                         <div class="col-sm-4">
                             <label>Active</label><br>
                             <label class="radio-inline">
-                                <input type="radio" name="active" class="radio-inline" value="1"> Yes
+                                <input type="radio" name="active" class="radio-inline" value="1" {{ old('active') == 1 ? 'checked' : '' }}> Yes
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="active" class="radio-inline" value="0" checked> No
+                                <input type="radio" name="active" class="radio-inline" value="0" {{ old('active') == 0 ? 'checked' : '' }}> No
                             </label>
                         </div>
 
@@ -44,14 +44,14 @@
                         <div class="col-sm-6">
                             <div class="input-style-1">
                                 <label for="page_title">Page Title <span class="mandatory">*</span></label>
-                                <input type="text" id="page_title" name="page_title" placeholder="Page Title" required />
+                                <input type="text" id="page_title" name="page_title" placeholder="Page Title" value="{{ old('page_title') }}" required />
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="input-style-1">
                                 <label for="page_url">Page Url</label>
                                 <input type="url" id="page_url" data-model="blog-authors" name="page_url"
-                                    placeholder="Page URL" />
+                                    placeholder="Page URL" value="{{ old('page_url') }}" />
                             </div>
                         </div>
                     </div>
@@ -60,14 +60,14 @@
                         <div class="col-sm-6">
                             <div class="input-style-1">
                                 <label>Meta Description</label>
-                                <textarea rows="5" name="meta_description" placeholder="Meta Description"></textarea>
+                                <textarea rows="5" name="meta_description" placeholder="Meta Description">{{ old('meta_description') }}</textarea>
                             </div>
                         </div>
 
                         <div class="col-sm-6">
                             <div class="input-style-1">
                                 <label>Meta Keyword</label>
-                                <textarea rows="5" name="meta_keyword" placeholder="Meta Keyword"></textarea>
+                                <textarea rows="5" name="meta_keyword" placeholder="Meta Keyword">{{ old('meta_keyword') }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                         <div class="col-sm-12">
                             <div class="input-style-1">
                                 <label>Note</label>
-                                <textarea rows="5" name="note" placeholder="Enter Note"></textarea>
+                                <textarea rows="5" name="note" placeholder="Enter Note">{{ old('note') }}</textarea>
                             </div>
                         </div>
                     </div>

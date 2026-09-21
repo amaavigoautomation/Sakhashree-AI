@@ -8,16 +8,10 @@ class Testimonial extends Model
 {
     protected $fillable = [
         'name',
-        'email',
+        'icon',
         'country',
         'city',
-        'rating',
         'description',
         'active',
     ];
-
-
-
-
-
 }

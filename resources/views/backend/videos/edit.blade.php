@@ -30,13 +30,13 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-3">
+                        {{--   <div class="col-sm-3">
                             <div class="input-style-1">
                                 <label>Profession</label>
                                 <input type="text" name="profession" value="{{ $videos->profession ?? '' }}">
                             </div>
                         </div>
-
+                        --}}
                         <!-- Active -->
                         <div class="col-sm-2">
                             <label>Active</label><br>

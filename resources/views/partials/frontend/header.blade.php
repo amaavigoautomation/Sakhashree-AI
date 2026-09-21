@@ -1,7 +1,7 @@
 <header class="topband">
     <div class="container">
         <div class="logomenuarea">
-            <div class="logo"><a href="default.html"><img src="dist/img/logo.svg" alt="Sakhashree" title="Sakhashree"></a></div>
+            <div class="logo"><a href="{{ route('home') }}"><img src="dist/img/logo.svg" alt="Sakhashree" title="Sakhashree"></a></div>
             <div class="topmenuarea">
                 <div>
                     <!-- menu start here -->
@@ -17,23 +17,23 @@
                                 <ul class="menu-main">
                                     <li><a href="{{ route('home') }}">Home</a></li>
                                     <li><a href="{{ route('about') }}">About</a></li>
-                                    <li><a href="rrct.html">RRCT®</a></li>
-                                    <li><a href="spiritual_tours.html">Spiritual Tours</a></li>
-                                    <li><a href="workshops.html">Workshops</a></li>
-                                    <li><a href="events.html">Events</a></li>
+                                    <li><a href="{{ route('rrct') }}">RRCT®</a></li>
+                                    <li><a href="{{ route('spiritual_tours') }}">Spiritual Tours</a></li>
+                                    <li><a href="{{ route('workshop') }}">Workshops</a></li>
+                                    <li><a href="{{ route('events') }}">Events</a></li>
                                     <li class="menu-item-has-children">
                                         <a href="#">Resources <i class="fa fa-angle-down"></i></a>
                                         <div class="sub-menu single-column-menu">
                                             <ul>
                                                 <li><a href="blogs.html">Blogs</a></li>
-                                                <li><a href="videos.html">Videos</a></li>
-                                                <li><a href="faqs.html">FAQ’s</a></li>
-                                                <li><a href="testimonials.html">Testimonials</a></li>
+                                                <li><a href="{{ route('videos_list')}}">Videos</a></li>
+                                                <li><a href="{{ route('faq_list') }}">FAQ’s</a></li>
+                                                <li><a href="{{ route('testimonials_list') }}">Testimonials</a></li>
                                                 <li><a href="news.html">News</a></li>
                                             </ul>
                                         </div>
                                     </li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="{{ route('contact') }}">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -41,7 +41,7 @@
                     </div>
                     <!-- menu end here -->
                 </div>
-                <div class="bookconsultbtnarea"><a href="consultation.html"><button class="bookconsultbtn">Book Chakra
+                <div class="bookconsultbtnarea"><a href="{{ route('consultations') }}"><button class="bookconsultbtn">Book Chakra
                             Consultation</button></a></div>
             </div>
         </div>

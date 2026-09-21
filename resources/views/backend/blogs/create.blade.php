@@ -58,14 +58,14 @@
                         <div class="col-sm-6">
                             <div class="input-style-1">
                                 <label>Title <span class="mandatory">*</span></label>
-                                <input type="text" name="title" placeholder="Title" id="model_name" data-model=""
+                                <input type="text" name="title" placeholder="Title" id="model_name" data-model="" value="{{ old('title') }}" required />
                                     required />
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="input-style-1">
                                 <label for="page_title">Page Title</label>
-                                <input type="text" id="page_title" name="page_title" placeholder="Page Title" required />
+                                <input type="text" id="page_title" name="page_title" placeholder="Page Title" value="{{ old('page_title') }}" required />
                             </div>
                         </div>
                         <div>
@@ -74,14 +74,13 @@
                         <div class="col-sm-6">
                             <div class="input-style-1">
                                 <label for="page_slug">Page Slug <span class="mandatory">*</span></label>
-                                <input type="text" id="page_slug" data-model="" name="page_slug" placeholder="Page Slug"
-                                    readonly />
+                                <input type="text" id="page_slug" data-model="" name="page_slug" placeholder="Page Slug" value="{{ old('page_slug') }}" required  readonly />
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="input-style-1">
                                 <label for="page_url">Page Url</label>
-                                <input type="url" id="page_url" name="page_url" placeholder="Page URL" readonly />
+                                <input type="url" id="page_url" name="page_url" placeholder="Page URL" value="{{ old('page_url') }}" readonly />
                             </div>
                         </div>
                     </div>
@@ -90,7 +89,7 @@
                         <div class="col-sm-12">
                             <div class="input-style-1">
                                 <label>Meta Description</label>
-                                <textarea rows="5" name="meta_description" placeholder="Meta Description"></textarea>
+                                <textarea rows="5" name="meta_description" placeholder="Meta Description">{{ old('meta_description') }}</textarea>
                             </div>
                         </div>
 
@@ -121,10 +120,10 @@
                                 <div class="col-sm-4">
                                     <label>Active</label><br>
                                     <label class="radio-inline">
-                                        <input type="radio" name="active" class="radio-inline" value="1"> Yes
+                                        <input type="radio" name="active" class="radio-inline" value="1" {{ old('active') == 1 ? 'checked' : '' }}> Yes
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="active" class="radio-inline" value="0"
+                                        <input type="radio" name="active" class="radio-inline" value="0" {{ old('active') == 0 ? 'checked' : '' }}> No
                                             checked> No
                                     </label>
                                 </div>

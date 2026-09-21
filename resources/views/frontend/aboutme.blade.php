@@ -485,6 +485,8 @@
     </section>
     </div>
 @endsection
+
+@push('scripts')
 <script>
     const counters = document.querySelectorAll(".count");
     let hasAnimated = false;
@@ -575,4 +577,5 @@
         captionText.innerHTML = dots[slideIndex - 1].alt;
     }
 </script>
+@endpush
 <!-- Photo Gallery script end here -->

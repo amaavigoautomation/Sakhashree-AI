@@ -39,7 +39,9 @@
 
 
     <link rel="stylesheet" href="{{ asset('/dist/fonts/frontend-fonts/fonts/css/all.css') }}" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap"
+        rel="stylesheet">
 
 
     <!-- Script -->
@@ -106,6 +108,7 @@
         });
     </script>
 
+    @stack('scripts')
 </body>
 
 </html>

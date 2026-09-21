@@ -31,6 +31,11 @@ use Illuminate\Http\Request;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\FaqTypeController;
+use App\Http\Controllers\TestimonialVideoController;
+use App\Http\Controllers\BlogCategoriesController;
+use App\Http\Controllers\EnquiryController;
 
 // Public Authentication Routes
 Route::get('/admin', fn() => view('backend.auth.login'));
@@ -42,13 +47,24 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/', [PageController::class, 'home'])->name('home');
 // Route::get('/', [PageController::class, 'comingSoon']);
 Route::get('/about-me', [PageController::class, 'aboutme'])->name('about');
+Route::get('/rrct', [PageController::class, 'rrct'])->name('rrct');
+Route::get('/spiritual-tours', [PageController::class, 'spiritual_tours'])->name('spiritual_tours');
+Route::get('/workshop', [PageController::class, 'workshop'])->name('workshop');
+Route::get('/events', [PageController::class, 'events'])->name('events');
 Route::get('/contact-us', [PageController::class, 'contactus'])->name('contact');
+Route::get('/faq', [PageController::class, 'faq_list'])->name('faq_list');
 Route::get('/gallery', [PageController::class, 'gallery'])->name('gallery');
-Route::get('/testimonials_list', [PageController::class, 'testimonials'])->name('testimonials');
+Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::post('/contact_info', [EnquiryController::class, 'store'])->name('enquiries.store');
+Route::get('/consultations', [PageController::class, 'consultations'])->name('consultations');
+Route::get('/testimonials_list', [PageController::class, 'testimonials'])->name('testimonials_list');
+Route::get('/testimonials_video_list', [PageController::class, 'testimonials_video'])->name('testimonials_video_list');
 Route::get('/blog-tags/{page_slug}', [BlogsController::class, 'tagFilter'])->name('blog.tag');
 Route::get('/blog_list', [BlogsController::class, 'list'])->name('blogs');
+Route::get('/videos_list', [PageController::class, 'videos_list'])->name('videos_list');
 Route::get('/coming-soon', [PageController::class, 'comingsoon'])->name('comingsoon');
 Route::get('/products', [PageController::class, 'products'])->name('products');
+Route::get('/blogcategories', [BlogCategoriesController::class, 'index'])->name('category');
 
 Route::post('/consultations', [ConsultantController::class, 'store'])->name('consultations.store');
 // Route::post('/evisitingcard', [PageController::class, 'evisitingcard'])->name('evisitingcard');
@@ -85,6 +101,7 @@ Route::middleware([CheckSession::class])->group(function () {
     Route::post('/posts/image_upload', [BaseController::class, 'imageUpload'])->name('image.upload');
 
 
+
     // Resource Controllers
     Route::resources([
         'admintypes'         => AdminTypesController::class,
@@ -102,6 +119,11 @@ Route::middleware([CheckSession::class])->group(function () {
         'videotag'           => VideoTagController::class,
         'testimonials'       => TestimonialController::class,
         'galleries'          => GalleryController::class,
+        'faqs'               => FaqController::class,
+        'faq_types'          => FaqTypeController::class,
+        'testimonials_videos' => TestimonialVideoController::class,
+        'enquiries' => EnquiryController::class
+
     ]);
 
     Route::prefix('admin')->middleware([CheckSession::class])->group(function () {
@@ -111,13 +133,11 @@ Route::middleware([CheckSession::class])->group(function () {
 
         Route::get('/consultations/{id}', [ConsultantController::class, 'show'])
             ->name('consultations.show');
-
     });
 
     // Change Password Routes
     Route::get('/changepassword', [UsersController::class, 'showChangePasswordForm'])->name('users.changepassword');
     Route::post('/changepassword', [UsersController::class, 'changePassword'])->name('users.update-password');
-
 });
 // Middleware End -------------------------------------------
 
@@ -153,3 +173,4 @@ Route::get('/clear-cache', function () {
 });
 
 Route::get('/{page_slug}', [BlogsController::class, 'view'])->name('blog_detail');
+// // Route::get('/news/{page_slug}', [BlogsController::class, 'view'])->name('news_detail');

@@ -15,9 +15,10 @@
                     <div class="row padding5pxarea">
                         <div class="col-md-5 col-12 padding5px"><a href="consultation.html"><button
                                     class="primarybtn btnlgfullwidth">Book Chakra Consultation</button></a></div>
-                        <div class="col-md-3 col-5 padding5px rowmargin10"><a href="spiritual_tours.html"><button
-                                    class="whitebtnol btnlgfullwidth">Join Retreats</button></a></div>
-                        <div class="col-md-4 col-7 padding5px rowmargin10"><a href="workshops.html"><button
+                        <div class="col-md-3 col-5 padding5px rowmargin10"><a
+                                href="{{ route('spiritual_tours') }}"><button class="whitebtnol btnlgfullwidth">Join
+                                    Retreats</button></a></div>
+                        <div class="col-md-4 col-7 padding5px rowmargin10"><a href="{{ route('workshop') }}"><button
                                     class="whitebtnol btnlgfullwidth">Attend Workshops</button></a></div>
                     </div>
                 </div>
@@ -56,11 +57,11 @@
                             <div class="footertext topmargin20">
                                 <ul>
                                     <li><a href="{{ route('about') }}">About</a></li>
-                                    <li><a href="rrct.html">RRCT®</a></li>
-                                    <li><a href="spiritual_tours.html">Spiritual Tours</a></li>
-                                    <li><a href="workshops.html">Workshops</a></li>
-                                    <li><a href="events.html">Events</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="{{ route('rrct') }}">RRCT®</a></li>
+                                    <li><a href="{{ route('spiritual_tours') }}">Spiritual Tours</a></li>
+                                    <li><a href="{{ route('workshop') }}">Workshops</a></li>
+                                    <li><a href="{{ route('events') }}">Events</a></li>
+                                    <li><a href="{{ route('contact') }}">Contact</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -69,9 +70,9 @@
                             <div class="footertext topmargin20">
                                 <ul>
                                     <li><a href="blogs.html">Blogs</a></li>
-                                    <li><a href="videos.html">Videos</a></li>
-                                    <li><a href="faqs.html">FAQ’s</a></li>
-                                    <li><a href="testimonials.html">Testimonials</a></li>
+                                    <li><a href="{{ route('videos_list') }}">Videos</a></li>
+                                    <li><a href="{{ route('faq_list') }}">FAQ’s</a></li>
+                                    <li><a href="{{ route('testimonials_list') }}">Testimonials</a></li>
                                     <li><a href="news.html">News</a></li>
                                 </ul>
                             </div>

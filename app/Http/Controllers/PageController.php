@@ -6,21 +6,26 @@ use App\Models\Blog;
 use App\Models\Gallery;
 use App\Models\Testimonial;
 use App\Models\Video;
+use App\Models\Faq;
+use App\Models\FaqType;
+use App\Models\TestimonialVideo;
+use App\Models\Country;
 
 
 class PageController extends BaseController
 {
-    public function home(){
+    public function home()
+    {
         $blogs = Blog::whereNotNull('title')
-                ->where('active',true)
-                ->whereNotNull('page_slug')
-                ->take(2)
-                ->inRandomOrder()
-                ->get();
+            ->where('active', true)
+            ->whereNotNull('page_slug')
+            ->take(2)
+            ->inRandomOrder()
+            ->get();
 
-        $testimonials = Testimonial::where('active',true)->inRandomOrder()->get();
+        $testimonials = Testimonial::where('active', true)->inRandomOrder()->get();
 
-        return view('frontend.home', compact('blogs','testimonials'));
+        return view('frontend.home', compact('blogs', 'testimonials'));
     }
 
     public function aboutme()
@@ -30,11 +35,46 @@ class PageController extends BaseController
         return view('frontend.aboutme', compact('videos'));
     }
 
-    public function blogs()
+    public function rrct()
     {
-        $blogs = Blog::latest()->paginate(10);
+        return view('frontend.rrct');
+    }
 
-        return view('frontend.blog_list', compact('blogs'));
+    public function spiritual_tours()
+    {
+        return view('frontend.spiritual_tours');
+    }
+
+
+
+    public function workshop()
+    {
+
+        return view('frontend.workshop');
+    }
+
+    public function events()
+    {
+
+        return view('frontend.events');
+    }
+
+
+    public function videos_list()
+    {
+        $videos =  Video::where('active', true)->orderBy('id', 'asc')->get();
+        return view('frontend.videos_list', compact('videos'));
+    }
+
+
+
+    public function faq_list()
+    {
+        $faqs = Faq::where('active', true)->get();
+        $faqTypes = FaqType::where('active', true)->get();
+        // dd($faqs);
+
+        return view('frontend.faqs', compact('faqs', 'faqTypes'));
     }
 
     public function contactus()
@@ -45,7 +85,6 @@ class PageController extends BaseController
     public function gallery()
     {
         $videos = Video::where('active', true)->get();
-
         $videoTestimonials = $videos->filter(function ($item) {
             return !empty($item->video_link);
         });
@@ -53,17 +92,40 @@ class PageController extends BaseController
         $photos = Gallery::where('active', true)->get();
 
         // dd($photos);
-
         $testimonials = Testimonial::where('active', true)->get();
 
         return view('frontend.gallery', compact('videoTestimonials', 'photos', 'testimonials'));
     }
 
+    public function contact()
+    {
+        $countries = Country::where('active', true)->get();
+
+        return view('frontend.contact',compact('countries'));
+    }
+
+    public function consultations()
+    {
+        return view('frontend.consultations');
+    }
+
+
     public function testimonials()
     {
         $testimonials = Testimonial::where('active', true)->orderBy('id', 'asc')->get();
 
+
         return view('frontend.testimonials', compact('testimonials'));
+    }
+
+
+
+    public function testimonials_video()
+    {
+        $videoTestimonials = TestimonialVideo::where('active', true)
+            ->get();
+
+        return view('frontend.testimonials_video', compact('videoTestimonials'));
     }
 
     public function comingsoon()
@@ -85,6 +147,4 @@ class PageController extends BaseController
     {
         return view('frontend.thankyou');
     }
-
-
 }

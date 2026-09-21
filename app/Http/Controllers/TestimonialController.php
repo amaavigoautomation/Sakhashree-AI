@@ -22,9 +22,9 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        $ratings = ['1','2','3','4','5'];
 
-        return view('backend.testimonials.create',compact('ratings'));
+
+        return view('backend.testimonials.create');
     }
 
     /**
@@ -32,19 +32,47 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        $testimonials = Testimonial::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'country' => $request->input('country'),
-            'city' => $request->input('city'),
-            'rating' => $request->input('rating'),
-            'active' => $request->input('active'),
-            'description' => $request->input('description'),
+        $request->validate([
+            'name' => 'required',
+            'icon' => 'required|mimes:jpg,jpeg,png,svg,webp|max:2048',
+            'country' => 'required',
+            'city' => 'required',
+            'active' => 'required',
+            'description' => 'required',
         ]);
 
-        return redirect()->route('testimonials.index')->with('success', 'Testimonial saved successfully!');
-    }
+        // First create testimonial
+        $testimonial = Testimonial::create([
+            'name' => $request->input('name'),
+            'icon' => null,
+            'country' => $request->input('country'),
+            'city' => $request->input('city'),
+            'active' => $request->input('active'),
+            'description' => strip_tags($request->input('description')),
+        ]);
 
+        // Upload icon
+        if ($request->hasFile('icon')) {
+
+            $icon = $request->file('icon');
+            $folder = 'images/testimonials/' . $testimonial->id;
+            $iconName = $icon->getClientOriginalName();
+
+            // Move image
+            $icon->move(
+                public_path($folder),
+                $iconName
+            );
+
+            // Save image name in database
+            $testimonial->icon = $iconName;
+            $testimonial->save();
+        }
+
+        return redirect()
+            ->route('testimonials.index')
+            ->with('success', 'Testimonial created successfully.');
+    }
     /**
      * Display the specified resource.
      */
@@ -60,8 +88,8 @@ class TestimonialController extends Controller
     public function edit(string $id)
     {
         $testimonial = Testimonial::findOrFail($id);
-        $ratings = ['1','2','3','4','5'];
-        return view('backend.testimonials.edit', compact('testimonial','ratings'));
+
+        return view('backend.testimonials.edit', compact('testimonial'));
     }
 
     /**
@@ -69,25 +97,56 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $testimonials = Testimonial::findOrFail($id);
-        $testimonials->update([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'country' => $request->input('country'),
-            'city' => $request->input('city'),
-            'rating' => $request->input('rating'),
-            'active' => $request->input('active'),
-            'description' => $request->input('description'),
+        $request->validate([
+            'name' => 'required',
+            'icon' => 'nullable|mimes:jpg,jpeg,png,svg,webp|max:2048',
+            'country' => 'required',
+            'city' => 'required',
+            'active' => 'required',
+            'description' => 'required',
         ]);
 
-        return redirect()->route('testimonials.index')->with('success', 'Testimonial updated successfully!');
-    }
+        $testimonial = Testimonial::findOrFail($id);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $testimonial->name = $request->name;
+        $testimonial->country = $request->country;
+        $testimonial->city = $request->city;
+        $testimonial->active = $request->active;
+        $testimonial->description = strip_tags($request->description);
+
+        // If new icon is uploaded
+        if ($request->hasFile('icon')) {
+
+            $icon = $request->file('icon');
+            $folder = 'images/testimonials/' . $testimonial->id;
+
+            // Delete old icon
+            if (!empty($testimonial->icon)) {
+                $oldIcon = public_path($folder . '/' . $testimonial->icon);
+
+                if (file_exists($oldIcon)) {
+                    unlink($oldIcon);
+                }
+            }
+
+            // New icon name
+            $iconName = $icon->getClientOriginalName();
+
+            // Move new icon
+            $icon->move(
+                public_path($folder),
+                $iconName
+            );
+
+            // Save new icon name
+            $testimonial->icon = $iconName;
+        }
+
+        $testimonial->save();
+
+        return redirect()
+            ->route('testimonials.index')
+            ->with('success', 'Testimonial updated successfully.');
     }
+     
 }

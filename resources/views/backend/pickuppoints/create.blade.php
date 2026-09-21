@@ -12,17 +12,17 @@
                         <div class="col-sm-6 mb-3">
                             <div class="input-style-1">
                                 <label for="name">Name</label>
-                                <input type="text" name="name" id="name" class="form-control" placeholder="Enter pickup point name" required>
+                                <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}" placeholder="Enter pickup point name" required>
                             </div>
                         </div>
 
                         <div class="col-sm-6 mb-3">
                             <label>Status</label><br>
                             <label class="radio-inline">
-                                <input type="radio" name="active" value="1" checked> Yes
+                                <input type="radio" name="active" value="1" {{ old('active', 0) == 1 ? 'checked' : '' }}> Yes
                             </label>
                             <label class="radio-inline ms-2">
-                                <input type="radio" name="active" value="0"> No
+                                <input type="radio" name="active" value="0" {{ old('active', 0) == 0 ? 'checked' : '' }}> No
                             </label>
                         </div>
                     </div>
