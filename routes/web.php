@@ -25,6 +25,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\VideoCategoriesController;
 use App\Http\Controllers\VideosController;
 use App\Http\Controllers\VideoTagController;
+use App\Http\Controllers\EventController;
 use App\Models\Blog;
 use App\Models\SeoModule;
 use Illuminate\Http\Request;
@@ -122,7 +123,8 @@ Route::middleware([CheckSession::class])->group(function () {
         'faqs'               => FaqController::class,
         'faq_types'          => FaqTypeController::class,
         'testimonials_videos' => TestimonialVideoController::class,
-        'enquiries' => EnquiryController::class
+        'enquiries' => EnquiryController::class,
+        'event' => EventController::class,
 
     ]);
 
