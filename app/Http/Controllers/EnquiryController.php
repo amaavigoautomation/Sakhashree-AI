@@ -27,7 +27,7 @@ class EnquiryController extends Controller
         $request->validate([
             'full_name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'c_code' => 'required',
+            'country_code' => 'required',
             'phone' => 'required',
             'country_id' => 'required',
             'description' => 'required|string',

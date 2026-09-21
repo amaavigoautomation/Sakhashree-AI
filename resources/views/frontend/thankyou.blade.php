@@ -9,7 +9,7 @@
             <section class="innermidcontarea">
                 <div class="container">
                     <!-- Heading start here -->
-                    <div class="mainheading topmargin5">
+                    <div class="mainheading topmargin20">
                         <h1 class="text-uppercase">
                             <span class="second-color">Thank You</span><br>
                             Your Journey Begins
