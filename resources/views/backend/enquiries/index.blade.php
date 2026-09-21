@@ -32,7 +32,6 @@
                                     <td>
                                         {{ $enquiry->full_name ?? '---' }}
                                     </td>
-
                                     <td>
                                         {{ $enquiry->email ?? '---' }}
                                     </td>
