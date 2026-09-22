@@ -37,6 +37,7 @@ use App\Http\Controllers\FaqTypeController;
 use App\Http\Controllers\TestimonialVideoController;
 use App\Http\Controllers\BlogCategoriesController;
 use App\Http\Controllers\EnquiryController;
+use App\Http\Controllers\WorkshopController;
 
 // Public Authentication Routes
 Route::get('/admin', fn() => view('backend.auth.login'));
@@ -123,10 +124,14 @@ Route::middleware([CheckSession::class])->group(function () {
         'faqs'               => FaqController::class,
         'faq_types'          => FaqTypeController::class,
         'testimonials_videos' => TestimonialVideoController::class,
-        'enquiries' => EnquiryController::class,
+        // 'enquiries' => EnquiryController::class,
         'event' => EventController::class,
+        'workshops_listing' => WorkshopController::class,
 
     ]);
+
+    Route::get('/enquiries', [EnquiryController::class, 'index'])->name('enquiries.index');
+    Route::get('/enquiries/{id}', [EnquiryController::class, 'show'])->name('enquiries.show');
 
     Route::prefix('admin')->middleware([CheckSession::class])->group(function () {
 
