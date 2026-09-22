@@ -1,206 +1,313 @@
 @extends('layouts.frontend')
 
 @section('content')
-    <div class="maincontarea">
 
-        <section class="breadcrumbarea">
-            <div class="container">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
+    <main class="mainwrapper">
+        <div class="innercontbg">
 
-                        {{-- Home --}}
-                        <li class="breadcrumb-item">
-                            <a href="{{ route('home') }}">Home</a>
-                        </li>
+            <section class="innermidcontarea">
 
-                        {{-- Blogs --}}
-                        <li class="breadcrumb-item">
-                            <a href="{{ route('blogs') }}">Blogs</a>
-                        </li>
+                <div class="container">
 
-                        {{-- Tag Page --}}
-                        @if (request()->routeIs('blog.tag'))
-                            <li class="breadcrumb-item active">
-                                Blog Tags
-                            </li>
-                        @endif
+                    {{-- Breadcrumb --}}
+                    <div class="breadcrumbarea">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
 
-                        {{-- Blog Detail --}}
-                        @if (request()->routeIs('blog_detail'))
-                            <li class="breadcrumb-item active">
-                                {{ $blog->title ?? '' }}
-                            </li>
-                        @endif
+                                <li class="breadcrumb-item">
+                                    <a href="{{ route('blogs') }}">
+                                        Blogs
+                                    </a>
+                                </li>
 
-                    </ol>
-                </nav>
-            </div>
-        </section>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    {{ $blog->title ?? '' }}
+                                </li>
 
-
-        <!-- Middle section start -->
-        <section class="middlecontarea">
-            <div class="container">
-                <div class="row">
-
-                    {{-- LEFT SIDE --}}
-                    <div class="col-lg-9">
-
-                        <div class="blogdetheading">
-                            {{ $blog->title ?? '' }}
-                        </div>
-
-                        <div class="blogsdatetext topmargin10">
-                            By {{ $blog->blogauthor->author_name ?? 'Admin' }} |
-                            {{ date('d M Y', strtotime($blog->blog_date)) }}
-                        </div>
-
-                        <div class="blogdetimg">
-                            @php
-                                $imageFile = $blog->image_file;
-                                $imagePath = $imageFile
-                                    ? asset("public/images/blog/image_file/{$blog->id}/{$imageFile}")
-                                    : asset('dist/images/no-image.png');
-                            @endphp
-                            <img src="{{ $imagePath }}">
-                        </div>
-
-                        <div class="blogdetinfotext">
-                            {!! $blog->description !!}
-                        </div>
-
-                        {{-- AUTHOR --}}
-                        <div class="blogdetadminarea">
-                            @php
-                                $author = $blog->blogauthor;
-                                $authorImage = $author->author_image ?? null;
-                                $authorImagePath = $authorImage
-                                    ? asset("public/images/blog_author/author_image/{$author->id}/{$authorImage}")
-                                    : asset('dist/img/no-image.png');
-                            @endphp
-
-                            <div class="blogadminimg">
-                                <img src="{{ $authorImagePath }}">
-                            </div>
-
-                            <div class="blogadmintext">
-                                <span>{{ $author->author_name ?? 'Admin' }}</span><br>
-                                {{ $author->note ?? '' }}
-                            </div>
-                        </div>
-
+                            </ol>
+                        </nav>
                     </div>
 
 
-                    {{-- RIGHT SIDEBAR --}}
-                    <div class="col-lg-3 rowmargintabmob30">
+                    <div class="row topmargin30">
 
-                        {{-- SEARCH --}}
-                        <div class="searcfieldarea">
-                            <div class="fieldicon">
-                                <img src="{{ asset('dist/img/search_icon.svg') }}">
-                            </div>
-                            <input type="text" class="form-control" placeholder="Search.." id="search_blogs">
-                        </div>
-                        <div id="blog_results"></div>
+                        {{-- LEFT CONTENT --}}
+                        <div class="col-lg-9">
 
-                        {{-- OTHER BLOGS --}}
-                        @if (!empty($otherBlogs) && $otherBlogs->count() >= 3)
-                            <div class="blogsrightbox">
-                                <h4>Explore More Topics</h4>
+                            <div class="innercontrightmar">
 
-                                <div class="blogsrightboxtext">
-                                    <ul>
-                                        @foreach ($otherBlogs as $blog)
-                                            <li>
-                                                <a href="{{ route('blog_detail', $blog->page_slug) }}">
-                                                    {{ $blog->title ?? '' }}
-                                                </a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
+                                {{-- Blog Detail --}}
+                                <div class="blogdetcontarea">
+
+                                    {{-- Blog Image --}}
+                                    <div class="blogdetimg">
+                                        @php
+                                            $imageFile = $blog->image_file ?? null;
+                                            $imagePath = $imageFile ? asset('public/images/blog/image_file/' . $blog->id . '/' . $imageFile) : asset('dist/images/no-image.png');
+                                        @endphp
+                                        <img src="{{ $imagePath }}" alt="{{ $blog->title ?? '' }}">
+                                    </div>
+
+
+                                    {{-- Blog Title --}}
+                                    <h2>
+                                        {{ $blog->title ?? '' }}
+                                    </h2>
+
+
+                                    {{-- Blog Meta --}}
+                                    {{-- <div class="blogsdatetext topmargin10">
+                                        By
+                                        {{ $blog->blogauthor->author_name ?? 'Sakhashree' }}
+
+                                        @if (!empty($blog->blog_date))
+                                            |
+                                            {{ date('d M Y', strtotime($blog->blog_date)) }}
+                                        @endif
+
+                                    </div> --}}
+
+
+                                    {{-- Blog Description --}}
+                                    <div class="blogdetinfotext topmargin20">
+
+                                        {!! $blog->description ?? '' !!}
+
+                                    </div>
+
                                 </div>
-                            </div>
-                        @endif
 
-                        {{-- TAGS --}}
-                        @if ($blogtags->count() >= 3)
-                            <div class="blogsrightbox">
-                                <h4>Tags</h4>
 
-                                <div class="blogstagsarea">
-                                    @foreach ($blogtags as $tag)
-                                        <div class="blogstags">
-                                            <a href="{{ route('blog.tag', $tag->page_slug) }}">
-                                                {{ $tag->name }}
-                                            </a>
+                                {{-- Recent Blogs --}}
+                                @if ($relatedBlogs->count())
+                                    <div class="d-flex align-items-center gap-3 w-100 topmargin40">
+
+                                        <div class="mainheading">
+                                            <h5>Recent Blogs</h5>
                                         </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        @endif
 
-                    </div>
+                                        <div class="flex-grow-1">
+                                            <div class="sidebarheadline"></div>
+                                        </div>
 
-                </div>
+                                    </div>
 
 
-                {{-- RELATED BLOGS --}}
-                <div class="topmargin40">
-                    <div class="mainheading">
-                        <h4>Related Blogs</h4>
-                    </div>
+                                    <div class="row topmargin30">
 
-                    <div class="row">
-                        @if (!empty($otherBlogs) && $otherBlogs->count())
-                            @foreach ($relatedBlogs as $related)
-                                <div class="col-lg-3 col-md-6">
-                                    <div class="blogsboxinnerarea">
-                                        <a href="{{ route('blog_detail', $related->page_slug) }}">
-                                            <div class="blogsboxinner">
+                                        @foreach ($relatedBlogs as $related)
+                                            <div class="col-lg-4 col-md-6">
 
-                                                @php
-                                                    $img = $related->image_file
-                                                        ? asset(
-                                                            "public/images/blog/image_file/{$related->id}/{$related->image_file}",
-                                                        )
-                                                        : asset('dist/no-image.png');
-                                                @endphp
+                                                <div class="wrvbcardarea">
 
-                                                <div class="blogsboxinnerimg">
-                                                    <img src="{{ $img }}">
-                                                </div>
+                                                    <a href="{{ route('blog_detail', $related->page_slug) }}">
 
-                                                <div class="blogsboxinnercontarea">
-                                                    <div class="blogsdatetext">
-                                                        <em>
-                                                            By {{ $related->blogauthor->author_name ?? 'Admin' }} |
-                                                            {{ date('d M Y', strtotime($related->blog_date)) }}
-                                                        </em>
-                                                    </div>
+                                                        <div class="wrvbcard">
 
-                                                    <div class="relatedblogtitle">
-                                                        <h5>{{ $related->title }}</h5>
-                                                    </div>
+                                                            {{-- Image --}}
+                                                            <div class="wrvbcardimg">
 
-                                                    <div class="topmargin30">
-                                                        <button class="blogreadmore">Read More</button>
-                                                    </div>
+                                                                @php
+                                                                    $relatedImage = $related->image_file
+                                                                        ? asset(
+                                                                            'public/images/blog/image_file/' .
+                                                                                $related->id .
+                                                                                '/' .
+                                                                                $related->image_file,
+                                                                        )
+                                                                        : asset('dist/images/no-image.png');
+                                                                @endphp
+
+                                                                <img src="{{ $relatedImage }}" alt="{{ $related->title }}">
+
+                                                            </div>
+
+
+                                                            {{-- Content --}}
+                                                            <div class="bncardtitlearea">
+
+                                                                <div class="blogscardtitle">
+
+                                                                    <h6>
+                                                                        {{ $related->title }}
+                                                                    </h6>
+
+                                                                </div>
+
+                                                                <div class="viewalltext">
+
+                                                                    Read More
+
+                                                                    <i class="fa-solid fa-arrow-right"></i>
+
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </a>
 
                                                 </div>
 
                                             </div>
-                                        </a>
+                                        @endforeach
+
                                     </div>
+
+
+                                    {{-- View All --}}
+                                    <div class="topmargin10">
+
+                                        <a href="{{ route('blogs') }}">
+                                            <button class="primarybtn btnmd">
+                                                View All
+                                            </button>
+                                        </a>
+
+                                    </div>
+                                @endif
+
+                            </div>
+
+                        </div>
+
+
+                        {{-- RIGHT SIDEBAR --}}
+                        <div class="col-lg-3 rowmargintabmob20">
+
+                            {{-- Categories --}}
+                            @if ($blogcategory->count())
+                                <div class="sidebarheadarea">
+
+                                    <div>
+                                        <h5>Categories</h5>
+                                    </div>
+
+                                    <div class="d-flex align-items-center w-100">
+
+                                        <div>
+                                            <img src="{{ asset('dist/img/sidebarhead.svg') }}" alt="Categories">
+                                        </div>
+
+                                        <div class="flex-grow-1">
+                                            <div class="sidebarheadline"></div>
+                                        </div>
+
+                                    </div>
+
                                 </div>
-                            @endforeach
-                        @endif
+
+
+                                <div class="row">
+
+                                    @foreach ($blogcategory as $category)
+                                        <div class="col-lg-12 col-md-6">
+
+                                            <div class="blogcatbox">
+
+                                                <a href="{{ route('blogs') }}">
+
+                                                    <div class="d-flex align-items-center">
+
+                                                        <div class="blogcatboximg">
+
+                                                            @if (!empty($category->image))
+                                                                <img src="{{ asset('public/images/blog_categories/' . $category->image) }}"
+                                                                    alt="{{ $category->name }}">
+                                                            @else
+                                                                <img src="{{ asset('dist/images/no-image.png') }}"
+                                                                    alt="{{ $category->name }}">
+                                                            @endif
+
+                                                        </div>
+
+
+                                                        <div class="blogcathead">
+
+                                                            <h6>
+                                                                {{ $category->name }}
+                                                            </h6>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </a>
+
+                                            </div>
+
+                                        </div>
+                                    @endforeach
+
+                                </div>
+                            @endif
+
+
+                            {{-- Explore More Topics --}}
+                            @if ($otherBlogs->count())
+                                <div class="exploretopicsbox topmargin10">
+
+                                    <h6>
+                                        Explore More Topics
+                                    </h6>
+
+                                    <ul>
+
+                                        @foreach ($otherBlogs->take(4) as $otherBlog)
+                                            <li>
+
+                                                <a href="{{ route('blog_detail', $otherBlog->page_slug) }}">
+
+                                                    {{ $otherBlog->title }}
+
+                                                </a>
+
+                                            </li>
+                                        @endforeach
+
+                                    </ul>
+
+                                </div>
+                            @endif
+
+
+                            {{-- Tags --}}
+                            @if ($blogtags->count())
+                                <div class="blogtagsbox topmargin20">
+
+                                    <h6>
+                                        Tags
+                                    </h6>
+
+                                    <div class="blogsidebartagsarea">
+
+                                        @foreach ($blogtags as $tag)
+                                            <div class="blogsidebartags">
+
+                                                <a href="{{ route('blog.tag', $tag->page_slug) }}">
+
+                                                    {{ $tag->name }}
+
+                                                </a>
+
+                                            </div>
+                                        @endforeach
+
+                                    </div>
+
+                                </div>
+                            @endif
+
+                        </div>
+
                     </div>
 
                 </div>
 
-            </div>
-        </section>
-        <!-- Middle section end -->
-    </div>
+            </section>
+
+        </div>
+    </main>
+
 @endsection

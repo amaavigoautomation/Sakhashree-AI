@@ -71,10 +71,9 @@ Route::get('/news', [PageController::class, 'news'])->name('news');
 Route::get('/coming-soon', [PageController::class, 'comingsoon'])->name('comingsoon');
 Route::get('/products', [PageController::class, 'products'])->name('products');
 Route::get('/blogcategories', [BlogCategoriesController::class, 'index'])->name('category');
+Route::get('/blog-category/{page_slug}', [BlogsController::class,'categoryFilter'])->name('blog.category');
 
 Route::post('/consultations', [ConsultantController::class, 'store'])->name('consultations.store');
-// Route::post('/evisitingcard', [PageController::class, 'evisitingcard'])->name('evisitingcard');
-Route::get('/evisitingcard', [PageController::class, 'evisitingcard'])->name('evisitingcard');
 
 
 // Middleware Start -----------------------------------------
@@ -106,13 +105,12 @@ Route::middleware([CheckSession::class])->group(function () {
     Route::post('update-order', [BaseController::class, 'updateOrder']);
     Route::post('/posts/image_upload', [BaseController::class, 'imageUpload'])->name('image.upload');
 
-
-
     // Resource Controllers
     Route::resources([
         'admintypes'         => AdminTypesController::class,
         'blogauthors'        => BlogAuthorsController::class,
         'blogcomments'       => BlogCommentController::class,
+        'blogcategories'       => BlogCategoriesController::class,
         'blogs'              => BlogsController::class,
         'blogtags'           => BlogTagsController::class,
         'category'           => CategoryController::class,
@@ -138,15 +136,6 @@ Route::middleware([CheckSession::class])->group(function () {
     Route::get('/enquiries', [EnquiryController::class, 'index'])->name('enquiries.index');
     Route::get('/enquiries/{id}', [EnquiryController::class, 'show'])->name('enquiries.show');
 
-    Route::prefix('admin')->middleware([CheckSession::class])->group(function () {
-
-        Route::get('/consultations', [ConsultantController::class, 'index'])
-            ->name('consultations.index');
-
-        Route::get('/consultations/{id}', [ConsultantController::class, 'show'])
-            ->name('consultations.show');
-    });
-
     // Change Password Routes
     Route::get('/changepassword', [UsersController::class, 'showChangePasswordForm'])->name('users.changepassword');
     Route::post('/changepassword', [UsersController::class, 'changePassword'])->name('users.update-password');
@@ -154,35 +143,27 @@ Route::middleware([CheckSession::class])->group(function () {
 // Middleware End -------------------------------------------
 
 // Sitemap Generation Route
-Route::get('/generate-sitemap', function () {
-    $sitemap = Sitemap::create();
-    $url = "https://gopinathan.ca/";
+// Route::get('/generate-sitemap', function () {
+//     $sitemap = Sitemap::create();
+//     $url = "https://gopinathan.ca/";
 
-    foreach (SeoModule::where('active', true)->get() as $seoModule) {
-        $sitemap->add(Url::create("{$url}/{$seoModule->page_slug}"));
-    }
+//     foreach (SeoModule::where('active', true)->get() as $seoModule) {
+//         $sitemap->add(Url::create("{$url}/{$seoModule->page_slug}"));
+//     }
 
-    foreach (Blog::where('active', true)->get() as $blog) {
-        $sitemap->add(Url::create("{$url}/{$blog->page_slug}"));
-    }
+//     foreach (Blog::where('active', true)->get() as $blog) {
+//         $sitemap->add(Url::create("{$url}/{$blog->page_slug}"));
+//     }
 
-    $sitemap->writeToFile(base_path('sitemap.xml'));
-    return redirect('/sitemap.xml');
-});
+//     $sitemap->writeToFile(base_path('sitemap.xml'));
+//     return redirect('/sitemap.xml');
+// });
 
-Route::get('/thank-you', function () {
-    return view('frontend.thankyou');
-})->name('thankyou');
+Route::get('/thank-you', function () {return view('frontend.thankyou');})->name('thankyou');
 // Reorder
 Route::post('/reorder', [ReorderController::class, 'reorder'])->name('universal.reorder');
-Route::post('search-blogs', [BlogsController::class, 'search']);
-Route::get('/gopinathan.vcf', function () {
-    return response()->download(public_path('gopinathan.vcf'));
-});
-Route::get('/clear-cache', function () {
-    Artisan::call('optimize:clear');
-    return "Cache cleared successfully";
-});
+
+Route::get('/clear-cache', function () {Artisan::call('optimize:clear');return "Cache cleared successfully";});
 
 Route::get('/{page_slug}', [BlogsController::class, 'view'])->name('blog_detail');
 

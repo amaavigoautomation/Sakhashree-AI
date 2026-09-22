@@ -10,9 +10,9 @@
                 <a href="{{ route('category.create') }}">
                     <button type="button" class="main-btn primary-btn btn-hover btn-xs">Create</button>
                 </a>
-                <a href="{{ route('export-categories.export', request()->query()) }}" class="main-btn primary-btn btn-hover btn-xs">
+                {{-- <a href="{{ route('export-categories.export', request()->query()) }}" class="main-btn primary-btn btn-hover btn-xs">
                     <i class="fas fa-file-excel"></i> Export to Excel
-                </a>
+                </a> --}}
             </div>
       <div class="card-style mt-20">
         <div class="accordion" id="filterAccordion">

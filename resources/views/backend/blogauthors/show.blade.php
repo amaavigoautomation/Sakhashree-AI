@@ -74,14 +74,14 @@
                                     <p>{{ $blogauthor->meta_description ?? '---' }}</p>
                                 </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <th class='col-md-2'>
                                     <h6>Meta keyword</h6>
                                 </th>
                                 <td class=''>
                                     <p>{{ $blogauthor->meta_keyword ?? '---' }}</p>
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>
                                     <h6>Status</h6>
@@ -97,7 +97,7 @@
                                     <div class="{{ $class }}">{{ $data }}</div>
                                 </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <th>
                                     <h6>Created At </h6>
                                 </th>
@@ -112,7 +112,7 @@
                                 <td>
                                     <p>{{ $blogauthor->updated_at }}</p>
                                 </td>
-                            </tr>
+                            </tr> --}}
                         </tbody>
                     </table>
                 </div>

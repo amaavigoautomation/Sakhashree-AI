@@ -61,16 +61,10 @@
                     </div>
 
                     <div class="row mt-15">
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="input-style-1">
                                 <label>Meta Description</label>
                                 <textarea rows="5" name="meta_description" placeholder="Meta Description">{{ $blogauthor->meta_description }}  </textarea>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="input-style-1">
-                                <label>Meta Keyword</label>
-                                <textarea rows="5" name="meta_keyword" placeholder="Meta Keyword">{{ $blogauthor->meta_keyword }}  </textarea>
                             </div>
                         </div>
                     </div>
