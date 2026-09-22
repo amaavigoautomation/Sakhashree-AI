@@ -6,5 +6,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
-    //
+    protected $table = 'events';
+
+    protected $fillable = [
+        'title',
+        'date',
+        'time',
+        'day',
+        'time_code',
+        'description',
+        'video_link',
+        'city_name',
+        'image_file',
+        'active',
+        'is_past_event'
+    ];
+
+    protected $casts = [
+        'active' => 'boolean',
+        'is_past_event' => 'boolean',
+    ];
 }

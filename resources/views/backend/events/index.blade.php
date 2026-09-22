@@ -1,88 +1,144 @@
 @extends('layouts.backend')
 
 @section('content')
-<section class="section">
-  <div class="container-fluid">
-     <!-- BreathCrum -->
-     @include('partials.breadcrumb')
+    <section class="section">
+        <div class="container-fluid">
 
-     <div class="right-mob-left">
-        <a href="{{ route('events.create') }}">
-        <button type="button" class="main-btn primary-btn btn-hover btn-xs">Create</button>
-        </a>
-    </div>
+            @include('partials.breadcrumb')
 
-    <!--Add new section start here-->
-<div class="card-style mt-20">
-<div class="row">
+            <div class="right-mob-left">
+                <a href="{{ route('event.create') }}">
+                    <button type="button" class="main-btn primary-btn btn-hover btn-xs">
+                        Create
+                    </button>
+                </a>
+            </div>
 
-<div class="col-sm-4">
-<div class="filtertext">
-<ul>
-</ul>
-</div>
-</div>
-<div class="col-sm-4 rowmargin10">
-<div class="right-mob-left"></div>
-</div>
-</div>
+            <div class="card-style mt-20">
 
-<div class="table-wrapper table-responsive mt-10">
-<table class="table striped-table">
-<thead>
-<tr>
+                <div class="table-wrapper table-responsive mt-10">
+                    <table class="table striped-table">
 
-<th><h6>Name</h6></th>
-<th class="text-left"><h6>Status</h6></th>
-<th class="text-center"><h6>Action</h6></th>
-</tr>
-<!-- end table row-->
-</thead>
-<tbody>
-@foreach ($events as $event)
+                        <thead>
+                            <tr>
 
-<tr>
+                                <th>
+                                    <h6>Image</h6>
+                                </th>
 
-<td><p> {{ $event->name }} </p></td>
+                                <th>
+                                    <h6>Title</h6>
+                                </th>
 
-<td>
-  @php
-  $active = $event->active;
-  $checked = $active == 1 ? 'checked' : '';
-  @endphp
-  <input type="checkbox" id="toggle-{{ $event->id }}"
-          class="status-checkbox toggle-checkbox" data-id="{{ $event->id }}"
-          data-model="Events" {{ $checked }}>
-  <label for="toggle-{{ $event->id }}" class="toggle-label">
-          <span class="toggle-slider"></span>
-  </label>
-  </td>
-<td class="text-center"><a href="{{ route('events.edit',$event->id) }}"><i class="lni lni-pencil-alt"></i></a>
-<a href="{{ route('events.show',$event->id) }}"><i class="lni lni-list"></i></a>
-</td>
+                                <th>
+                                    <h6>Date</h6>
+                                </th>
 
-</tr>
+                                <th>
+                                    <h6>Time</h6>
+                                </th>
 
-@endforeach
-<!-- end table row -->
+                                <th>
+                                    <h6>Day</h6>
+                                </th>
 
+                                <th>
+                                    <h6>City</h6>
+                                </th>
 
-</tbody>
-</table>
-<!-- end table -->
-</div>
-</div>
-<div class="mt-30">
-<div class="row">
-<div class="col-sm-6">
+                                <th>
+                                    <h6>Active</h6>
+                                </th>
 
-</div>
+                                <th>
+                                    <h6>Past Event</h6>
+                                </th>
 
+                                <th class="text-center">
+                                    <h6>Action</h6>
+                                </th>
 
-</div>
-</div>
-@include('partials.pagination', ['items' => $events])
-  </div>
-</section>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            @foreach ($events as $event)
+                                <tr>
+
+                                    <!-- Image -->
+                                    <td>
+                                        <p>
+                                            @if (!empty($event->image_file))
+                                                <img src="{{ asset('public/images/events/' . $event->id . '/' . $event->image_file) }}"
+                                                    id="imageBox" alt="{{ $event->image_file }}">
+                                            @else
+                                                <img src="{{ asset('dist/images/no-image.png') }}" id="imageBox"
+                                                    alt="No Image">
+                                            @endif
+                                        </p>
+                                    </td>
+
+                                    <!-- Title -->
+                                    <td>
+                                        <p>{{ $event->title }}</p>
+                                    </td>
+
+                                    <!-- Date -->
+                                    <td>
+                                        <p>{{ $event->date }}</p>
+                                    </td>
+
+                                    <!-- Time -->
+                                    <td>
+                                        <p>{{ $event->time }}</p>
+                                    </td>
+
+                                    <!-- Day -->
+                                    <td>
+                                        <p>{{ $event->day }}</p>
+                                    </td>
+
+                                    <!-- City -->
+                                    <td>
+                                        <p>{{ $event->city_name ?? '---' }}</p>
+                                    </td>
+
+                                    <!-- Active -->
+                                    <td>
+                                        <p>
+                                            {{ $event->active == 1 ? 'Yes' : 'No' }}
+                                        </p>
+                                    </td>
+
+                                    <!-- Past Event -->
+                                    <td>
+                                        <p>
+                                            {{ $event->is_past_event == 1 ? 'Yes' : 'No' }}
+                                        </p>
+                                    </td>
+
+                                    <!-- Action -->
+                                    <td class="text-center">
+
+                                        <a href="{{ route('event.edit', $event->id) }}">
+                                            <i class="lni lni-pencil-alt"></i>
+                                        </a>
+
+                                    </td>
+
+                                </tr>
+                            @endforeach
+
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </div>
+
+            @include('partials.pagination', ['items' => $events])
+
+        </div>
+    </section>
 @endsection
-

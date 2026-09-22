@@ -1,52 +1,201 @@
 @extends('layouts.backend')
 
 @section('content')
+    <section class="section">
+        <div class="container-fluid">
 
-<section class="section">
-	<div class="container-fluid">
-		 <!-- BreathCrum -->
-     @include('partials.breadcrumb')
+            @include('partials.breadcrumb')
 
-   <form method="POST" action="{{ route('events.store') }}" enctype="multipart/form-data">
-  <div class="card-style mt-20">
+            <form method="POST" action="{{ route('event.store') }}" enctype="multipart/form-data">
 
-       @csrf
-      <div class="row mt-15">
-          <!-- Name -->
-         <div class="col-sm-4">
-            <div class="input-style-1">
-            <label>Name <span class="mandatory">*</span></label>
-            <input type="text"  name="name" placeholder="Name" required="true" value="{{ old('name') }}" />
-            </div>
-         </div>
+                @csrf
 
-         <div  class="col-sm-4">
-            <div class="input-style-1">
-              <label>Add Images <span class="mandatory">*</span></label>
-              <input type="file" name="image_file[]" class="form-control" multiple required>
-            </div>
-         </div>
+                <div class="card-style mt-20">
 
-         <div class="col-sm-4">
-            <!-- Active Code -->
-             <label>Active</label><br>
-             <label class="radio-inline">
-             <input type="radio" name="active" class="radio-inline" value="1" {{ old('active', 0) == 1 ? 'checked' : '' }}> Yes
-             </label>
-            <label class="radio-inline">
-            <input type="radio" name="active" class="radio-inline" value="0" {{ old('active', 0) == 0 ? 'checked' : '' }}> No
-            </label>
-         </div>
-      </div>
-      <hr>
-      <div class="row mt-15">
-       <div class="col-sm-3">
-        <button type="submit" class="main-btn primary-btn btn-hover btn-xs">Save</button>
+                    <!-- Title & City -->
+                    <div class="row mt-15">
+
+                        <!-- Title -->
+                        <div class="col-sm-6">
+                            <div class="input-style-1">
+                                <label>
+                                    Title <span class="mandatory">*</span>
+                                </label>
+
+                                <input type="text" name="title" placeholder="Event Title" value="{{ old('title') }}"
+                                    required>
+                            </div>
+                        </div>
+
+                        <!-- City Name -->
+                        <div class="col-sm-6">
+                            <div class="input-style-1">
+                                <label>City Name</label>
+
+                                <input type="text" name="city_name" placeholder="City Name"
+                                    value="{{ old('city_name') }}">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <!-- Date & Time -->
+                    <div class="row mt-15">
+
+                        <!-- Date -->
+                        <div class="col-sm-3">
+                            <div class="input-style-1">
+                                <label>
+                                    Date <span class="mandatory">*</span>
+                                </label>
+
+                                <input type="date" name="date" value="{{ old('date') }}" required>
+                            </div>
+                        </div>
+
+                        <!-- Time -->
+                        <div class="col-sm-3">
+                            <div class="input-style-1">
+                                <label>
+                                    Time <span class="mandatory">*</span>
+                                </label>
+
+                                <input type="time" name="time" value="{{ old('time') }}" required>
+                            </div>
+                        </div>
+
+                        <!-- Day -->
+                        <div class="col-sm-3">
+                            <div class="input-style-1">
+                                <label>
+                                    Day <span class="mandatory">*</span>
+                                </label>
+
+                                <input type="text" name="day" placeholder="Monday" value="{{ old('day') }}"
+                                    required>
+                            </div>
+                        </div>
+
+                        <!-- Time Code -->
+                        <div class="col-sm-3">
+                            <div class="input-style-1">
+                                <label>Time Code</label>
+
+                                <input type="text" name="time_code" placeholder="IST" value="{{ old('time_code') }}">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <!-- Description -->
+                    <div class="row mt-15">
+
+                        <div class="col-sm-12">
+                            <div class="input-style-1">
+                                <label>Description</label>
+
+                                <textarea name="description" rows="10" class="rich-editor" placeholder="Event Description">{!! old('description') !!}</textarea>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <!-- Video Link -->
+                    <div class="row mt-15">
+
+                        <div class="col-sm-6">
+                            <div class="input-style-1">
+                                <label>Video Link</label>
+
+                                <input type="url" name="video_link" placeholder="Video Link"
+                                    value="{{ old('video_link') }}">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <!-- Image & Status -->
+                    <div class="row mt-15">
+
+                        <!-- Image -->
+                        <div class="col-sm-3">
+                            <label>Image</label>
+
+                            <img id="selectedImage" class="addedImage" src="{{ asset('dist/images/no-image.png') }}"
+                                alt="Selected Image">
+
+                            <input type="file" name="image_file" id="imageInput" onchange="displayImage(this)">
+                        </div>
+
+                        <!-- Active & Past Event -->
+                        <div class="col-sm-9">
+
+                            <div class="row">
+
+                                <!-- Active -->
+                                <div class="col-sm-4">
+                                    <label>Active</label><br>
+
+                                    <label class="radio-inline">
+                                        <input type="radio" name="active" value="1"
+                                            {{ old('active', 1) == 1 ? 'checked' : '' }}>
+                                        Yes
+                                    </label>
+
+                                    <label class="radio-inline">
+                                        <input type="radio" name="active" value="0"
+                                            {{ old('active', 1) == 0 ? 'checked' : '' }}>
+                                        No
+                                    </label>
+                                </div>
+
+                                 
+                                <!-- Past Event -->
+                                <div class="col-sm-4">
+                                    <label>Past Event</label><br>
+
+                                    <label class="radio-inline">
+                                        <input type="radio" name="is_past_event" value="1"
+                                            {{ old('is_past_event', 0) == 1 ? 'checked' : '' }}>
+                                        Yes
+                                    </label>
+
+                                    <label class="radio-inline">
+                                        <input type="radio" name="is_past_event" value="0"
+                                            {{ old('is_past_event', 0) == 0 ? 'checked' : '' }}>
+                                        No
+                                    </label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Save Button -->
+                    <div class="row mt-15">
+
+                        <div class="col-sm-3">
+                            <button type="submit" class="main-btn primary-btn btn-hover btn-xs">
+                                Save
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </form>
+
         </div>
-      </div>
-
-	</div>
-</form>
-</section>
+    </section>
 @endsection
-

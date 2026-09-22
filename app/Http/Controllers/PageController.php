@@ -10,7 +10,7 @@ use App\Models\Faq;
 use App\Models\FaqType;
 use App\Models\TestimonialVideo;
 use App\Models\Country;
-
+use App\Models\Event;
 
 class PageController extends BaseController
 {
@@ -54,10 +54,19 @@ class PageController extends BaseController
     }
 
     public function events()
-    {
+{
+    $upcomingEvents = Event::where('active', 1)
+        ->where('is_past_event', 0)
+        ->orderBy('date', 'asc')
+        ->get();
 
-        return view('frontend.events');
-    }
+    $pastEvents = Event::where('active', 1)
+        ->where('is_past_event', 1)
+        ->orderBy('date', 'desc')
+        ->paginate(6);
+
+    return view('frontend.events', compact('upcomingEvents', 'pastEvents'));
+}
 
 
     public function videos_list()
