@@ -91,7 +91,11 @@
 
                                     <!-- Time -->
                                     <td>
-                                        <p>{{ $event->time }}</p>
+                                        <p>
+                                            {{ \Carbon\Carbon::parse($event->start_time)->format('g:i A') }}
+                                            -
+                                            {{ \Carbon\Carbon::parse($event->end_time)->format('g:i A') }}
+                                        </p>
                                     </td>
 
                                     <!-- Day -->

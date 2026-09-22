@@ -55,14 +55,25 @@
                             </div>
                         </div>
 
-                        <!-- Time -->
+                        <!-- Start Time -->
                         <div class="col-sm-3">
                             <div class="input-style-1">
                                 <label>
-                                    Time <span class="mandatory">*</span>
+                                    Start Time <span class="mandatory">*</span>
                                 </label>
 
-                                <input type="time" name="time" value="{{ old('time') }}" required>
+                                <input type="time" name="start_time" value="{{ old('start_time') }}" required>
+                            </div>
+                        </div>
+
+                        <!-- End Time -->
+                        <div class="col-sm-3">
+                            <div class="input-style-1">
+                                <label>
+                                    End Time <span class="mandatory">*</span>
+                                </label>
+
+                                <input type="time" name="end_time" value="{{ old('end_time') }}" required>
                             </div>
                         </div>
 
@@ -157,7 +168,7 @@
                                     </label>
                                 </div>
 
-                                 
+
                                 <!-- Past Event -->
                                 <div class="col-sm-4">
                                     <label>Past Event</label><br>

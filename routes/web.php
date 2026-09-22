@@ -49,6 +49,8 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/', [PageController::class, 'home'])->name('home');
 // Route::get('/', [PageController::class, 'comingSoon']);
 Route::get('/about-me', [PageController::class, 'aboutme'])->name('about');
+Route::get('/discover_rudra_center', [PageController::class, 'discover_rudra_center'])->name('discover_rudra_center');
+Route::get('/discover_chakra_yog', [PageController::class, 'discover_chakra_yog'])->name('discover_chakra_yog');
 Route::get('/rrct', [PageController::class, 'rrct'])->name('rrct');
 Route::get('/spiritual-tours', [PageController::class, 'spiritual_tours'])->name('spiritual_tours');
 Route::get('/workshop', [PageController::class, 'workshop'])->name('workshop');

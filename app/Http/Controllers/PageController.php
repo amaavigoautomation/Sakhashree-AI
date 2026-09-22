@@ -36,6 +36,16 @@ class PageController extends BaseController
         return view('frontend.aboutme', compact('videos'));
     }
 
+    public function discover_rudra_center()
+    {
+        return view('frontend.discover_rudra_center');
+    }
+
+    public function discover_chakra_yog()
+    {
+        return view('frontend.discover_chakra_yog');
+    }
+
     public function rrct()
     {
         return view('frontend.rrct');
@@ -67,20 +77,19 @@ class PageController extends BaseController
     }
 
     public function events()
-{
-    $upcomingEvents = Event::where('active', 1)
-        ->where('is_past_event', 0)
-        ->orderBy('date', 'asc')
-        ->get();
+    {
+        $upcomingEvents = Event::where('active', 1)
+            ->where('is_past_event', 0)
+            ->orderBy('date', 'asc')
+            ->get();
 
-    $pastEvents = Event::where('active', 1)
-        ->where('is_past_event', 1)
-        ->orderBy('date', 'desc')
-        ->paginate(6);
+        $pastEvents = Event::where('active', 1)
+            ->where('is_past_event', 1)
+            ->orderBy('date', 'desc')
+            ->paginate(6);
 
-    return view('frontend.events', compact('upcomingEvents', 'pastEvents'));
-}
-
+        return view('frontend.events', compact('upcomingEvents', 'pastEvents'));
+    }
 
     public function videos_list()
     {
@@ -123,7 +132,7 @@ class PageController extends BaseController
     {
         $countries = Country::where('active', true)->get();
 
-        return view('frontend.contact',compact('countries'));
+        return view('frontend.contact', compact('countries'));
     }
 
     public function consultations()

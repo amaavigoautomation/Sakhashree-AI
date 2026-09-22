@@ -233,7 +233,7 @@
                             ancient wisdom while making it accessible, practical and relevant to the modern world.</div>
                     </div>
                     <div class="rudrachakraimg">
-                        <div class="rudrachakrabtnarea"><a href="discover_rudra_center.html"><button
+                        <div class="rudrachakrabtnarea"><a href="{{ route('discover_rudra_center') }}"><button
                                     class="primarybtn btnmd">Discover Rudra Center</button></a></div>
                         <img src="dist/img/rudra_center.jpg">
                     </div>
@@ -250,7 +250,7 @@
                             greater awareness, inner freedom and the realisation that You Are More.</div>
                     </div>
                     <div class="rudrachakraimg">
-                        <div class="rudrachakrabtnarea"><a href="discover_chakra_yog.html"><button
+                        <div class="rudrachakrabtnarea"><a href="{{ route('discover_chakra_yog') }}"><button
                                     class="secondrybtn btnmd">Discover Chakra Yog</button></a></div>
                         <img src="dist/img/chakra_yog.jpg">
                     </div>

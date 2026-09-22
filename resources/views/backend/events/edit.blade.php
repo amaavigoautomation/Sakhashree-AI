@@ -50,44 +50,47 @@
                         <!-- Date -->
                         <div class="col-sm-3">
                             <div class="input-style-1">
-                                <label>
-                                    Date <span class="mandatory">*</span>
-                                </label>
-
+                                <label>Date <span class="mandatory">*</span></label>
                                 <input type="date" name="date" value="{{ old('date', $event->date) }}" required>
                             </div>
                         </div>
 
-                        <!-- Time -->
+                        <!-- Start Time -->
                         <div class="col-sm-3">
                             <div class="input-style-1">
-                                <label>
-                                    Time <span class="mandatory">*</span>
-                                </label>
+                                <label>Start Time <span class="mandatory">*</span></label>
+                                <input type="time" name="start_time" value="{{ old('start_time', $event->start_time) }}"
+                                    required>
+                            </div>
+                        </div>
 
-                                <input type="text" name="time" placeholder="06:00 PM"
-                                    value="{{ old('time', $event->time) }}" required>
+                        <!-- End Time -->
+                        <div class="col-sm-3">
+                            <div class="input-style-1">
+                                <label>End Time <span class="mandatory">*</span></label>
+                                <input type="time" name="end_time" value="{{ old('end_time', $event->end_time) }}"
+                                    required>
                             </div>
                         </div>
 
                         <!-- Day -->
                         <div class="col-sm-3">
                             <div class="input-style-1">
-                                <label>
-                                    Day <span class="mandatory">*</span>
-                                </label>
-
+                                <label>Day <span class="mandatory">*</span></label>
                                 <input type="text" name="day" placeholder="Monday"
                                     value="{{ old('day', $event->day) }}" required>
                             </div>
                         </div>
 
+                    </div>
+
+                    <div class="row mt-15">
+
                         <!-- Time Code -->
                         <div class="col-sm-3">
                             <div class="input-style-1">
                                 <label>Time Code</label>
-
-                                <input type="text" name="time_code" placeholder="IST - 06:00 PM - 08:00 PM"
+                                <input type="text" name="time_code" placeholder="IST"
                                     value="{{ old('time_code', $event->time_code) }}">
                             </div>
                         </div>
@@ -102,8 +105,7 @@
                         <div class="col-sm-12">
                             <div class="input-style-1">
                                 <label>Description</label>
-
-                                <textarea name="description" rows="10" class="rich-editor" placeholder="Event Description">{! $event->description !}</textarea>
+                                <textarea name="description" rows="10" class="rich-editor" placeholder="Event Description">{!! $event->description !!}</textarea>
                             </div>
                         </div>
 

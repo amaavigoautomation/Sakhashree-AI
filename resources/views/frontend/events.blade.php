@@ -69,9 +69,7 @@
 
                                                                 <div>
                                                                     {{ \Carbon\Carbon::parse($event->date)->format('d M Y') }}
-                                                                    @if ($event->day)
-                                                                        ({{ $event->day }})
-                                                                    @endif
+
                                                                 </div>
                                                             </div>
 
@@ -82,7 +80,9 @@
                                                                 </div>
 
                                                                 <div>
-                                                                    {{ $event->time_code }} - {{ $event->time }}
+                                                                    {{ \Carbon\Carbon::parse($event->start_time)->format('g:i A') }}
+                                                                    to
+                                                                    {{ \Carbon\Carbon::parse($event->end_time)->format('g:i A') }}
                                                                 </div>
                                                             </div>
 
@@ -213,7 +213,6 @@
 
                                         </div>
 
-
                                         {{-- Time --}}
                                         <div class="pointsiconinfo">
 
@@ -222,7 +221,10 @@
                                             </div>
 
                                             <div>
-                                                {{ $event->time_code }} - {{ $event->time }}
+                                                {{ $event->time_code }} -
+                                                {{ \Carbon\Carbon::parse($event->start_time)->format('g:i A') }}
+                                                -
+                                                {{ \Carbon\Carbon::parse($event->end_time)->format('g:i A') }}
                                             </div>
 
                                         </div>
