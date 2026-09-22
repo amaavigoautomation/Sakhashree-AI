@@ -27,11 +27,11 @@
                                         $id = $blog->id;
                                         $imagePath = $firstImage
                                             ? asset("public/images/blog/image_file/{$id}/{$firstImage}")
-                                            : asset('dist/images/no-image.png');
+                                            : null;
                                     @endphp
 
                                         @if (!empty($imagePath))
-                                            <img src="{{ $imagePath }}" id="imageBox">
+                                            <img src="{{ $imagePath }}" height="70px">
                                         @endif
                                     </p>
                                 </td>
@@ -42,6 +42,15 @@
                                 </th>
                                 <td class=''>
                                     <p>{{ !empty($blog->blogauthor->author_name) ? $blog->blogauthor->author_name : '---' }}
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class='col-md-2'>
+                                    <h6>Blog Category</h6>
+                                </th>
+                                <td class=''>
+                                    <p>{{ !empty($blog->blogcategory->name) ? $blog->blogcategory->name : '---' }}
                                     </p>
                                 </td>
                             </tr>

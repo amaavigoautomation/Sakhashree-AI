@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Auth;
 
 
 
-
 class BlogsController extends Controller
 {
     public function getSeoData($url, $controller, $action, $params, $slug)
@@ -31,12 +30,12 @@ class BlogsController extends Controller
             $blogQuery->where('blog_author_id', $request->blog_author_id);
         }
 
-        // if ($request->filled('blog_category_id')) {
-        //     $blogQuery->where('blog_category_id', $request->blog_category_id);
-        // }
+        if ($request->filled('blog_category_id')) {
+            $blogQuery->where('blog_category_id', $request->blog_category_id);
+        }
 
-        if ($request->filled('id')) {
-            $blogQuery->where('id', $request->id);
+        if ($request->filled('title')) {
+            $blogQuery->where('title', $request->title);
         }
 
         if ($request->filled('status')) {
@@ -44,23 +43,28 @@ class BlogsController extends Controller
             $blogQuery->where('active', $status);
         }
 
-        $blogs = $blogQuery->orderBy('id', 'asc')->paginate(20);
+        $blogCategories = BlogCategory::all();
+        $blogs = $blogQuery->orderBy('created_at', 'desc')->paginate(20);
         $authors = BlogAuthor::all();
-        $titleArr = Blog::pluck('title','id')->toArray();
+        $title = Blog::select('title')->get()->pluck('title')->toArray();
         $statuses = ['active' => 'Active', 'inactive' => 'Inactive'];
 
-        return view('backend.blogs.index', compact('blogs', 'authors', 'statuses', 'titleArr'));
+        return view('backend.blogs.index', compact('blogs', 'authors', 'statuses', 'title', 'blogCategories'));
     }
 
     public function create()
     {
+        $pageTitle = "Add";
+
+        $blogCategories = BlogCategory::all()->where('active', true);
+
         $blogAuthors = BlogAuthor::all()->where('active', true);
         $blogAuthorList = $blogAuthors->pluck('author_name', 'id');
 
         $blogTags = BlogTag::all()->where('active', true);
         $blogTagList = $blogTags->pluck('name', 'id');
 
-        return view('backend.blogs.create', compact('blogAuthorList','blogTags','blogTagList'));
+        return view('backend.blogs.create', compact('pageTitle', 'blogAuthorList','blogTags','blogTagList','blogCategories'));
     }
 
     public function store(Request $request)
@@ -77,6 +81,7 @@ class BlogsController extends Controller
         $blog = Blog::create([
             'user_id' => Auth::id(),
             'blog_author_id' => $request->input('blog_author_id'),
+            'blog_category_id' => $request->input('blog_category_id'),
             'blog_date' =>  $request->input('blog_date'),
             'title' => $request->input('title'),
             'page_slug' => $request->input('page_slug'),
@@ -99,7 +104,14 @@ class BlogsController extends Controller
         }
         $blog->save();
 
-        $blog->blogtags()->sync($request->input('blogtags', []));
+        foreach ($request->input('blogtags') as $blogtagsId) {
+            $blogblogtags = BlogBlogTag::create([
+                'blog_id' => $blog->id,
+                'blog_tag_id' => $blogtagsId,
+                'created' => now(),
+                'modified' => now(),
+            ]);
+        }
 
         return redirect()->route('blogs.index')->with('success', 'Blogs saved successfully!');
     }
@@ -123,13 +135,15 @@ class BlogsController extends Controller
     {
         $blog = Blog::findOrFail($id);
 
+        $blogCategories = BlogCategory::all()->where('active', true);
+
         $blogAuthor = BlogAuthor::where('id', $blog->blog_author_id)->first();
         $blogAuthors = $blogAuthor ? BlogAuthor::where('id', '!=', $blogAuthor->id)->get() : BlogAuthor::all();
 
         $selectedBlogTags = $blog->blogtags;
         $blogtags = BlogTag::all();
 
-        return view('backend.blogs.edit', compact('blogAuthor', 'blogAuthors','blog','selectedBlogTags','blogtags'));
+        return view('backend.blogs.edit', compact('blogAuthor', 'blogAuthors','blog','selectedBlogTags','blogtags','blogCategories'));
     }
 
 
@@ -147,9 +161,11 @@ class BlogsController extends Controller
         if (!empty($blogAuthor)) {
             $blogAuthorId = $blogAuthor->id;
         }
-       $blog->update([
+
+        $blog->update([
             'user_id' => Auth::id(),
             'blog_author_id' => $blogAuthorId,
+            'blog_category_id' => $request->input('blog_category_id'),
             'blog_date' =>  $request->input('blog_date'),
             'title' => $request->input('title'),
             'page_slug' => $request->input('page_slug'),
@@ -180,15 +196,23 @@ class BlogsController extends Controller
     /*Front-end Blog Detail Pages*/
     public function view($slug)
     {
-        $blog = Blog::where('page_slug', $slug)->first();
+        $blog = Blog::where('page_slug', $slug)
+            ->where('active', true)
+            ->with('blogauthor')
+            ->first();
+
         if (!$blog) {
             return redirect()->route('blogs')->with('error', 'Blog not found.');
         }
 
-        $firstImage = $blog->image_file;
         $id = $blog->id;
-        $imagePath = $firstImage ? secure_asset("public/images/blog/image_file/{$id}/{$firstImage}") : secure_asset("dist/no-image.png");
 
+        // Blog image
+        $firstImage = $blog->image_file;
+
+        $imagePath = $firstImage ? secure_asset("public/images/blog/image_file/{$id}/{$firstImage}") : secure_asset("dist/images/no-image.png");
+
+        // SEO
         $seoData = [
             'page_title' => $blog->page_title,
             'page_url' => $blog->page_url,
@@ -197,62 +221,62 @@ class BlogsController extends Controller
             'meta_image' => $imagePath,
         ];
 
-        $otherBlogs = Blog::where('active', true)
-            ->where('id', '!=', $id)
-            ->orderBy('id', 'desc')
-            ->limit(5)
-            ->get();
+        // Categories
+        $blogcategory = BlogCategory::where('active', true)->orderBy('order', 'asc')->get();
 
-        $relatedBlogs = Blog::with('blogauthor')
-            ->where('active', true)
-            ->where('id', '!=', $id)
-            ->inRandomOrder()
-            ->limit(5)
-            ->get();
-        // $category = $blog->blogcategory;
-        $blogtags = $blog->blogtags;
+        // Other blogs
+        $otherBlogs = Blog::where('active', true)->where('id', '!=', $id)->orderBy('blog_date', 'desc')->get();
 
+        // Recent blogs
+        $relatedBlogs = Blog::where('active', true)->where('id', '!=', $id)->orderBy('blog_date', 'desc')->take(3)->get();
 
-        return view('frontend.blog_detail', compact('blog', 'seoData', 'otherBlogs','blogtags','relatedBlogs'));
+        // Current category
+        $category = $blog->blogcategory;
+
+        // Current blog tags
+        $blogtags = $blog->blogtags()->get();
+
+        return view('frontend.blog_detail', compact('blog','seoData','otherBlogs','relatedBlogs','blogcategory','category','blogtags'));
     }
 
 
     /*Front-end Blog Listing Page*/
-    public function list(){
+    public function list(Request $request)
+    {
+        $blogQuery = Blog::where('active', true);
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $blogQuery->where(function ($query) use ($search) {
+                $query->where('title', 'LIKE', "%{$search}%")->orWhere('description', 'LIKE', "%{$search}%");
+            });
+        }
 
-        $blogs = Blog::where('active', true)
-            ->orderBy('blog_date', 'desc')
-            ->paginate(10);
+        $blogs = $blogQuery->orderBy('blog_date', 'desc')->paginate(9)->withQueryString();
 
-        $currentIds = $blogs->pluck('id');
+        $blogtags = BlogTag::where('active', true)
+            ->withCount([
+                'blogs' => function ($query) {
+                    $query->where('active', true);
+                }
+            ])->get();
 
-        $otherBlogs = Blog::where('active', true)
-            ->whereNotIn('id', $currentIds)
-            ->orderBy('id', 'desc')
-            ->limit(5)
-            ->get();
+        $blogcategory = BlogCategory::where('active', true)->orderBy('order', 'asc')->get();
 
-        $blogtags = BlogTag::has('blogs')->get();
-
-        $blogCategories = BlogCategory::where('active', true)
-        ->orderBy('id', 'asc')
-        ->get();
-
-        return view('frontend.blog_list', compact('blogs','blogtags','otherBlogs','blogCategories'));
+        return view('frontend.blog_list', compact('blogs','blogtags','blogcategory'))->with('action', 'blogs.list');
     }
 
     /* Blog Tags Route */
     public function tagFilter($page_slug)
     {
         $selectedTag = BlogTag::where('page_slug', $page_slug)->where('active', true)->firstOrFail();
-        // $blogcategory = BlogCategory::where('active', true)->orderBy('order', 'asc')->get();
+        $blogcategory = BlogCategory::where('active', true)->orderBy('order', 'asc')->get();
         $blogs = $selectedTag->blogs()->where('active', true)->orderBy('id', 'desc')->paginate(9);
 
-        $blogtags = BlogTag::has('blogs')->orderBy('id', 'desc')->get();
-
-        $otherBlogs = Blog::where('active', true)
-        ->where('id', '!=', optional($blogs->first())->id)
-        ->limit(5)
+        $blogtags = BlogTag::where('active', true)
+        ->withCount(['blogs' => function ($query) {
+            $query->where('active', true);
+        }])
+        ->orderBy('id', 'desc')
         ->get();
 
         $seoData = [
@@ -264,9 +288,48 @@ class BlogsController extends Controller
         // dd($selectedTag);
 
 
-        return view('frontend.blog_list', compact('blogs', 'blogtags', 'selectedTag','seoData','otherBlogs'));
+        return view('frontend.blog_list', compact('blogs', 'blogtags', 'selectedTag', 'blogcategory','seoData'));
     }
 
+    public function categoryFilter($page_slug)
+    {
+        $selectedCategory = BlogCategory::where('page_slug', $page_slug)
+            ->where('active', true)
+            ->firstOrFail();
+
+        $blogcategory = BlogCategory::where('active', true)
+            ->orderBy('order', 'asc')
+            ->get();
+
+        $blogs = $selectedCategory->blogs()
+            ->where('active', true)
+            ->orderBy('id', 'desc')
+            ->paginate(9);
+
+        $blogtags = BlogTag::where('active', true)
+            ->withCount([
+                'blogs' => function ($query) {
+                    $query->where('active', true);
+                }
+            ])
+            ->orderBy('id', 'desc')
+            ->get();
+
+        $seoData = [
+            'page_title' => $selectedCategory->page_title,
+            'page_url' => $selectedCategory->page_url,
+            'meta_keyword' => $selectedCategory->meta_keyword,
+            'meta_description' => $selectedCategory->meta_description
+        ];
+
+        return view('frontend.blog_list', compact(
+            'blogs',
+            'blogtags',
+            'blogcategory',
+            'selectedCategory',
+            'seoData'
+        ));
+    }
 
 
     /* Search Filter in Blogs Page */
@@ -293,5 +356,39 @@ class BlogsController extends Controller
         return $html;
     }
 
+    /* API for Umrah360 */
+    // public function Blog(){
+    //     $blog = Blog::where('active', true)->get();
+
+    //     $blogArr = [];
+
+    //     foreach ($blog as $key => $BLOG) {
+    //     $id = $BLOG->id;
+    //     $image = $BLOG->image_file;
+    //     $imagePath = $image ? secure_asset("public/images/blog/image_file/" . $id . "/" . $image) : secure_asset('dist/images/no-image.png');
+
+    //     $blogArr[$key] = [
+    //         'id' => $id,
+    //         'page_name' => $BLOG->page_name,
+    //         'page_slug' => $BLOG->page_slug,
+    //         'page_title' => $BLOG->page_title,
+    //         'page_url' => $BLOG->page_url,
+    //         'image_file' => $imagePath,
+    //     ];
+    // }
+
+    //     if (!empty($blogArr)) {
+    //         return response()->json([
+    //             'success' => true,
+    //             'message' => 'BLOG found.',
+    //             'data' => $blogArr,
+    //     ], 200); // HTTP status code 200: OK
+    //     } else {
+    //         return response()->json([
+    //             'success' => false,
+    //             'message' => 'Data not found.',
+    //         ], 404); // HTTP status code 404: Not Found
+    //     }
+    // }
 
 }

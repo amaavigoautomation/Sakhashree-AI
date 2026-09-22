@@ -94,15 +94,15 @@
                     <table class="table striped-table">
                         <thead>
                             <tr>
-                                <th class="col-sm-2">
+                                {{-- <th class="col-sm-2">
                                     <h6>Image</h6>
-                                </th>
+                                </th> --}}
                                 <th class="col-sm-2">
                                     <h6>Author</h6>
                                 </th>
-                                <th class="col-sm-4">
+                                {{-- <th class="col-sm-4">
                                     <h6>Note</h6>
-                                </th>
+                                </th> --}}
                                 <th class="col-sm-2 text-left">
                                     <h6>Active</h6>
                                 </th>
@@ -114,7 +114,7 @@
                         <tbody>
                             @foreach ($blogauthors as $blogauthor)
                                 <tr>
-                                    <td>
+                                    {{-- <td>
                                         <p> @php
                                             $firstImage = $blogauthor->author_image;
                                             $id = $blogauthor->id;
@@ -127,14 +127,14 @@
                                                 <img src="{{ $imagePath }}" id="imageBox">
                                             @endif
                                         </p>
-                                    </td>
+                                    </td> --}}
                                     <td>
                                         <p> {{ $blogauthor->author_name }} </p>
                                     </td>
 
-                                    <td>
+                                    {{-- <td>
                                         <p> {{ $blogauthor->note }} </p>
-                                    </td>
+                                    </td> --}}
                                     <td>
                                         @php
                                             $active = $blogauthor->active;

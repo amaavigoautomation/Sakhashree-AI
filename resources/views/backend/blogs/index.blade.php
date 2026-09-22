@@ -51,7 +51,7 @@
                                             </div>
                                         </div>
 
-                                        {{-- <div class="col-sm-3">
+                                        <div class="col-sm-3">
                                             <div class="select-style-1">
                                                 <label for="blog_category_id">Category Name</label>
                                                 <div class="select-position select-sm">
@@ -67,16 +67,15 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                        </div> --}}
-
-                                        <div class="col-sm-6">
+                                        </div>
+                                        <div class="col-sm-3">
                                             <div class="select-style-1">
                                                 <label for="name">Title</label>
                                                 <div class="select-position select-sm">
                                                     <select class="jSelectbox" id="blog" name="id"
                                                         onchange="this.form.submit()">
                                                         <option value="">All</option>
-                                                        @foreach ($titleArr as $titleId => $title)
+                                                        @foreach ($title as $titleId => $title)
                                                             <option value="{{ $titleId }}"
                                                                 {{ request('id') == $titleId ? 'selected' : '' }}>
                                                                 {{ $title }}
@@ -124,7 +123,7 @@
                                         <h6>Image</h6>
                                     </th> --}}
                                     <th class="col-sm-2">
-                                        <h6>Image</h6>
+                                        <h6>Category</h6>
                                     </th>
                                     <th>
                                         <h6>Title</h6>
@@ -144,9 +143,8 @@
 
                                 @foreach ($blogs as $blog)
                                     <tr>
-                                        <td>
-                                            <p> 
-                                            @php
+                                        {{-- <td>
+                                            <p> @php
                                                 $firstImage = $blog->image_file;
                                                 $id = $blog->id;
                                                 $imagePath = $firstImage
@@ -158,11 +156,11 @@
                                                     <img src="{{ $imagePath }}" id="imageBox">
                                                 @endif
                                             </p>
-                                        </td>
-                                        {{-- <td>
+                                        </td> --}}
+                                        <td>
                                             <p>{{ !empty($blog->blogcategory->name) ? $blog->blogcategory->name : '---' }}
                                             </p>
-                                        </td> --}}
+                                        </td>
                                         <td>
                                             <p> {{ $blog->title }} </p>
                                         </td>
@@ -178,9 +176,14 @@
                                                 <span class="toggle-slider"></span>
                                             </label>
                                         </td>
-                                        <td class="text-center"><a href="{{ route('blogs.edit', $blog->id) }}"><i
-                                                    class="lni lni-pencil-alt"></i></a>
-                                            <a href="{{ route('blogs.show', $blog->id) }}"><i class="lni lni-list"></i></a>
+                                        <td class="text-center">
+                                            <a href="{{ route('blogs.edit', $blog->id) }}" class="me-2">
+                                                <i class="lni lni-pencil-alt"></i>
+                                            </a>
+
+                                            <a href="{{ route('blogs.show', $blog->id) }}">
+                                                <i class="lni lni-list"></i>
+                                            </a>
                                         </td>
 
                                     </tr>

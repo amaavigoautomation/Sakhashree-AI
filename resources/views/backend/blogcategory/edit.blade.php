@@ -13,12 +13,12 @@
                     <input type="hidden" name="id" value="{{ $blogcategory->id }}" />
 
                     <div class="row mt-15">
-                        <div class="col-sm-2">
+                        {{-- <div class="col-sm-2">
                             <div class="input-style-1">
                                 <label>Order <span class="mandatory">*</span></label>
                                 <input type="number" name="order" value="{{ $blogcategory->order }}" />
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="col-sm-4">
                             <div class="input-style-1">
@@ -44,7 +44,7 @@
                             </label>
                         </div>
                     </div>
-                    
+
                     <div class="row mt-15">
                         <div class="col-sm-4">
                             <div class="input-style-1">
@@ -60,7 +60,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="row mt-15">
                         <div class="col-sm-12">
                             <div class="input-style-1">
@@ -69,7 +69,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="row mt-15">
                         <div class="col-sm-3">
                             <label>Image</label>
@@ -78,7 +78,7 @@
                             <span id="iconImage">{{ $blogcategory->image_file }}</span>
                         </div>
                     </div>
-                    
+
                     <div class="row mt-15">
                         <div class="col-sm-3">
                             <button type="submit" class="main-btn primary-btn btn-hover btn-xs">Save</button>

@@ -22,10 +22,10 @@
                                     <li><a href="{{ route('workshop') }}">Workshops</a></li>
                                     <li><a href="{{ route('events') }}">Events</a></li>
                                     <li class="menu-item-has-children">
-                                        <a href="#">Resources <i class="fa fa-angle-down"></i></a>
+                                        <a href="javascript::void(0)">Resources <i class="fa fa-angle-down"></i></a>
                                         <div class="sub-menu single-column-menu">
                                             <ul>
-                                                <li><a href="blogs.html">Blogs</a></li>
+                                                <li><a href="{{ route('blogs')}}">Blogs</a></li>
                                                 <li><a href="{{ route('videos_list')}}">Videos</a></li>
                                                 <li><a href="{{ route('faq_list') }}">FAQ’s</a></li>
                                                 <li><a href="{{ route('testimonials_list') }}">Testimonials</a></li>
