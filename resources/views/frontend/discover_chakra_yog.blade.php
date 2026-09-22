@@ -53,7 +53,7 @@
                 <div class="container">
                     <div class="sevenchakrabox">
                         <div class="row">
-                            <div class="col-md-5 text-center"><img src="img/sevenchakraimg.jpg" class="img-fluid"></div>
+                            <div class="col-md-5 text-center"><img src="{{ asset('dist/img/sevenchakraimg.jpg') }}" class="img-fluid"></div>
                             <div class="col-md-7 rowmargin30">
                                 <div class="mainheading">
                                     <h6 class="primary-color textmedbold">SEVEN CHAKRAS. SEVEN DIMENSIONS OF LIFE.</h6>

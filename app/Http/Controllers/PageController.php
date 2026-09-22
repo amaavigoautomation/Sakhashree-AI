@@ -161,6 +161,12 @@ class PageController extends BaseController
         return view('frontend.testimonials_video', compact('videoTestimonials'));
     }
 
+     public function news()
+    {
+
+        return view('frontend.news');
+    }
+
     public function comingsoon()
     {
         return view('frontend.comingsoon');

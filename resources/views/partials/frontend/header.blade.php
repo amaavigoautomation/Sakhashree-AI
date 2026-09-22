@@ -29,7 +29,7 @@
                                                 <li><a href="{{ route('videos_list')}}">Videos</a></li>
                                                 <li><a href="{{ route('faq_list') }}">FAQ’s</a></li>
                                                 <li><a href="{{ route('testimonials_list') }}">Testimonials</a></li>
-                                                <li><a href="news.html">News</a></li>
+                                                <li><a href="{{ route('news') }}">News</a></li>
                                             </ul>
                                         </div>
                                     </li>

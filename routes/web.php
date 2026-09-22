@@ -66,6 +66,7 @@ Route::get('/testimonials_video_list', [PageController::class, 'testimonials_vid
 Route::get('/blog-tags/{page_slug}', [BlogsController::class, 'tagFilter'])->name('blog.tag');
 Route::get('/blog_list', [BlogsController::class, 'list'])->name('blogs');
 Route::get('/videos_list', [PageController::class, 'videos_list'])->name('videos_list');
+Route::get('/news', [PageController::class, 'news'])->name('news');
 Route::get('/coming-soon', [PageController::class, 'comingsoon'])->name('comingsoon');
 Route::get('/products', [PageController::class, 'products'])->name('products');
 Route::get('/blogcategories', [BlogCategoriesController::class, 'index'])->name('category');
@@ -182,4 +183,5 @@ Route::get('/clear-cache', function () {
 });
 
 Route::get('/{page_slug}', [BlogsController::class, 'view'])->name('blog_detail');
-// // Route::get('/news/{page_slug}', [BlogsController::class, 'view'])->name('news_detail');
+
+// Route::get('/news/{page_slug}', [NewsController::class, 'view'])->name('news_detail');
