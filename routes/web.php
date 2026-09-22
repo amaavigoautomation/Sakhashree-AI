@@ -37,6 +37,7 @@ use App\Http\Controllers\FaqTypeController;
 use App\Http\Controllers\TestimonialVideoController;
 use App\Http\Controllers\BlogCategoriesController;
 use App\Http\Controllers\EnquiryController;
+use App\Http\Controllers\SpiritualTourController;
 use App\Http\Controllers\WorkshopController;
 
 // Public Authentication Routes
@@ -130,6 +131,7 @@ Route::middleware([CheckSession::class])->group(function () {
         // 'enquiries' => EnquiryController::class,
         'event' => EventController::class,
         'workshops_listing' => WorkshopController::class,
+        'spiritual_tours_listing' => SpiritualTourController::class,
 
     ]);
 
