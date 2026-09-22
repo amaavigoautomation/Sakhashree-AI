@@ -29,6 +29,7 @@ class SpiritualTourController extends Controller
      */
     public function store(Request $request)
     {
+        
         $tour = SpiritualTour::create([
             'title'       => $request->input('title'),
             'description' => $request->input('description'),

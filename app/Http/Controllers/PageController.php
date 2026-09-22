@@ -13,6 +13,7 @@ use App\Models\Country;
 use App\Models\Event;
 use App\Models\Subject;
 use App\Models\Workshop;
+use App\Models\SpiritualTour;
 
 class PageController extends BaseController
 {
@@ -54,7 +55,17 @@ class PageController extends BaseController
 
     public function spiritual_tours()
     {
-        return view('frontend.spiritual_tours');
+        $upcomingTours = SpiritualTour::where('is_upcoming', 1)
+            ->where('active', 1)
+            ->orderBy('id', 'asc')
+            ->get();
+
+        $pastTours = SpiritualTour::where('is_upcoming', 0)
+            ->where('active', 1)
+            ->orderBy('id', 'asc')
+            ->get();
+
+        return view('frontend.spiritual_tours', compact('upcomingTours', 'pastTours'));
     }
 
 
@@ -134,7 +145,7 @@ class PageController extends BaseController
         $countries = Country::where('active', true)->get();
         $subjects = Subject::where('active', true)->get();
 
-        return view('frontend.contact',compact('countries','subjects'));
+        return view('frontend.contact', compact('countries', 'subjects'));
     }
 
     public function consultations()
@@ -161,7 +172,7 @@ class PageController extends BaseController
         return view('frontend.testimonials_video', compact('videoTestimonials'));
     }
 
-     public function news()
+    public function news()
     {
 
         return view('frontend.news');
