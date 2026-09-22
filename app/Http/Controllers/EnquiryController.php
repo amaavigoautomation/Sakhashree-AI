@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Enquiry;
+use App\Rules\Recaptcha;
 
 class EnquiryController extends Controller
 {
@@ -27,16 +28,18 @@ class EnquiryController extends Controller
         $request->validate([
             'full_name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'country_code' => 'required',
-            'phone' => 'required',
+            'calling_code' => 'required',
+            'phone' => ['required', 'digits_between:1,12'],
             'country_id' => 'required',
             'description' => 'required|string',
+            'g-recaptcha-response' => ['required', new Recaptcha],
         ]);
 
         Enquiry::create([
             'full_name' => $request->full_name,
+            'subject_id' => $request->subject_id,
             'email' => $request->email,
-            'country_code' => $request->country_code,
+            'calling_code' => $request->calling_code,
             'phone' => $request->phone,
             'country_id' => $request->country_id,
             'description' => $request->description,

@@ -148,16 +148,13 @@
                                 <!-- Full Name -->
                                 <div class="col-md-6">
                                     <div class="mb-4">
-
-                                        <input type="text" name="full_name" class="form-control" placeholder="Full Name"
-                                            value="{{ old('full_name') }}">
-
+                                        <input type="text" name="full_name" class="form-control" required
+                                            placeholder="Full Name" value="{{ old('full_name') }}">
                                         @error('full_name')
                                             <small class="text-danger">
                                                 {{ $message }}
                                             </small>
                                         @enderror
-
                                     </div>
                                 </div>
 
@@ -165,16 +162,32 @@
                                 <!-- Email -->
                                 <div class="col-md-6">
                                     <div class="mb-4">
-
-                                        <input type="email" name="email" class="form-control"
+                                        <input type="email" name="email" required class="form-control"
                                             placeholder="Email Address" value="{{ old('email') }}">
-
                                         @error('email')
                                             <small class="text-danger">
                                                 {{ $message }}
                                             </small>
                                         @enderror
+                                    </div>
+                                </div>
 
+                                <!-- Country -->
+                                <div class="col-md-6">
+                                    <div class="mb-4">
+                                        <select name="country_id" id="country_id" required class="form-select">
+                                            <option value="">Country</option>
+                                            @foreach ($countries as $country)
+                                                <option value="{{ $country->id }}"
+                                                    data-code="{{ $country->calling_code }}"
+                                                    {{ old('country_id') == $country->id ? 'selected' : '' }}>
+                                                    {{ $country->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @error('country_id')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -182,124 +195,70 @@
                                 <!-- Phone Number -->
                                 <div class="col-md-6">
                                     <div class="mb-4">
-
                                         <div class="row padding5pxarea">
-
                                             <div class="col-5 padding5px">
-                                                <select name="country_code" class="form-select">
-
-                                                    <option value="">USA (+1)</option>
-                                                    <option value="+91"
-                                                        {{ old('country_code') == '+91' ? 'selected' : '' }}>
-                                                        India (+91)
-                                                    </option>
-                                                    <option value="+44"
-                                                        {{ old('country_code') == '+44' ? 'selected' : '' }}>
-                                                        UK (+44)
-                                                    </option>
-                                                    <option value="+971"
-                                                        {{ old('country_code') == '+971' ? 'selected' : '' }}>
-                                                        UAE (+971)
-                                                    </option>
-
-                                                </select>
+                                                <input type="text" name="calling_code" id="calling_code"
+                                                    class="form-control" placeholder="Code" readonly
+                                                    value="{{ old('calling_code') }}">
                                             </div>
 
                                             <div class="col-7 padding5px">
-
-                                                <input type="text" name="phone" class="form-control"
-                                                    placeholder="Phone Number" value="{{ old('phone') }}">
-
+                                                <input type="text" name="phone" required class="form-control"
+                                                    placeholder="Phone Number" value="{{ old('phone') }}"
+                                                    inputmode="numeric" pattern="[0-9]{1,12}" maxlength="12"
+                                                    oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 12);">
                                             </div>
-
                                         </div>
 
                                         @error('phone')
-                                            <small class="text-danger">
-                                                {{ $message }}
-                                            </small>
+                                            <small class="text-danger">{{ $message }}</small>
                                         @enderror
-
                                     </div>
                                 </div>
-
-
-                                <!-- Country -->
-                                <div class="col-md-6">
-                                    <div class="mb-4">
-
-                                        <select name="country_id" class="form-select">
-
-                                            <option value="">
-                                                Country
-                                            </option>
-
-                                            @foreach ($countries as $country)
-                                                <option value="{{ $country->id }}"
-                                                    {{ old('country_id') == $country->id ? 'selected' : '' }}>
-
-                                                    {{ $country->name }}
-
-                                                </option>
-                                            @endforeach
-
-                                        </select>
-
-                                        @error('country_id')
-                                            <small class="text-danger">
-                                                {{ $message }}
-                                            </small>
-                                        @enderror
-
-                                    </div>
-                                </div>
-
 
                                 <!-- Subject -->
-                                {{-- <div class="col-md-12">
+                                <div class="col-md-12">
                                     <div class="mb-4">
-
                                         <select name="subject_id" class="form-select">
-
-                                            <option value="">
-                                                Subject
-                                            </option>
-
+                                            <option value=""> Subject </option>
                                             @foreach ($subjects as $subject)
                                                 <option value="{{ $subject->id }}"
                                                     {{ old('subject_id') == $subject->id ? 'selected' : '' }}>
-
                                                     {{ $subject->name }}
-
                                                 </option>
                                             @endforeach
-
                                         </select>
-
                                         @error('subject_id')
                                             <small class="text-danger">
                                                 {{ $message }}
                                             </small>
                                         @enderror
-
                                     </div>
-                                </div> --}}
+                                </div>
 
 
                                 <!-- Description -->
                                 <div class="col-md-12">
                                     <div class="mb-4">
-
-                                        <textarea name="description" class="form-control" rows="5"
+                                        <textarea name="description" required class="form-control" rows="5"
                                             placeholder="Tell us about your challenges or concerns">{{ old('description') }}</textarea>
-
                                         @error('description')
                                             <small class="text-danger">
                                                 {{ $message }}
                                             </small>
                                         @enderror
-
                                     </div>
+                                </div>
+
+                                <div class="mb-2">
+                                    <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}">
+                                    </div>
+
+                                    @error('g-recaptcha-response')
+                                        <div class="text-danger mt-2">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
 
                             </div>
@@ -366,4 +325,10 @@
 
 
     </div>
+    <script>
+        document.getElementById('country_id').addEventListener('change', function() {
+            const code = this.options[this.selectedIndex].getAttribute('data-code');
+            document.getElementById('calling_code').value = code ? '' + code : '';
+        });
+    </script>
 @endsection
