@@ -14,6 +14,12 @@ class Enquiry extends Model
         'country_code',
         'phone',
         'country_id',
+        'subject_id',
         'description',
     ];
+
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class, 'subject_id');
+    }
 }

@@ -48,6 +48,7 @@
     <script src="{{ asset('dist/js/Frontend/bootstrap.bundle.min.js') }} "></script>
     <script src="{{ asset('dist/js/Frontend/jquery-latest.min.js') }} "></script>
     <script src="{{ asset('/dist/css/front-end/fancybox/fancybox.umd.js') }} "></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <!-- Fixed Header script start-->
     <script>

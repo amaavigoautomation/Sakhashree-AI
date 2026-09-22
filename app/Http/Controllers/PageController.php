@@ -11,6 +11,7 @@ use App\Models\FaqType;
 use App\Models\TestimonialVideo;
 use App\Models\Country;
 use App\Models\Event;
+use App\Models\Subject;
 use App\Models\Workshop;
 
 class PageController extends BaseController
@@ -122,8 +123,9 @@ class PageController extends BaseController
     public function contact()
     {
         $countries = Country::where('active', true)->get();
+        $subjects = Subject::where('active', true)->get();
 
-        return view('frontend.contact',compact('countries'));
+        return view('frontend.contact',compact('countries','subjects'));
     }
 
     public function consultations()
