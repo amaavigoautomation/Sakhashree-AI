@@ -10,7 +10,7 @@ use App\Models\Faq;
 use App\Models\FaqType;
 use App\Models\TestimonialVideo;
 use App\Models\Country;
-
+use App\Models\Workshop;
 
 class PageController extends BaseController
 {
@@ -49,8 +49,20 @@ class PageController extends BaseController
 
     public function workshop()
     {
+        $latestWorkshop = Workshop::where('active', true)
+            ->where('is_latest', true)
+            ->orderBy('id', 'desc')
+            ->first();
 
-        return view('frontend.workshop');
+        $pastWorkshops = Workshop::where('active', true)
+            ->where('is_latest', false)
+            ->orderBy('id', 'desc')
+            ->get();
+
+        return view('frontend.workshop', compact(
+            'latestWorkshop',
+            'pastWorkshops'
+        ));
     }
 
     public function events()
