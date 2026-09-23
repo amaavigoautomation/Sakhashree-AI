@@ -96,7 +96,7 @@
                                                         </h2>
 
                                                         <div class="ueboxinfo">
-                                                            {{ $tour->description }}
+                                                            {!! $tour->description !!}
                                                         </div>
 
 
@@ -113,12 +113,13 @@
 
                                                                     <div>
                                                                         @if ($tour->start_date && $tour->end_date)
-                                                                            {{ $tour->start_date }} -
-                                                                            {{ $tour->end_date }}
+                                                                            {{ \Carbon\Carbon::parse($tour->start_date)->format('d') }}
+                                                                            -
+                                                                            {{ \Carbon\Carbon::parse($tour->end_date)->format('d M Y') }}
                                                                         @elseif ($tour->start_date)
-                                                                            {{ $tour->start_date }}
+                                                                            {{ \Carbon\Carbon::parse($tour->start_date)->format('d M Y') }}
                                                                         @else
-                                                                            {{ $tour->end_date }}
+                                                                            {{ \Carbon\Carbon::parse($tour->end_date)->format('d M Y') }}
                                                                         @endif
                                                                     </div>
 
@@ -135,7 +136,8 @@
                                                                     </div>
 
                                                                     <div>
-                                                                        {{ $tour->days }} Days
+                                                                        {{ $tour->days }}
+                                                                        {{ $tour->days == 1 ? 'Day' : 'Days' }}
                                                                     </div>
 
                                                                 </div>
@@ -184,7 +186,7 @@
                                                             <img src="{{ asset('public/images/spiritual_tours/image_file/' . $tour->id . '/' . $tour->image_file) }}"
                                                                 alt="{{ $tour->title }}">
                                                         @else
-                                                            <img src="{{ asset('dist/img/st_img01.jpg') }}"
+                                                            <img src="{{ asset('dist/images/no-image.png') }}"
                                                                 alt="{{ $tour->title }}">
                                                         @endif
                                                     </div>
@@ -426,7 +428,7 @@
                                                 <img src="{{ asset('public/images/spiritual_tours/image_file/' . $tour->id . '/' . $tour->image_file) }}"
                                                     alt="{{ $tour->title }}">
                                             @else
-                                                <img src="{{ asset('dist/img/pastjourney_img01.jpg') }}"
+                                                <img src="{{ asset('dist/images/no-image.png') }}"
                                                     alt="{{ $tour->title }}">
                                             @endif
 
@@ -454,14 +456,14 @@
                                                         </div>
 
                                                         <div>
-                                                            {{ $tour->days }} Days
+                                                            {{ $tour->days }} {{ $tour->days == 1 ? 'Day' : 'Days' }}
                                                         </div>
 
                                                     </div>
                                                 @endif
 
 
-                                                @if ($tour->location)
+                                                {{-- @if ($tour->location)
                                                     <div class="d-flex gap-2 align-items-center">
 
                                                         <div>
@@ -473,7 +475,7 @@
                                                         </div>
 
                                                     </div>
-                                                @endif
+                                                @endif --}}
 
 
                                                 @if ($tour->start_date)

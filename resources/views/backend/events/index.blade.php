@@ -110,9 +110,20 @@
 
                                     <!-- Active -->
                                     <td>
-                                        <p>
-                                            {{ $event->active == 1 ? 'Yes' : 'No' }}
-                                        </p>
+
+                                        @php
+                                            $active = $event->active;
+                                            $checked = $active == 1 ? 'checked' : '';
+                                        @endphp
+
+                                        <input type="checkbox" id="toggle-{{ $event->id }}"
+                                            class="status-checkbox toggle-checkbox" data-id="{{ $event->id }}"
+                                            data-model="Event" {{ $checked }}>
+
+                                        <label for="toggle-{{ $event->id }}" class="toggle-label">
+                                            <span class="toggle-slider"></span>
+                                        </label>
+
                                     </td>
 
                                     <!-- Past Event -->

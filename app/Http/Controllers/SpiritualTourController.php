@@ -29,7 +29,7 @@ class SpiritualTourController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $tour = SpiritualTour::create([
             'title'       => $request->input('title'),
             'description' => $request->input('description'),
@@ -66,36 +66,43 @@ class SpiritualTourController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
-        $tour = SpiritualTour::find($id);
+{
+    $tour = SpiritualTour::find($id);
 
-        if (!$tour) {
-            return redirect()->route('spiritual_tours_listing.index')->with('error', 'Tour not found.');
-        }
-
-        $tour->update([
-            'title'       => $request->input('title'),
-            'description' => $request->input('description'),
-            'start_date'  => $request->input('start_date'),
-            'end_date'    => $request->input('end_date'),
-            'location'    => $request->input('location'),
-            'image_file'  => $request->input('image_file'),
-            'days'        => $request->input('days'),
-            'is_upcoming' => $request->input('is_upcoming'),
-            'active'      => $request->input('active'),
-        ]);
-
-        if ($request->hasFile('image_file')) {
-            $image = $request->file('image_file');
-            $folder = 'images/spiritual_tours/image_file/' . $tour->id;
-            $image->move(public_path($folder), $image->getClientOriginalName());
-
-            $tour->image_file = $image->getClientOriginalName();
-        }
-        $tour->save();
-
-        return redirect()->route('spiritual_tours_listing.index')->with('success', 'Tour updated successfully!');
+    if (!$tour) {
+        return redirect()->route('spiritual_tours_listing.index')
+            ->with('error', 'Tour not found.');
     }
+
+    $tour->update([
+        'title'       => $request->input('title'),
+        'description' => $request->input('description'),
+        'start_date'  => $request->input('start_date'),
+        'end_date'    => $request->input('end_date'),
+        'location'    => $request->input('location'),
+        'days'        => $request->input('days'),
+        'is_upcoming' => $request->input('is_upcoming'),
+        'active'      => $request->input('active'),
+    ]);
+
+    // Update image only when a new image is selected
+    if ($request->hasFile('image_file')) {
+        $image = $request->file('image_file');
+
+        $folder = 'images/spiritual_tours/image_file/' . $tour->id;
+
+        $image->move(
+            public_path($folder),
+            $image->getClientOriginalName()
+        );
+
+        $tour->image_file = $image->getClientOriginalName();
+        $tour->save();
+    }
+
+    return redirect()->route('spiritual_tours_listing.index')
+        ->with('success', 'Tour updated successfully!');
+}
 
     /**
      * Remove the specified resource from storage.

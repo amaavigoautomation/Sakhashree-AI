@@ -57,7 +57,7 @@
                         <div class="col-md-12">
                             <div class="input-style-1">
                                 <label>Description</label>
-                                <textarea name="description" rows="5" placeholder="Enter description">{{ old('description', $tour->description) }}</textarea>
+                                <textarea name="description" rows="5" class="rich-editor" placeholder="Enter description">{{ old('description', $tour->description) }}</textarea>
                             </div>
                         </div>
 
