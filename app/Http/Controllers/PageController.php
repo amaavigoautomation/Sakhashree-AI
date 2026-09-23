@@ -27,7 +27,9 @@ class PageController extends BaseController
 
         $testimonials = Testimonial::where('active', true)->inRandomOrder()->get();
 
-        return view('frontend.home', compact('blogs', 'testimonials'));
+        $videos = Video::where('active', true)->inRandomOrder()->limit(4)->get();
+
+        return view('frontend.home', compact('blogs', 'testimonials','videos'));
     }
 
     public function aboutme()
@@ -183,11 +185,6 @@ class PageController extends BaseController
     public function comingsoon()
     {
         return view('frontend.comingsoon');
-    }
-
-    public function evisitingcard()
-    {
-        return view('frontend.evisitingcard');
     }
 
     public function products()

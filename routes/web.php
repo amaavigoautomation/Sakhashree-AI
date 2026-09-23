@@ -40,6 +40,7 @@ use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\SpiritualTourController;
 use App\Http\Controllers\WorkshopController;
 use App\Http\Controllers\WorkshopEnquiryController;
+use App\Http\Controllers\TestimonialReviewController;
 
 // Public Authentication Routes
 Route::get('/admin', fn() => view('backend.auth.login'));
@@ -133,6 +134,7 @@ Route::middleware([CheckSession::class])->group(function () {
         'workshops_listing' => WorkshopController::class,
         'spiritual_tours_listing' => SpiritualTourController::class,
         'workshop_enquiries' => WorkshopEnquiryController::class,
+        'testimonial_review_listing' => TestimonialReviewController::class,
 
     ]);
 
