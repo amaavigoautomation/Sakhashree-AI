@@ -97,8 +97,20 @@
                                 <input type="text" name="time_code" placeholder="IST" value="{{ old('time_code') }}">
                             </div>
                         </div>
+                        <!-- Video Link -->
+                        <div class="col-sm-6">
+                            <div class="input-style-1">
+                                <label>Video Link</label>
+
+                                <input type="url" name="video_link" placeholder="Video Link"
+                                    value="{{ old('video_link') }}">
+                            </div>
+                        </div>
 
                     </div>
+
+
+
 
                     <hr>
 
@@ -110,22 +122,6 @@
                                 <label>Description</label>
 
                                 <textarea name="description" rows="10" class="rich-editor" placeholder="Event Description">{!! old('description') !!}</textarea>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <hr>
-
-                    <!-- Video Link -->
-                    <div class="row mt-15">
-
-                        <div class="col-sm-6">
-                            <div class="input-style-1">
-                                <label>Video Link</label>
-
-                                <input type="url" name="video_link" placeholder="Video Link"
-                                    value="{{ old('video_link') }}">
                             </div>
                         </div>
 

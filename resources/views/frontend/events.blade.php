@@ -240,6 +240,7 @@
                                                 </div>
 
                                                 <div>
+                                                    {{-- chages in that format  --}}
                                                     {{ str_pad($event->time_code, 2, '0', STR_PAD_LEFT) }} -
                                                     {{ \Carbon\Carbon::parse($event->start_time)->format('g:i A') }} -
                                                     {{ \Carbon\Carbon::parse($event->end_time)->format('g:i A') }}
