@@ -337,21 +337,25 @@ class BlogsController extends Controller
     {
         $query = $request->input('search');
 
-        $blogs = Blog::where('title', 'LIKE', "%{$query}%")->get();
+        $blogs = Blog::where('active', true)
+            ->where('title', 'LIKE', "%{$query}%")
+            ->get();
 
         if ($blogs->isEmpty()) {
-            return "<p style='padding: 10px;'>No results found</p>";
+            return '<div class="blog-search-no-results">No results found</div>';
         }
 
-        $html = "<ul>";
+        $html = '<ul class="blog-search-results">';
+
         foreach ($blogs as $blog) {
-            $html .= "<li>
-                    <a href='" . route('blog_detail', $blog->page_slug) . "'>
-                        " . e($blog->title) . "
-                    </a>
-                  </li>";
+            $html .= '<li>
+                <a href="' . route('blog_detail', $blog->page_slug) . '">
+                    ' . e($blog->title) . '
+                </a>
+            </li>';
         }
-        $html .= "</ul>";
+
+        $html .= '</ul>';
 
         return $html;
     }

@@ -3,13 +3,9 @@
 @section('content')
     <div class="maincontarea">
 
-        <!-- Collage section start -->
         @include('partials.frontend.collagearea')
-        <!-- Collage section end -->
 
-        <!-- Collage content mobile section start -->
         @include('partials.frontend.collagecontareamob')
-        <!-- Collage content mobile section end -->
 
         <!-- WHAT I DO section start -->
         @include('partials.frontend.whatidoarea')

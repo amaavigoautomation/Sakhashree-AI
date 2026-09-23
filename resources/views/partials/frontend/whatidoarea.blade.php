@@ -60,7 +60,8 @@
                 </div>
             </div>
         </div>
-        <div class="topmargin30 text-center"><a href="{{ route('consultations') }}"><button class="secondrybtn btnmd">Book Chakra
+        <div class="topmargin30 text-center"><a href="{{ route('consultations') }}"><button
+                    class="secondrybtn btnmd">Book Chakra
                     Consultation</button></a></div>
         <!-- Healing Offerings section end here -->
 
@@ -103,7 +104,8 @@
                             </div>
                             <div class="col-md-3 col-6 padding5px">
                                 <div class="rudrakshaserbox">
-                                    <div class="rudrakshasericon"><img src="dist/img/chakra_diagnosis_healing.svg"></div>
+                                    <div class="rudrakshasericon"><img src="dist/img/chakra_diagnosis_healing.svg">
+                                    </div>
                                     <div>Chakra Diagnosis & Healing</div>
                                 </div>
                             </div>
@@ -169,7 +171,8 @@
                     <div class="mainheading">
                         <h2>Retreats</h2>
                     </div>
-                    <div class="viewalltext topmargin10">| <a href="{{ route('spiritual_tours') }}">View all Retreats</a></div>
+                    <div class="viewalltext topmargin10">| <a href="{{ route('spiritual_tours') }}">View all
+                            Retreats</a></div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -292,7 +295,8 @@
                     </div>
                 </div>
             </div>
-            <div class="sucstoriesbtnarea"><a href="{{ route('testimonials_video_list') }}"><button class="secondrybtn btnmd">Watch
+            <div class="sucstoriesbtnarea"><a href="{{ route('testimonials_video_list') }}"><button
+                        class="secondrybtn btnmd">Watch
                         Success Stories</button></a></div>
         </div>
         <!-- Transformation Stories Desktop start -->
@@ -509,78 +513,82 @@
                 </div>
             </div>
         </div>
-        <div class="topmargin10 text-center"><a href="{{route('videos_list')}}"><button class="secondrybtn btnmd">View All
+        <div class="topmargin10 text-center"><a href="{{ route('videos_list') }}"><button
+                    class="secondrybtn btnmd">View All
                     Videos</button></a></div>
         <!-- Videos section end here -->
 
         <!-- Blogs section start here -->
-        <div class="mainheading text-center topmargin60">
-            <h2>Blogs</h2>
-        </div>
-        <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="wrvbcardarea">
-                    <a href="blogdetails.html">
-                        <div class="wrvbcard">
-                            <div class="wrvbcardimg"><img src="dist/img/blog_img01.jpg"></div>
-                            <div class="bncardtitlearea">
-                                <div class="blogscardtitle">
-                                    <h6>The Art of Give and Take</h6>
-                                </div>
-                                <div class="viewalltext">Read More <i class="fa-solid fa-arrow-right"></i></div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+
+        @if ($blogs->isNotEmpty())
+
+            <div class="mainheading text-center topmargin60">
+                <h2>Blogs</h2>
             </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="wrvbcardarea">
-                    <a href="blogdetails.html">
-                        <div class="wrvbcard">
-                            <div class="wrvbcardimg"><img src="dist/img/blog_img02.jpg"></div>
-                            <div class="bncardtitlearea">
-                                <div class="blogscardtitle">
-                                    <h6>A Meditation on My Mother, the Earth</h6>
+
+            <div class="row">
+
+                @foreach ($blogs->take(4) as $blog)
+                    <div class="col-lg-3 col-md-6">
+
+                        <div class="wrvbcardarea">
+
+                            <a href="{{ route('blog_detail', $blog->page_slug) }}">
+
+                                <div class="wrvbcard">
+
+                                    <div class="wrvbcardimg">
+
+                                        @if ($blog->image_file)
+                                            <img src="{{ asset('public/images/blog/image_file/' . $blog->id . '/' . $blog->image_file) }}"
+                                                alt="{{ $blog->title }}">
+                                        @else
+                                            <img src="{{ asset('dist/img/blog_img01.jpg') }}"
+                                                alt="{{ $blog->title }}">
+                                        @endif
+
+                                    </div>
+
+                                    <div class="bncardtitlearea">
+
+                                        <div class="blogscardtitle">
+
+                                            <h6>
+                                                {{ $blog->title }}
+                                            </h6>
+
+                                        </div>
+
+                                        <div class="viewalltext">
+                                            Read More
+                                            <i class="fa-solid fa-arrow-right"></i>
+                                        </div>
+
+                                    </div>
+
                                 </div>
-                                <div class="viewalltext">Read More <i class="fa-solid fa-arrow-right"></i></div>
-                            </div>
+
+                            </a>
+
                         </div>
-                    </a>
-                </div>
+
+                    </div>
+                @endforeach
+
             </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="wrvbcardarea">
-                    <a href="blogdetails.html">
-                        <div class="wrvbcard">
-                            <div class="wrvbcardimg"><img src="dist/img/blog_img03.jpg"></div>
-                            <div class="bncardtitlearea">
-                                <div class="blogscardtitle">
-                                    <h6>How to Deal with Stress</h6>
-                                </div>
-                                <div class="viewalltext">Read More <i class="fa-solid fa-arrow-right"></i></div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+
+            <div class="topmargin10 text-center">
+
+                <a href="{{ route('blogs') }}">
+                    <button class="secondrybtn btnmd">
+                        View All Blogs
+                    </button>
+                </a>
+
             </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="wrvbcardarea">
-                    <a href="blogdetails.html">
-                        <div class="wrvbcard">
-                            <div class="wrvbcardimg"><img src="dist/img/blog_img04.jpg"></div>
-                            <div class="bncardtitlearea">
-                                <div class="blogscardtitle">
-                                    <h6>The Importance of Having a Guru</h6>
-                                </div>
-                                <div class="viewalltext">Read More <i class="fa-solid fa-arrow-right"></i></div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="topmargin10 text-center"><a href="blogs.html"><button class="secondrybtn btnmd">View All
-                    Blogs</button></a></div>
+
+        @endif
+
         <!-- Blogs section end here -->
 
         <!-- News section start here -->

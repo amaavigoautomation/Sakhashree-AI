@@ -22,7 +22,6 @@ class PageController extends BaseController
         $blogs = Blog::whereNotNull('title')
             ->where('active', true)
             ->whereNotNull('page_slug')
-            ->take(2)
             ->inRandomOrder()
             ->get();
 
@@ -72,19 +71,22 @@ class PageController extends BaseController
 
     public function workshop()
     {
-        $latestWorkshop = Workshop::where('active', true)
+        $latestWorkshops = Workshop::where('active', true)
             ->where('is_latest', true)
             ->orderBy('id', 'desc')
-            ->first();
+            ->get();
 
         $pastWorkshops = Workshop::where('active', true)
             ->where('is_latest', false)
             ->orderBy('id', 'desc')
             ->get();
 
+        $countries = Country::where('active', true)->get();
+
         return view('frontend.workshop', compact(
-            'latestWorkshop',
-            'pastWorkshops'
+            'latestWorkshops',
+            'pastWorkshops',
+            'countries'
         ));
     }
 

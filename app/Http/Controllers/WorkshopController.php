@@ -29,6 +29,17 @@ class WorkshopController extends Controller
             'city' => $request->input('city'),
             'is_latest' => $request->input('is_latest'),
             'active' => $request->input('active'),
+            'description' => [
+                'required',
+                'string',
+                function ($attribute, $value, $fail) {
+                    $wordCount = str_word_count(strip_tags($value));
+
+                    if ($wordCount > 80) {
+                        $fail('Description must contain less than 80 words.');
+                    }
+                },
+            ],
         ]);
 
         if ($request->hasFile('image_file')) {

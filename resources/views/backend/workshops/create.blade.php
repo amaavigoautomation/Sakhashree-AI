@@ -64,10 +64,27 @@
                             </div>
                         </div>
 
+                        <!-- Description -->
+                        <div class="col-md-6">
+                            <div class="input-style-1">
+                                <label>
+                                    Description
+                                    <span class="mandatory">*</span>
+                                </label>
+
+                                <textarea name="description" id="description" rows="4" placeholder="Enter workshop description" required></textarea>
+
+                                <small>
+                                    <span id="wordCount">0</span>/15 words
+                                </small>
+                            </div>
+                        </div>
+
                         <!-- Image -->
                         <div class="col-sm-3">
                             <label>Image</label>
-                            <img id="selectedImage" class="addedImage" src="{{ asset('public/images/no-image.png') }}" alt="Selected Image">
+                            <img id="selectedImage" class="addedImage" src="{{ asset('public/images/no-image.png') }}"
+                                alt="Selected Image">
                             <input type="file" name="image_file" id="imgupload" onchange="displayImage(this)">
                         </div>
 
@@ -119,4 +136,40 @@
 
         </div>
     </section>
+    <script>
+        $(document).ready(function() {
+
+            const description = $('#description');
+            const wordCount = $('#wordCount');
+            const maxWords = 15;
+
+            function updateWordCount() {
+
+                let text = description.val().trim();
+
+                if (text === '') {
+                    wordCount.text(0);
+                    return;
+                }
+
+                let words = text.split(/\s+/);
+
+                if (words.length > maxWords) {
+
+                    words = words.slice(0, maxWords);
+
+                    description.val(words.join(' '));
+                }
+
+                wordCount.text(words.length);
+            }
+
+            description.on('input', function() {
+                updateWordCount();
+            });
+
+            updateWordCount();
+
+        });
+    </script>
 @endsection

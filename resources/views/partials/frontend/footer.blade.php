@@ -13,7 +13,7 @@
                 </div>
                 <div class="col-lg-6 rowmargintabmob20">
                     <div class="row padding5pxarea">
-                        <div class="col-md-5 col-12 padding5px"><a href="consultation.html"><button
+                        <div class="col-md-5 col-12 padding5px"><a href="{{ route('consultations') }}"><button
                                     class="primarybtn btnlgfullwidth">Book Chakra Consultation</button></a></div>
                         <div class="col-md-3 col-5 padding5px rowmargin10"><a
                                 href="{{ route('spiritual_tours') }}"><button class="whitebtnol btnlgfullwidth">Join
@@ -69,7 +69,7 @@
                             <h4>Resources</h4>
                             <div class="footertext topmargin20">
                                 <ul>
-                                    <li><a href="blogs.html">Blogs</a></li>
+                                    <li><a href="{{ route('blogs') }}">Blogs</a></li>
                                     <li><a href="{{ route('videos_list') }}">Videos</a></li>
                                     <li><a href="{{ route('faq_list') }}">FAQ’s</a></li>
                                     <li><a href="{{ route('testimonials_list') }}">Testimonials</a></li>

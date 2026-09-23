@@ -107,6 +107,38 @@
             /*DropDown Selectro*/
             $('.jSelectbox').select2();
         });
+
+        $(document).ready(function () {
+
+        $('#search_blogs').keyup(function () {
+
+            let keyword = $(this).val().trim();
+
+            if (keyword.length < 3) {
+                $('#blog_results').hide().html('');
+                return;
+            }
+
+            $.ajax({
+                url: "{{ route('search.blogs') }}",
+                type: "POST",
+                data: {
+                    search: keyword,
+                    _token: "{{ csrf_token() }}"
+                },
+                success: function (response) {
+                    $('#blog_results')
+                        .html(response)
+                        .show();
+                },
+                error: function () {
+                    $('#blog_results').hide();
+                }
+            });
+
+        });
+
+    });
     </script>
 
     @stack('scripts')

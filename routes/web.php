@@ -39,6 +39,7 @@ use App\Http\Controllers\BlogCategoriesController;
 use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\SpiritualTourController;
 use App\Http\Controllers\WorkshopController;
+use App\Http\Controllers\WorkshopEnquiryController;
 
 // Public Authentication Routes
 Route::get('/admin', fn() => view('backend.auth.login'));
@@ -74,6 +75,8 @@ Route::get('/blogcategories', [BlogCategoriesController::class, 'index'])->name(
 Route::get('/blog-category/{page_slug}', [BlogsController::class,'categoryFilter'])->name('blog.category');
 
 Route::post('/consultations', [ConsultantController::class, 'store'])->name('consultations.store');
+Route::post('search-blogs', [BlogsController::class, 'search'])->name('search.blogs');
+Route::post('workshop-enquiry',[WorkshopEnquiryController::class, 'store'])->name('workshop.enquiry.store');
 
 
 // Middleware Start -----------------------------------------
@@ -126,10 +129,10 @@ Route::middleware([CheckSession::class])->group(function () {
         'faqs'               => FaqController::class,
         'faq_types'          => FaqTypeController::class,
         'testimonials_videos' => TestimonialVideoController::class,
-        // 'enquiries' => EnquiryController::class,
         'event' => EventController::class,
         'workshops_listing' => WorkshopController::class,
         'spiritual_tours_listing' => SpiritualTourController::class,
+        'workshop_enquiries' => WorkshopEnquiryController::class,
 
     ]);
 
@@ -160,7 +163,7 @@ Route::middleware([CheckSession::class])->group(function () {
 // });
 
 Route::get('/thank-you', function () {return view('frontend.thankyou');})->name('thankyou');
-// Reorder
+
 Route::post('/reorder', [ReorderController::class, 'reorder'])->name('universal.reorder');
 
 Route::get('/clear-cache', function () {Artisan::call('optimize:clear');return "Cache cleared successfully";});

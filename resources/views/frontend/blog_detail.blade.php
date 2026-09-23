@@ -212,8 +212,8 @@
 
                                                         <div class="blogcatboximg">
 
-                                                            @if (!empty($category->image))
-                                                                <img src="{{ asset('public/images/blog_categories/' . $category->image) }}"
+                                                            @if (!empty($category->image_file))
+                                                                <img src="{{ asset('public/images/blogcategories/image_file/' . $category->id . '/' . $category->image_file) }}"
                                                                     alt="{{ $category->name }}">
                                                             @else
                                                                 <img src="{{ asset('dist/images/no-image.png') }}"

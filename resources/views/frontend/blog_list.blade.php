@@ -35,20 +35,22 @@
                     {{-- Search --}}
                     <div class="row topmargin30">
                         <div class="col-lg-5 col-md-7">
-                            <form action="{{ route('blogs') }}" method="GET">
+                            <div class="position-relative">
                                 <div class="d-flex gap-3">
                                     <div class="flex-grow-1">
-                                        <input type="text" name="search" class="form-control"
-                                            placeholder="Find articles..." value="{{ request('search') }}">
+                                        <input type="text" id="search_blogs" class="form-control"
+                                            placeholder="Find articles..." autocomplete="off">
                                     </div>
 
                                     <div>
-                                        <button type="submit" class="primarybtn btnmd">
+                                        <button type="button" class="primarybtn btnmd">
                                             Search
                                         </button>
                                     </div>
                                 </div>
-                            </form>
+
+                                <div id="blog_results" class="blog-results"></div>
+                            </div>
                         </div>
                     </div>
 
@@ -158,10 +160,8 @@
                                                         <div class="blogcatboximg">
 
                                                             @if (!empty($category->image_file))
-                                                                <img
-                                                                        src="{{ asset('public/images/blogcategories/image_file/' . $category->id . '/' . $category->image_file) }}"
-                                                                        alt="{{ $category->name }}"
-                                                                    >
+                                                                <img src="{{ asset('public/images/blogcategories/image_file/' . $category->id . '/' . $category->image_file) }}"
+                                                                    alt="{{ $category->name }}">
                                                             @else
                                                                 <img src="{{ asset('dist/images/no-image.png') }}"
                                                                     alt="{{ $category->name }}">
