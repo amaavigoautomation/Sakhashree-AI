@@ -82,9 +82,13 @@ class BaseController extends Controller
     protected function getSeoData($controllerName, $action)
     {
 
+        // dd($controllerName,$action);
+
         $seoModule = SeoModule::where('action', $action)
             ->where('controller', $controllerName)
             ->first();
+
+        // dd($seoModule);
 
         if (!empty($seoModule)) {
             $firstImage = (!empty($seoModule->meta_image)) ? $seoModule->meta_image : '';

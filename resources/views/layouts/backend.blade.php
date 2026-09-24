@@ -195,7 +195,7 @@
                 // alert(csrfToken);
                 $.ajax({
                     url: "{{ route('get.route.name') }}",
-                    type: 'POST',
+                    type: 'GET',
                     data: {
                         controller: selectedController,
                         method: selectedMethod,

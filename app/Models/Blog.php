@@ -4,10 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\HasSeo;
+use Illuminate\Support\Str;
 
 class Blog extends Model
 {
     use HasFactory;
+    use HasSeo;
+
+    public function seoPageNameSource(): string { return $this->title; }
+
+    public function seoTitleSource(): string
+    {
+        return "Spiritual Blogs & Insights | Sakhashree Neeta";
+    }
+
+    public function seoDescriptionSource(): string
+    {
+        return "Explore spiritual blogs, healing insights and wisdom from Sakhashree Neeta to guide your inner journey.";
+    }
 
     protected $guarded = ['id'];
 

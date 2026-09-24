@@ -25,7 +25,7 @@
              <div id="collapseFilter" class="accordion-collapse collapse {{ $show }}"
                  aria-labelledby="headingFilter" data-bs-parent="#filterAccordion">
                  <div class="accordion-body">
- 
+
                      <form action="{{ route('seomodules.index') }}" method="GET">
                          <div class="row">
                          <div class="col-sm-3">
@@ -43,7 +43,7 @@
                                  </div>
                              </div>
                          </div>
- 
+
                          <div class="col-sm-6">
                              <div class="select-style-1">
                                  <label for="page_title">Page Title</label>
@@ -59,7 +59,7 @@
                                  </div>
                              </div>
                          </div>
- 
+
                          <div class="col-md-3">
                              <div class="select-style-1">
                                  <label for="status">Status</label>
@@ -76,15 +76,15 @@
                                  </div>
                              </div>
                          </div>
- 
+
                          <div class="col-sm-2">
                              <a href="{{ route('seomodules.index') }}">
                                  <button type="button" class="main-btn primary-btn btn-hover btn-xs" style="margin-top:28px">Reset</button>
                              </a>
                          </div>
- 
+
                          </div>
- 
+
                      </form>
                  </div>
              </div>
@@ -124,7 +124,7 @@
                      </label>
                      </td>
                   <td class="text-center"><a href="{{ route('seomodules.edit',$seomodule->id) }}"><i class="lni lni-pencil-alt"></i></a>
-                  <a href="{{ route('seomodules.show',$seomodule->id) }}"><i class="lni lni-list"></i></a>
+                  {{-- <a href="{{ route('seomodules.show',$seomodule->id) }}"><i class="lni lni-list"></i></a> --}}
                   </td>
 
                  </tr>

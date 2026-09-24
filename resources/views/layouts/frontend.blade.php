@@ -5,18 +5,18 @@
     <?php $defaultImage = secure_asset('/'); ?>
     <base href="{{ url('/') }}/">
     <meta charset="UTF-8">
-    <title>{{ !empty($seoData['page_title']) ? $seoData['page_title'] : 'Sakhashree' }}</title>
+    <title>{{ !empty($seoData['page_title']) ? $seoData['page_title'] : 'Sakhashree Neeta | Spiritual Guide & Healer' }}</title>
     <link rel="canonical" href="{{ !empty($seoData['page_url']) ? $seoData['page_url'] : '' }}">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="keywords" content="{{ $seoData['meta_keyword'] ?? 'Sakhashree' }}">
-    <meta name="description" content="{{ $seoData['meta_description'] ?? 'Sakhashree' }}">
+    <meta name="description" content="{{ $seoData['meta_description'] ?? 'Discover spiritual healing, workshops and guidance with Sakhashree Neeta.' }}">
     <meta data-react-helmet="true" property="og:image" content="{{ $seoData['meta_image'] ?? $defaultImage }}" />
 
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="websites" />
-    <meta property="og:title" content="{{ $seoData['page_title'] ?? 'Sakhashree' }}" />
-    <meta property="og:description" content="{{ $seoData['meta_description'] ?? 'Sakhashree' }}" />
+    <meta property="og:title" content="{{ $seoData['page_title'] ?? 'Sakhashree Neeta | Spiritual Guide & Healer' }}" />
+    <meta property="og:description" content="{{ $seoData['meta_description'] ?? 'Discover spiritual healing, workshops and guidance with Sakhashree Neeta.' }}" />
     <meta property="og:url" content="{{ $seoData['page_url'] ?? 'Sakhashree' }}" />
     <meta property="og:site_name" content="Sakhashree" />
 
