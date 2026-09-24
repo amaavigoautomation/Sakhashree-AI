@@ -40,11 +40,8 @@ use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\SpiritualTourController;
 use App\Http\Controllers\WorkshopController;
 use App\Http\Controllers\WorkshopEnquiryController;
-<<<<<<< HEAD
 use App\Http\Controllers\TestimonialReviewController;
 use App\Http\Controllers\EventEnquiryController;
-=======
->>>>>>> ddb147a642923518f62eaaf045f19ba261d770b2
 
 // Public Authentication Routes
 Route::get('/admin', fn() => view('backend.auth.login'));
