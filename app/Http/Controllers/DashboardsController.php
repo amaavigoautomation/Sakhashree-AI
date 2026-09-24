@@ -21,7 +21,7 @@ class DashboardsController extends BaseController
             'BlogTag' => BlogTag::where('active', 1)->count(),
             'Video' => Video::where('active', 1)->count(),
             'Testimonial' => Testimonial::where('active', 1)->count(),
-            'Consultation' => Consultant::all()->count(),
+            // 'Consultation' => Consultant::all()->count(),
         ];
 
         return view('backend.dashboards.index', $data);

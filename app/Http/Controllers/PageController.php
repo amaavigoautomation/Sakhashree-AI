@@ -25,11 +25,19 @@ class PageController extends BaseController
             ->inRandomOrder()
             ->get();
 
-        $testimonials = Testimonial::where('active', true)->inRandomOrder()->get();
+        $testimonials = Testimonial::where('active', 1)
+            ->where('display_on_homepage', 1)
+            ->orderBy('id', 'desc')
+            ->get();
+
+        $testimonialVideos = TestimonialVideo::where('active', 1)
+            // ->inRandomOrder()
+            ->limit(11)
+            ->get();
 
         $videos = Video::where('active', true)->inRandomOrder()->limit(4)->get();
 
-        return view('frontend.home', compact('blogs', 'testimonials','videos'));
+        return view('frontend.home', compact('blogs', 'testimonials','videos','testimonialVideos'));
     }
 
     public function aboutme()

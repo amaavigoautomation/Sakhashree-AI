@@ -71,6 +71,19 @@
                             <span id="iconImage">{{ $testimonialVideo->image }}</span>
                         </div>
 
+                        <div class="col-sm-3">
+                            <label>Facial Image</label>
+                            <div>
+                                <img id="selectedImage" class="addedImage"
+                                    src="{{ $testimonialVideo->facial_image
+                                        ? asset('public/images/testimonials_video_faces/' . $testimonialVideo->id . '/' . $testimonialVideo->facial_image)
+                                        : asset('dist/images/no-image.png') }}"
+                                    alt="Selected Image">
+                            </div>
+                            <input type="file" name="facial_image" id="imageInput" onchange="displayImage(this)">
+                            <span id="iconImage">{{ $testimonialVideo->facial_image }}</span>
+                        </div>
+
 
                         <!-- Active Status -->
                         <div class="col-sm-6">

@@ -20,6 +20,27 @@
                             </div>
                         </div>
 
+                        <div class="col-sm-3">
+                            <div class="input-style-1">
+                                <label>Email <span class="mandatory">*</span></label>
+                                <input type="text" name="email" value="{{ $testimonial->email }}" required />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="input-style-1">
+                                <label>Mobile <span class="mandatory">*</span></label>
+                                <input type="text" name="mobile" value="{{ $testimonial->mobile }}" required />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="input-style-1">
+                                <label>Designation <span class="mandatory">*</span></label>
+                                <input type="text" name="designation" value="{{ $testimonial->designation }}" required />
+                            </div>
+                        </div>
+
 
                         <div class="col-sm-3">
                             <div class="input-style-1">
@@ -73,7 +94,19 @@
                         </label>
                     </div>
 
+                    <div class="col-sm-3">
+                        <label>Display on Homepage</label><br>
 
+                        <label class="radio-inline">
+                            <input type="radio" name="display_on_homepage" value="1"
+                                {{ $testimonial->display_on_homepage == 1 ? 'checked' : '' }}> Yes
+                        </label>
+
+                        <label class="radio-inline">
+                            <input type="radio" name="display_on_homepage" value="0"
+                                {{ $testimonial->display_on_homepage == 0 ? 'checked' : '' }}> No
+                        </label>
+                    </div>
 
                     <hr>
 

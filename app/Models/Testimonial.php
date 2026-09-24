@@ -6,12 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Testimonial extends Model
 {
-    protected $fillable = [
-        'name',
-        'icon',
-        'country',
-        'city',
-        'description',
-        'active',
-    ];
+    protected $guarded = ['id'];
 }

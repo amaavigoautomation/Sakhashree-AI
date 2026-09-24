@@ -62,6 +62,21 @@ class TestimonialVideoController extends Controller
             $testimonialVideo->save();
         }
 
+        if ($request->hasFile('facial_image')) {
+
+            $image = $request->file('facial_image');
+            $folder = 'images/testimonials_video_faces/' . $testimonialVideo->id;
+            $imageName = $image->getClientOriginalName();
+
+            $image->move(
+                public_path($folder),
+                $imageName
+            );
+
+            $testimonialVideo->facial_image = $imageName;
+            $testimonialVideo->save();
+        }
+
         return redirect()
             ->route('testimonials_videos.index')
             ->with('success', 'Testimonial video created successfully.');
@@ -117,26 +132,27 @@ class TestimonialVideoController extends Controller
 
             // Delete old image
             if (!empty($testimonialVideo->image)) {
-
                 $oldImage = public_path(
                     $folder . '/' . $testimonialVideo->image
                 );
-
                 if (file_exists($oldImage)) {
                     unlink($oldImage);
                 }
             }
-
             $imageName = $image->getClientOriginalName();
-
             $image->move(
                 public_path($folder),
                 $imageName
             );
-
             $testimonialVideo->image = $imageName;
         }
 
+        if ($request->hasFile('facial_image')) {
+            $image = $request->file('facial_image');
+            $folder = 'images/testimonials_video_faces/' . $testimonialVideo->id;
+            $image->move(public_path($folder), $image->getClientOriginalName());
+            $testimonialVideo->facial_image = $image->getClientOriginalName();
+        }
         $testimonialVideo->save();
 
         return redirect()

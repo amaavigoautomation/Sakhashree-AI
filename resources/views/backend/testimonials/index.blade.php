@@ -81,8 +81,8 @@
                                     </td>
                                     <td class="text-center"><a href="{{ route('testimonials.edit', $testimonial->id) }}"><i
                                                 class="lni lni-pencil-alt"></i></a>
-                                        <a href="{{ route('testimonials.show', $testimonial->id) }}"><i
-                                                class="lni lni-list"></i></a>
+                                        {{-- <a href="{{ route('testimonials.show', $testimonial->id) }}"><i
+                                                class="lni lni-list"></i></a> --}}
                                     </td>
 
                                 </tr>

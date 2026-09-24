@@ -86,6 +86,24 @@
                             @enderror
                         </div>
 
+                        <div class="col-sm-3">
+                            <label>Facial Image</label>
+
+                            <div>
+                                <img id="selectedImage" class="addedImage" src="{{ asset('dist/images/no-image.png') }}"
+                                    alt="Selected Image">
+                            </div>
+
+                            <input type="file" name="facial_image" id="imageInput" accept=".jpg,.jpeg,.png,.svg,.webp"
+                                onchange="displayImage(this)">
+
+                            <span id="iconImage"></span>
+
+                            @error('image')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+
 
                         <!-- Active -->
                         <div class="col-sm-6">
