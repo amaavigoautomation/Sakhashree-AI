@@ -40,8 +40,11 @@ use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\SpiritualTourController;
 use App\Http\Controllers\WorkshopController;
 use App\Http\Controllers\WorkshopEnquiryController;
+<<<<<<< HEAD
 use App\Http\Controllers\TestimonialReviewController;
 use App\Http\Controllers\EventEnquiryController;
+=======
+>>>>>>> ddb147a642923518f62eaaf045f19ba261d770b2
 
 // Public Authentication Routes
 Route::get('/admin', fn() => view('backend.auth.login'));
@@ -79,7 +82,11 @@ Route::get('/blog-category/{page_slug}', [BlogsController::class,'categoryFilter
 Route::post('/consultations', [ConsultantController::class, 'store'])->name('consultations.store');
 Route::post('search-blogs', [BlogsController::class, 'search'])->name('search.blogs');
 Route::post('workshop-enquiry',[WorkshopEnquiryController::class, 'store'])->name('workshop.enquiry.store');
+<<<<<<< HEAD
 Route::post('event-enquiry',[EventEnquiryController::class, 'store'])->name('event.enquiry.store');
+=======
+Route::post('testimonial-review',[TestimonialController::class, 'submitReview'])->name('testimonial.review.store');
+>>>>>>> ddb147a642923518f62eaaf045f19ba261d770b2
 
 
 // Middleware Start -----------------------------------------
@@ -136,7 +143,6 @@ Route::middleware([CheckSession::class])->group(function () {
         'workshops_listing' => WorkshopController::class,
         'spiritual_tours_listing' => SpiritualTourController::class,
         'workshop_enquiries' => WorkshopEnquiryController::class,
-        'testimonial_review_listing' => TestimonialReviewController::class,
 
     ]);
 

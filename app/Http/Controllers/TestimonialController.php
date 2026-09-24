@@ -12,7 +12,7 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        $testimonials = Testimonial::orderBy('id', 'asc')->paginate(10);
+        $testimonials = Testimonial::orderBy('id', 'desc')->paginate(10);
 
         return view('backend.testimonials.index', compact('testimonials'));
     }
@@ -22,8 +22,6 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-
-
         return view('backend.testimonials.create');
     }
 
@@ -73,6 +71,29 @@ class TestimonialController extends Controller
             ->route('testimonials.index')
             ->with('success', 'Testimonial created successfully.');
     }
+
+    // from frontend
+    public function submitReview(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'mobile' => 'required|string|max:255',
+            'description' => 'required|string',
+        ]);
+
+        Testimonial::create([
+            'name' => $request->name,
+            'designation' => $request->designation,
+            'email' => $request->email,
+            'mobile' => $request->mobile,
+            'description' => strip_tags($request->description),
+            'display_on_homepage' => 0,
+            'active' => 0,
+        ]);
+
+        return redirect()->back()->with('success', 'Your review has been submitted successfully.');
+    }
     /**
      * Display the specified resource.
      */
@@ -98,43 +119,57 @@ class TestimonialController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|string|max:255',
+            'email' => 'nullable|email|max:255',
+            'mobile' => 'nullable|string|max:255',
+            'designation' => 'nullable|string|max:255',
             'icon' => 'nullable|mimes:jpg,jpeg,png,svg,webp|max:2048',
-            'country' => 'required',
-            'city' => 'required',
+            'country' => 'nullable|string|max:255',
+            'city' => 'nullable|string|max:255',
             'active' => 'required',
-            'description' => 'required',
+            'display_on_homepage' => 'required',
+            'description' => 'required|string',
         ]);
 
         $testimonial = Testimonial::findOrFail($id);
 
         $testimonial->name = $request->name;
+        $testimonial->email = $request->email;
+        $testimonial->mobile = $request->mobile;
+        $testimonial->designation = $request->designation;
         $testimonial->country = $request->country;
         $testimonial->city = $request->city;
         $testimonial->active = $request->active;
+        $testimonial->display_on_homepage = $request->display_on_homepage;
         $testimonial->description = strip_tags($request->description);
 
-        // If new icon is uploaded
+        // If a new icon is uploaded
         if ($request->hasFile('icon')) {
-
             $icon = $request->file('icon');
             $folder = 'images/testimonials/' . $testimonial->id;
+            $folderPath = public_path($folder);
+
+            // Create folder if it doesn't exist
+            if (!file_exists($folderPath)) {
+                mkdir($folderPath, 0755, true);
+            }
 
             // Delete old icon
             if (!empty($testimonial->icon)) {
-                $oldIcon = public_path($folder . '/' . $testimonial->icon);
 
-                if (file_exists($oldIcon)) {
-                    unlink($oldIcon);
+                $oldIconPath = $folderPath . '/' . $testimonial->icon;
+
+                if (file_exists($oldIconPath)) {
+                    unlink($oldIconPath);
                 }
             }
 
-            // New icon name
-            $iconName = $icon->getClientOriginalName();
+            // Generate a safe unique file name
+            $iconName = time() . '_' . $icon->getClientOriginalName();
 
             // Move new icon
             $icon->move(
-                public_path($folder),
+                $folderPath,
                 $iconName
             );
 
@@ -144,9 +179,7 @@ class TestimonialController extends Controller
 
         $testimonial->save();
 
-        return redirect()
-            ->route('testimonials.index')
-            ->with('success', 'Testimonial updated successfully.');
+        return redirect()->route('testimonials.index')->with('success', 'Testimonial updated successfully.');
     }
-     
+
 }

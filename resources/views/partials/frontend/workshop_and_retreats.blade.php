@@ -5,12 +5,12 @@
             <div class="mainheading">
                 <h2>Workshops</h2>
             </div>
-            <div class="viewalltext topmargin10">| <a href="{{ route('workshop') }}">View all Events</a></div>
+            <div class="viewalltext topmargin10">| <a href="{{ route('workshop') }}">View all Workshops</a></div>
         </div>
         <div class="row">
             <div class="col-md-6">
                 <div class="wrvbcardarea">
-                    <a href="workshops_details.html">
+                    <a href="{{ route('workshop') }}">
                         <div class="wrvbcard">
                             <div class="wrvbcardimg"><img src="dist/img/workshops_img01.jpg"></div>
                             <div class="wrcardtitle">
@@ -22,7 +22,7 @@
             </div>
             <div class="col-md-6">
                 <div class="wrvbcardarea">
-                    <a href="workshops_details.html">
+                    <a href="{{ route('workshop') }}">
                         <div class="wrvbcard">
                             <div class="wrvbcardimg"><img src="dist/img/workshops_img02.jpg"></div>
                             <div class="wrcardtitle">
@@ -45,7 +45,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="wrvbcardarea">
-                    <a href="spiritual_tours_details.html">
+                    <a href="{{ route('spiritual_tours') }}">
                         <div class="wrvbcard">
                             <div class="wrvbcardimg"><img src="dist/img/retreats_img01.jpg"></div>
                             <div class="wrcardtitle">
@@ -57,7 +57,7 @@
             </div>
             <div class="col-md-6">
                 <div class="wrvbcardarea">
-                    <a href="spiritual_tours_details.html">
+                    <a href="{{ route('spiritual_tours') }}">
                         <div class="wrvbcard">
                             <div class="wrvbcardimg"><img src="dist/img/retreats_img02.jpg"></div>
                             <div class="wrcardtitle">

@@ -8,11 +8,5 @@ class TestimonialVideo extends Model
 {
     protected $table = 'testimonial_video';
 
-    protected $fillable = [
-        'name',
-        'designation',
-        'image',
-        'video_link',
-        'active',
-    ];
+    protected $guarded = ['id'];
 }
