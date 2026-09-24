@@ -29,7 +29,7 @@ class PageController extends BaseController
 
         $videos = Video::where('active', true)->inRandomOrder()->limit(4)->get();
 
-        return view('frontend.home', compact('blogs', 'testimonials','videos'));
+        return view('frontend.home', compact('blogs', 'testimonials', 'videos'));
     }
 
     public function aboutme()
@@ -103,8 +103,9 @@ class PageController extends BaseController
             ->where('is_past_event', 1)
             ->orderBy('date', 'desc')
             ->paginate(6);
+        $countries = Country::where('active', 1)->get();
 
-        return view('frontend.events', compact('upcomingEvents', 'pastEvents'));
+        return view('frontend.events', compact('upcomingEvents', 'pastEvents','countries'));
     }
 
     public function videos_list()
@@ -112,7 +113,6 @@ class PageController extends BaseController
         $videos =  Video::where('active', true)->orderBy('id', 'asc')->get();
         return view('frontend.videos_list', compact('videos'));
     }
-
 
 
     public function faq_list()

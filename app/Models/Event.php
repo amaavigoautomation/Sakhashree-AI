@@ -23,6 +23,11 @@ class Event extends Model
         'is_past_event'
     ];
 
+    public function enquiries()
+    {
+        return $this->hasMany(EventEnquiry::class, 'event_id');
+    }
+
     protected $casts = [
         'active' => 'boolean',
         'is_past_event' => 'boolean',

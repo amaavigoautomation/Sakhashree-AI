@@ -5,7 +5,7 @@
     <main class="mainwrapper">
 
         <div class="innercontbg">
-            <!-- Top header start -->
+
             <!-- Middle section start here -->
             <section class="innermidcontarea">
                 <div class="container">
@@ -114,7 +114,8 @@
                                                             <div class="topmargin40">
 
                                                                 <button class="primarybtn btnmd" data-bs-toggle="modal"
-                                                                    data-bs-target="#EnquireNow">
+                                                                    data-bs-target="#EnquireNow"
+                                                                    data-event-id="{{ $event->id }}">
                                                                     Enquire Now
                                                                 </button>
 
@@ -299,39 +300,88 @@
 
     </main>
     <!-- Enquire Now Modal start -->
-    <div class="modal fade" id="EnquireNow" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="EnquireNow" tabindex="-1" aria-labelledby="enquireNowLabel" aria-hidden="true">
         <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Enquire Now</h5>
+                    <h5 class="modal-title" id="enquireNowLabel">
+                        Enquire Now
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <input class="form-control form-control-lg" placeholder="Your Full Name">
-                    </div>
-                    <div class="mb-3">
-                        <input class="form-control form-control-lg" placeholder="Enter Your Email ID">
-                    </div>
-                    <div class="mb-3">
-                        <div class="row padding5pxarea">
-                            <div class="col-5 padding5px">
-                                <select class="form-select form-select-lg">
-                                    <option value="">USA (+1)</option>
-                                </select>
-                            </div>
-                            <div class="col-7 padding5px"><input class="form-control form-control-lg"
-                                    placeholder="Mobile / Telephone"></div>
+                <form method="POST" action="{{ route('event.enquiry.store') }}">
+                    @csrf
+                    <div class="modal-body">
+                        {{-- Hidden event ID --}}
+                        <input type="hidden" name="event_id" id="event_id">
+                        {{-- Full Name --}}
+                        <div class="mb-3">
+                            <input type="text" name="full_name" class="form-control form-control-lg"
+                                placeholder="Your Full Name" required>
                         </div>
+
+                        {{-- Email --}}
+                        <div class="mb-3">
+                            <input type="email" name="email" class="form-control form-control-lg"
+                                placeholder="Enter Your Email ID" required>
+                        </div>
+
+
+                        {{-- Phone --}}
+                        <div class="mb-3">
+
+                            <div class="row padding5pxarea">
+                                {{-- countries --}}
+                                <div class="col-5 padding5px">
+                                    <select name="country_id" class="form-select form-select-lg" required>
+                                        <option value="">Select Country</option>
+                                        @foreach ($countries as $country)
+                                            <option value="{{ $country->id }}"
+                                                data-calling-code="{{ $country->calling_code }}">
+                                                {{ $country->name }}
+                                                ({{ $country->calling_code }})
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="col-7 padding5px">
+                                    <input type="text" name="mobile" class="form-control form-control-lg"
+                                        placeholder="Mobile / Telephone" required>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        {{-- Description --}}
+                        <div>
+                            <textarea name="description" class="form-control" rows="5"
+                                placeholder="Tell us about your challenges or concerns"></textarea>
+                        </div>
+
+
+                        {{-- Submit --}}
+                        <div class="topmargin20">
+                            <button type="submit" class="secondrybtn btnmdfullwidth"> Send</button>
+                        </div>
+
                     </div>
-                    <div class="">
-                        <textarea class="form-control" rows="5">Tell us about your challenges or concerns</textarea>
-                    </div>
-                    <div class="topmargin20"><button class="secondrybtn btnmdfullwidth">Send</button></div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            $('#EnquireNow').on('show.bs.modal', function(event) {
+                let button = $(event.relatedTarget);
+                let eventId = button.data('event-id');
+                $('#event_id').val(eventId);
+
+            });
+        });
+    </script>
     <!-- Enquire Now Modal end -->
 
     <!-- Event Videos Modal start -->
