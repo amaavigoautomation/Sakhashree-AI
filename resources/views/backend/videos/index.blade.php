@@ -83,9 +83,9 @@
                     <table class="table striped-table">
                         <thead>
                             <tr>
-                                <th class="text-left">
+                                {{-- <th class="text-left">
                                     <h6>Order</h6>
-                                </th>
+                                </th> --}}
                                 <th class="">
                                     <h6>Image</h6>
                                 </th>
@@ -104,9 +104,9 @@
                             @foreach ($videos as $video)
                                 <tr data-id="{{ $video->id }}" data-model="Video">
                                     {{-- <tr> --}}
-                                    <td class="text-left">
+                                    {{-- <td class="text-left">
                                         <p>{{ $video->order }} </p>
-                                    </td>
+                                    </td> --}}
                                     <td>
                                         <p>
                                             @php

@@ -13,12 +13,12 @@
 
                     <!-- Order + Title -->
                     <div class="row mt-15">
-                        <div class="col-sm-2">
+                        {{-- <div class="col-sm-2">
                             <div class="input-style-1">
                                 <label>Order <span class="mandatory">*</span></label>
                                 <input type="number" name="order" placeholder="Enter order" required>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="col-sm-4">
                             <div class="input-style-1">

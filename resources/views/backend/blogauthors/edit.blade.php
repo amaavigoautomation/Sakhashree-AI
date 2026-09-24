@@ -21,14 +21,6 @@
                         </div>
 
                         <div class="col-sm-4">
-                            <div class="input-style-1">
-                                <label>Page Slug </label>
-                                <input type="text" id="page_slug" name="page_slug" placeholder="Page Slug"
-                                    data-model="blog-authors" value="{{ $blogauthor->page_slug }}" />
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4">
                             <label>Active</label><br>
                             <label class="radio-inline">
                                 <input type="radio" name="active" class="radio-inline" value="1"
@@ -38,44 +30,6 @@
                                 <input type="radio" name="active" class="radio-inline" value="0"
                                     {{ $blogauthor->active == 0 ? 'checked' : '' }}> No
                             </label>
-                        </div>
-
-                    </div>
-                    <hr>
-
-                    <div class="row mt-15">
-                        <div class="col-sm-6">
-                            <div class="input-style-1">
-                                <label>Page Title <span class="mandatory">*</span></label>
-                                <input type="text" id="page_title" name="page_title" placeholder="Page Title"
-                                    value="{{ $blogauthor->page_title }}" />
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="input-style-1">
-                                <label>Page Url</label>
-                                <input type="url" id="page_url" name="page_url" placeholder="Page URL"
-                                    value="{{ $blogauthor->page_url }}" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row mt-15">
-                        <div class="col-sm-12">
-                            <div class="input-style-1">
-                                <label>Meta Description</label>
-                                <textarea rows="5" name="meta_description" placeholder="Meta Description">{{ $blogauthor->meta_description }}  </textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr>
-                    <div class="row mt-15">
-                        <div class="col-sm-12">
-                            <div class="input-style-1">
-                                <label>Note</label>
-                                <textarea rows="5" name="note" placeholder="Enter Note">{{ $blogauthor->note }}</textarea>
-                            </div>
                         </div>
                     </div>
                     <hr>

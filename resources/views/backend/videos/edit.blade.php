@@ -16,12 +16,12 @@
                     <div class="row mt-15">
                         <input type="hidden" name="id" value="{{ $videos->id }}" />
 
-                        <div class="col-sm-2">
+                        {{-- <div class="col-sm-2">
                             <div class="input-style-1">
                                 <label>Order <span class="mandatory">*</span></label>
                                 <input type="number" name="order" value="{{ $videos->order }}" required>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="col-sm-4">
                             <div class="input-style-1">
@@ -100,7 +100,7 @@
                     <div class="row mt-15">
                         <div class="col-sm-3">
                             <button type="submit" class="main-btn primary-btn btn-hover btn-xs">
-                                Save
+                                Update
                             </button>
                         </div>
                     </div>

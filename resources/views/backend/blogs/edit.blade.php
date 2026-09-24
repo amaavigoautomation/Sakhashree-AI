@@ -160,7 +160,7 @@
                                     </label>
                                 </div>
 
-                                <div class="col-sm-4">
+                                {{-- <div class="col-sm-4">
                                     <label>Its Video Link</label><br>
                                     <label class="radio-inline">
                                         <input type="radio" name="its_video_link" class="radio-inline its_video_link " value="1" {{ $blog->its_video_link == 1 ? 'checked' : '' }}> Yes
@@ -168,17 +168,17 @@
                                     <label class="radio-inline">
                                         <input type="radio" name="its_video_link" class="radio-inline its_video_link" value="0" {{ $blog->its_video_link == 0 ? 'checked' : '' }}> No
                                     </label>
-                                </div>
+                                </div> --}}
                             </div>
 
-                            <div class="row mt-2" id="videoLinkRow">
+                            {{-- <div class="row mt-2" id="videoLinkRow">
                                 <div class="col-sm-12">
                                     <div class="input-style-1">
                                         <label>Video Link</label>
                                         <input type="url" id="video_link" name="video_link" placeholder="Video Link" value="{{ $blog->video_link }}" />
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
 
@@ -188,30 +188,11 @@
                         </div>
                         <div class="row mt-15">
                             <div class="col-sm-3">
-                                <button type="submit" class="main-btn primary-btn btn-hover btn-xs">Save</button>
+                                <button type="submit" class="main-btn primary-btn btn-hover btn-xs">Update</button>
                             </div>
                         </div>
 
                     </div>
             </form>
     </section>
-{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
-<script>
-    $(document).ready(function () {
-        toggleVideoLink();
-
-        // When radio changes
-        $('.its_video_link').change(function () {
-            toggleVideoLink();
-        });
-
-        function toggleVideoLink() {
-            if ($('.its_video_link:checked').val() == "1") {
-                $('#video_link').closest('.row.mt-2').show();
-            } else {
-                $('#video_link').closest('.row.mt-2').hide();
-            }
-        }
-    });
-</script>
 @endsection

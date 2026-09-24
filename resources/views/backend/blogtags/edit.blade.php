@@ -42,7 +42,7 @@
       <hr>
 <div class="row mt-15">
             <!-- Page Slug -->
-     <div class="col-sm-4">
+     <div class="col-sm-6">
             <div class="input-style-1">
             <label>Page Slug</label>
             <input type="text" id="page_slug" data-model="blog-tags"  name="page_slug" placeholder="Enter Page Slug" value="{{ $blogtag->page_slug  }}"/>
@@ -50,7 +50,7 @@
      </div>
 
     <!-- Page Url -->
-     <div class="col-sm-8">
+     <div class="col-sm-6">
             <div class="input-style-1">
             <label>Page Url</label>
             <input type="text" id="page_url" name="page_url" placeholder="Page Url" value="{{ $blogtag->page_url  }}" />
@@ -69,7 +69,7 @@
 
       <div class="row mt-15">
        <div class="col-sm-3">
-        <button type="submit" class="main-btn primary-btn btn-hover btn-xs">Save</button>
+        <button type="submit" class="main-btn primary-btn btn-hover btn-xs">Update</button>
         </div>
       </div>
 

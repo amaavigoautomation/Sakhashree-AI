@@ -42,7 +42,7 @@
 
     <div class="row mt-15">
     <!-- Page Slug -->
-     <div class="col-sm-4">
+     <div class="col-sm-6">
             <div class="input-style-1">
             <label>Page Slug</label>
             <input type="text" id="page_slug"  name="page_slug" placeholder="Enter Page Slug" />
@@ -50,7 +50,7 @@
      </div>
 
     <!-- Page Url -->
-     <div class="col-sm-8">
+     <div class="col-sm-6">
             <div class="input-style-1">
             <label>Page Url</label>
             <input type="text" id="page_url" name="page_url" placeholder="Page Url" />

@@ -35,7 +35,7 @@ class PageController extends BaseController
             ->limit(11)
             ->get();
 
-        $videos = Video::where('active', true)->inRandomOrder()->limit(4)->get();
+        $videos = Video::where('active', true)->inRandomOrder()->limit(3)->get();
 
 
         return view('frontend.home', compact('blogs', 'testimonials', 'videos', 'testimonialVideos'));

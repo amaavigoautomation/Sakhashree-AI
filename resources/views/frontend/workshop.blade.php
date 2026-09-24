@@ -32,7 +32,6 @@
                     </div>
 
                     {{-- Upcoming Workshop --}}
-                    {{-- Upcoming Workshops --}}
                     @if ($latestWorkshops->isNotEmpty())
 
                         <div id="upcomingWorkshopCarousel" class="carousel slide topmargin40" data-bs-ride="carousel">
