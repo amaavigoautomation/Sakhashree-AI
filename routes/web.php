@@ -176,6 +176,6 @@ Route::post('/reorder', [ReorderController::class, 'reorder'])->name('universal.
 
 Route::get('/clear-cache', function () {Artisan::call('optimize:clear');return "Cache cleared successfully";});
 
+Route::get('/news/{page_slug}', [PageController::class, 'view'])->name('news_detail');
 Route::get('/{page_slug}', [BlogsController::class, 'view'])->name('blog_detail');
 
-// Route::get('/news/{page_slug}', [NewsController::class, 'view'])->name('news_detail');

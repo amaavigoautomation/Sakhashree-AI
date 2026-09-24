@@ -31,8 +31,8 @@
                             <div class="col-lg-3 col-md-6">
                                 <div class="wrvbcardarea">
 
-                                    {{-- <a href="{{ route('news_detail', $item->page_slug) }}"> --}}
-                                    <a href="#">
+                                    <a href="{{ $item->page_slug ? route('news_detail', $item->page_slug) : '#' }}">
+                                    {{-- <a href="#"> --}}
 
                                         <div class="wrvbcard">
 

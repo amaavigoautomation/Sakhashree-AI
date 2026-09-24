@@ -192,6 +192,13 @@ class PageController extends BaseController
         return view('frontend.news',compact('news'));
     }
 
+    // news detail page method
+    public function view($page_slug)
+    {
+        $news = News::where('page_slug', $page_slug)->where('active', true)->firstOrFail();
+        return view('frontend.news_detail', compact('news'));
+    }
+
     public function comingsoon()
     {
         return view('frontend.comingsoon');
