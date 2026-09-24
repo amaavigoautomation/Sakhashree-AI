@@ -7,18 +7,14 @@ use Illuminate\Http\Request;
 
 class SpiritualTourController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    /** Display a listing of the resource.*/
     public function index()
     {
         $spiritualTours = SpiritualTour::orderBy('active', 'desc')->Paginate(20);
         return view('backend.spiritual_tours.index', compact('spiritualTours'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    /* Show the form for creating a new resource.*/
     public function create()
     {
         return view('backend.spiritual_tours.create');
@@ -29,6 +25,24 @@ class SpiritualTourController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'description' => [
+                'nullable',
+                function ($attribute, $value, $fail) {
+                    $words = preg_split(
+                        '/\s+/',
+                        trim(strip_tags($value)),
+                        -1,
+                        PREG_SPLIT_NO_EMPTY
+                    );
+
+                    if (count($words) > 70) {
+                        $fail('Description must not exceed 70 words.');
+                    }
+                },
+            ],
+        ]);
 
         $tour = SpiritualTour::create([
             'title'       => $request->input('title'),
@@ -56,8 +70,25 @@ class SpiritualTourController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request,string $id)
     {
+         $request->validate([
+        'description' => [
+            'nullable',
+            function ($attribute, $value, $fail) {
+                $words = preg_split(
+                    '/\s+/',
+                    trim(strip_tags($value)),
+                    -1,
+                    PREG_SPLIT_NO_EMPTY
+                );
+
+                if (count($words) > 70) {
+                    $fail('Description must not exceed 70 words.');
+                }
+            },
+        ],
+    ]);
         $tour = SpiritualTour::findOrFail($id);
         return view('backend.spiritual_tours.edit', compact('tour'));
     }
@@ -66,43 +97,43 @@ class SpiritualTourController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-{
-    $tour = SpiritualTour::find($id);
+    {
+        $tour = SpiritualTour::find($id);
 
-    if (!$tour) {
+        if (!$tour) {
+            return redirect()->route('spiritual_tours_listing.index')
+                ->with('error', 'Tour not found.');
+        }
+
+        $tour->update([
+            'title'       => $request->input('title'),
+            'description' => $request->input('description'),
+            'start_date'  => $request->input('start_date'),
+            'end_date'    => $request->input('end_date'),
+            'location'    => $request->input('location'),
+            'days'        => $request->input('days'),
+            'is_upcoming' => $request->input('is_upcoming'),
+            'active'      => $request->input('active'),
+        ]);
+
+        // Update image only when a new image is selected
+        if ($request->hasFile('image_file')) {
+            $image = $request->file('image_file');
+
+            $folder = 'images/spiritual_tours/image_file/' . $tour->id;
+
+            $image->move(
+                public_path($folder),
+                $image->getClientOriginalName()
+            );
+
+            $tour->image_file = $image->getClientOriginalName();
+            $tour->save();
+        }
+
         return redirect()->route('spiritual_tours_listing.index')
-            ->with('error', 'Tour not found.');
+            ->with('success', 'Tour updated successfully!');
     }
-
-    $tour->update([
-        'title'       => $request->input('title'),
-        'description' => $request->input('description'),
-        'start_date'  => $request->input('start_date'),
-        'end_date'    => $request->input('end_date'),
-        'location'    => $request->input('location'),
-        'days'        => $request->input('days'),
-        'is_upcoming' => $request->input('is_upcoming'),
-        'active'      => $request->input('active'),
-    ]);
-
-    // Update image only when a new image is selected
-    if ($request->hasFile('image_file')) {
-        $image = $request->file('image_file');
-
-        $folder = 'images/spiritual_tours/image_file/' . $tour->id;
-
-        $image->move(
-            public_path($folder),
-            $image->getClientOriginalName()
-        );
-
-        $tour->image_file = $image->getClientOriginalName();
-        $tour->save();
-    }
-
-    return redirect()->route('spiritual_tours_listing.index')
-        ->with('success', 'Tour updated successfully!');
-}
 
     /**
      * Remove the specified resource from storage.
