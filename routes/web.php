@@ -42,6 +42,7 @@ use App\Http\Controllers\WorkshopController;
 use App\Http\Controllers\WorkshopEnquiryController;
 use App\Http\Controllers\TestimonialReviewController;
 use App\Http\Controllers\EventEnquiryController;
+use App\Http\Controllers\NewsController;
 
 // Public Authentication Routes
 Route::get('/admin', fn() => view('backend.auth.login'));
@@ -81,6 +82,8 @@ Route::post('search-blogs', [BlogsController::class, 'search'])->name('search.bl
 Route::post('workshop-enquiry',[WorkshopEnquiryController::class, 'store'])->name('workshop.enquiry.store');
 Route::post('event-enquiry',[EventEnquiryController::class, 'store'])->name('event.enquiry.store');
 Route::post('testimonial-review',[TestimonialController::class, 'submitReview'])->name('testimonial.review.store');
+
+// Route::get('/news_listing', [NewsController::class, 'news'])->name('news');
 
 
 // Middleware Start -----------------------------------------
@@ -137,6 +140,7 @@ Route::middleware([CheckSession::class])->group(function () {
         'workshops_listing' => WorkshopController::class,
         'spiritual_tours_listing' => SpiritualTourController::class,
         'workshop_enquiries' => WorkshopEnquiryController::class,
+        'news_listing' => NewsController::class,
 
     ]);
 

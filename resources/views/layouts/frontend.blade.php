@@ -22,7 +22,7 @@
 
 
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('dist/img/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('public/favicon.ico') }}" type="image/x-icon">
 
 
     <!-- External CSS Files -->

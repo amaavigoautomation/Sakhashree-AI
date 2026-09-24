@@ -11,6 +11,7 @@ use App\Models\FaqType;
 use App\Models\TestimonialVideo;
 use App\Models\Country;
 use App\Models\Event;
+use App\Models\News;
 use App\Models\Subject;
 use App\Models\Workshop;
 use App\Models\SpiritualTour;
@@ -187,8 +188,8 @@ class PageController extends BaseController
 
     public function news()
     {
-
-        return view('frontend.news');
+        $news = News::where('active', true)->get();
+        return view('frontend.news',compact('news'));
     }
 
     public function comingsoon()
