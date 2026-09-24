@@ -82,11 +82,8 @@ Route::get('/blog-category/{page_slug}', [BlogsController::class,'categoryFilter
 Route::post('/consultations', [ConsultantController::class, 'store'])->name('consultations.store');
 Route::post('search-blogs', [BlogsController::class, 'search'])->name('search.blogs');
 Route::post('workshop-enquiry',[WorkshopEnquiryController::class, 'store'])->name('workshop.enquiry.store');
-<<<<<<< HEAD
 Route::post('event-enquiry',[EventEnquiryController::class, 'store'])->name('event.enquiry.store');
-=======
 Route::post('testimonial-review',[TestimonialController::class, 'submitReview'])->name('testimonial.review.store');
->>>>>>> ddb147a642923518f62eaaf045f19ba261d770b2
 
 
 // Middleware Start -----------------------------------------
