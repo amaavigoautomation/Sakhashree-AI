@@ -37,11 +37,8 @@ class PageController extends BaseController
 
         $videos = Video::where('active', true)->inRandomOrder()->limit(4)->get();
 
-<<<<<<< HEAD
-        return view('frontend.home', compact('blogs', 'testimonials', 'videos'));
-=======
-        return view('frontend.home', compact('blogs', 'testimonials','videos','testimonialVideos'));
->>>>>>> ddb147a642923518f62eaaf045f19ba261d770b2
+
+        return view('frontend.home', compact('blogs', 'testimonials', 'videos', 'testimonialVideos'));
     }
 
     public function aboutme()
@@ -117,7 +114,7 @@ class PageController extends BaseController
             ->paginate(6);
         $countries = Country::where('active', 1)->get();
 
-        return view('frontend.events', compact('upcomingEvents', 'pastEvents','countries'));
+        return view('frontend.events', compact('upcomingEvents', 'pastEvents', 'countries'));
     }
 
     public function videos_list()
