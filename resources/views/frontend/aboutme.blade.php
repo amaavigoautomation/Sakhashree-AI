@@ -320,41 +320,43 @@
                     </div>
                 </div>
 
-                <div class="innerheadarea topmargin50">
-                    <div class="innerheadcont">
-                        <div class="ornament" aria-hidden="true"><img src="dist/img/sidebarhead1.svg"></div>
-                        <div class="mainheading text-center">
-                            <h2 class="mb-0">Photo Gallery</h2>
-                        </div>
-                        <div class="ornament" aria-hidden="true"><img src="dist/img/sidebarhead.svg"></div>
-                    </div>
-                </div>
-                <div class="swiper-container topmargin30">
-                    <!-- Additional required wrapper -->
-                    <div class="swiper-wrapper">
-                        @foreach ($photos as $index => $photo)
-                            <div class="swiper-slide">
-                                <div class="pgcardarea">
-                                    <a href="javascript:void(0)" onclick="openModal();currentSlide({{ $index + 1 }})"
-                                        class="cursor">
-                                        <div class="pgcard">
-                                            <div class="pgcardimg"><img
-                                                    src="{{ asset('public/images/galleries/image_file/' . $photo->image_file) }}">
-                                            </div>
-                                            <div class="pgcardtitle">
-                                                <h6>{!! $photo->description ?? '' !!}</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
+                @if($photos->isNotEmpty())
+                    <div class="innerheadarea topmargin50">
+                        <div class="innerheadcont">
+                            <div class="ornament" aria-hidden="true"><img src="dist/img/sidebarhead1.svg"></div>
+                            <div class="mainheading text-center">
+                                <h2 class="mb-0">Photo Gallery</h2>
                             </div>
-                        @endforeach
+                            <div class="ornament" aria-hidden="true"><img src="dist/img/sidebarhead.svg"></div>
+                        </div>
                     </div>
-                    <!--<div class="swiper-pagination"></div>-->
-                    <!-- If we need navigation buttons -->
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                </div>
+                    <div class="swiper-container topmargin30">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            @foreach ($photos as $index => $photo)
+                                <div class="swiper-slide">
+                                    <div class="pgcardarea">
+                                        <a href="javascript:void(0)" onclick="openModal();currentSlide({{ $index + 1 }})"
+                                            class="cursor">
+                                            <div class="pgcard">
+                                                <div class="pgcardimg"><img
+                                                        src="{{ asset('public/images/galleries/image_file/' . $photo->image_file) }}">
+                                                </div>
+                                                <div class="pgcardtitle">
+                                                    <h6>{!! $photo->description ?? '' !!}</h6>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <!--<div class="swiper-pagination"></div>-->
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                @endif
 
                 <!-- Gallery Popup start here-->
                 <div id="myModalgallery" class="modalgallery">
