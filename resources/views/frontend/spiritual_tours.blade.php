@@ -166,10 +166,9 @@
                                                         <div class="topmargin40">
 
                                                             <button class="primarybtn btnmd" data-bs-toggle="modal"
-                                                                data-bs-target="#EnquireNow">
-
+                                                                data-bs-target="#EnquireNow"
+                                                                data-tour-id="{{ $tour->id }}">
                                                                 Enquire Now
-
                                                             </button>
 
                                                         </div>
@@ -462,22 +461,6 @@
                                                     </div>
                                                 @endif
 
-
-                                                {{-- @if ($tour->location)
-                                                    <div class="d-flex gap-2 align-items-center">
-
-                                                        <div>
-                                                            <img src="{{ asset('dist/img/map_icon.svg') }}">
-                                                        </div>
-
-                                                        <div>
-                                                            {{ $tour->location }}
-                                                        </div>
-
-                                                    </div>
-                                                @endif --}}
-
-
                                                 @if ($tour->start_date)
                                                     <div class="d-flex gap-2 align-items-center">
 
@@ -522,79 +505,85 @@
     <div class="modal fade" id="EnquireNow" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
         <div class="modal-dialog modal-md">
-
             <div class="modal-content">
 
                 <div class="modal-header">
-
                     <h5 class="modal-title" id="exampleModalLabel">
                         Enquire Now
                     </h5>
 
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     </button>
-
                 </div>
-
 
                 <div class="modal-body">
 
-                    <div class="mb-3">
-                        <input class="form-control form-control-lg" placeholder="Your Full Name">
-                    </div>
+                    <form method="POST" action="{{ route('SpiritualTour.enquiry.store') }}">
 
-                    <div class="mb-3">
-                        <input class="form-control form-control-lg" placeholder="Enter Your Email ID">
-                    </div>
+                        @csrf
 
-                    <div class="mb-3">
+                        <!-- Spiritual Tour ID -->
+                        <input type="hidden" name="spiritual_tour_id" id="spiritual_tour_id">
 
-                        <div class="row padding5pxarea">
-
-                            <div class="col-5 padding5px">
-
-                                <select class="form-select form-select-lg">
-
-                                    <option value="">
-                                        USA (+1)
-                                    </option>
-
-                                </select>
-
-                            </div>
-
-                            <div class="col-7 padding5px">
-
-                                <input class="form-control form-control-lg" placeholder="Mobile / Telephone">
-
-                            </div>
-
+                        <!-- Full Name -->
+                        <div class="mb-3">
+                            <input type="text" name="full_name" class="form-control form-control-lg"
+                                placeholder="Your Full Name" required>
                         </div>
 
-                    </div>
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <input type="email" name="email" class="form-control form-control-lg"
+                                placeholder="Enter Your Email ID" required>
+                        </div>
 
+                        <!-- Country + Mobile -->
+                        <div class="mb-3">
+                            <div class="row padding5pxarea">
 
-                    <div>
+                                <div class="col-5 padding5px">
+                                    <select name="country_id" class="form-select form-select-lg" required>
 
-                        <textarea class="form-control" rows="5" placeholder="Tell us about your challenges or concerns"></textarea>
+                                        <option value="">
+                                            Select Country
+                                        </option>
 
-                    </div>
+                                        @foreach ($countries as $country)
+                                            <option value="{{ $country->id }}">
+                                                {{ $country->name }}
+                                                ({{ $country->calling_code }})
+                                            </option>
+                                        @endforeach
 
+                                    </select>
+                                </div>
 
-                    <div class="topmargin20">
+                                <div class="col-7 padding5px">
+                                    <input type="text" name="mobile" class="form-control form-control-lg"
+                                        placeholder="Mobile / Telephone" required>
+                                </div>
 
-                        <button class="secondrybtn btnmdfullwidth">
-                            Send
-                        </button>
+                            </div>
+                        </div>
 
-                    </div>
+                        <!-- Description -->
+                        <div>
+                            <textarea name="description" class="form-control" rows="5"
+                                placeholder="Tell us about your challenges or concerns"></textarea>
+                        </div>
+
+                        <!-- Submit -->
+                        <div class="topmargin20">
+                            <button type="submit" class="secondrybtn btnmdfullwidth">
+                                Send
+                            </button>
+                        </div>
+
+                    </form>
 
                 </div>
-
             </div>
-
         </div>
-
     </div>
     <!-- Enquire Now Modal end -->
 
@@ -636,3 +625,14 @@
     <!-- Retreat Experience Videos Modal end -->
 
 @endsection
+
+@push('scripts')
+<script>
+    document.querySelectorAll('[data-bs-target="#EnquireNow"]').forEach(function(button) {
+        button.addEventListener('click', function() {
+            document.getElementById('spiritual_tour_id').value =
+                this.getAttribute('data-tour-id');
+        });
+    });
+</script>
+@endpush

@@ -70,25 +70,8 @@ class SpiritualTourController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request,string $id)
+    public function edit(string $id)
     {
-         $request->validate([
-        'description' => [
-            'nullable',
-            function ($attribute, $value, $fail) {
-                $words = preg_split(
-                    '/\s+/',
-                    trim(strip_tags($value)),
-                    -1,
-                    PREG_SPLIT_NO_EMPTY
-                );
-
-                if (count($words) > 70) {
-                    $fail('Description must not exceed 70 words.');
-                }
-            },
-        ],
-    ]);
         $tour = SpiritualTour::findOrFail($id);
         return view('backend.spiritual_tours.edit', compact('tour'));
     }
@@ -98,6 +81,24 @@ class SpiritualTourController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'description' => [
+                'nullable',
+                function ($attribute, $value, $fail) {
+                    $words = preg_split(
+                        '/\s+/',
+                        trim(strip_tags($value)),
+                        -1,
+                        PREG_SPLIT_NO_EMPTY
+                    );
+
+                    if (count($words) > 70) {
+                        $fail('Description must not exceed 70 words.');
+                    }
+                },
+            ],
+        ]);
+
         $tour = SpiritualTour::find($id);
 
         if (!$tour) {

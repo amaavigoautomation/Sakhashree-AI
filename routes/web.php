@@ -43,7 +43,7 @@ use App\Http\Controllers\WorkshopEnquiryController;
 use App\Http\Controllers\TestimonialReviewController;
 use App\Http\Controllers\EventEnquiryController;
 use App\Http\Controllers\NewsController;
-
+use App\Http\Controllers\SpiritualTourEnquiryController;
 // Public Authentication Routes
 Route::get('/admin', fn() => view('backend.auth.login'));
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -81,6 +81,7 @@ Route::post('/consultations', [ConsultantController::class, 'store'])->name('con
 Route::post('search-blogs', [BlogsController::class, 'search'])->name('search.blogs');
 Route::post('workshop-enquiry',[WorkshopEnquiryController::class, 'store'])->name('workshop.enquiry.store');
 Route::post('event-enquiry',[EventEnquiryController::class, 'store'])->name('event.enquiry.store');
+Route::post('spiritual_tour-enquiry',[SpiritualTourEnquiryController::class, 'store'])->name('SpiritualTour.enquiry.store');
 Route::post('testimonial-review',[TestimonialController::class, 'submitReview'])->name('testimonial.review.store');
 
 // Route::get('/news_listing', [NewsController::class, 'news'])->name('news');

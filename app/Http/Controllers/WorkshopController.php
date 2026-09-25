@@ -19,16 +19,15 @@ class WorkshopController extends Controller
         return view('backend.workshops.create');
     }
 
+
     public function store(Request $request)
     {
-        $workshop = Workshop::create([
-            'name' => $request->input('name'),
-            'date' => $request->input('date'),
-            'start_time' => $request->input('start_time'),
-            'end_time' => $request->input('end_time'),
-            'city' => $request->input('city'),
-            'is_latest' => $request->input('is_latest'),
-            'active' => $request->input('active'),
+        $request->validate([
+            'name' => 'required|string',
+            'date' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
+            'city' => 'required|string',
             'description' => [
                 'required',
                 'string',
@@ -42,16 +41,38 @@ class WorkshopController extends Controller
             ],
         ]);
 
+        $workshop = Workshop::create([
+            'name' => $request->input('name'),
+            'date' => $request->input('date'),
+            'start_time' => $request->input('start_time'),
+            'end_time' => $request->input('end_time'),
+            'city' => $request->input('city'),
+            'is_latest' => $request->input('is_latest'),
+            'active' => $request->input('active'),
+            'description' => $request->input('description'),
+        ]);
+
         if ($request->hasFile('image_file')) {
             $image = $request->file('image_file');
+
             $folder = 'images/workshops/image_file/' . $workshop->id;
-            $image->move(public_path($folder), $image->getClientOriginalName());
+
+            $image->move(
+                public_path($folder),
+                $image->getClientOriginalName()
+            );
+
             $workshop->image_file = $image->getClientOriginalName();
         }
+
         $workshop->save();
 
-        return redirect()->route('workshops_listing.index')->with('success', 'Workshop saved successfully!');
+        return redirect()
+            ->route('workshops_listing.index')
+            ->with('success', 'Workshop saved successfully!');
     }
+
+
 
     public function edit(string $id)
     {
@@ -81,5 +102,4 @@ class WorkshopController extends Controller
         }
         $workshop->save();
     }
-
 }

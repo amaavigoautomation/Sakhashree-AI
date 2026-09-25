@@ -59,6 +59,9 @@
                                 class="rich-editor"
                                 placeholder="Enter description">{{ old('description') }}
                             </textarea>
+                            @error('description')
+                            <span class="text-danger">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
 

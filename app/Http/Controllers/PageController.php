@@ -76,7 +76,9 @@ class PageController extends BaseController
             ->orderBy('id', 'asc')
             ->get();
 
-        return view('frontend.spiritual_tours', compact('upcomingTours', 'pastTours'));
+        $countries = Country::where('active', 1)->get();
+
+        return view('frontend.spiritual_tours', compact('upcomingTours', 'pastTours', 'countries'));
     }
 
 
@@ -189,7 +191,7 @@ class PageController extends BaseController
     public function news()
     {
         $news = News::where('active', true)->get();
-        return view('frontend.news',compact('news'));
+        return view('frontend.news', compact('news'));
     }
 
     // news detail page method
