@@ -40,11 +40,28 @@
                                                 @if ($item->image_file)
                                                     <img src="{{ asset('public/images/news/image_file/' . $item->id . '/' . $item->image_file) }}"
                                                         alt="{{ $item->title }}">
+
                                                 @elseif ($item->has_video && $item->video_link)
-                                                    <img src="{{ asset('dist/img/news_img01.jpg') }}"
-                                                        alt="{{ $item->title }}">
+                                                    @php
+                                                        preg_match(
+                                                            '/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([^&?\/]+)/',
+                                                            $item->video_link,
+                                                            $matches
+                                                        );
+
+                                                        $videoId = $matches[1] ?? null;
+                                                    @endphp
+
+                                                    @if ($videoId)
+                                                        <img src="https://img.youtube.com/vi/{{ $videoId }}/hqdefault.jpg"
+                                                            alt="{{ $item->title }}">
+                                                    @else
+                                                        <img src="{{ asset('dist/images/no-image.png') }}"
+                                                            alt="{{ $item->title }}">
+                                                    @endif
+
                                                 @else
-                                                    <img src="{{ asset('dist/img/news_img01.jpg') }}"
+                                                    <img src="{{ asset('dist/images/no-image.png') }}"
                                                         alt="{{ $item->title }}">
                                                 @endif
                                             </div>

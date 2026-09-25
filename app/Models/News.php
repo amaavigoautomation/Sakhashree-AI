@@ -4,8 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\HasSeo;
-use Illuminate\Support\Str;
+use App\Observers\HasSeoObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 
+#[ObservedBy([HasSeoObserver::class])]
 class News extends Model
 {
     use HasSeo;

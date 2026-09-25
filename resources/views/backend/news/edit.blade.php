@@ -22,20 +22,22 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-2">
-                            <label>Active</label><br>
+                        <div class="col-md-6">
+                            <div class="input-style-1">
+                                <label>Page Title</label>
+                                <input type="text" name="page_title" placeholder="Page Title"
+                                    value="{{ old('page_title', $news->page_title) }}">
+                            </div>
+                        </div>
 
-                            <label class="radio-inline">
-                                <input type="radio" name="active" value="1"
-                                    {{ old('active', $news->active) == 1 ? 'checked' : '' }}>
-                                Yes
-                            </label>
+                    </div>
 
-                            <label class="radio-inline">
-                                <input type="radio" name="active" value="0"
-                                    {{ old('active', $news->active) == 0 ? 'checked' : '' }}>
-                                No
-                            </label>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-style-1">
+                                <label>Meta Description</label>
+                                <textarea name="meta_description" rows="5" placeholder="Meta Description">{{ old('meta_description', $news->meta_description) }}</textarea>
+                            </div>
                         </div>
 
                         <div class="col-sm-2">
@@ -53,7 +55,6 @@
                                 No
                             </label>
                         </div>
-
                     </div>
 
                     <hr>
@@ -76,10 +77,8 @@
                         {{-- Video Link --}}
                         <div class="col-md-6" id="videoLinkField"
                             style="{{ old('has_video', $news->has_video) == 1 ? '' : 'display: none;' }}">
-
                             <div class="input-style-1">
                                 <label>Video Link</label>
-
                                 <input type="text" name="video_link" placeholder="Enter Embedded Video Link"
                                     value="{{ old('video_link', $news->video_link) }}">
                             </div>
@@ -103,6 +102,22 @@
                                     onchange="displayImage(this)">
                             </div>
 
+                        </div>
+
+                        <div class="col-sm-2">
+                            <label>Active</label><br>
+
+                            <label class="radio-inline">
+                                <input type="radio" name="active" value="1"
+                                    {{ old('active', $news->active) == 1 ? 'checked' : '' }}>
+                                Yes
+                            </label>
+
+                            <label class="radio-inline">
+                                <input type="radio" name="active" value="0"
+                                    {{ old('active', $news->active) == 0 ? 'checked' : '' }}>
+                                No
+                            </label>
                         </div>
 
                     </div>

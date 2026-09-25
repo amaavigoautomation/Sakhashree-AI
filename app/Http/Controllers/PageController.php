@@ -198,7 +198,13 @@ class PageController extends BaseController
     public function view($page_slug)
     {
         $news = News::where('page_slug', $page_slug)->where('active', true)->firstOrFail();
-        return view('frontend.news_detail', compact('news'));
+
+        $seoData = [
+            'page_title' => $news->page_title,
+            'meta_description' => $news->meta_description,
+        ];
+
+        return view('frontend.news_detail', compact('news','seoData'));
     }
 
     public function comingsoon()

@@ -35,6 +35,7 @@ class eventEnquiryController extends Controller
             'calling_code' => $country?->calling_code,
             'country_id' => $request->country_id,
             'description' => $request->description,
+            'mobile' => $request->mobile,
         ]);
 
         return redirect()->back()->with('success', 'Enquiry submitted successfully.');

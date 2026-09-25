@@ -21,14 +21,11 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         $news = News::create([
-            'title'            => $request->input('title'),
-            'description'      => $request->input('description'),
-            'active'           => $request->input('active'),
-            'has_video'        => $request->input('has_video'),
-            'video_link'       => $request->input('video_link'),
-            'page_title'       => $request->input('page_title'),
-            'page_slug'        => $request->input('page_slug'),
-            'meta_description' => $request->input('meta_description'),
+            'title'       => $request->input('title'),
+            'description' => $request->input('description'),
+            'active'      => $request->input('active'),
+            'has_video'   => $request->input('has_video'),
+            'video_link'  => $request->input('video_link'),
         ]);
 
         if ($request->hasFile('image_file')) {
@@ -52,14 +49,11 @@ class NewsController extends Controller
     {
         $news = News::findOrFail($id);
         $news->update([
-            'title'            => $request->input('title'),
-            'description'      => $request->input('description'),
-            'active'           => $request->input('active'),
-            'has_video'        => $request->input('has_video'),
-            'video_link'       => $request->input('video_link'),
-            'page_title'       => $request->input('page_title'),
-            'page_slug'        => $request->input('page_slug'),
-            'meta_description' => $request->input('meta_description'),
+            'title'       => $request->input('title'),
+            'description' => $request->input('description'),
+            'active'      => $request->input('active'),
+            'has_video'   => $request->input('has_video'),
+            'video_link'  => $request->input('video_link'),
         ]);
 
         // Update image only when a new image is selected

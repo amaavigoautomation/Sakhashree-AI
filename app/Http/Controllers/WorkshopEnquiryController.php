@@ -33,6 +33,7 @@ class WorkshopEnquiryController extends Controller
             'email' => $request->email,
             'calling_code' => $country?->calling_code,
             'country_id' => $request->country_id,
+            'mobile' => $request->mobile,
             'description' => $request->description,
         ]);
 

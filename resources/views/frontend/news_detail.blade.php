@@ -11,7 +11,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{ route('news') }}">News</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">{{ $news->title }}</li>
+                                    {{-- <li class="breadcrumb-item active" aria-current="page">{{ $news->title }}</li> --}}
                                 </ol>
                             </nav>
                         </div>
@@ -40,7 +40,7 @@
                                 </div>
                             @else
                                 <div class="newsdetimg">
-                                    <img src="{{ asset('dist/img/news_img01.jpg') }}" alt="{{ $news->title }}">
+                                    <img src="{{ asset('dist/images/no-image.png') }}" alt="{{ $news->title }}">
                                 </div>
                             @endif
                         </div>
