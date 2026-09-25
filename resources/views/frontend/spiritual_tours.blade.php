@@ -528,7 +528,8 @@
                         <!-- Full Name -->
                         <div class="mb-3">
                             <input type="text" name="full_name" class="form-control form-control-lg"
-                                placeholder="Your Full Name" required>
+                                placeholder="Your Full Name" oninput="this.value = this.value.replace(/[0-9]/g, '')"
+                                required>
                         </div>
 
                         <!-- Email -->
@@ -560,7 +561,8 @@
 
                                 <div class="col-7 padding5px">
                                     <input type="text" name="mobile" class="form-control form-control-lg"
-                                        placeholder="Mobile / Telephone" required>
+                                        placeholder="Mobile / Telephone" inputmode="numeric" minlength="10"
+                                        maxlength="12" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
                                 </div>
 
                             </div>
@@ -627,12 +629,12 @@
 @endsection
 
 @push('scripts')
-<script>
-    document.querySelectorAll('[data-bs-target="#EnquireNow"]').forEach(function(button) {
-        button.addEventListener('click', function() {
-            document.getElementById('spiritual_tour_id').value =
-                this.getAttribute('data-tour-id');
+    <script>
+        document.querySelectorAll('[data-bs-target="#EnquireNow"]').forEach(function(button) {
+            button.addEventListener('click', function() {
+                document.getElementById('spiritual_tour_id').value =
+                    this.getAttribute('data-tour-id');
+            });
         });
-    });
-</script>
+    </script>
 @endpush

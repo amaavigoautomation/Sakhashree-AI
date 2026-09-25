@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Workshop;
+use App\Models\Country;
 
 class WorkshopEnquiry extends Model
 {

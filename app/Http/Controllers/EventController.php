@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
- 
+
 
 class EventController extends Controller
 {
@@ -61,15 +61,9 @@ class EventController extends Controller
         ]);
 
         if ($request->hasFile('image_file')) {
-
             $image = $request->file('image_file');
-
             $imageName = time() . '_' . $image->getClientOriginalName();
-
-            $image->move(
-                public_path('images/events/' . $event->id),
-                $imageName
-            );
+            $image->move(public_path('images/events/' . $event->id),$imageName);
 
             $event->update([
                 'image_file' => $imageName,

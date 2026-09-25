@@ -10,7 +10,8 @@ class eventEnquiryController extends Controller
 {
     public function index()
     {
-        $eventsEnquiries = EventEnquiry::orderBy('id', 'desc')->paginate(20);
+        $eventsEnquiries = EventEnquiry::with('event')->orderBy('id', 'desc')->paginate(20);
+
         return view('backend.events_enquiries.index', compact('eventsEnquiries'));
     }
 
@@ -21,11 +22,12 @@ class eventEnquiryController extends Controller
             'full_name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'country_id' => 'required|exists:countries,id',
-            'mobile' => 'required|string|max:255',
+            'mobile' => 'required|regex:/^[0-9]{10,15}$/',
             'description' => 'nullable|string',
         ]);
 
         $country = Country::find($request->country_id);
+
 
         EventEnquiry::create([
             'event_id' => $request->event_id,
@@ -35,8 +37,8 @@ class eventEnquiryController extends Controller
             'calling_code' => $country?->calling_code,
             'country_id' => $request->country_id,
             'description' => $request->description,
-            'mobile' => $request->mobile,
         ]);
+        
 
         return redirect()->back()->with('success', 'Enquiry submitted successfully.');
     }

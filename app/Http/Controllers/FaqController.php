@@ -67,7 +67,7 @@ class FaqController extends Controller
     public function update(Request $request, $id)
     {
         $faq = Faq::findOrFail($id);
-
+        // dd($request);
         $faq->update([
             'faq_type_id' => $request->faq_type_id,
             'question' => $request->question,

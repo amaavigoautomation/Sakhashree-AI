@@ -174,8 +174,8 @@
 
                             @foreach ($faqs as $faq)
                                 <tr>
-                                    <td>                                       
-                                        <p> {{ $faq->faqType->name }} </p>
+                                    <td>
+                                        <p> {{ $faq->faqType->name ?? '' }} </p>
                                     </td>
 
                                     <!-- Question -->

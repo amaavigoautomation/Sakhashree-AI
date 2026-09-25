@@ -38,14 +38,11 @@ class FaqTypeController extends Controller
         if ($request->hasFile('icon')) {
 
             $icon = $request->file('icon');
-            $folder = 'images/icon/'.$faqType->id;
+            $folder = 'images/icon/' . $faqType->id;
             $iconName = $icon->getClientOriginalName();
 
             // Move image
-            $icon->move(
-                public_path($folder),
-                $iconName
-            );
+            $icon->move(public_path($folder), $iconName);
 
             // Save image name in database
             $faqType->icon = $iconName;
@@ -66,48 +63,28 @@ class FaqTypeController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required',
-            'icon' => 'nullable|mimes:jpg,jpeg,png,svg,webp|max:2048',
-            'active' => 'required',
+        $faqType = FaqType::find($id);
+
+        if (!$faqType) {
+            return redirect()->route('faq_types.index')->with('error', 'FAQ Type not found.');
+        }
+
+        $faqType->update([
+            'name' => $request->input('name'),
+            'active' => $request->input('active'),
         ]);
 
-        $faqType = FaqType::findOrFail($id);
-        $faqType->name = $request->name;
-        $faqType->active = $request->active;
-
-        // If new icon is uploaded
         if ($request->hasFile('icon')) {
-
             $icon = $request->file('icon');
-            $folder = 'images/icon/'.$faqType->id;
+            $folder = 'images/icon/' . $faqType->id;
 
-            // Delete old icon
-            if (! empty($faqType->icon)) {
-                $oldIcon = public_path($folder.'/'.$faqType->icon);
+            $icon->move(public_path($folder), $icon->getClientOriginalName());
 
-                if (file_exists($oldIcon)) {
-                    unlink($oldIcon);
-                }
-            }
-
-            // New icon name
-            $iconName = $icon->getClientOriginalName();
-
-            // Move new icon
-            $icon->move(
-                public_path($folder),
-                $iconName
-            );
-
-            // Save new icon name
-            $faqType->icon = $iconName;
+            $faqType->icon = $icon->getClientOriginalName();
         }
 
         $faqType->save();
 
-        return redirect()
-            ->route('faq_types.index')
-            ->with('success', 'FAQ Type updated successfully.');
+        return redirect()->route('faq_types.index')->with('success', 'FAQ Type updated successfully!');
     }
 }

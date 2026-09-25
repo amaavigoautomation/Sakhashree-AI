@@ -75,14 +75,14 @@ Route::get('/news', [PageController::class, 'news'])->name('news');
 Route::get('/coming-soon', [PageController::class, 'comingsoon'])->name('comingsoon');
 Route::get('/products', [PageController::class, 'products'])->name('products');
 Route::get('/blogcategories', [BlogCategoriesController::class, 'index'])->name('category');
-Route::get('/blog-category/{page_slug}', [BlogsController::class,'categoryFilter'])->name('blog.category');
+Route::get('/blog-category/{page_slug}', [BlogsController::class, 'categoryFilter'])->name('blog.category');
 
 Route::post('/consultations', [ConsultantController::class, 'store'])->name('consultations.store');
 Route::post('search-blogs', [BlogsController::class, 'search'])->name('search.blogs');
-Route::post('workshop-enquiry',[WorkshopEnquiryController::class, 'store'])->name('workshop.enquiry.store');
-Route::post('event-enquiry',[EventEnquiryController::class, 'store'])->name('event.enquiry.store');
-Route::post('spiritual_tour-enquiry',[SpiritualTourEnquiryController::class, 'store'])->name('SpiritualTour.enquiry.store');
-Route::post('testimonial-review',[TestimonialController::class, 'submitReview'])->name('testimonial.review.store');
+Route::post('workshop-enquiry', [WorkshopEnquiryController::class, 'store'])->name('workshop.enquiry.store');
+Route::post('event-enquiry', [EventEnquiryController::class, 'store'])->name('event.enquiry.store');
+Route::post('spiritual_tour-enquiry', [SpiritualTourEnquiryController::class, 'store'])->name('SpiritualTour.enquiry.store');
+Route::post('testimonial-review', [TestimonialController::class, 'submitReview'])->name('testimonial.review.store');
 
 // Route::get('/news_listing', [NewsController::class, 'news'])->name('news');
 
@@ -142,7 +142,8 @@ Route::middleware([CheckSession::class])->group(function () {
         'spiritual_tours_listing' => SpiritualTourController::class,
         'workshop_enquiries' => WorkshopEnquiryController::class,
         'news_listing' => NewsController::class,
-
+        'spiritual_tour-enquiries' => SpiritualTourEnquiryController::class,
+        'event- enquiries' => EventEnquiryController::class,
     ]);
 
     Route::get('/enquiries', [EnquiryController::class, 'index'])->name('enquiries.index');
@@ -171,12 +172,16 @@ Route::middleware([CheckSession::class])->group(function () {
 //     return redirect('/sitemap.xml');
 // });
 
-Route::get('/thank-you', function () {return view('frontend.thankyou');})->name('thankyou');
+Route::get('/thank-you', function () {
+    return view('frontend.thankyou');
+})->name('thankyou');
 
 Route::post('/reorder', [ReorderController::class, 'reorder'])->name('universal.reorder');
 
-Route::get('/clear-cache', function () {Artisan::call('optimize:clear');return "Cache cleared successfully";});
+Route::get('/clear-cache', function () {
+    Artisan::call('optimize:clear');
+    return "Cache cleared successfully";
+});
 
 Route::get('/news/{page_slug}', [PageController::class, 'view'])->name('news_detail');
 Route::get('/{page_slug}', [BlogsController::class, 'view'])->name('blog_detail');
-

@@ -8,20 +8,7 @@ class Event extends Model
 {
     protected $table = 'events';
 
-    protected $fillable = [
-        'title',
-        'date',
-        'start_time',
-        'end_time',
-        'day',
-        'time_code',
-        'description',
-        'video_link',
-        'city_name',
-        'image_file',
-        'active',
-        'is_past_event'
-    ];
+    protected $guarded = ['id'];
 
     public function enquiries()
     {

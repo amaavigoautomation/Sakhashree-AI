@@ -316,8 +316,11 @@
                         <input type="hidden" name="event_id" id="event_id">
                         {{-- Full Name --}}
                         <div class="mb-3">
+                            {{-- <input type="text" name="full_name" class="form-control form-control-lg"
+                                placeholder="Your Full Name" required> --}}
                             <input type="text" name="full_name" class="form-control form-control-lg"
-                                placeholder="Your Full Name" required>
+                                placeholder="Your Full Name" oninput="this.value = this.value.replace(/[0-9]/g, '')"
+                                required>
                         </div>
 
                         {{-- Email --}}
@@ -346,8 +349,12 @@
                                 </div>
 
                                 <div class="col-7 padding5px">
+                                    {{-- <input type="text" name="mobile" class="form-control form-control-lg"
+                                        placeholder="Mobile / Telephone" required> --}}
+
                                     <input type="text" name="mobile" class="form-control form-control-lg"
-                                        placeholder="Mobile / Telephone" required>
+                                        placeholder="Mobile / Telephone" inputmode="numeric" maxlength="12"
+                                        oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
                                 </div>
 
                             </div>

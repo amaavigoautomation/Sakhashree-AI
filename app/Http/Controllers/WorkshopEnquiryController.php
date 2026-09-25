@@ -10,7 +10,7 @@ class WorkshopEnquiryController extends Controller
 {
     public function index()
     {
-        $workshopEnquiries = WorkshopEnquiry::orderBy('id', 'desc')->paginate(20);
+        $workshopEnquiries = WorkshopEnquiry::with('workshop')->orderBy('id', 'desc')->paginate(20);
 
         return view('backend.workshops_enquiries.index', compact('workshopEnquiries'));
     }
@@ -21,6 +21,7 @@ class WorkshopEnquiryController extends Controller
             'workshop_id' => 'required|exists:workshops,id',
             'full_name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
+            'mobile' => 'required|regex:/^[0-9]{10,15}$/',
             'country_id' => 'required|exists:countries,id',
             'description' => 'nullable|string',
         ]);
@@ -45,5 +46,4 @@ class WorkshopEnquiryController extends Controller
         $workshopEnquiry = WorkshopEnquiry::findOrFail($id);
         return view('backend.workshops_enquiries.show', compact('workshopEnquiry'));
     }
-
 }

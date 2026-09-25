@@ -276,12 +276,15 @@
                         <input type="hidden" name="workshop_id" id="workshop_id">
                         {{-- Full Name --}}
                         <div class="mb-3">
-                            <input type="text" name="full_name" class="form-control form-control-lg" placeholder="Your Full Name" required>
+                            <input type="text" name="full_name" class="form-control form-control-lg"
+                                placeholder="Your Full Name" oninput="this.value = this.value.replace(/[0-9]/g, '')"
+                                required>
                         </div>
 
                         {{-- Email --}}
                         <div class="mb-3">
-                            <input type="email" name="email" class="form-control form-control-lg" placeholder="Enter Your Email ID" required>
+                            <input type="email" name="email" class="form-control form-control-lg"
+                                placeholder="Enter Your Email ID" required>
                         </div>
 
 
@@ -304,7 +307,9 @@
                                 </div>
 
                                 <div class="col-7 padding5px">
-                                    <input type="text" name="mobile" class="form-control form-control-lg" placeholder="Mobile / Telephone" required>
+                                    <input type="text" name="mobile" class="form-control form-control-lg"
+                                        placeholder="Mobile / Telephone" inputmode="numeric" maxlength="12"
+                                        oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
                                 </div>
 
                             </div>
@@ -314,7 +319,8 @@
 
                         {{-- Description --}}
                         <div>
-                            <textarea name="description" class="form-control" rows="5" placeholder="Tell us about your challenges or concerns"></textarea>
+                            <textarea name="description" class="form-control" rows="5"
+                                placeholder="Tell us about your challenges or concerns"></textarea>
                         </div>
 
 

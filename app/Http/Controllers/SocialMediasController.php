@@ -90,7 +90,6 @@ class SocialMediasController extends Controller
             $image = $request->file('image_icon');
             $folder = 'images/socialmedias/image_icon/' . $socialmedia->id;
             $image->move(public_path($folder), $image->getClientOriginalName());
-
             $socialmedia->image_icon = $image->getClientOriginalName();
         }
         $socialmedia->save();
