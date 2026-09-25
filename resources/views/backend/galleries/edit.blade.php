@@ -9,6 +9,11 @@
                     @csrf
                     @method('PUT')
                     <div class="row mt-15">
+
+                        <div class="col-sm-4">
+                            <label>Description <span class="mandatory">*</span></label>
+                            <textarea name="description" class="form-control" rows="4" required>{{ $gallery->description }}</textarea>
+                        </div>
                         <div class="col-sm-3">
                             <label>Image</label>
                             <div id="">

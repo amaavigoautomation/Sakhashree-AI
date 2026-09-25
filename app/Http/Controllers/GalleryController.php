@@ -21,31 +21,22 @@ class GalleryController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
         $request->validate([
-            'image_file'   => 'required',
-            'image_file.*' => 'image|mimes:jpeg,png,jpg,svg,webp|max:2048',
-        ], [
-            'image_file.*.mimes' => 'Each image must be a file of type: jpeg, png, jpg, svg, webp.',
+            'description' => 'required|string',
+            'image_file'  => 'required|image|mimes:jpeg,png,jpg,svg,webp|max:2048',
         ]);
 
-        if ($request->hasFile('image_file')) {
-            foreach ($request->file('image_file') as $image) {
-                $imageName = time() . '_' . uniqid() . '.' . $image->extension();
-                $folder = 'images/galleries/image_file';
-                $image->move(public_path($folder), $imageName);
+        $image = $request->file('image_file');
+        $imageName = time() . '_' . uniqid() . '.' . $image->extension();
+        $image->move(public_path('images/galleries/image_file'), $imageName);
 
-                Gallery::create([
-                    'image_file' => $imageName,
-                    'active'     => $request->input('active', 1),
-                ]);
-            }
+        Gallery::create([
+            'image_file'  => $imageName,
+            'description' => $request->description,
+            'active'      => $request->input('active', 1),
+        ]);
 
-            return redirect()->route('galleries.index')
-    ->with('success', 'Gallery images uploaded successfully.');
-        }
-
-        return redirect()->back()->with('error', 'No images were uploaded.');
+        return redirect()->route('galleries.index')->with('success', 'Gallery image uploaded successfully.');
     }
 
     public function edit(string $id)
@@ -55,29 +46,26 @@ class GalleryController extends Controller
     }
 
     public function update(Request $request, string $id)
-        {
-            $gallery = Gallery::findOrFail($id);
+    {
+        $gallery = Gallery::findOrFail($id);
 
-            $request->validate([
-                'image_file' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-            ], [
-                'image_file.mimes' => 'Only JPG, PNG, and WEBP images are allowed.',
-            ]);
+        $request->validate([
+            'description' => 'required|string',
+            'image_file'  => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+        ]);
 
-            $data = $request->only(['active']);
+        $data = $request->only(['active', 'description']);
 
-            if ($request->hasFile('image_file')) {
-                $image  = $request->file('image_file');
-                $folder = 'images/galleries/image_file/';
-                $filename = time() . '_' . uniqid() . '.' . $image->extension();
-                $image->move(public_path($folder), $filename);
-                $data['image_file'] = $filename;
-            }
-
-            $gallery->update($data);
-
-            return redirect()->route('galleries.index')
-                ->with('success', 'Gallery updated successfully.');
+        if ($request->hasFile('image_file')) {
+            $image = $request->file('image_file');
+            $filename = time() . '_' . uniqid() . '.' . $image->extension();
+            $image->move(public_path('images/galleries/image_file'), $filename);
+            $data['image_file'] = $filename;
         }
+
+        $gallery->update($data);
+
+        return redirect()->route('galleries.index')->with('success', 'Gallery updated successfully.');
+    }
 
 }

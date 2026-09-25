@@ -8,15 +8,23 @@
                 <form method="POST" action="{{ route('galleries.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="row mt-15">
-                        <div class="col-sm-12">
-                            <!-- Preview Container -->
+                        <!-- Preview Container -->
+                        {{-- <div class="col-sm-12">
                             <div id="previewContainer" style="margin:10px 0px; display:flex; gap:10px; flex-wrap:wrap;"></div>
-                        </div>
+                        </div> --}}
                         <div class="col-sm-4">
                             <div class="input-style-1">
-                                <label>Add Images <span class="mandatory">*</span></label>
-                                <input type="file" name="image_file[]" id="imageInput" class="form-control" multiple
-                                    required>
+                                <label>Description <span class="mandatory">*</span></label>
+                                <textarea name="description" id="description" class="form-control" rows="4" required></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="input-style-1">
+                                <label>Image</label>
+                                <img id="selectedImage" class="addedImage" src="{{ asset('dist/images/no-image.png') }}"
+                                    alt="Selected Image">
+                                <input type="file" name="image_file" id="imageInput" accept="image/*"
+                                    onchange="displayImage(this)">
                             </div>
                         </div>
 
@@ -41,62 +49,17 @@
             </div>
 
     </section>
-    <script>
-        let selectedFiles = [];
-
+    {{-- <script>
         $('#imageInput').on('change', function(event) {
-            selectedFiles = Array.from(this.files); // store current files
-            renderPreviews();
-        });
-
-        // Render preview thumbnails
-        function renderPreviews() {
             let preview = $('#previewContainer');
             preview.html('');
-
-            selectedFiles.forEach((file, index) => {
-                let reader = new FileReader();
-
-                reader.onload = function(e) {
-                    let imgBox = $(`
-                        <div style="position:relative; width:100px; height:100px;">
-                            <img src="${e.target.result}"
-                                style="width:100%; height:100%; object-fit:cover;
-                                        border:1px solid #ccc; border-radius:6px;">
-                            <button data-index="${index}"
-                                    class="deleteImage"
-                                    style="position:absolute; top:2px; right:2px;
-                                        background:red; color:white; border:none;
-                                        border-radius:50%; width:22px; height:22px;
-                                        cursor:pointer; font-size:12px; line-height:20px;">
-                                ×
-                            </button>
-                        </div>
-                    `);
-                    preview.append(imgBox);
-                };
-
-                reader.readAsDataURL(file);
-            });
-
-            updateInputFiles();
-        }
-
-        // Remove image from array
-        $(document).on('click', '.deleteImage', function() {
-            let index = $(this).data('index');
-            selectedFiles.splice(index, 1);
-            renderPreviews();
+            let file = event.target.files[0];
+            if (!file) return;
+            let reader = new FileReader();
+            reader.onload = function(e) {
+                preview.append(`<img src="${e.target.result}" style="width:100px;height:100px;object-fit:cover;border:1px solid #ccc;border-radius:6px;">`);
+            };
+            reader.readAsDataURL(file);
         });
-
-        // Replace the original input's FileList
-        function updateInputFiles() {
-            let input = document.getElementById('imageInput');
-            let dataTransfer = new DataTransfer();
-
-            selectedFiles.forEach(file => dataTransfer.items.add(file));
-
-            input.files = dataTransfer.files; // set updated file list
-        }
-    </script>
+    </script> --}}
 @endsection

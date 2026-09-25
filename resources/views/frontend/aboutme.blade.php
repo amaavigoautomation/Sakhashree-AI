@@ -484,11 +484,7 @@
         </div>
     </section>
     </div>
-@endsection
-
-@push('scripts')
-
-<script>
+    <script>
     function toggleSlides() {
         $('.toggler').click(function(e) {
             var id = $(this).attr('id');
@@ -563,10 +559,12 @@
 <script>
     function openModal() {
         document.getElementById('myModalgallery').style.display = "block";
+        document.body.style.overflow = "hidden";
     }
 
     function closeModal() {
         document.getElementById('myModalgallery').style.display = "none";
+        document.body.style.overflow = "";
     }
 
     var slideIndex = 1;
@@ -602,5 +600,5 @@
         captionText.innerHTML = dots[slideIndex - 1].alt;
     }
 </script>
-@endpush
 <!-- Photo Gallery script end here -->
+@endsection

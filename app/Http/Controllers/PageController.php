@@ -32,7 +32,6 @@ class PageController extends BaseController
             ->get();
 
         $testimonialVideos = TestimonialVideo::where('active', 1)
-            // ->inRandomOrder()
             ->limit(11)
             ->get();
 
@@ -136,24 +135,11 @@ class PageController extends BaseController
         return view('frontend.faqs', compact('faqs', 'faqTypes'));
     }
 
-    public function contactus()
-    {
-        return view('frontend.contactus');
-    }
-
     public function gallery()
     {
-        $videos = Video::where('active', true)->get();
-        $videoTestimonials = $videos->filter(function ($item) {
-            return !empty($item->video_link);
-        });
-
         $photos = Gallery::where('active', true)->get();
 
-        // dd($photos);
-        $testimonials = Testimonial::where('active', true)->get();
-
-        return view('frontend.gallery', compact('videoTestimonials', 'photos', 'testimonials'));
+        return view('frontend.gallery', compact('photos'));
     }
 
     public function contact()
@@ -182,8 +168,7 @@ class PageController extends BaseController
 
     public function testimonials_video()
     {
-        $videoTestimonials = TestimonialVideo::where('active', true)
-            ->get();
+        $videoTestimonials = TestimonialVideo::where('active', true)->get();
 
         return view('frontend.testimonials_video', compact('videoTestimonials'));
     }
@@ -210,11 +195,6 @@ class PageController extends BaseController
     public function comingsoon()
     {
         return view('frontend.comingsoon');
-    }
-
-    public function products()
-    {
-        return view('frontend.products');
     }
 
     public function thankyou()
