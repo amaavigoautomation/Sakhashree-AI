@@ -45,7 +45,9 @@ class PageController extends BaseController
     {
         $videos = Video::where('active', true)->inRandomOrder()->limit(4)->get();
 
-        return view('frontend.aboutme', compact('videos'));
+        $photos = Gallery::where('active', true)->get();
+
+        return view('frontend.aboutme', compact('videos','photos'));
     }
 
     public function discover_rudra_center()
