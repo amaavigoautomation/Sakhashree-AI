@@ -34,11 +34,20 @@ class PageController extends BaseController
         $testimonialVideos = TestimonialVideo::where('active', 1)
             ->limit(11)
             ->get();
+        $workshops = Workshop::where('active', true)
+            ->where('is_latest', true)
+            ->orderBy('id', 'desc')
+            ->get();
 
+        $spiritualTours = SpiritualTour::where('is_upcoming', 1)
+            ->where('active', 1)
+            ->orderBy('id', 'asc')
+            ->get();
         $videos = Video::where('active', true)->inRandomOrder()->limit(3)->get();
 
+        $news = News::where('active', true)->orderBy('id', 'desc')->get();
 
-        return view('frontend.home', compact('blogs', 'testimonials', 'videos', 'testimonialVideos'));
+        return view('frontend.home', compact('blogs', 'testimonials', 'videos', 'testimonialVideos', 'workshops', 'spiritualTours', 'news'));
     }
 
     public function aboutme()
@@ -47,7 +56,7 @@ class PageController extends BaseController
 
         $photos = Gallery::where('active', true)->get();
 
-        return view('frontend.aboutme', compact('videos','photos'));
+        return view('frontend.aboutme', compact('videos', 'photos'));
     }
 
     public function discover_rudra_center()
@@ -191,7 +200,7 @@ class PageController extends BaseController
             'meta_description' => $news->meta_description,
         ];
 
-        return view('frontend.news_detail', compact('news','seoData'));
+        return view('frontend.news_detail', compact('news', 'seoData'));
     }
 
     public function comingsoon()

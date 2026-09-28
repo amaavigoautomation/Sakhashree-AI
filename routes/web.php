@@ -182,6 +182,5 @@ Route::get('/clear-cache', function () {
     Artisan::call('optimize:clear');
     return "Cache cleared successfully";
 });
-
 Route::get('/news/{page_slug}', [PageController::class, 'view'])->name('news_detail');
 Route::get('/{page_slug}', [BlogsController::class, 'view'])->name('blog_detail');
