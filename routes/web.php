@@ -142,8 +142,8 @@ Route::middleware([CheckSession::class])->group(function () {
         'spiritual_tours_listing' => SpiritualTourController::class,
         'workshop_enquiries' => WorkshopEnquiryController::class,
         'news_listing' => NewsController::class,
-        'spiritual_tour-enquiries' => SpiritualTourEnquiryController::class,
-        'event- enquiries' => EventEnquiryController::class,
+        'spiritual_tour_enquiries' => SpiritualTourEnquiryController::class,
+        'event-enquiries' => EventEnquiryController::class,
     ]);
 
     Route::get('/enquiries', [EnquiryController::class, 'index'])->name('enquiries.index');
