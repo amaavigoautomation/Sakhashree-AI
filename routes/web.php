@@ -22,7 +22,6 @@ use App\Http\Controllers\SeoModulesController;
 use App\Http\Controllers\SocialMediasController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UsersController;
-use App\Http\Controllers\VideoCategoriesController;
 use App\Http\Controllers\VideosController;
 use App\Http\Controllers\VideoTagController;
 use App\Http\Controllers\EventController;
@@ -130,7 +129,6 @@ Route::middleware([CheckSession::class])->group(function () {
         'socialmedias'       => SocialMediasController::class,
         'users'              => UsersController::class,
         'videos'             => VideosController::class,
-        'videocategories'    => VideoCategoriesController::class,
         'videotag'           => VideoTagController::class,
         'testimonials'       => TestimonialController::class,
         'galleries'          => GalleryController::class,

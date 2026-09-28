@@ -11,11 +11,39 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $events = Event::orderBy('id', 'desc')->paginate(10);
+        $eventQuery = Event::query();
 
-        return view('backend.events.index', compact('events'));
+        if ($request->filled('title')) {
+            $eventQuery->where('title', $request->title);
+        }
+
+        if ($request->filled('city_name')) {
+            $eventQuery->where('city_name', $request->city_name);
+        }
+
+        if ($request->filled('status')) {
+            $status = $request->status === 'active' ? 1 : 0;
+            $eventQuery->where('active', $status);
+        }
+
+        if ($request->filled('is_past_event')) {
+            $eventQuery->where('is_past_event', $request->is_past_event);
+        }
+
+        $events = $eventQuery->orderBy('id', 'desc')->paginate(10);
+
+        $titles = Event::select('title')->get()->pluck('title')->toArray();
+
+        $cities = Event::select('city_name')->whereNotNull('city_name')->where('city_name', '!=', '')->distinct()->pluck('city_name')->toArray();
+
+        $statuses = [
+            'active' => 'Active',
+            'inactive' => 'Inactive'
+        ];
+
+        return view('backend.events.index', compact('events', 'titles', 'cities', 'statuses'));
     }
 
     /**
@@ -63,7 +91,7 @@ class EventController extends Controller
         if ($request->hasFile('image_file')) {
             $image = $request->file('image_file');
             $imageName = time() . '_' . $image->getClientOriginalName();
-            $image->move(public_path('images/events/' . $event->id),$imageName);
+            $image->move(public_path('images/events/' . $event->id), $imageName);
 
             $event->update([
                 'image_file' => $imageName,

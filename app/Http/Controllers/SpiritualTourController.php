@@ -8,10 +8,31 @@ use Illuminate\Http\Request;
 class SpiritualTourController extends Controller
 {
     /** Display a listing of the resource.*/
-    public function index()
+    public function index(Request $request)
     {
-        $spiritualTours = SpiritualTour::orderBy('active', 'desc')->Paginate(20);
-        return view('backend.spiritual_tours.index', compact('spiritualTours'));
+        $query = SpiritualTour::query();
+
+        if ($request->filled('title')) {
+            $query->where('title', $request->title);
+        }
+
+        if ($request->filled('location')) {
+            $query->where('location', $request->location);
+        }
+
+        if ($request->filled('status')) {
+            $query->where('active', $request->status);
+        }
+
+        if ($request->filled('is_upcoming')) {
+            $query->where('is_upcoming', $request->is_upcoming);
+        }
+
+        $spiritualTours = $query->orderBy('active', 'desc')->orderBy('id', 'desc')->paginate(20)->withQueryString();
+        $titles = SpiritualTour::select('title')->whereNotNull('title')->where('title', '!=', '')->distinct()->pluck('title')->toArray();
+        $locations = SpiritualTour::select('location')->whereNotNull('location')->where('location', '!=', '')->distinct()->pluck('location')->toArray();
+
+        return view('backend.spiritual_tours.index', compact('spiritualTours', 'titles', 'locations'));
     }
 
     /* Show the form for creating a new resource.*/

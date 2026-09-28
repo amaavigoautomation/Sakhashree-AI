@@ -15,6 +15,161 @@
             <!--Add new section start here-->
             <div class="card-style mt-20">
                 <div class="table-wrapper table-responsive mt-10">
+                    <div class="accordion" id="filterAccordion">
+
+                        <div class="accordion-item">
+
+                            @php
+                                $show = !empty(request()->all()) ? 'show' : '';
+                            @endphp
+
+                            <h2 class="accordion-header" id="headingFilter">
+
+                                <button class="accordion-button {{ $show ? '' : 'collapsed' }}" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseFilter"
+                                    aria-expanded="{{ $show ? 'true' : 'false' }}" aria-controls="collapseFilter">
+
+                                    <i class="lni lni-search-alt"></i>&nbsp;&nbsp;Search..
+
+                                </button>
+
+                            </h2>
+
+                            <div id="collapseFilter" class="accordion-collapse collapse {{ $show }}"
+                                aria-labelledby="headingFilter" data-bs-parent="#filterAccordion">
+
+                                <div class="accordion-body">
+
+                                    <form method="GET" action="{{ route('testimonials.index') }}">
+
+                                        <div class="row">
+
+                                            {{-- Name --}}
+                                            <div class="col-sm-4">
+
+                                                <div class="select-style-1">
+
+                                                    <label for="name">Name</label>
+
+                                                    <div class="select-position select-sm">
+
+                                                        <select class="jSelectbox" id="name" name="name"
+                                                            onchange="this.form.submit()">
+
+                                                            <option value="">All</option>
+
+                                                            @foreach ($names as $name)
+                                                                <option value="{{ $name }}"
+                                                                    {{ request('name') == $name ? 'selected' : '' }}>
+
+                                                                    {{ $name }}
+
+                                                                </option>
+                                                            @endforeach
+
+                                                        </select>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+
+                                            {{-- Country --}}
+                                            <div class="col-sm-3">
+
+                                                <div class="select-style-1">
+
+                                                    <label for="country">Country</label>
+
+                                                    <div class="select-position select-sm">
+
+                                                        <select class="jSelectbox" id="country" name="country"
+                                                            onchange="this.form.submit()">
+
+                                                            <option value="">select</option>
+
+                                                            @foreach ($countries as $country)
+                                                                <option value="{{ $country }}"
+                                                                    {{ request('country') == $country ? 'selected' : '' }}>
+
+                                                                    {{ $country }}
+
+                                                                </option>
+                                                            @endforeach
+
+                                                        </select>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+
+                                            {{-- Status --}}
+                                            <div class="col-sm-3">
+
+                                                <div class="select-style-1">
+
+                                                    <label for="status">Status</label>
+
+                                                    <div class="select-position select-sm">
+
+                                                        <select class="jSelectbox" id="status" name="status"
+                                                            onchange="this.form.submit()">
+
+                                                            <option value="">select</option>
+
+                                                            <option value="1"
+                                                                {{ request('status') == '1' ? 'selected' : '' }}>
+                                                                Active
+                                                            </option>
+
+                                                            <option value="0"
+                                                                {{ request('status') == '0' ? 'selected' : '' }}>
+                                                                Inactive
+                                                            </option>
+
+                                                        </select>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+
+                                            {{-- Reset --}}
+                                            <div class="col-sm-2">
+
+                                                <a href="{{ route('testimonials.index') }}">
+
+                                                    <button type="button" class="main-btn primary-btn btn-hover btn-xs"
+                                                        style="margin-top:28px">
+
+                                                        Reset
+
+                                                    </button>
+
+                                                </a>
+
+                                            </div>
+
+                                        </div>
+
+                                    </form>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <hr>
                     <table class="table striped-table">
                         <thead>
                             <tr>

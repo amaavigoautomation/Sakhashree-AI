@@ -7,12 +7,28 @@ use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $news = News::orderBy('active', 'desc')->Paginate(20);
-        return view('backend.news.index', compact('news'));
-    }
+        $query = News::query();
 
+        if ($request->filled('title')) {
+            $query->where('title', $request->title);
+        }
+
+        if ($request->filled('has_video')) {
+            $query->where('has_video', $request->has_video);
+        }
+
+        if ($request->filled('status')) {
+            $query->where('active', $request->status);
+        }
+
+        $news = $query->orderBy('active', 'desc')->orderBy('id', 'desc')->paginate(20)->withQueryString();
+        $titles = News::select('title')->whereNotNull('title')->where('title', '!=', '')->distinct()->pluck('title')->toArray();
+
+        return view('backend.news.index', compact('news', 'titles'));
+    }
+    
     public function create()
     {
         return view('backend.news.create');

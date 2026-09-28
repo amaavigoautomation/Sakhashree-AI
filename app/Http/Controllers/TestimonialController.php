@@ -10,11 +10,50 @@ class TestimonialController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $testimonials = Testimonial::orderBy('id', 'desc')->paginate(10);
+        $query = Testimonial::query();
 
-        return view('backend.testimonials.index', compact('testimonials'));
+        // Name filter
+        if ($request->filled('name')) {
+            $query->where('name', $request->name);
+        }
+
+        // Country filter
+        if ($request->filled('country')) {
+            $query->where('country', $request->country);
+        }
+
+        // Status filter
+        if ($request->filled('status')) {
+            $query->where('active', $request->status);
+        }
+
+        $testimonials = $query
+            ->orderBy('id', 'desc')
+            ->paginate(10)
+            ->withQueryString();
+
+        // Name dropdown values
+        $names = Testimonial::select('name')
+            ->whereNotNull('name')
+            ->where('name', '!=', '')
+            ->distinct()
+            ->pluck('name')
+            ->toArray();
+
+        // Country dropdown values
+        $countries = Testimonial::select('country')
+            ->whereNotNull('country')
+            ->where('country', '!=', '')
+            ->distinct()
+            ->pluck('country')
+            ->toArray();
+
+        return view(
+            'backend.testimonials.index',
+            compact('testimonials', 'names', 'countries')
+        );
     }
 
     /**
@@ -181,5 +220,4 @@ class TestimonialController extends Controller
 
         return redirect()->route('testimonials.index')->with('success', 'Testimonial updated successfully.');
     }
-
 }

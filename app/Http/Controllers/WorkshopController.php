@@ -7,11 +7,36 @@ use Illuminate\Http\Request;
 
 class WorkshopController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $workshops = Workshop::orderBy('active', 'desc')->paginate(20);
+        $WorkshopQuery = Workshop::query();
 
-        return view('backend.workshops.index', compact('workshops'));
+        if ($request->filled('name')) {
+            $WorkshopQuery->where('name', $request->name);
+        }
+
+        if ($request->filled('city')) {
+            $WorkshopQuery->where('city', $request->city);
+        }
+
+        if ($request->filled('status')) {
+            $status = $request->status === 'active' ? 1 : 0;
+            $WorkshopQuery->where('active', $status);
+        }
+
+        if ($request->filled('is_latest')) {
+            $WorkshopQuery->where('is_latest', $request->is_latest);
+        }
+
+        $workshops = $WorkshopQuery->orderBy('id', 'desc')->paginate(10);
+        $name = Workshop::select('name')->distinct()->pluck('name')->toArray();
+        $cities = Workshop::select('city')->whereNotNull('city')->where('city', '!=', '')->distinct()->pluck('city')->toArray();
+        $statuses = [
+            'active' => 'Active',
+            'inactive' => 'Inactive'
+        ];
+
+        return view('backend.workshops.index', compact('workshops', 'name', 'cities', 'statuses'));
     }
 
     public function create()
@@ -101,5 +126,9 @@ class WorkshopController extends Controller
             $workshop->image_file = $image->getClientOriginalName();
         }
         $workshop->save();
+
+        return redirect()
+            ->route('workshops_listing.index')
+            ->with('success', 'Workshop saved successfully!');
     }
 }

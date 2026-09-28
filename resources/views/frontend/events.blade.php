@@ -1,3 +1,7 @@
+@php
+    $carbon = \Carbon\Carbon::class;
+@endphp
+
 @extends('layouts.frontend')
 
 @section('content')
@@ -80,7 +84,7 @@
                                                                     </div>
 
                                                                     <div>
-                                                                        {{ \Carbon\Carbon::parse($event->date)->format('d M Y') }}
+                                                                        {{ $carbon::parse($event->date)->format('d M Y') }}
                                                                     </div>
                                                                 </div>
 
@@ -91,9 +95,9 @@
                                                                     </div>
 
                                                                     <div>
-                                                                        {{ \Carbon\Carbon::parse($event->start_time)->format('g:i A') }}
+                                                                        {{ $carbon::parse($event->start_time)->format('g:i A') }}
                                                                         to
-                                                                        {{ \Carbon\Carbon::parse($event->end_time)->format('g:i A') }}
+                                                                        {{ $carbon::parse($event->end_time)->format('g:i A') }}
                                                                     </div>
                                                                 </div>
 
@@ -223,7 +227,7 @@
                                                 </div>
 
                                                 <div>
-                                                    {{ \Carbon\Carbon::parse($event->date)->format('d M Y') }}
+                                                    {{ $carbon::parse($event->date)->format('d M Y') }}
 
                                                     @if ($event->day)
                                                         ({{ $event->day }})
@@ -243,8 +247,8 @@
                                                 <div>
                                                     {{-- chages in that format  --}}
                                                     {{ str_pad($event->time_code, 2, '0', STR_PAD_LEFT) }} -
-                                                    {{ \Carbon\Carbon::parse($event->start_time)->format('g:i A') }} -
-                                                    {{ \Carbon\Carbon::parse($event->end_time)->format('g:i A') }}
+                                                    {{ $carbon::parse($event->start_time)->format('g:i A') }} -
+                                                    {{ $carbon::parse($event->end_time)->format('g:i A') }}
                                                 </div>
 
                                             </div>

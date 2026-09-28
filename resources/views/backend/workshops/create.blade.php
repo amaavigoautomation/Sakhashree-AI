@@ -22,16 +22,6 @@
                             </div>
                         </div>
 
-                        <!-- City -->
-                        <div class="col-md-3">
-                            <div class="input-style-1">
-                                <label>
-                                    City
-                                    <span class="mandatory">*</span>
-                                </label>
-                                <input type="text" name="city" placeholder="Enter city" required>
-                            </div>
-                        </div>
 
                         <!-- Date -->
                         <div class="col-md-3">
@@ -64,8 +54,20 @@
                             </div>
                         </div>
 
+                        <!-- City -->
+                        <div class="col-md-3">
+                            <div class="input-style-1">
+                                <label>
+                                    City
+                                    <span class="mandatory">*</span>
+                                </label>
+                                <input type="text" name="city" placeholder="Enter city" required>
+                            </div>
+                        </div>
+                        <hr>
+
                         <!-- Description -->
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="input-style-1">
                                 <label>
                                     Description
@@ -79,7 +81,7 @@
                                 </small>
                             </div>
                         </div>
-
+                        <hr>
                         <!-- Image -->
                         <div class="col-sm-3">
                             <label>Image</label>

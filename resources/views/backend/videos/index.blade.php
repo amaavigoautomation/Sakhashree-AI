@@ -53,7 +53,7 @@
                                                 <div class="select-position select-sm">
                                                     <select class="jSelectbox" id="active" name="active"
                                                         onchange="this.form.submit()">
-                                                        <option value="">All</option>
+                                                        <option value="">select</option>
                                                         <option value="active"
                                                             {{ request('active') == 'active' ? 'selected' : '' }}>Active
                                                         </option>

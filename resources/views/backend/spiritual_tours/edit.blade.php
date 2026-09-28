@@ -118,10 +118,6 @@
                             Update
                         </button>
 
-                        <a href="{{ route('spiritual_tours_listing.index') }}"
-                            class="main-btn light-btn btn-hover btn-xs">
-                            Cancel
-                        </a>
                     </div>
 
                 </div>

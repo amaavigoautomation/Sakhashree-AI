@@ -1,3 +1,7 @@
+@php
+    $carbon = \Carbon\Carbon::class;
+@endphp
+
 @extends('layouts.frontend')
 
 @section('content')
@@ -113,13 +117,13 @@
 
                                                                     <div>
                                                                         @if ($tour->start_date && $tour->end_date)
-                                                                            {{ \Carbon\Carbon::parse($tour->start_date)->format('d') }}
+                                                                            {{ $carbon::parse($tour->start_date)->format('d') }}
                                                                             -
-                                                                            {{ \Carbon\Carbon::parse($tour->end_date)->format('d M Y') }}
+                                                                            {{ $carbon::parse($tour->end_date)->format('d M Y') }}
                                                                         @elseif ($tour->start_date)
-                                                                            {{ \Carbon\Carbon::parse($tour->start_date)->format('d M Y') }}
+                                                                            {{ $carbon::parse($tour->start_date)->format('d M Y') }}
                                                                         @else
-                                                                            {{ \Carbon\Carbon::parse($tour->end_date)->format('d M Y') }}
+                                                                            {{ $carbon::parse($tour->end_date)->format('d M Y') }}
                                                                         @endif
                                                                     </div>
 
@@ -474,13 +478,9 @@
 
                                                     </div>
                                                 @endif
-
                                             </div>
-
                                         </div>
-
                                     </div>
-
                                 </div>
                             @endforeach
 

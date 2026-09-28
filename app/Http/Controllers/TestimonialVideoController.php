@@ -10,11 +10,50 @@ class TestimonialVideoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $testimonialVideos = TestimonialVideo::orderBy('id', 'asc')->paginate(10);
+        $query = TestimonialVideo::query();
 
-        return view('backend.testimonials_videos.index', compact('testimonialVideos'));
+        // Name filter
+        if ($request->filled('name')) {
+            $query->where('name', $request->name);
+        }
+
+        // Designation filter
+        if ($request->filled('designation')) {
+            $query->where('designation', $request->designation);
+        }
+
+        // Status filter
+        if ($request->filled('status')) {
+            $query->where('active', $request->status);
+        }
+
+        $testimonialVideos = $query
+            ->orderBy('id', 'asc')
+            ->paginate(10)
+            ->withQueryString();
+
+        // Name dropdown values
+        $names = TestimonialVideo::select('name')
+            ->whereNotNull('name')
+            ->where('name', '!=', '')
+            ->distinct()
+            ->pluck('name')
+            ->toArray();
+
+        // Designation dropdown values
+        $designations = TestimonialVideo::select('designation')
+            ->whereNotNull('designation')
+            ->where('designation', '!=', '')
+            ->distinct()
+            ->pluck('designation')
+            ->toArray();
+
+        return view(
+            'backend.testimonials_videos.index',
+            compact('testimonialVideos', 'names', 'designations')
+        );
     }
 
     /**
