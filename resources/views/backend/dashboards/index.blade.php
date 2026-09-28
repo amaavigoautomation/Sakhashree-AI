@@ -38,13 +38,13 @@
                             'icon' => 'fa-solid fa-bullhorn',
                             'color' => '#24b6cf',
                         ],
-                        // [
-                        //     'label' => 'Enquiries',
-                        //     'count' => $Consultation,
-                        //     'route' => route('consultations.index'),
-                        //     'icon' => 'fa-users',
-                        //     'color' => '#6f42c1',
-                        // ],
+                        [
+                            'label' => 'Seo Modules',
+                            'count' => $SeoModule,
+                            'route' => route('seomodules.index'),
+                            'icon' => 'fa-solid fa-bullhorn',
+                            'color' => '#24b6cf',
+                        ],
                     ];
 
                     $chunks = array_chunk($boxes, 6);
