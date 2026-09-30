@@ -7,46 +7,39 @@ use Illuminate\Support\Str;
 
 class SeoModuleObserver
 {
-    public function saved(SeoModule $seoModule): void
+    public function creating(SeoModule $seoModule): void
     {
-        $data = $seoModule;
+        $pageName = trim($seoModule->page_name ?? '');
 
-        if (!$data) {
-            return;
+        $seoModule->page_slug = $pageName
+            ? Str::slug($pageName)
+            : 'sakhashree-' . uniqid();
+
+        if (empty($seoModule->page_title)) {
+            $seoModule->page_title = Str::limit(
+                'Sakhashree Neeta | Spiritual Guide & Healer',
+                60,
+                ''
+            );
         }
 
-        $pageName = trim($data->page_name ?? '');
-
-        // Final fallback - slug can NEVER be empty.
-        if (empty($pageName)) {
-            $pageSlug = 'sakhashree-' . $data->id;
-        } else {
-            $pageSlug = Str::slug($pageName);
+        if (empty($seoModule->meta_description)) {
+            $seoModule->meta_description = Str::limit(
+                'Discover spiritual healing, workshops and guidance with Sakhashree Neeta.',
+                160,
+                ''
+            );
         }
+    }
 
-        $pageTitle = Str::limit(
-            "Sakhashree Neeta | Spiritual Guide & Healer",
-            60,
-            ''
-        );
+    public function updating(SeoModule $seoModule): void
+    {
+        if ($seoModule->isDirty('page_name')) {
+            $pageName = trim($seoModule->page_name ?? '');
 
-        $metaDescription = Str::limit(
-            "Discover spiritual healing, workshops and guidance with Sakhashree Neeta.",
-            160,
-            ''
-        );
-
-        // Prevent unnecessary update calls
-        if (
-            $data->page_title !== $pageTitle ||
-            $data->meta_description !== $metaDescription ||
-            $data->page_slug !== $pageSlug
-        ) {
-            $data->update([
-                'page_title' => $pageTitle,
-                'meta_description' => $metaDescription,
-                'page_slug' => $pageSlug,
-            ]);
+            $seoModule->page_slug = $pageName
+                ? Str::slug($pageName)
+                : 'sakhashree-' . $seoModule->id;
         }
     }
 }
