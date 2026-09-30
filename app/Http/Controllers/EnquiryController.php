@@ -10,7 +10,10 @@ class EnquiryController extends Controller
 {
     public function index()
     {
-        $enquiries = Enquiry::orderBy('id', 'desc')->paginate(10);
+        $enquiries = Enquiry::with('country', 'subject')
+            ->orderBy('id', 'desc')
+            ->paginate(10);
+
 
         return view('backend.enquiries.index', compact('enquiries'));
     }

@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="{{ asset('/dist/css/front-end/main.css') }}" />
     <link rel="stylesheet" href="{{ asset('/dist/css/front-end/menu.css') }}" />
     <link rel="stylesheet" href="{{ asset('/dist/css/front-end/swiper.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('dist/toastr/build/toastr.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('/dist/css/front-end/font-awesome.min.css') }}" />
 
@@ -69,6 +70,34 @@
 </head>
 
 <body>
+    <script src="{{ asset('dist/toastr/build/toastr.min.js') }}"></script>
+    <script>
+        @if (session('success'))
+            toastr.success('{{ session('success') }}');
+        @elseif (session('error'))
+            toastr.error('{{ session('error') }}');
+        @endif
+
+        // Toastr configuration (optional)
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+    </script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
     <main class="mainwrapper">
         @include('partials.frontend.header')
 

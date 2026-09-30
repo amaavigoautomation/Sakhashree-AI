@@ -8,15 +8,7 @@ class Enquiry extends Model
 {
     protected $table = 'enquiries';
 
-    protected $fillable = [
-        'full_name',
-        'email',
-        'country_code',
-        'phone',
-        'country_id',
-        'subject_id',
-        'description',
-    ];
+    protected $guarded = ['id'];
 
     public function subject()
     {

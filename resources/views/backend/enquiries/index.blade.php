@@ -17,8 +17,8 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Country</th>
-                                <th>mobile_no</th>
-                                <th>Description</th>
+                                <th>Mobile No</th>
+                                {{-- <th>Description</th> --}}
                                 <th class="text-center">Actions</th>
                             </tr>
                         </thead>
@@ -40,12 +40,12 @@
                                     </td>
 
                                     <td>
-                                        {{ $enquiry->mobile_no ?? '---' }}
+                                        {{ $enquiry->phone ?? '---' }}
                                     </td>
 
-                                    <td>
+                                    {{-- <td>
                                         {{ $enquiry->description ?? '---' }}
-                                    </td>
+                                    </td> --}}
 
                                     <td class="text-center">
                                         <a href="{{ route('enquiries.show', $enquiry->id) }}">

@@ -38,7 +38,7 @@
                                     <h6>Country</h6>
                                 </th>
                                 <td>
-                                    <p>{{ $enquiry->country_id ?? '---' }}</p>
+                                    <p>{{ $enquiry->country->name ?? '---' }}</p>
                                 </td>
                             </tr>
 
