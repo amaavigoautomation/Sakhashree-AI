@@ -167,6 +167,43 @@
         });
     </script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const videoModal = document.getElementById('Videos');
+            const videoIframe = document.getElementById('videoIframe');
+
+            videoModal.addEventListener('show.bs.modal', function(event) {
+
+                const button = event.relatedTarget;
+
+                const videoLink = button.getAttribute('data-video');
+
+                let videoId = '';
+
+                const match = videoLink.match(
+                    /(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([^&?\/]+)/
+                );
+
+                if (match) {
+                    videoId = match[1];
+                }
+
+                videoIframe.src =
+                    'https://www.youtube.com/embed/' + videoId;
+
+            });
+
+
+            videoModal.addEventListener('hidden.bs.modal', function() {
+
+                videoIframe.src = '';
+
+            });
+
+        });
+    </script>
+
     @stack('scripts')
 </body>
 
