@@ -29,7 +29,7 @@ class FaqController extends Controller
 
     public function create()
     {
-        $faqTypes = \App\Models\FaqType::where('active', 1)->get();
+        $faqTypes = FaqType::where('active', 1)->get();
 
         return view('backend.faqs.create', compact('faqTypes'));
     }
@@ -59,7 +59,7 @@ class FaqController extends Controller
     {
         $faq = Faq::findOrFail($id);
 
-        $faqTypes = \App\Models\FaqType::where('active', 1)->get();
+        $faqTypes = FaqType::where('active', 1)->get();
 
         return view('backend.faqs.edit', compact('faq', 'faqTypes'));
     }

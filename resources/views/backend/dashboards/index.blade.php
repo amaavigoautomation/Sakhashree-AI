@@ -42,7 +42,7 @@
                             'label' => 'Seo Modules',
                             'count' => $SeoModule,
                             'route' => route('seomodules.index'),
-                            'icon' => 'fa-solid fa-bullhorn',
+                            'icon' => 'fa-solid fa-search',
                             'color' => '#24b6cf',
                         ],
                     ];

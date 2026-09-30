@@ -32,7 +32,7 @@ class EnquiryController extends Controller
             'phone' => ['required', 'digits_between:1,12'],
             'country_id' => 'required',
             'description' => 'required|string',
-            'g-recaptcha-response' => ['required', new Recaptcha],
+            // 'g-recaptcha-response' => ['required', new Recaptcha],
         ]);
 
         Enquiry::create([

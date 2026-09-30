@@ -17,7 +17,6 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Country</th>
-                                <th>Country_code</th>
                                 <th>mobile_no</th>
                                 <th>Description</th>
                                 <th class="text-center">Actions</th>
@@ -37,10 +36,7 @@
                                     </td>
 
                                     <td>
-                                        {{ $enquiry->country_id ?? '---' }}
-                                    </td>
-                                    <td>
-                                        {{ $enquiry->Country_code ?? '---' }}
+                                        {{ $enquiry->country->name ?? '---' }}
                                     </td>
 
                                     <td>

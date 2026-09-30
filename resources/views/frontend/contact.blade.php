@@ -250,7 +250,7 @@
                                     </div>
                                 </div>
 
-                                <div class="mb-2">
+                                {{-- <div class="mb-2">
                                     <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}">
                                     </div>
 
@@ -259,7 +259,7 @@
                                             {{ $message }}
                                         </div>
                                     @enderror
-                                </div>
+                                </div> --}}
 
                             </div>
 

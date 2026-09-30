@@ -22,4 +22,9 @@ class Enquiry extends Model
     {
         return $this->belongsTo(Subject::class, 'subject_id');
     }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id');
+    }
 }
