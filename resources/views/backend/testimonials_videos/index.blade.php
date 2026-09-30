@@ -55,31 +55,20 @@
                                             <div class="col-sm-4">
 
                                                 <div class="select-style-1">
-
                                                     <label for="name">Name</label>
-
                                                     <div class="select-position select-sm">
-
                                                         <select class="jSelectbox" id="name" name="name"
                                                             onchange="this.form.submit()">
-
                                                             <option value="">All</option>
-
                                                             @foreach ($names as $name)
                                                                 <option value="{{ $name }}"
                                                                     {{ request('name') == $name ? 'selected' : '' }}>
-
                                                                     {{ $name }}
-
                                                                 </option>
                                                             @endforeach
-
                                                         </select>
-
                                                     </div>
-
                                                 </div>
-
                                             </div>
 
 
@@ -87,11 +76,8 @@
                                             <div class="col-sm-3">
 
                                                 <div class="select-style-1">
-
                                                     <label for="designation">Designation</label>
-
                                                     <div class="select-position select-sm">
-
                                                         <select class="jSelectbox" id="designation" name="designation"
                                                             onchange="this.form.submit()">
 
@@ -105,16 +91,10 @@
 
                                                                 </option>
                                                             @endforeach
-
                                                         </select>
-
                                                     </div>
-
                                                 </div>
-
                                             </div>
-
-
                                             {{-- Status --}}
                                             <div class="col-sm-3">
 
@@ -155,25 +135,15 @@
 
                                                     <button type="button" class="main-btn primary-btn btn-hover btn-xs"
                                                         style="margin-top:28px">
-
                                                         Reset
-
                                                     </button>
-
                                                 </a>
-
                                             </div>
-
                                         </div>
-
                                     </form>
-
                                 </div>
-
                             </div>
-
                         </div>
-
                     </div>
 
                     <hr>
@@ -234,7 +204,6 @@
                                             {{ $testimonialVideo->designation }}
                                         </p>
                                     </td>
-
 
                                     <!-- Video Link -->
                                     <td>
