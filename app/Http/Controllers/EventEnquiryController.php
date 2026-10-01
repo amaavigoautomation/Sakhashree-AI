@@ -38,17 +38,18 @@ class eventEnquiryController extends Controller
             'country_id' => $request->country_id,
             'description' => $request->description,
         ]);
-        
+
 
         return redirect()->back()->with('success', 'Enquiry submitted successfully.');
     }
 
     public function show(string $id)
     {
-        $eventEnquiry = EventEnquiry::findOrFail($id);
-        return view(
-            'backend.events_enquiries.show',
-            compact('eventEnquiry')
-        );
+        $eventEnquiry = EventEnquiry::with([
+            'event',
+            'country'
+        ])->findOrFail($id);
+
+        return view('backend.events_enquiries.show',compact('eventEnquiry'));
     }
 }

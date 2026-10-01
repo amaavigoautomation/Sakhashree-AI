@@ -43,8 +43,11 @@ class SpiritualTourEnquiryController extends Controller
 
     public function show(string $id)
     {
-        $spiritual_tour_enquiry = SpiritualTourEnquiry::findOrFail($id);
+        $spiritualTourEnquiry = SpiritualTourEnquiry::with([
+            'spiritualTour',
+            'country'
+        ])->findOrFail($id);
 
-        return view('backend.spiritual_tours_enquiries.show', compact('spiritual_tour_enquiry'));
+        return view('backend.spiritual_tours_enquiries.show',compact('spiritualTourEnquiry'));
     }
 }

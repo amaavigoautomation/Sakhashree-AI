@@ -66,7 +66,8 @@
                                     </td>
 
                                     <td class="text-center">
-                                        <a href="#">
+                                        <a
+                                            href="{{ route('workshop_enquiries.show', ['workshop_enquiry' => $enquiry->id]) }}">
                                             <i class="lni lni-list"></i>
                                         </a>
                                     </td>

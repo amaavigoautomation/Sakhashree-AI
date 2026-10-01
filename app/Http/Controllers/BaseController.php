@@ -8,6 +8,8 @@ use App\Models\BlogAuthor;
 use App\Models\BlogCategory;
 use App\Models\BlogTag;
 use App\Models\MenuLink;
+use App\Models\Gallery;
+use App\Models\TestimonialVideo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
@@ -74,9 +76,14 @@ class BaseController extends Controller
         /* Get SEO Data */
         $seoData = $this->getSeoData($controllerName, $action);
 
+
+        $photos = Gallery::where('active', true)->get();
+
+        $videoTestimonials = TestimonialVideo::where('active', true)->get();
+
         // dd($seoData);
 
-        view()->share(['action' => $action, 'parameteres' => $parameteres, 'PageUrl' => $PageUrl, 'currentPage' => $currentPage, 'PageTitle' => $PageTitle, 'parameteresNames' => $parameteresNames, 'firstKey' => $firstKey, 'seoData' => $seoData]);
+        view()->share(['action' => $action, 'parameteres' => $parameteres, 'PageUrl' => $PageUrl, 'currentPage' => $currentPage, 'PageTitle' => $PageTitle, 'parameteresNames' => $parameteresNames, 'firstKey' => $firstKey, 'seoData' => $seoData, 'photos' => $photos, 'videoTestimonials' => $videoTestimonials]);
     }
 
     protected function getSeoData($controllerName, $action)

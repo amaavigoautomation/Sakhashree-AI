@@ -199,6 +199,29 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
+            const testimonialModal = document.getElementById('VideoTestimonials');
+            const testimonialIframe = document.getElementById('testimonialVideoIframe');
+
+            testimonialModal.addEventListener('show.bs.modal', function(event) {
+                const videoLink = event.relatedTarget?.getAttribute('data-video');
+                if (!videoLink) {
+                    testimonialIframe.src = '';
+                    return;
+                }
+
+                let embedUrl = videoLink.trim();
+                const match = embedUrl.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([^&?\/]+)/);
+                if (match) {
+                    embedUrl = 'https://www.youtube.com/embed/' + match[1];
+                }
+
+                testimonialIframe.src = embedUrl + (embedUrl.includes('?') ? '&autoplay=1' : '?autoplay=1');
+            });
+
+            testimonialModal.addEventListener('hidden.bs.modal', function() {
+                testimonialIframe.src = '';
+            });
+
             const videoModal = document.getElementById('Videos');
             const videoIframe = document.getElementById('videoIframe');
 

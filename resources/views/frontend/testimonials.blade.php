@@ -38,7 +38,8 @@
                                     </svg> Words of Gratitude</button>
                             </div>
                             <div class="flex-grow-1">
-                                <a href="{{ route('testimonials_video_list')}} "><button class="primarybtnol btnmdfullwidth">
+                                <a href="{{ route('testimonials_video_list') }} "><button
+                                        class="primarybtnol btnmdfullwidth">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -56,7 +57,8 @@
 
                             <div class="testimonialshead">
                                 <div class="testimonialsimg">
-                                    <img src="{{ $testimonial->icon ? asset('public/images/testimonials/' . $testimonial->id . '/' . $testimonial->icon) : asset('dist/images/no-image.png') }}" alt="Testimonial">
+                                    <img src="{{ $testimonial->icon ? asset('public/images/testimonials/' . $testimonial->id . '/' . $testimonial->icon) : asset('dist/images/no-image.png') }}"
+                                        alt="Testimonial">
                                 </div>
 
                                 <div>
@@ -74,6 +76,14 @@
                                 {!! $testimonial->description !!}
                             </div>
 
+                            {{-- add for video module for  dynamic --}}
+                            @if ($testimonial->video_link)
+                                <button type="button" class="primarybtn" data-bs-toggle="modal"
+                                    data-bs-target="#VideoTestimonials" data-video="{{ $testimonial->video_link }}">
+                                    Watch Video
+                                </button>
+                            @endif
+
                         </div>
                     @endforeach
 
@@ -87,10 +97,10 @@
 @push('scripts')
     <script>
         /*
-                        ==========================================
-                        TRUE MASONRY CALCULATION
-                        ==========================================
-                      */
+                                        ==========================================
+                                        TRUE MASONRY CALCULATION
+                                        ==========================================
+                                      */
 
         function masonryLayout() {
 

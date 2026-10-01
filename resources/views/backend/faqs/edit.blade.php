@@ -18,6 +18,27 @@
 
                     @method('PUT')
 
+                    <!-- FAQ Type -->
+                    <div class="input-style-1">
+                        <label>FAQ Type</label>
+                        <select name="faq_type_id" class="form-control">
+                            <option value="">Select FAQ Type</option>
+
+                            @foreach ($faqTypes as $faqType)
+                                <option value="{{ $faqType->id }}"
+                                    {{ old('faq_type_id', $faq->faq_type_id) == $faqType->id ? 'selected' : '' }}>
+                                    {{ $faqType->name }}
+                                </option>
+                            @endforeach
+                        </select>
+
+                        @error('faq_type_id')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
+
                     <!-- Question -->
                     <div class="input-style-1">
 
@@ -94,10 +115,6 @@
                             <button type="submit" class="main-btn primary-btn btn-hover btn-xs">
                                 Update
                             </button>
-
-                            <a href="{{ route('faqs.index') }}" class="main-btn light-btn btn-hover btn-xs ms-2">
-                                Cancel
-                            </a>
 
                         </div>
 

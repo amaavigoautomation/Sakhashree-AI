@@ -59,7 +59,8 @@
                         @foreach ($videoTestimonials as $video)
                             <div class="col-lg-4 col-md-6">
                                 <div class="vtestimocardarea">
-                                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#VideoTestimonials">
+                                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#VideoTestimonials"
+                                        data-video="{{ $video->video_link }}" aria-label="Watch {{ $video->name }}'s testimonial">
                                         <div class="vtestimocard">
                                             <div class="vtestimocardimg">
                                                 <div class="vtestimoplaybtn"><img
@@ -88,5 +89,4 @@
 
     </main>
 @endsection
-
 

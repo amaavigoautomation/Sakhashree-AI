@@ -40,7 +40,7 @@
                         </thead>
 
                         <tbody>
- 
+
                             @foreach ($eventsEnquiries as $enquiry)
                                 <tr>
 
@@ -79,7 +79,7 @@
 
                                     {{-- Action --}}
                                     <td class="text-center">
-                                        <a href= "#">
+                                        <a href="{{ route('event-enquiries.show', ['event_enquiry' => $enquiry->id]) }}">
                                             <i class="lni lni-list"></i>
                                         </a>
                                     </td>

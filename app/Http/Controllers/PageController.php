@@ -180,7 +180,7 @@ class PageController extends BaseController
     public function testimonials_video()
     {
         $videoTestimonials = TestimonialVideo::where('active', true)->get();
-
+ 
         return view('frontend.testimonials_video', compact('videoTestimonials'));
     }
 
