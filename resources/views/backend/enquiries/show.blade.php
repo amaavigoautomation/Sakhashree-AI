@@ -47,7 +47,7 @@
                                     <h6>Subject</h6>
                                 </th>
                                 <td>
-                                    <p>{{ $enquiry->subject_id ?? '---' }}</p>
+                                    <p>{{ $enquiry->subject->name ?? '---' }}</p>
                                 </td>
                             </tr>
 

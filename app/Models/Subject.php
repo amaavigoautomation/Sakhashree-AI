@@ -8,8 +8,8 @@ class Subject extends Model
 {
     protected $guarded = ['id'];
 
-    public function subject()
+    public function enquiries()
     {
-        return $this->hasMany(Subject::class,'subject_id', 'id');
+        return $this->hasMany(Enquiry::class, 'subject_id', 'id');
     }
 }

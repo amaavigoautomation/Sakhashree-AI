@@ -34,6 +34,7 @@ class EnquiryController extends Controller
             'calling_code' => 'required',
             'phone' => ['required', 'digits_between:1,12'],
             'country_id' => 'required',
+            'subject_id' => 'required',
             'description' => 'required|string',
             // 'g-recaptcha-response' => ['required', new Recaptcha],
         ]);
