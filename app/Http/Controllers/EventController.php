@@ -24,8 +24,7 @@ class EventController extends Controller
         }
 
         if ($request->filled('status')) {
-            $status = $request->status === 'active' ? 1 : 0;
-            $eventQuery->where('active', $status);
+            $eventQuery->where('active', $request->status);
         }
 
         if ($request->filled('is_past_event')) {

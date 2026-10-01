@@ -17,14 +17,14 @@
                     <div class="col-md-6">
                         <div class="input-style-1">
                             <label>Title</label>
-                            <input type="text" name="title" placeholder="Enter title" value="{{ old('title') }}">
+                            <input type="text" name="title" placeholder="Enter title" required value="{{ old('title') }}">
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="input-style-1">
                             <label>Location</label>
-                            <input type="text" name="location" placeholder="Enter location"
+                            <input type="text" name="location" placeholder="Enter location" required
                                 value="{{ old('location') }}">
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                     <div class="col-md-4">
                         <div class="input-style-1">
                             <label>Days</label>
-                            <input type="text" name="days" id="days" placeholder="Auto calculated"
+                            <input type="text" name="days" id="days" placeholder="Auto calculated" required
                                 value="{{ old('days') }}" readonly>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                             <img id="selectedImage" class="addedImage" src="{{ asset('dist/images/no-image.png') }}"
                                 alt="Selected Image">
 
-                            <input type="file" name="image_file" id="imageInput" accept="image/*"
+                            <input type="file" name="image_file" id="imageInput" accept="image/*"  
                                 onchange="displayImage(this)">
                         </div>
                     </div>
