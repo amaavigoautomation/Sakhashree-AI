@@ -117,6 +117,7 @@ class WorkshopController extends Controller
             'city' => $request->input('city'),
             'is_latest' => $request->input('is_latest'),
             'active' => $request->input('active'),
+            'description' => $request->input('description'),
         ]);
 
         if ($request->hasFile('image_file')) {
