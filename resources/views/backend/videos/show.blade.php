@@ -64,7 +64,7 @@
                         <div class="{{ $class; }}">{{ $data }}</div>
                     </td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <th><h6>Is Display Homepage</h6></th>
                         <td>
                             <p>{{ $videos->is_display_homepage  == 1 ? 'Yes' : 'No' }}</p>
@@ -75,7 +75,7 @@
                         <td>
                             <p>{{ $videos->is_external_link == 1 ? 'Yes' : 'No' }}</p>
                         </td>
-                    </tr>
+                    </tr> --}}
                     <tr>
                         <th><h6>Video Link</h6></th>
                         <td>
