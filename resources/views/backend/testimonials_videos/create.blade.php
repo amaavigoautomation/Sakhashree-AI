@@ -10,8 +10,6 @@
 
             <div class="card-style mt-20">
 
-                <h4 class="mb-20">Create Testimonial Video</h4>
-
 
                 <form action="{{ route('testimonials_videos.store') }}" method="POST" enctype="multipart/form-data">
 
@@ -63,7 +61,7 @@
 
                     </div>
 
-
+                    <hr>
                     <!-- Second Row -->
                     <div class="row mt-15">
 
@@ -131,7 +129,7 @@
 
                     </div>
 
-
+                    <hr>
                     <!-- Buttons -->
                     <div class="row mt-15">
 
@@ -141,9 +139,7 @@
                                 Save
                             </button>
 
-                            <a href="{{ route('testimonials_videos.index') }}" class="main-btn light-btn btn-hover btn-xs">
-                                Cancel
-                            </a>
+
 
                         </div>
 

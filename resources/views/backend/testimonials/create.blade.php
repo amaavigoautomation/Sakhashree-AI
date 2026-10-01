@@ -18,6 +18,30 @@
 
                         <div class="col-sm-3">
                             <div class="input-style-1">
+                                <label>Email <span class="mandatory">*</span></label>
+                                <input type="text" name="email" value="{{ old('email') }}" placeholder="Enter Email"
+                                    required />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="input-style-1">
+                                <label>Mobile <span class="mandatory">*</span></label>
+                                <input type="text" name="mobile" value="{{ old('mobile') }}" placeholder="Enter Mobile"
+                                    required />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="input-style-1">
+                                <label>Designation <span class="mandatory">*</span></label>
+                                <input type="text" name="designation" value="{{ old('designation') }}"
+                                    placeholder="Enter Designation" required />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="input-style-1">
                                 <label>Country</label>
                                 <input type="text" name="country" value="{{ old('country') }}"
                                     placeholder="Enter Country" />
@@ -30,7 +54,7 @@
                                 <input type="text" name="city" value="{{ old('city') }}" placeholder="Enter City" />
                             </div>
                         </div>
-
+                        <hr>
                         <div class="row mt-15">
                             <div class="col-sm-12">
                                 <div class="input-style-1">
@@ -39,8 +63,7 @@
                                 </div>
                             </div>
                         </div>
-
-                        
+                        <hr>
                         <div class="col-sm-3">
                             <div class="input-style-1">
                                 <label>Image</label>
@@ -67,7 +90,21 @@
                                     {{ old('active', 0) == 0 ? 'checked' : '' }}> No
                             </label>
                         </div>
+                        <div class="col-sm-3">
+                            <label>Display on Homepage</label><br>
 
+                            <label class="radio-inline">
+                                <input type="radio" name="display_on_homepage" value="1"
+                                    {{ old('display_on_homepage', 0) == 1 ? 'checked' : '' }}>
+                                Yes
+                            </label>
+
+                            <label class="radio-inline">
+                                <input type="radio" name="display_on_homepage" value="0"
+                                    {{ old('display_on_homepage', 0) == 0 ? 'checked' : '' }}>
+                                No
+                            </label>
+                        </div>
 
                     </div>
                     <hr>

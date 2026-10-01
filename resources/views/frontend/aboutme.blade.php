@@ -320,7 +320,7 @@
                     </div>
                 </div>
 
-                @if($photos->isNotEmpty())
+                @if ($photos->isNotEmpty())
                     <div class="innerheadarea topmargin50">
                         <div class="innerheadcont">
                             <div class="ornament" aria-hidden="true"><img src="dist/img/sidebarhead1.svg"></div>
@@ -336,8 +336,8 @@
                             @foreach ($photos as $index => $photo)
                                 <div class="swiper-slide">
                                     <div class="pgcardarea">
-                                        <a href="javascript:void(0)" onclick="openModal();currentSlide({{ $index + 1 }})"
-                                            class="cursor">
+                                        <a href="javascript:void(0)"
+                                            onclick="openModal();currentSlide({{ $index + 1 }})" class="cursor">
                                             <div class="pgcard">
                                                 <div class="pgcardimg"><img
                                                         src="{{ asset('public/images/galleries/image_file/' . $photo->image_file) }}">
@@ -358,150 +358,10 @@
                     </div>
                 @endif
 
-                <!-- Gallery Popup start here-->
-                <div id="myModalgallery" class="modalgallery">
-                    <span class="closegallery cursor" onclick="closeModal()">&times;</span>
-                    <div class="modalgallery-content">
-                        @foreach ($photos as $index => $photo)
-                            <div class="mySlides">
-                                <div class="numbertext">{{ $index + 1 }} / {{ $photos->count() }}</div>
-                                <img src="{{ asset('public/images/galleries/image_file/' . $photo->image_file) }}">
-                            </div>
-                        @endforeach
-                        <a class="prevgallery" onclick="plusSlides(-1)">&#10094;</a>
-                        <a class="nextgallery" onclick="plusSlides(1)">&#10095;</a>
-                        <div class="caption-container">
-                            <p id="caption"></p>
-                        </div>
-                        <div class="thumbnails">
-                            @foreach ($photos as $index => $photo)
-                                <img class="demo cursor"
-                                    src="{{ asset('public/images/galleries/image_file/' . $photo->image_file) }}"
-                                    onclick="currentSlide({{ $index + 1 }})" alt="{{ $photo->description }}">
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-                <!-- Gallery Popup end here-->
+
 
             </div>
         </section>
     </div>
-    <script>
-        function toggleSlides() {
-            $('.toggler').click(function(e) {
-                var id = $(this).attr('id');
-                var widgetId = id.substring(id.indexOf('-') + 1, id.length);
 
-                $('#' + widgetId).slideToggle();
-                $(this).toggleClass('sliderExpanded');
-
-                $('.closeSlider').click(function() {
-                    $(this).parent().hide('slow');
-
-                    var relatedToggler = 'toggler-' + $(this).parent().attr('id');
-
-                    $('#' + relatedToggler).removeClass('sliderExpanded');
-                });
-            });
-        }
-
-        $(function() {
-            toggleSlides();
-        });
-    </script>
-
-    <script>
-        const counters = document.querySelectorAll(".count");
-        let hasAnimated = false;
-
-        function animateCounters() {
-            const duration = 2000; // smooth + slow
-
-            counters.forEach(counter => {
-                const target = +counter.getAttribute("data-target");
-                const startTime = performance.now();
-
-                function updateCounter(currentTime) {
-                    const elapsed = currentTime - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-
-                    const eased = progress * (2 - progress); // smooth easing
-
-                    counter.innerText = Math.floor(eased * target);
-
-                    if (progress < 1) {
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        counter.innerText = target;
-                    }
-                }
-
-                requestAnimationFrame(updateCounter);
-            });
-        }
-
-        // Scroll trigger
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !hasAnimated) {
-                        animateCounters();
-                        hasAnimated = true;
-                    }
-                });
-            }, {
-                threshold: 0.4
-            } // 40% visible
-        );
-
-        observer.observe(document.getElementById("statsSection"));
-    </script>
-
-    <!-- Photo Gallery script start here -->
-    <script>
-        function openModal() {
-            document.getElementById('myModalgallery').style.display = "block";
-            document.body.style.overflow = "hidden";
-        }
-
-        function closeModal() {
-            document.getElementById('myModalgallery').style.display = "none";
-            document.body.style.overflow = "";
-        }
-
-        var slideIndex = 1;
-        showSlides(slideIndex);
-
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
-
-        function showSlides(n) {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("demo");
-            var captionText = document.getElementById("caption");
-            if (n > slides.length) {
-                slideIndex = 1
-            }
-            if (n < 1) {
-                slideIndex = slides.length
-            }
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " active";
-            captionText.innerHTML = dots[slideIndex - 1].alt;
-        }
-    </script>
-    <!-- Photo Gallery script end here -->
 @endsection

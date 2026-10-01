@@ -249,3 +249,29 @@
     </div>
 </div>
 <!-- Testimonials Videos Modal end -->
+
+<!-- Gallery Popup start here-->
+<div id="myModalgallery" class="modalgallery">
+    <span class="closegallery cursor" onclick="closeModal()">&times;</span>
+    <div class="modalgallery-content">
+        @foreach ($photos as $index => $photo)
+            <div class="mySlides">
+                <div class="numbertext">{{ $index + 1 }} / {{ $photos->count() }}</div>
+                <img src="{{ asset('public/images/galleries/image_file/' . $photo->image_file) }}">
+            </div>
+        @endforeach
+        <a class="prevgallery" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="nextgallery" onclick="plusSlides(1)">&#10095;</a>
+        <div class="caption-container">
+            <p id="caption"></p>
+        </div>
+        <div class="thumbnails">
+            @foreach ($photos as $index => $photo)
+                <img class="demo cursor"
+                    src="{{ asset('public/images/galleries/image_file/' . $photo->image_file) }}"
+                    onclick="currentSlide({{ $index + 1 }})" alt="{{ $photo->description }}">
+            @endforeach
+        </div>
+    </div>
+</div>
+<!-- Gallery Popup end here-->

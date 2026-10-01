@@ -233,6 +233,124 @@
         });
     </script>
 
+        <script>
+        function toggleSlides() {
+            $('.toggler').click(function(e) {
+                var id = $(this).attr('id');
+                var widgetId = id.substring(id.indexOf('-') + 1, id.length);
+
+                $('#' + widgetId).slideToggle();
+                $(this).toggleClass('sliderExpanded');
+
+                $('.closeSlider').click(function() {
+                    $(this).parent().hide('slow');
+
+                    var relatedToggler = 'toggler-' + $(this).parent().attr('id');
+
+                    $('#' + relatedToggler).removeClass('sliderExpanded');
+                });
+            });
+        }
+
+        $(function() {
+            toggleSlides();
+        });
+    </script>
+
+    <script>
+        const counters = document.querySelectorAll(".count");
+        let hasAnimated = false;
+
+        function animateCounters() {
+            const duration = 2000; // smooth + slow
+
+            counters.forEach(counter => {
+                const target = +counter.getAttribute("data-target");
+                const startTime = performance.now();
+
+                function updateCounter(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+
+                    const eased = progress * (2 - progress); // smooth easing
+
+                    counter.innerText = Math.floor(eased * target);
+
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.innerText = target;
+                    }
+                }
+
+                requestAnimationFrame(updateCounter);
+            });
+        }
+
+        // Scroll trigger
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !hasAnimated) {
+                        animateCounters();
+                        hasAnimated = true;
+                    }
+                });
+            }, {
+                threshold: 0.4
+            } // 40% visible
+        );
+
+        observer.observe(document.getElementById("statsSection"));
+    </script>
+
+    {{-- Photo Gallery script start here --}}
+    <script>
+        function openModal() {
+            document.getElementById('myModalgallery').style.display = "block";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal() {
+            document.getElementById('myModalgallery').style.display = "none";
+            document.body.style.overflow = "";
+        }
+
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("demo");
+            var captionText = document.getElementById("caption");
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            captionText.innerHTML = dots[slideIndex - 1].alt;
+        }
+    </script>
+    {{-- Photo Gallery script end here --}}
+
     @stack('scripts')
 </body>
 

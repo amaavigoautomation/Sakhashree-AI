@@ -70,24 +70,31 @@ class TestimonialController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'icon' => 'required|mimes:jpg,jpeg,png,svg,webp|max:2048',
-            'country' => 'required',
-            'city' => 'required',
+            'name' => 'required|string|max:255',
+            'email' => 'nullable|email|max:255',
+            'mobile' => 'nullable|string|max:255',
+            'designation' => 'nullable|string|max:255',
+            'icon' => 'nullable|mimes:jpg,jpeg,png,svg,webp|max:2048',
+            'country' => 'nullable|string|max:255',
+            'city' => 'nullable|string|max:255',
             'active' => 'required',
-            'description' => 'required',
+            'display_on_homepage' => 'required',
+            'description' => 'required|string',
         ]);
 
         // First create testimonial
         $testimonial = Testimonial::create([
             'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'mobile' => $request->input('mobile'),
+            'designation' => $request->input('designation'),
             'icon' => null,
             'country' => $request->input('country'),
             'city' => $request->input('city'),
             'active' => $request->input('active'),
+            'display_on_homepage' => $request->input('display_on_homepage'),
             'description' => strip_tags($request->input('description')),
         ]);
-
         // Upload icon
         if ($request->hasFile('icon')) {
 

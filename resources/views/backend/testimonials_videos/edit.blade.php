@@ -10,7 +10,7 @@
 
             <div class="card-style mt-20">
 
-                <h4 class="mb-20">Edit Testimonial Video</h4>
+
 
                 <form action="{{ route('testimonials_videos.update', ['testimonials_video' => $testimonialVideo->id]) }}"
                     enctype="multipart/form-data" method="POST">
@@ -50,7 +50,7 @@
 
                     </div>
 
-
+<hr>
                     <!-- Second Row -->
                     <div class="row mt-15">
 
@@ -106,7 +106,7 @@
                         </div>
 
                     </div>
-
+<hr>
 
 
                     <!-- Buttons -->
@@ -117,10 +117,6 @@
                             <button type="submit" class="main-btn primary-btn btn-hover btn-xs">
                                 Update
                             </button>
-
-                            <a href="{{ route('testimonials_videos.index') }}" class="main-btn light-btn btn-hover btn-xs">
-                                Cancel
-                            </a>
 
                         </div>
 
