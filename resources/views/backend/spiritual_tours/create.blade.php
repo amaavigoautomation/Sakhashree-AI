@@ -58,9 +58,9 @@
                                 <label>Description <span class="mandatory">*</span></label>
                                 <textarea name="description" rows="5" class="rich-editor" placeholder="Enter description">{{ old('description') }}
                             </textarea>
-                                @error('description')
+                                {{-- @error('description')
                                     <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                                @enderror --}}
                             </div>
                         </div>
 
@@ -115,10 +115,10 @@
                                 Save
                             </button>
 
-                            <a href="{{ route('spiritual_tours_listing.index') }}"
+                            {{-- <a href="{{ route('spiritual_tours_listing.index') }}"
                                 class="main-btn light-btn btn-hover btn-xs">
                                 Cancel
-                            </a>
+                            </a> --}}
                         </div>
 
                     </div>

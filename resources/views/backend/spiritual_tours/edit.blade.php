@@ -20,7 +20,7 @@
                             <div class="input-style-1">
                                 <label>Title <span class="mandatory">*</span></label>
                                 <input type="text" name="title" placeholder="Enter title"
-                                    value="{{ old('title', $tour->title) }}">
+                                   required value="{{ old('title', $tour->title) }}">
                             </div>
                         </div>
 
@@ -28,21 +28,21 @@
                             <div class="input-style-1">
                                 <label>Location <span class="mandatory">*</span></label>
                                 <input type="text" name="location" placeholder="Enter location"
-                                    value="{{ old('location', $tour->location) }}">
+                                    required value="{{ old('location', $tour->location) }}">
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="input-style-1">
                                 <label>Start Date <span class="mandatory">*</span></label>
-                                <input type="date" name="start_date" value="{{ old('start_date', $tour->start_date) }}">
+                                <input type="date" name="start_date" value="{{ old('start_date', $tour->start_date) }}" required>
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="input-style-1">
                                 <label>End Date <span class="mandatory">*</span></label>
-                                <input type="date" name="end_date" value="{{ old('end_date', $tour->end_date) }}">
+                                <input type="date" name="end_date" value="{{ old('end_date', $tour->end_date) }}" required>
                             </div>
                         </div>
 
@@ -56,12 +56,12 @@
 
                         <div class="col-md-12">
                             <div class="input-style-1">
-                                <label>Description <span class="mandatory">*</span></label>
+                                <label>Description</label>
                                 <textarea name="description" rows="5" class="rich-editor" placeholder="Enter description">{{ old('description', $tour->description) }}</textarea>
                             </div>
-                            @error('description')
+                            {{-- @error('description')
                                 <span class="text-danger">{{ $message }}</span>
-                            @enderror
+                            @enderror --}}
                         </div>
 
                         <div class="col-md-3">
