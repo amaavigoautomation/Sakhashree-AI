@@ -48,6 +48,8 @@ class SpiritualTourController extends Controller
     {
 
         $request->validate([
+            'title' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
             'description' => [
                 'nullable',
                 function ($attribute, $value, $fail) {
@@ -103,6 +105,8 @@ class SpiritualTourController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
+            'title' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
             'description' => [
                 'nullable',
                 function ($attribute, $value, $fail) {

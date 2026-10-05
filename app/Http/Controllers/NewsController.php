@@ -28,7 +28,7 @@ class NewsController extends Controller
 
         return view('backend.news.index', compact('news', 'titles'));
     }
-    
+
     public function create()
     {
         return view('backend.news.create');
@@ -36,9 +36,13 @@ class NewsController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|string|max:255',
+        ]);
+
         $news = News::create([
             'title'       => $request->input('title'),
-            'description' => $request->input('description'),
+            'description' => $request->input('description', ''),
             'active'      => $request->input('active'),
             'has_video'   => $request->input('has_video'),
             'video_link'  => $request->input('video_link'),
@@ -63,15 +67,18 @@ class NewsController extends Controller
 
     public function update(Request $request, string $id)
     {
-        $news = News::findOrFail($id);
-        $news->update([
-            'title'       => $request->input('title'),
-            'description' => $request->input('description'),
-            'active'      => $request->input('active'),
-            'has_video'   => $request->input('has_video'),
-            'video_link'  => $request->input('video_link'),
-        ]);
 
+        $request->validate([
+            'title' => 'required|string|max:255',
+        ]);
+        $news = News::findOrFail($id);
+        $news->title = $request->input('title');
+        $news->description = $request->input('description', '');
+        $news->active = $request->input('active');
+        $news->has_video = $request->input('has_video');
+        $news->video_link = $request->input('video_link');
+
+        $news->save();
         // Update image only when a new image is selected
         if ($request->hasFile('image_file')) {
             $image = $request->file('image_file');

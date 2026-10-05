@@ -16,7 +16,7 @@
                         <div class="col-md-6">
                             <div class="input-style-1">
                                 <label>Title <span class="mandatory">*</span></label>
-                                <input type="text" name="title" placeholder="Enter title" required value="{{ old('title') }}">
+                                <input type="text" name="title" placeholder="Enter title" value="{{ old('title') }}"required>
                             </div>
                         </div>
 

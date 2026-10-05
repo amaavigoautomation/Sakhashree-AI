@@ -51,7 +51,7 @@
                                                 <div class="select-style-1">
                                                     <label for="title">Title</label>
                                                     <div class="select-position select-sm">
-                                                        <select class="jSelectbox" id="title" name="title"
+                                                        <select class="jSelectbox" id="title" name="title" required
                                                             onchange="this.form.submit()">
                                                             <option value="">All</option>
                                                             @foreach ($titles as $title)
