@@ -24,27 +24,27 @@
                         <!-- Name -->
                         <div class="col-sm-3">
                             <div class="input-style-1">
-                                <label>Name</label>
+                                <label>Name <span class="mandatory">*</span></label>
                                 <input type="text" name="name" value="{{ old('name', $testimonialVideo->name) }}"
-                                    placeholder="Enter Testimonial Video name">
+                                    placeholder="Enter Testimonial Video name" required>
                             </div>
                         </div>
 
                         <!-- Designation -->
                         <div class="col-sm-3">
                             <div class="input-style-1">
-                                <label>Designation</label>
+                                <label>Designation <span class="mandatory">*</span></label>
                                 <input type="text" name="designation"
-                                    value="{{ old('designation', $testimonialVideo->designation) }}">
+                                    value="{{ old('designation', $testimonialVideo->designation) }}" required>
                             </div>
                         </div>
 
                         <!-- Video Link -->
                         <div class="col-sm-6">
                             <div class="input-style-1">
-                                <label>Video Link</label>
+                                <label>Video Link <span class="mandatory">*</span></label>
                                 <input type="text" name="video_link"
-                                    value="{{ old('video_link', $testimonialVideo->video_link) }}">
+                                    value="{{ old('video_link', $testimonialVideo->video_link) }}" required>
                             </div>
                         </div>
 

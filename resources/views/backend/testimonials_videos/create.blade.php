@@ -21,41 +21,41 @@
                         <!-- Name -->
                         <div class="col-sm-3">
                             <div class="input-style-1">
-                                <label>Name</label>
+                                <label>Name <span class="mandatory">*</span></label>
 
-                                <input type="text" name="name" value="{{ old('name') }}" placeholder="Enter name">
+                                <input type="text" name="name" value="{{ old('name') }}" required placeholder="Enter name">
 
-                                @error('name')
+                                {{-- @error('name')
                                     <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                                @enderror --}}
                             </div>
                         </div>
 
                         <!-- Designation -->
                         <div class="col-sm-3">
                             <div class="input-style-1">
-                                <label>Designation</label>
+                                <label>Designation <span class="mandatory">*</span></label>
 
-                                <input type="text" name="designation" value="{{ old('designation') }}"
+                                <input type="text" name="designation" value="{{ old('designation') }}" required
                                     placeholder="Enter designation">
 
-                                @error('designation')
+                                {{-- @error('designation')
                                     <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                                @enderror --}}
                             </div>
                         </div>
 
                         <!-- Video Link -->
                         <div class="col-sm-6">
                             <div class="input-style-1">
-                                <label>Video Link</label>
+                                <label>Video Link <span class="mandatory">*</span></label>
 
-                                <input type="text" name="video_link" value="{{ old('video_link') }}"
+                                <input type="text" name="video_link" value="{{ old('video_link') }}" required
                                     placeholder="Enter video link">
 
-                                @error('video_link')
+                                {{-- @error('video_link')
                                     <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                                @enderror --}}
                             </div>
                         </div>
 
@@ -79,9 +79,9 @@
 
                             <span id="iconImage"></span>
 
-                            @error('image')
+                            {{-- @error('image')
                                 <span class="text-danger">{{ $message }}</span>
-                            @enderror
+                            @enderror --}}
                         </div>
 
                         <div class="col-sm-3">
@@ -97,9 +97,9 @@
 
                             <span id="iconImage"></span>
 
-                            @error('image')
+                            {{-- @error('image')
                                 <span class="text-danger">{{ $message }}</span>
-                            @enderror
+                            @enderror --}}
                         </div>
 
 
@@ -121,9 +121,9 @@
                                 No
                             </label>
 
-                            @error('active')
+                            {{-- @error('active')
                                 <span class="text-danger">{{ $message }}</span>
-                            @enderror
+                            @enderror --}}
 
                         </div>
 
@@ -138,8 +138,6 @@
                             <button type="submit" class="main-btn primary-btn btn-hover btn-xs">
                                 Save
                             </button>
-
-
 
                         </div>
 

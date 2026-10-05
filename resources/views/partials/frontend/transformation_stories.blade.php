@@ -1,4 +1,6 @@
-@if ($testimonials->isNotEmpty())
+<!-- Transformation Stories Mobile start -->
+
+@if ($testimonials->count() > 0)
     <div class="transtoriesarea">
         <div class="mainheading text-center hidemob">
             <h2>Transformation Stories</h2>
@@ -49,7 +51,6 @@
                         </div>
                     @endforeach
                 </div>
-
                 @if ($testimonials->count() > 1)
                     <button class="carousel-control-prev" type="button" data-bs-target="#StoriesSlider"
                         data-bs-slide="prev">
@@ -71,11 +72,12 @@
             </div>
         </div>
     </div>
-
-<div class="d-flex gap-2 justify-content-center flex-column flex-md-row topmargin30">
-    <div><a href="{{ route('testimonials_list') }}"><button class="secondrybtn btnmdfullwidth">Read Client
-                Experience</button></a></div>
-    <div><button class="secondrybtnol btnmdfullwidth" data-bs-toggle="modal" data-bs-target="#AddReviews">Add
-            Your Review</button></div>
-</div>
+    <div class="d-flex gap-2 justify-content-center flex-column flex-md-row topmargin30">
+        <div><a href="{{ route('testimonials_list') }}"><button class="secondrybtn btnmdfullwidth">Read Client
+                    Experience</button></a>
+        </div>
+        <div><button class="secondrybtnol btnmdfullwidth" data-bs-toggle="modal" data-bs-target="#AddReviews">Add Your
+                Review</button></div>
+    </div>
+    <!-- Transformation Stories section end here -->
 @endif
