@@ -91,10 +91,10 @@
                             <div class="input-style-1">
                                 <label>
                                     Description
-                                    <span class="mandatory">*</span>
+                                    {{-- <span class="mandatory">*</span> --}}
                                 </label>
 
-                                <textarea name="description" id="description" rows="4" placeholder="Enter workshop description" required>{{ old('description', $workshop->description) }}</textarea>
+                                <textarea name="description" id="description" rows="4" placeholder="Enter workshop description">{{ old('description', $workshop->description) }}</textarea>
 
                                 <small>
                                     <span id="wordCount">0</span>/15 words
