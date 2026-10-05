@@ -32,14 +32,14 @@
 
                         <div class="col-md-4">
                             <div class="input-style-1">
-                                <label>Start Date</label>
+                                <label>Start Date <span class="mandatory">*</span></label>
                                 <input type="date" name="start_date" value="{{ old('start_date') }}">
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="input-style-1">
-                                <label>End Date</label>
+                                <label>End Date <span class="mandatory">*</span></label>
                                 <input type="date" name="end_date" value="{{ old('end_date') }}">
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                         <!-- Description -->
                         <div class="col-md-12">
                             <div class="input-style-1">
-                                <label>Description</label>
+                                <label>Description <span class="mandatory">*</span></label>
                                 <textarea name="description" rows="5" class="rich-editor" placeholder="Enter description">{{ old('description') }}
                             </textarea>
                                 @error('description')
@@ -66,7 +66,7 @@
 
                         <div class="col-md-3">
                             <div class="input-style-1">
-                                <label>Image</label>
+                                <label>Image <span class="mandatory">*</span></label>
 
                                 <img id="selectedImage" class="addedImage" src="{{ asset('dist/images/no-image.png') }}"
                                     alt="Selected Image">

@@ -39,7 +39,6 @@
                                     value="{{ old('city_name', $event->city_name) }}">
                             </div>
                         </div>
-
                     </div>
 
                     <hr>
@@ -115,16 +114,13 @@
 
                     <!-- Video Link -->
                     <div class="row mt-15">
-
                         <div class="col-sm-6">
                             <div class="input-style-1">
                                 <label>Video Link</label>
-
                                 <input type="url" name="video_link" placeholder="Video Link"
                                     value="{{ old('video_link', $event->video_link) }}">
                             </div>
                         </div>
-
                     </div>
 
                     <hr>
@@ -173,21 +169,15 @@
 
                                     <label class="radio-inline">
                                         <input type="radio" name="is_past_event" value="1"
-                                            {{ $event->is_past_event == 1 ? 'checked' : '' }}>
-                                        Yes
-                                    </label>
+                                            {{ $event->is_past_event == 1 ? 'checked' : '' }}>Yes</label>
+
 
                                     <label class="radio-inline">
                                         <input type="radio" name="is_past_event" value="0"
-                                            {{ $event->is_past_event == 0 ? 'checked' : '' }}>
-                                        No
-                                    </label>
+                                            {{ $event->is_past_event == 0 ? 'checked' : '' }}>No</label>
                                 </div>
-
                             </div>
-
                         </div>
-
                     </div>
 
                     <!-- Save Button -->
@@ -195,7 +185,7 @@
 
                         <div class="col-sm-3">
                             <button type="submit" class="main-btn primary-btn btn-hover btn-xs">
-                                Save
+                                Update
                             </button>
                         </div>
 

@@ -55,12 +55,12 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-3">
+                            {{-- <div class="col-sm-3">
                                 <div class="input-style-1">
                                 <label>Password <span class="mandatory">*</span></label>
                                 <input type="password"  name="password" placeholder="Enter Your Password" required />
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="col-sm-3">
                                 <label>Active </label><br>
@@ -71,7 +71,7 @@
                                     <input type="radio" name="active" class="radio-inline" value="0" checked> No
                                 </label>
                             </div>
-                       
+
                     </div>
 
                     <hr>
@@ -108,7 +108,7 @@
                             </div>
 
                         </div>
-                
+
                     <hr>
 
                     <div class="row mt-15">
@@ -116,7 +116,7 @@
                             <button type="submit" class="main-btn primary-btn btn-hover btn-xs">Save</button>
                         </div>
                     </div>
-                    
+
                 </div>
                 </div>
             </form>

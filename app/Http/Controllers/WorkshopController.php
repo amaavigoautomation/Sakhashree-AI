@@ -109,6 +109,17 @@ class WorkshopController extends Controller
     {
         $workshop = Workshop::findOrFail($id);
 
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'date' => 'required|date',
+            'start_time' => 'required',
+            'end_time' => 'required',
+            'city' => 'required|string|max:255',
+            'description' => 'required|string',
+            'is_latest' => 'required|boolean',
+            'active' => 'required|boolean',
+            'image_file' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+        ]);
         $workshop->update([
             'name' => $request->input('name'),
             'date' => $request->input('date'),

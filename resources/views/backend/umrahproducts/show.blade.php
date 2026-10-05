@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <!-- BreathCrum -->
             @include('partials.breadcrumb')
-            
+
             <!--Add new section start here-->
             <div class="card-style mt-20">
 
@@ -58,10 +58,7 @@
                 </div>
             </div>
 
-
         </div>
-
-
         <!--Add new section end here-->
         </div>
     </section>

@@ -10,16 +10,15 @@
 
             <div class="card-style mt-20">
 
-                <h4 class="mb-20">Edit FAQ Type</h4>
-
-                <form action="{{ route('faq_types.update', ['faq_type'=>$faqType->id]) }}" enctype="multipart/form-data" method="POST">
+                <form action="{{ route('faq_types.update', ['faq_type' => $faqType->id]) }}" enctype="multipart/form-data"
+                    method="POST">
 
                     @csrf
                     @method('PUT')
 
                     <!-- Name -->
                     <div class="input-style-1">
-                        <label>Name</label>
+                        <label>Name <span class="mandatory">*</span></label>
 
                         <input type="text" name="name" value="{{ old('name', $faqType->name) }}"
                             placeholder="Enter FAQ type name">
@@ -51,47 +50,25 @@
                             <label class="radio-inline">
 
                                 <input type="radio" name="active" class="radio-inline" value="1"
-                                    {{ old('active', $faqType->active) == 1 ? 'checked' : '' }}>
-
-                                Yes
-
-                            </label>
+                                    {{ old('active', $faqType->active) == 1 ? 'checked' : '' }}>Yes</label>
 
                             <label class="radio-inline">
 
                                 <input type="radio" name="active" class="radio-inline" value="0"
-                                    {{ old('active', $faqType->active) == 0 ? 'checked' : '' }}>
-
-                                No
-
-                            </label>
-
+                                    {{ old('active', $faqType->active) == 0 ? 'checked' : '' }}> No </label>
                         </div>
-
                     </div>
 
                     <!-- Buttons -->
                     <div class="row mt-15">
-
                         <div class="col-sm-3">
-
                             <button type="submit" class="main-btn primary-btn btn-hover btn-xs">
                                 Update
                             </button>
-
-                            <a href="{{ route('faq_types.index') }}" class="main-btn light-btn btn-hover btn-xs">
-                                Cancel
-                            </a>
-
                         </div>
-
                     </div>
-
                 </form>
-
             </div>
-
         </div>
-
     </section>
 @endsection

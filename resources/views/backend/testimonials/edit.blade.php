@@ -55,7 +55,7 @@
                                 <input type="text" name="city" value="{{ $testimonial->city }}" />
                             </div>
                         </div>
-
+                        <hr>
 
                         <div class="row mt-15">
                             <div class="col-sm-12">
@@ -67,7 +67,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        <hr>
                         <<div class="col-sm-3">
                             <label>Image</label>
                             <div>
@@ -113,7 +113,7 @@
                     <div class="row mt-15">
                         <div class="col-sm-3">
                             <button type="submit" class="main-btn primary-btn btn-hover btn-xs">
-                                Save
+                                Update
                             </button>
                         </div>
                     </div>

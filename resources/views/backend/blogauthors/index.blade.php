@@ -149,8 +149,8 @@
                                     </td>
                                     <td class="text-center"><a href="{{ route('blogauthors.edit', $blogauthor->id) }}"><i
                                                 class="lni lni-pencil-alt"></i></a>
-                                        <a href="{{ route('blogauthors.show', $blogauthor->id) }}"><i
-                                                class="lni lni-list"></i></a>
+                                        {{-- <a href="{{ route('blogauthors.show', $blogauthor->id) }}"><i
+                                                class="lni lni-list"></i></a> --}}
                                     </td>
 
                                 </tr>

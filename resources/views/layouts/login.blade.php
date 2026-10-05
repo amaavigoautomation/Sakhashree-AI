@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gopinathan : Admin : Login </title>
+    <title>Sakhashree : Admin : Login </title>
 
     <link rel="stylesheet" href="{{ asset('dist/css/back-end/bootstrap.css') }}" />
     <link rel="stylesheet" href="{{ asset('dist/css/back-end/bootstrap-theme.css') }}" />

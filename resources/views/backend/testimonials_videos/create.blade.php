@@ -23,11 +23,8 @@
                             <div class="input-style-1">
                                 <label>Name <span class="mandatory">*</span></label>
 
-                                <input type="text" name="name" value="{{ old('name') }}" required placeholder="Enter name">
-
-                                {{-- @error('name')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror --}}
+                                <input type="text" name="name" value="{{ old('name') }}" required
+                                    placeholder="Enter name">
                             </div>
                         </div>
 
@@ -38,10 +35,6 @@
 
                                 <input type="text" name="designation" value="{{ old('designation') }}" required
                                     placeholder="Enter designation">
-
-                                {{-- @error('designation')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror --}}
                             </div>
                         </div>
 
@@ -52,10 +45,6 @@
 
                                 <input type="text" name="video_link" value="{{ old('video_link') }}" required
                                     placeholder="Enter video link">
-
-                                {{-- @error('video_link')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror --}}
                             </div>
                         </div>
 
@@ -78,10 +67,6 @@
                                 onchange="displayImage(this)">
 
                             <span id="iconImage"></span>
-
-                            {{-- @error('image')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror --}}
                         </div>
 
                         <div class="col-sm-3">
@@ -94,21 +79,13 @@
 
                             <input type="file" name="facial_image" id="imageInput" accept=".jpg,.jpeg,.png,.svg,.webp"
                                 onchange="displayImage(this)">
-
                             <span id="iconImage"></span>
-
-                            {{-- @error('image')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror --}}
                         </div>
-
 
                         <!-- Active -->
                         <div class="col-sm-6">
-
                             <label>Active</label>
                             <br>
-
                             <label class="radio-inline">
                                 <input type="radio" name="active" class="radio-inline" value="1"
                                     {{ old('active', 1) == 1 ? 'checked' : '' }}>
@@ -120,35 +97,19 @@
                                     {{ old('active') === '0' ? 'checked' : '' }}>
                                 No
                             </label>
-
-                            {{-- @error('active')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror --}}
-
                         </div>
-
                     </div>
-
                     <hr>
                     <!-- Buttons -->
                     <div class="row mt-15">
-
                         <div class="col-sm-3">
-
                             <button type="submit" class="main-btn primary-btn btn-hover btn-xs">
-                                Save
+                                Update
                             </button>
-
                         </div>
-
                     </div>
-
                 </form>
-
-
-
             </div>
-
         </div>
 
     </section>

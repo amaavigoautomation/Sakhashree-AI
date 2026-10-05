@@ -83,7 +83,7 @@
                         </td>
                     </tr>
 
-                    <tr>
+                    {{-- <tr>
                        <th><h6>Created At</h6></th>
                        <td>
                            <p>{{ $videos->created_at }}</p>
@@ -94,7 +94,7 @@
                        <td>
                            <p>{{ $videos->updated_at }}</p>
                        </td>
-                    </tr>
+                    </tr> --}}
                     </tbody>
                 </table>
             </div>

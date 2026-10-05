@@ -36,14 +36,11 @@
                                     {{ $gallery->active == 0 ? 'checked' : '' }}> No
                             </label>
                         </div>
-
                     </div>
-
                     <hr>
-
                     <div class="row mt-15">
                         <div class="col-sm-3">
-                            <button type="submit" class="main-btn primary-btn btn-hover btn-xs">Save</button>
+                            <button type="submit" class="main-btn primary-btn btn-hover btn-xs">Update</button>
                         </div>
                     </div>
                 </form>

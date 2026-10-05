@@ -13,12 +13,12 @@
             <div class="table-wrapper table-responsive mt-10">
                 <table class="table striped-table">
                     <tbody>
-                    <tr>
+                    {{-- <tr>
                         <th class='col-md-2'><h6>Role</h6></th>
                         <td class=''>
                             <p>{{ $user->roles->role_name }}</p>
                         </td>
-                    </tr>
+                    </tr> --}}
                     <tr>
                         <th class='col-md-2'><h6>Admin Type</h6></th>
                         <td class=''>
@@ -94,7 +94,7 @@
                         <div class="{{ $class; }}">{{ $data }}</div>
                     </td>
                     </tr>
-                   <tr>
+                   {{-- <tr>
                     <th><h6>Its Reporting Manager</h6></th>
                     <td>
                       @php if($user->its_report_manager == '1'){
@@ -119,7 +119,7 @@
                        <td>
                            <p>{{ $user->updated_at }}</p>
                        </td>
-                    </tr>
+                    </tr> --}}
                     </tbody>
                 </table>
             </div>

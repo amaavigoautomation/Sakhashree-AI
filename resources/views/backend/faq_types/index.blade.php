@@ -28,28 +28,7 @@
              <!-- FAQ Type Section -->
              <div class="card-style mt-20">
 
-                 <div class="row">
-
-                     <div class="col-sm-4">
-
-                         <div class="filtertext">
-
-                             <ul>
-                             </ul>
-
-                         </div>
-
-                     </div>
-
-
-                     <div class="col-sm-4 rowmargin10">
-
-                         <div class="right-mob-left">
-                         </div>
-
-                     </div>
-
-                 </div>
+                  
 
 
                  <!-- Table -->
