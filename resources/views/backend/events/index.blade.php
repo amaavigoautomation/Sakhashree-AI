@@ -93,6 +93,7 @@
                                             </div>
                                         </div>
 
+                                        
                                         {{-- Active Status --}}
                                         <div class="col-sm-3">
                                             <div class="select-style-1">
@@ -162,7 +163,7 @@
                             </div>
                         </div>
                     </div>
-                </div>                      
+                </div>
 
                 <hr>
 
