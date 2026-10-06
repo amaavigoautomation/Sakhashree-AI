@@ -15,7 +15,7 @@
         <!-- Transformation Stories Desktop end -->
 
         <!-- Transformation Stories Mobile start -->
-        @include('partials.frontend.transformation_stories_mobile')
+        {{-- @include('partials.frontend.transformation_stories_mobile') --}}
         <!-- Transformation Stories Mobile end -->
 
         <!-- Transformation Stories slider start -->

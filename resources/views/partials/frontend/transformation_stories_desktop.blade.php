@@ -71,6 +71,9 @@
 
     <!-- Transformation Stories Mobile start -->
     <div class="sucstoriesvidarea-mob">
+
+        {{-- @dump($testimonialVideos); --}}
+
         <div class="mainheading text-center hidedesktab">
             <h2>Transformation Stories</h2>
         </div>
@@ -95,7 +98,7 @@
                                                 <img src="{{ asset('dist/img/playbtn.svg') }}" alt="Play">
                                             </div>
 
-                                            <img src="{{ asset('images/testimonials_video_faces/' . $testimonialVideo->id . '/' . $testimonialVideo->facial_image) }}"
+                                            <img src="{{ asset('public/images/testimonials_video_faces/' . $testimonialVideo->id . '/' . $testimonialVideo->facial_image) }}"
                                                 alt="{{ $testimonialVideo->name }}">
                                         </a>
                                     </div>
