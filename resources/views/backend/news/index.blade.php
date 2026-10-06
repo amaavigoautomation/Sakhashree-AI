@@ -182,6 +182,9 @@
                                         @elseif (!empty($new->image_file))
                                             <img src="{{ asset('public/images/news/image_file/' . $new->id . '/' . $new->image_file) }}"
                                                 id="imageBox" alt="{{ $new->title }}">
+                                        @else
+                                            <img src="{{ asset('public/images/no-image.png') }}" id="imageBox"
+                                                alt="No Image">
                                         @endif
                                     </td>
 

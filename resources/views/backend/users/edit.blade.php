@@ -17,7 +17,7 @@
                                 <div class="select-position select-sm">
                                     <select class="jSelectbox" id="actionDropdown" name="admin_type_id" required>
                                         <option value="">Select</option>
-                                        <?php foreach ($adminTypes as $adminType){ 
+                                        <?php foreach ($adminTypes as $adminType){
                                             $selected = ($adminType->id == $user->admin_type_id) ? 'selected' : ''; ?>
                                         <option value="{{ $adminType->id }}" {{ $selected }}>{{ $adminType->name }}
                                         </option>
@@ -118,7 +118,7 @@
 
                     <div class="row mt-15">
                         <div class="col-sm-3">
-                            <button type="submit" class="main-btn primary-btn btn-hover btn-xs">Save</button>
+                            <button type="submit" class="main-btn primary-btn btn-hover btn-xs">Update</button>
                         </div>
                     </div>
 

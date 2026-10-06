@@ -38,6 +38,7 @@ class NewsController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
+             
         ]);
 
         $news = News::create([

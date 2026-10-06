@@ -54,27 +54,19 @@
                                             <div class="select-style-1">
 
                                                 <label for="faq_type_id">FAQ Type</label>
-
                                                 <div class="select-position select-sm">
-
                                                     <select class="jSelectbox" id="faq_type_id" name="faq_type_id"
                                                         onchange="this.form.submit()">
-
                                                         <option value="">All</option>
-
                                                         @foreach ($faqTypes as $faqType)
                                                             <option value="{{ $faqType->id }}"
                                                                 {{ request('faq_type_id') == $faqType->id ? 'selected' : '' }}>
 
                                                                 {{ $faqType->name }}
-
                                                             </option>
                                                         @endforeach
-
                                                     </select>
-
                                                 </div>
-
                                             </div>
 
                                         </div>

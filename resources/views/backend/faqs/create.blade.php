@@ -31,10 +31,6 @@
                                     </option>
                                 @endforeach
                             </select>
-
-                            @error('faq_type_id')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
                         </div>
                     </div>
 
