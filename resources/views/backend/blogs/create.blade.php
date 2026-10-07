@@ -20,7 +20,7 @@
                         </div>
 
                         <!-- Blog Author -->
-                        <div class="col-sm-3">
+                        {{-- <div class="col-sm-3">
                             <div class="select-style-1">
                                 <label>Authors <span class="mandatory"> *</span></label>
                                 <div class="select-position select-sm">
@@ -35,7 +35,7 @@
                                     </select>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="col-sm-3">
                             <div class="select-style-1">

@@ -38,7 +38,9 @@ class WorkshopEnquiryController extends Controller
             'description' => $request->description,
         ]);
 
-        return redirect()->back()->with('success', 'Enquiry submitted successfully.');
+        return redirect()
+            ->route('thankyou')
+            ->with('success', 'Enquiry submitted successfully.');
     }
 
     public function show(string $id)

@@ -4,12 +4,12 @@
     min-height: 42px;
 }
 
-.countryIcon {
-    width: 20px;
-    height: 20px;
-    border-radius: 50px;
-    object-fit: cover;
-    object-position: 50% 50%;
+.countryIcon{
+   width: 20px;
+   height: 20px;
+   border-radius: 50px;
+   object-fit: cover;
+   object-position: 50% 50%;
 }
 
 .ModuleBox {

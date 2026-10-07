@@ -166,7 +166,7 @@ class BaseController extends Controller
             $image->move(public_path($folder), $imageName);
 
             // Image URL
-            $imageUrl = asset('public/' . $folder . '/' . $imageName);
+            $imageUrl = asset('public/'.$folder . '/' . $imageName);
 
             // Generate HTML response (similar to CakePHP2)
             return response()->make("

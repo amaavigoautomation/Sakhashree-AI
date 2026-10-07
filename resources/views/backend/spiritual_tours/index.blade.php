@@ -47,196 +47,120 @@
 
                                         {{-- Title --}}
                                         <div class="col-sm-3">
-
                                             <div class="select-style-1">
-
-                                                <label for="title">Title</label>
-
+                                                <label for="title">Tour Title</label>
                                                 <div class="select-position select-sm">
-
                                                     <select class="jSelectbox" id="title" name="title"
                                                         onchange="this.form.submit()">
-
-                                                        <option value="">All</option>
-
+                                                        <option value="">Select</option>
                                                         @foreach ($titles as $title)
                                                             <option value="{{ $title }}"
                                                                 {{ request('title') == $title ? 'selected' : '' }}>
-
                                                                 {{ $title }}
-
                                                             </option>
                                                         @endforeach
-
                                                     </select>
-
                                                 </div>
-
                                             </div>
-
                                         </div>
-
 
                                         {{-- Location --}}
                                         <div class="col-sm-3">
-
                                             <div class="select-style-1">
-
                                                 <label for="location">Location</label>
-
                                                 <div class="select-position select-sm">
-
                                                     <select class="jSelectbox" id="location" name="location"
                                                         onchange="this.form.submit()">
-
-                                                        <option value="">select</option>
-
+                                                        <option value="">Select</option>
                                                         @foreach ($locations as $location)
                                                             <option value="{{ $location }}"
                                                                 {{ request('location') == $location ? 'selected' : '' }}>
-
                                                                 {{ $location }}
-
                                                             </option>
                                                         @endforeach
-
                                                     </select>
-
                                                 </div>
-
                                             </div>
-
                                         </div>
-
 
                                         {{-- Status --}}
-                                        <div class="col-sm-2">
-
+                                        <div class="col-sm-3">
                                             <div class="select-style-1">
-
                                                 <label for="status">Status</label>
-
                                                 <div class="select-position select-sm">
-
                                                     <select class="jSelectbox" id="status" name="status"
                                                         onchange="this.form.submit()">
-
-                                                        <option value="">select</option>
-
+                                                        <option value="">Select</option>
                                                         <option value="1"
                                                             {{ request('status') == '1' ? 'selected' : '' }}>
-
                                                             Active
-
                                                         </option>
-
                                                         <option value="0"
                                                             {{ request('status') == '0' ? 'selected' : '' }}>
-
                                                             Inactive
-
                                                         </option>
-
                                                     </select>
-
                                                 </div>
-
                                             </div>
-
                                         </div>
-
 
                                         {{-- Upcoming --}}
-                                        <div class="col-sm-2">
-
+                                        <div class="col-sm-3">
                                             <div class="select-style-1">
-
-                                                <label for="is_upcoming">Upcoming</label>
-
+                                                <label for="is_upcoming">Upcoming Tour</label>
                                                 <div class="select-position select-sm">
-
                                                     <select class="jSelectbox" id="is_upcoming" name="is_upcoming"
                                                         onchange="this.form.submit()">
-
-                                                        <option value="">select</option>
-
+                                                        <option value="">Select</option>
                                                         <option value="1"
                                                             {{ request('is_upcoming') == '1' ? 'selected' : '' }}>
-
                                                             Yes
-
                                                         </option>
-
                                                         <option value="0"
                                                             {{ request('is_upcoming') == '0' ? 'selected' : '' }}>
-
                                                             No
-
                                                         </option>
-
                                                     </select>
-
                                                 </div>
-
                                             </div>
-
                                         </div>
-
 
                                         {{-- Reset --}}
                                         <div class="col-sm-2">
-
                                             <a href="{{ route('spiritual_tours_listing.index') }}">
-
                                                 <button type="button" class="main-btn primary-btn btn-hover btn-xs"
                                                     style="margin-top:28px">
-
                                                     Reset
-
                                                 </button>
-
                                             </a>
-
                                         </div>
-
                                     </div>
-
                                 </form>
-
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
 
                 <hr>
 
-
-
                 <div class="table-wrapper table-responsive mt-10">
 
-                    <table class="table striped-table">
+                    <table class="table striped-table align-middle">
 
                         <thead>
                             <tr>
                                 <th>
-                                    <h6>Image</h6>
+                                    <h6>Tour Image</h6>
                                 </th>
-
                                 <th>
-                                    <h6>Title</h6>
+                                    <h6>Tour Title</h6>
                                 </th>
-
                                 <th>
-                                    <h6>Date</h6>
+                                    <h6>Date / Day</h6>
                                 </th>
-
-                                <th class="text-left">
+                                <th>
                                     <h6>Status</h6>
                                 </th>
-
                                 <th class="text-center">
                                     <h6>Action</h6>
                                 </th>
@@ -245,34 +169,50 @@
 
                         <tbody>
 
-                            @foreach ($spiritualTours as $tour)
+                            @forelse ($spiritualTours as $tour)
                                 <tr>
 
                                     <td>
                                         @if (!empty($tour->image_file))
                                             <img src="{{ asset('public/images/spiritual_tours/image_file/' . $tour->id . '/' . $tour->image_file) }}"
-                                                id="imageBox">
+                                                alt="{{ $tour->title }}" width="80" class="img-thumbnail rounded"
+                                                loading="lazy">
+                                        @else
+                                            <span class="text-muted">—</span>
                                         @endif
                                     </td>
 
                                     <td>
-                                        <p>{{ $tour->title }}</p>
+                                        <p class="mb-1">
+                                            <strong>{{ $tour->title }}</strong>
+                                        </p>
+
+                                        @if (!empty($tour->location))
+                                            <p class="mb-0 text-muted">
+                                                <i class="lni lni-map-marker"></i>
+                                                {{ $tour->location }}
+                                            </p>
+                                        @endif
                                     </td>
 
                                     <td>
-                                        <p>
-                                            <span style="color: black;">Start Date - </span>
-                                            <span style="color: red;">{{ $tour->start_date }}</span>
+                                        <p class="mb-1">
+                                            <strong>Start:</strong>
+                                            {{ date('jS F Y', strtotime($tour->start_date)) }}
                                         </p>
 
-                                        <p>
-                                            <span style="color: black;">End Date - </span>
-                                            <span style="color: blue;">{{ $tour->end_date }}</span>
+                                        <p class="mb-1">
+                                            <strong>End:</strong>
+                                            {{ date('jS F Y', strtotime($tour->end_date)) }}
                                         </p>
 
+                                        <p class="mb-0">
+                                            <strong>Duration:</strong>
+                                            {{ $tour->days }} Days
+                                        </p>
                                     </td>
 
-                                    <td>
+                                    <td class="text-center">
 
                                         @php
                                             $active = $tour->active;
@@ -290,15 +230,19 @@
                                     </td>
 
                                     <td class="text-center">
-
-                                        <a href="{{ route('spiritual_tours_listing.edit', $tour->id) }}">
+                                        <a href="{{ route('spiritual_tours_listing.edit', $tour->id) }}" title="Edit">
                                             <i class="lni lni-pencil-alt"></i>
                                         </a>
-
                                     </td>
 
                                 </tr>
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="5" class="text-center text-muted py-4">
+                                        No tours found.
+                                    </td>
+                                </tr>
+                            @endforelse
 
                         </tbody>
 
@@ -307,10 +251,9 @@
                 </div>
 
             </div>
+            @include('partials.pagination', ['items' => $spiritualTours])
         </div>
 
-        @include('partials.pagination', ['items' => $spiritualTours])
 
-        </div>
     </section>
 @endsection

@@ -58,8 +58,18 @@
                                 <th>
                                     <h6>Mobile</h6>
                                 </th>
+
                                 <td>
                                     <p>
+                                        @php
+                                            $countryDetail = $spiritualTourEnquiry->country?->countryDetails?->first();
+                                        @endphp
+
+                                        @if ($countryDetail?->icon_image)
+                                            <img src="{{ asset('public/images/country_details/icon_image/' . $countryDetail->id . '/' . $countryDetail->icon_image) }}"
+                                                alt="{{ $spiritualTourEnquiry->country->name ?? '' }}" class="countryIcon">
+                                        @endif
+
                                         {{ $spiritualTourEnquiry->calling_code ?? '' }}
                                         {{ $spiritualTourEnquiry->mobile ?? '---' }}
                                     </p>

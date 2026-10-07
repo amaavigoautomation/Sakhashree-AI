@@ -36,7 +36,7 @@
                                     </p>
                                 </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <th class='col-md-2'>
                                     <h6>Blog Author</h6>
                                 </th>
@@ -44,7 +44,7 @@
                                     <p>{{ !empty($blog->blogauthor->author_name) ? $blog->blogauthor->author_name : '---' }}
                                     </p>
                                 </td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th class='col-md-2'>
                                     <h6>Blog Category</h6>

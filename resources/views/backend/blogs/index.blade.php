@@ -33,7 +33,7 @@
 
                                 <form method="GET" action="{{ route('blogs.index') }}">
                                     <div class="row">
-                                        <div class="col-sm-3">
+                                        {{-- <div class="col-sm-3">
                                             <div class="select-style-1">
                                                 <label for="blog_author_id">Author Name</label>
                                                 <div class="select-position select-sm">
@@ -49,7 +49,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                         <div class="col-sm-3">
                                             <div class="select-style-1">

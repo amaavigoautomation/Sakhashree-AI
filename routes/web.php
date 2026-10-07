@@ -35,6 +35,7 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\FaqTypeController;
 use App\Http\Controllers\TestimonialVideoController;
 use App\Http\Controllers\BlogCategoriesController;
+use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\SpiritualTourController;
 use App\Http\Controllers\WorkshopController;
@@ -122,6 +123,7 @@ Route::middleware([CheckSession::class])->group(function () {
         'blogcomments'       => BlogCommentController::class,
         'blogcategories'       => BlogCategoriesController::class,
         'blogs'              => BlogsController::class,
+        'countries'              => CountriesController::class,
         'blogtags'           => BlogTagsController::class,
         'category'           => CategoryController::class,
         'roles-rights'       => RolesRightsController::class,

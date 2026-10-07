@@ -1,6 +1,6 @@
 
 /*DropDown Selectro*/
- $('.jSelectbox').select2(); 
+ $('.jSelectbox').select2();
 
 /*DatePicker Date Selector*/
 $('.date').datepicker({
@@ -90,7 +90,7 @@ function handleRichEditor(){
     "99CCFF", "Light sky blue",
     "CC99FF", "Plum"
   ],
-    extended_valid_elements: 'span[class|style],i[class|aria-hidden]'
+    extended_valid_elements: 'span[class|style],i[class|aria-hidden]',
 });
 
 /*rich-editor-min-toolbar*/

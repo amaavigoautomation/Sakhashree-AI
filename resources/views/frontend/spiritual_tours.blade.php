@@ -465,6 +465,21 @@
                                                     </div>
                                                 @endif
 
+                                                {{-- Location --}}
+                                                @if ($tour->location)
+                                                    <div class="pointsiconinfo">
+
+                                                        <div>
+                                                            <img src="{{ asset('dist/img/location_icon.svg') }}">
+                                                        </div>
+
+                                                        <div>
+                                                            {{ $tour->location }}
+                                                        </div>
+
+                                                    </div>
+                                                @endif
+
                                                 @if ($tour->start_date)
                                                     <div class="d-flex gap-2 align-items-center">
 
@@ -473,7 +488,7 @@
                                                         </div>
 
                                                         <div>
-                                                            {{ $tour->start_date }}
+                                                            {{ date('M Y', strtotime($tour->start_date)) }}
                                                         </div>
 
                                                     </div>

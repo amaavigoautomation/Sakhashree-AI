@@ -23,7 +23,7 @@
     <script src="{{ asset('dist/js/jq/jquery-1.12.0.min.js') }} "></script>
     <script src="{{ asset('dist/js/bootstrap.min.js') }} "></script>
 
-     <!-- Favicon -->
+    <!-- Favicon -->
     <link rel="icon" href="{{ asset('dist/img/favicon.ico') }}" type="image/x-icon">
 
     <!-- Date Picker -->
@@ -36,41 +36,61 @@
 <body>
     <script src="{{ asset('dist/toastr/build/toastr.min.js') }}"></script>
     <script>
-        @if (session('success'))
-            toastr.success('{{ session('success') }}');
-        @elseif (session('error'))
-            toastr.error('{{ session('error') }}');
-        @endif
+        $(document).ready(function() {
 
-        // Toastr configuration (optional)
-        toastr.options = {
-            "closeButton": true,
-            "debug": false,
-            "newestOnTop": false,
-            "progressBar": true,
-            "positionClass": "toast-top-right",
-            "preventDuplicates": false,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        };
+            toastr.options = {
+                closeButton: true,
+                progressBar: true,
+                newestOnTop: true,
+                positionClass: "toast-top-right",
+                preventDuplicates: false,
+                timeOut: 5000,
+                extendedTimeOut: 1000,
+                showDuration: 300,
+                hideDuration: 1000,
+                showMethod: "fadeIn",
+                hideMethod: "fadeOut"
+            };
+
+            @if (session('success'))
+                toastr.success(@json(session('success')));
+            @endif
+
+            @if (session('error'))
+                toastr.error(@json(session('error')));
+            @endif
+
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    toastr.error(@json($error));
+                @endforeach
+            @endif
+
+            @if (session('success'))
+                toastr.success(@json(session('success')));
+            @endif
+
+            @if (session('error'))
+                toastr.error(@json(session('error')));
+            @endif
+
+        });
     </script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
     <script>
-        $(function () {
+        $(function() {
             $("#sortableBody").sortable({
-                update: function () {
+                update: function() {
                     let data = [];
-                    $("#sortableBody tr").each(function (index, element) {
+                    $("#sortableBody tr").each(function(index, element) {
                         data.push({
                             id: $(this).data("id"),
-                            model:$(this).data("model"),
+                            model: $(this).data("model"),
                             order: index + 1
                         });
                     });
@@ -82,7 +102,7 @@
                             data: data,
                             _token: "{{ csrf_token() }}"
                         },
-                        success: function (response) {
+                        success: function(response) {
                             console.log('Reordered successfully');
                         },
                     });
@@ -273,7 +293,7 @@
             });
 
 
-             $("#searchInput").on("keyup", function() {
+            $("#searchInput").on("keyup", function() {
                 let value = $(this).val().toLowerCase().trim();
                 let hasMatch = false;
 
@@ -419,17 +439,21 @@
 
             });
 
-            $(document).ready(function () {
+            $(document).ready(function() {
                 function setupCountryStateCity(countrySelector, stateSelector, citySelector, options = {}) {
-                    const { callingCodeSelector = null, timezoneSelector = null, prefill = {} } = options;
+                    const {
+                        callingCodeSelector = null, timezoneSelector = null, prefill = {}
+                    } = options;
 
                     function loadStates(countryId, selectedStateId = null, callback = null) {
                         if (!countryId) return;
-                        $.get("{{ url('get-states') }}/" + countryId, function (states) {
+                        $.get("{{ url('get-states') }}/" + countryId, function(states) {
                             let options = '<option value="">Select State</option>';
-                            $.each(states, function (_, state) {
-                                const selected = state.id == selectedStateId ? 'selected' : '';
-                                options += `<option value="${state.id}" ${selected}>${state.name}</option>`;
+                            $.each(states, function(_, state) {
+                                const selected = state.id == selectedStateId ? 'selected' :
+                                    '';
+                                options +=
+                                    `<option value="${state.id}" ${selected}>${state.name}</option>`;
                             });
                             $(stateSelector).html(options);
                             if (callback) callback();
@@ -438,23 +462,26 @@
 
                     function loadCities(stateId, selectedCityId = null) {
                         if (!stateId) return;
-                        $.get("{{ url('get-cities') }}/" + stateId, function (cities) {
+                        $.get("{{ url('get-cities') }}/" + stateId, function(cities) {
                             let options = '<option value="">Select City</option>';
-                            $.each(cities, function (_, city) {
-                                const selected = city.id == selectedCityId ? 'selected' : '';
-                                options += `<option value="${city.id}" ${selected}>${city.name}</option>`;
+                            $.each(cities, function(_, city) {
+                                const selected = city.id == selectedCityId ? 'selected' :
+                                '';
+                                options +=
+                                    `<option value="${city.id}" ${selected}>${city.name}</option>`;
                             });
                             $(citySelector).html(options);
                         });
                     }
 
                     // Country change
-                    $(countrySelector).on('change', function () {
+                    $(countrySelector).on('change', function() {
                         const selected = $(this).find(':selected');
                         const countryId = selected.val();
 
                         if (callingCodeSelector) $(callingCodeSelector).val(selected.data('code'));
-                        if (timezoneSelector) $(timezoneSelector).val(selected.data('timezone') || '');
+                        if (timezoneSelector) $(timezoneSelector).val(selected.data('timezone') ||
+                            '');
 
                         $(stateSelector).html('<option value="">Loading...</option>');
                         $(citySelector).html('<option value="">Select City</option>');
@@ -462,7 +489,7 @@
                     });
 
                     // State change
-                    $(stateSelector).on('change', function () {
+                    $(stateSelector).on('change', function() {
                         const stateId = $(this).val();
                         $(citySelector).html('<option value="">Loading...</option>');
                         loadCities(stateId);
@@ -471,8 +498,8 @@
                     // Prefill for edit forms
                     if (prefill.country) {
                         $(countrySelector).val(prefill.country).trigger('change');
-                        setTimeout(function () {
-                            loadStates(prefill.country, prefill.state, function () {
+                        setTimeout(function() {
+                            loadStates(prefill.country, prefill.state, function() {
                                 loadCities(prefill.state, prefill.city);
                             });
                         }, 300);
@@ -484,9 +511,9 @@
                     callingCodeSelector: '#calling_code', // with calling code
                     timezoneSelector: '#timezone_id', // with timezone
                     prefill: {
-                        country: "{{ $blog->country_id ?? $supplier->country_id ?? '' }}",
-                        state: "{{ $blog->state_id ?? $supplier->state_id ?? '' }}",
-                        city: "{{ $blog->city_id ?? $supplier->city_id ?? '' }}"
+                        country: "{{ $blog->country_id ?? ($supplier->country_id ?? '') }}",
+                        state: "{{ $blog->state_id ?? ($supplier->state_id ?? '') }}",
+                        city: "{{ $blog->city_id ?? ($supplier->city_id ?? '') }}"
                     }
                 });
             });

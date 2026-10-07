@@ -10,7 +10,10 @@ class SpiritualTourEnquiryController extends Controller
 {
     public function index()
     {
-        $spiritual_tours_enquiries = SpiritualTourEnquiry::orderBy('id', 'desc')->paginate(20);
+        $spiritual_tours_enquiries = SpiritualTourEnquiry::with([
+            'spiritualTour',
+            'country.countryDetails'
+        ])->paginate(20);
 
         return view('backend.spiritual_tours_enquiries.index', compact('spiritual_tours_enquiries'));
     }
@@ -38,7 +41,9 @@ class SpiritualTourEnquiryController extends Controller
             'description' => $request->description,
         ]);
 
-        return redirect()->back()->with('success', 'Enquiry submitted successfully.');
+        return redirect()
+            ->route('thankyou')
+            ->with('success', 'Enquiry submitted successfully.');
     }
 
     public function show(string $id)

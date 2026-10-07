@@ -86,7 +86,7 @@ class PageController extends BaseController
             ->orderBy('id', 'asc')
             ->get();
 
-        $countries = Country::where('active', 1)->get();
+        $countries = Country::where('active', true)->get();
 
         return view('frontend.spiritual_tours', compact('upcomingTours', 'pastTours', 'countries'));
     }
@@ -180,7 +180,7 @@ class PageController extends BaseController
     public function testimonials_video()
     {
         $videoTestimonials = TestimonialVideo::where('active', true)->get();
- 
+
         return view('frontend.testimonials_video', compact('videoTestimonials'));
     }
 
