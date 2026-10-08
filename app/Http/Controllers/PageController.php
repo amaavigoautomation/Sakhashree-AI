@@ -35,8 +35,9 @@ class PageController extends BaseController
             ->limit(11)
             ->get();
         $workshops = Workshop::where('active', true)
-            ->where('is_latest', true)
+            ->where('show_on_website', true)
             ->orderBy('id', 'desc')
+            ->take(2)
             ->get();
 
         $spiritualTours = SpiritualTour::where('is_upcoming', 1)

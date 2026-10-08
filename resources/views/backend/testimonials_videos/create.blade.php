@@ -10,12 +10,11 @@
 
             <div class="card-style mt-20">
 
-
                 <form action="{{ route('testimonials_videos.store') }}" method="POST" enctype="multipart/form-data">
 
                     @csrf
 
-                    <!-- First Row -->
+                    <!-- Name, Profession & Video Link -->
                     <div class="row">
 
                         <!-- Name -->
@@ -31,10 +30,10 @@
                         <!-- Designation -->
                         <div class="col-sm-3">
                             <div class="input-style-1">
-                                <label>Designation <span class="mandatory">*</span></label>
+                                <label>Profession <span class="mandatory">*</span></label>
 
                                 <input type="text" name="designation" value="{{ old('designation') }}" required
-                                    placeholder="Enter designation">
+                                    placeholder="Enter Profession">
                             </div>
                         </div>
 
@@ -51,12 +50,13 @@
                     </div>
 
                     <hr>
-                    <!-- Second Row -->
-                    <div class="row mt-15">
 
-                        <!-- Image -->
-                        <div class="col-sm-3">
-                            <label>Image</label>
+                    <!-- Images & Status -->
+                    <div class="row">
+
+                        <!-- Testimonial Image -->
+                        <div class="col-sm-4">
+                            <label>Testimonial Image</label>
 
                             <div>
                                 <img id="selectedImage" class="addedImage" src="{{ asset('dist/images/no-image.png') }}"
@@ -67,10 +67,21 @@
                                 onchange="displayImage(this)">
 
                             <span id="iconImage"></span>
+
+                            <small class="text-muted d-block mt-2">
+                                <strong>Maximum file size:</strong> 5 MB
+                            </small>
+
+                            <small class="text-muted d-block mt-2">
+                                <strong>Image Requirements:</strong><br>
+                                Width: 600px × Height: 350px
+                            </small>
                         </div>
 
-                        <div class="col-sm-3">
-                            <label>Facial Image</label>
+
+                        <!-- Homepage Image -->
+                        <div class="col-sm-4">
+                            <label>Homepage Image</label>
 
                             <div>
                                 <img id="selectedImage" class="addedImage" src="{{ asset('dist/images/no-image.png') }}"
@@ -79,37 +90,55 @@
 
                             <input type="file" name="facial_image" id="imageInput" accept=".jpg,.jpeg,.png,.svg,.webp"
                                 onchange="displayImage(this)">
+
                             <span id="iconImage"></span>
+
+                            <small class="text-muted d-block mt-2">
+                                <strong>Maximum file size:</strong> 5 MB
+                            </small>
+
+                            <small class="text-muted d-block mt-2">
+                                <strong>Image Requirements:</strong><br>
+                                Width: 250px × Height: 300px
+                            </small>
                         </div>
 
                         <!-- Active -->
-                        <div class="col-sm-6">
-                            <label>Active</label>
+                        <div class="col-sm-4">
+                            <label>Status</label>
                             <br>
                             <label class="radio-inline">
                                 <input type="radio" name="active" class="radio-inline" value="1"
                                     {{ old('active', 1) == 1 ? 'checked' : '' }}>
-                                Yes
+                                Active
                             </label>
 
                             <label class="radio-inline">
                                 <input type="radio" name="active" class="radio-inline" value="0"
                                     {{ old('active') === '0' ? 'checked' : '' }}>
-                                No
+                                Inactive
                             </label>
                         </div>
+
                     </div>
+
                     <hr>
-                    <!-- Buttons -->
-                    <div class="row mt-15">
+
+                    <!-- Save Button -->
+                    <div class="row">
+
                         <div class="col-sm-3">
                             <button type="submit" class="main-btn primary-btn btn-hover btn-xs">
-                                Update
+                                Save
                             </button>
                         </div>
+
                     </div>
+
                 </form>
+
             </div>
+
         </div>
 
     </section>

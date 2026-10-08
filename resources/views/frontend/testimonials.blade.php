@@ -67,7 +67,7 @@
                                     </div>
 
                                     <div class="testimonialsdes topmargin5">
-                                        {{ $testimonial->city ?? '-' }}, {{ $testimonial->country ?? '-' }}
+                                        {{ $testimonial->city ?? '-' }}, {{ $testimonial->country->name ?? '-' }}
                                     </div>
                                 </div>
                             </div>
@@ -97,10 +97,10 @@
 @push('scripts')
     <script>
         /*
-                                        ==========================================
-                                        TRUE MASONRY CALCULATION
-                                        ==========================================
-                                      */
+                                            ==========================================
+                                            TRUE MASONRY CALCULATION
+                                            ==========================================
+                                          */
 
         function masonryLayout() {
 

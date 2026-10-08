@@ -53,71 +53,63 @@
 
                     @method('PUT')
                     @csrf
-                    <div class="row mt-15">
-                        <div class="col-sm-3">
+                    <div class="row">
+                        <div class="col-sm-6">
                             <div class="input-style-1">
-                                <label>Page Name <span class="mandatory">*</span></label>
-                                <input type="text" name="page_name" placeholder="Enter Page Name" required value="{{ $seomodule->page_name }}" />
+                                <label>Page <span class="mandatory">*</span></label>
+                                <input type="text" name="page_name" placeholder="Enter Page Name" required
+                                    value="{{ $seomodule->page_name }}" />
                             </div>
                         </div>
 
                         <div class="col-sm-6">
                             <div class="input-style-1">
-                                <label>Page Title <span class="mandatory">*</span></label>
-                                <input type="text" id="page_title" name="page_title"
-                                    placeholder="Enter Page Title" required value="{{ $seomodule->page_title }}" />
+                                <label>Meta Title <span class="mandatory">*</span></label>
+                                <input type="text" id="page_title" name="page_title" placeholder="Enter Meta Title"
+                                    required value="{{ $seomodule->page_title }}" />
                             </div>
                         </div>
 
-                        <!-- Active Code -->
-                        <div class="col-sm-3">
-                            <label>Active</label><br>
-                            <label class="radio-inline">
-                                <input type="radio" name="active" class="radio-inline" value="1"
-                                    {{ $seomodule->active == 1 ? 'checked' : '' }}> Yes
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="active" class="radio-inline" value="0"
-                                    {{ $seomodule->active == 0 ? 'checked' : '' }}> No
-                            </label>
-                        </div>
                     </div>
                     <hr>
-                    <div class="row mt-15">
+                    <div class="row">
                         <div class="col-sm-12">
                             <div class="input-style-1">
                                 <label>Meta Description</label>
                                 <textarea rows="5" name="meta_description" placeholder="Meta Description">{{ $seomodule->meta_description }}</textarea>
                             </div>
                         </div>
+                    </div>
+                    <hr>
 
-                    </div>
-                    <hr>
-                    <div class="row mt-15">
-                        <!-- Page Url -->
-                        <div class="col-sm-12">
-                            <div class="input-style-1">
-                                <label>Page Url </label>
-                                <input type="text" id="page_url" name="page_url" placeholder="Page URL"
-                                    value="{{ $seomodule->page_url }}" />
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label>Meta Image</label>
+                            <div id="">
+                                <img id="selectedImage" class="addedImage"
+                                    src="{{ $seomodule->meta_image ? asset('public/images/seomodules/meta_image/' . $seomodule->id . '/' . $seomodule->meta_image) : asset('dist/images/no-image.png') }}"
+                                    alt="Meta Image">
                             </div>
+                            <input type="file" name="meta_image" id="imageInput" onchange="displayImage(this)">
+                            <span id="iconImage">{{ $seomodule->meta_image }}</span>
                         </div>
-                    </div>
-                    <hr>
-                    <div class="col-sm-3">
-                        <label>Image</label>
-                        <div id="">
-                            <img id="selectedImage" class="addedImage"
-                                src="{{ $seomodule->meta_image ? asset('public/images/seomodules/meta_image/' . $seomodule->id . '/' . $seomodule->meta_image) : asset('dist/images/no-image.png') }}"
-                                alt="Selected Image">
+                        <!-- Active Code -->
+                        <div class="col-sm-3">
+                            <label>Status</label><br>
+                            <label class="radio-inline">
+                                <input type="radio" name="active" class="radio-inline" value="1"
+                                    {{ $seomodule->active == 1 ? 'checked' : '' }}> Active
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="active" class="radio-inline" value="0"
+                                    {{ $seomodule->active == 0 ? 'checked' : '' }}> Inactive
+                            </label>
                         </div>
-                        <input type="file" name="meta_image" id="imageInput" onchange="displayImage(this)">
-                        <span id="iconImage">{{ $seomodule->meta_image }}</span>
                     </div>
                     <hr>
                     <div class="row mt-15">
                         <div class="col-sm-3">
-                            <button type="submit" class="main-btn primary-btn btn-hover btn-xs">Save</button>
+                            <button type="submit" class="main-btn primary-btn btn-hover btn-xs">Update</button>
                         </div>
                     </div>
 

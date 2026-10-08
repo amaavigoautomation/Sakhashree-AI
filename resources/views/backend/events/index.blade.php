@@ -2,7 +2,6 @@
     $carbon = \Carbon\Carbon::class;
 @endphp
 
-
 @extends('layouts.backend')
 
 @section('content')
@@ -22,6 +21,7 @@
             <div class="card-style mt-20">
 
                 <div class="accordion" id="filterAccordion">
+
                     <div class="accordion-item">
 
                         @php
@@ -29,6 +29,7 @@
                         @endphp
 
                         <h2 class="accordion-header" id="headingFilter">
+
                             <button class="accordion-button {{ $show ? '' : 'collapsed' }}" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#collapseFilter"
                                 aria-expanded="{{ $show ? 'true' : 'false' }}" aria-controls="collapseFilter">
@@ -36,6 +37,7 @@
                                 <i class="lni lni-search-alt"></i>&nbsp;&nbsp;Search..
 
                             </button>
+
                         </h2>
 
                         <div id="collapseFilter" class="accordion-collapse collapse {{ $show }}"
@@ -47,16 +49,14 @@
 
                                     <div class="row">
 
-                                        {{-- Title --}}
+                                        {{-- Event Title --}}
                                         <div class="col-sm-3">
                                             <div class="select-style-1">
-                                                <label for="title">Title</label>
-
+                                                <label for="title">Event Title</label>
                                                 <div class="select-position select-sm">
                                                     <select class="jSelectbox" id="title" name="title"
                                                         onchange="this.form.submit()">
-
-                                                        <option value="">All</option>
+                                                        <option value="">Select</option>
 
                                                         @foreach ($titles as $title)
                                                             <option value="{{ $title }}"
@@ -70,16 +70,15 @@
                                             </div>
                                         </div>
 
-                                        {{-- City --}}
+                                        {{-- Event Location --}}
                                         <div class="col-sm-3">
                                             <div class="select-style-1">
-                                                <label for="city_name">City</label>
-
+                                                <label for="city_name">Event Location</label>
                                                 <div class="select-position select-sm">
                                                     <select class="jSelectbox" id="city_name" name="city_name"
                                                         onchange="this.form.submit()">
 
-                                                        <option value="">select</option>
+                                                        <option value="">Select</option>
 
                                                         @foreach ($cities as $city)
                                                             <option value="{{ $city }}"
@@ -93,17 +92,15 @@
                                             </div>
                                         </div>
 
-                                        
-                                        {{-- Active Status --}}
+                                        {{-- Status --}}
                                         <div class="col-sm-3">
                                             <div class="select-style-1">
                                                 <label for="status">Status</label>
-
                                                 <div class="select-position select-sm">
                                                     <select class="jSelectbox" id="status" name="status"
                                                         onchange="this.form.submit()">
 
-                                                        <option value="">select</option>
+                                                        <option value="">Select</option>
 
                                                         <option value="1"
                                                             {{ request('status') == '1' ? 'selected' : '' }}>
@@ -120,25 +117,24 @@
                                             </div>
                                         </div>
 
-                                        {{-- Past Event --}}
-                                        <div class="col-sm-2">
+                                        {{-- Event Type --}}
+                                        <div class="col-sm-3">
                                             <div class="select-style-1">
-                                                <label for="is_past_event">Past Event</label>
-
+                                                <label for="is_past_event">Event Type</label>
                                                 <div class="select-position select-sm">
                                                     <select class="jSelectbox" id="is_past_event" name="is_past_event"
                                                         onchange="this.form.submit()">
 
-                                                        <option value="">select</option>
-
-                                                        <option value="1"
-                                                            {{ request('is_past_event') == '1' ? 'selected' : '' }}>
-                                                            Yes
-                                                        </option>
+                                                        <option value="">Select</option>
 
                                                         <option value="0"
                                                             {{ request('is_past_event') == '0' ? 'selected' : '' }}>
-                                                            No
+                                                            Upcoming Event
+                                                        </option>
+
+                                                        <option value="1"
+                                                            {{ request('is_past_event') == '1' ? 'selected' : '' }}>
+                                                            Past Event
                                                         </option>
 
                                                     </select>
@@ -168,31 +164,26 @@
                 <hr>
 
                 <div class="table-wrapper table-responsive mt-10">
-                    <table class="table striped-table">
+
+                    <table class="table striped-table align-middle">
 
                         <thead>
                             <tr>
-
                                 <th>
-                                    <h6>Image</h6>
+                                    <h6>Event Image</h6>
                                 </th>
-
                                 <th>
-                                    <h6>Title</h6>
+                                    <h6>Event Title</h6>
                                 </th>
-
                                 <th>
-                                    <h6>Detail</h6>
+                                    <h6>Event Details</h6>
                                 </th>
-
                                 <th>
-                                    <h6>Active</h6>
+                                    <h6>Status</h6>
                                 </th>
-
                                 <th class="text-center">
-                                    <h6>Action</h6>
+                                    <h6>Actions</h6>
                                 </th>
-
                             </tr>
                         </thead>
 
@@ -203,52 +194,50 @@
 
                                     <!-- Image -->
                                     <td>
-                                        <p>
-                                            @if (!empty($event->image_file))
-                                                <img src="{{ asset('public/images/events/' . $event->id . '/' . $event->image_file) }}"
-                                                    id="imageBox" alt="{{ $event->image_file }}">
-                                            @else
-                                                <img src="{{ asset('dist/images/no-image.png') }}" id="imageBox"
-                                                    alt="No Image">
-                                            @endif
-                                        </p>
+                                        @if (!empty($event->image_file))
+                                            <img src="{{ asset('public/images/events/' . $event->id . '/' . $event->image_file) }}"
+                                                id="imageBox" alt="{{ $event->image_file }}" width="80"
+                                                class="img-thumbnail rounded" loading="lazy">
+                                        @else
+                                            <img src="{{ asset('dist/images/no-image.png') }}" id="imageBox"
+                                                alt="No Image" width="80" class="img-thumbnail rounded">
+                                        @endif
                                     </td>
 
                                     <!-- Title -->
                                     <td>
-                                        <p>{{ $event->title }}</p>
+                                        <p class="mb-0">
+                                            <strong>{{ $event->title ?? '' }}</strong>
+                                        </p>
                                     </td>
 
-                                    <!-- Detail -->
-                                    <!-- Detail -->
+                                    <!-- Details -->
                                     <td>
-                                        <p>
-                                            <span style="color: black;">Date - </span>
-                                            <span style="color: red;">{{ $event->date }}</span>
+                                        <p class="mb-1">
+                                            <strong>Date:</strong>
+                                            {{ $event->date }}
                                         </p>
 
-                                        <p style="color: blue;">
-                                            <span style="color: black;">Time - </span>
+                                        <p class="mb-1">
+                                            <strong>Time:</strong>
                                             {{ $carbon::parse($event->start_time)->format('g:i A') }}
                                             -
                                             {{ $carbon::parse($event->end_time)->format('g:i A') }}
                                         </p>
 
-                                        <p>
-                                            <span style="color: black;">Day - </span>
-                                            <span style="color: green;">{{ $event->day }}</span>
+                                        <p class="mb-1">
+                                            <strong>Day:</strong>
+                                            {{ $event->day ?? '' }}
                                         </p>
 
-                                        <p>
-                                            <span style="color: black;">City - </span>
-                                            <span style="color: orange;">{{ $event->city_name ?? '---' }}</span>
+                                        <p class="mb-0">
+                                            <strong>Event Location:</strong>
+                                            {{ $event->city_name ?? '' }}
                                         </p>
                                     </td>
 
-
-
                                     <!-- Active -->
-                                    <td>
+                                    <td class="text-center">
 
                                         @php
                                             $active = $event->active;
@@ -265,15 +254,11 @@
 
                                     </td>
 
-
-
                                     <!-- Action -->
                                     <td class="text-center">
-
-                                        <a href="{{ route('event.edit', $event->id) }}">
+                                        <a href="{{ route('event.edit', $event->id) }}" title="Edit">
                                             <i class="lni lni-pencil-alt"></i>
                                         </a>
-
                                     </td>
 
                                 </tr>
@@ -282,6 +267,7 @@
                         </tbody>
 
                     </table>
+
                 </div>
 
             </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Faq;
 use App\Models\FaqType;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class FaqController extends Controller
 {
@@ -37,10 +38,10 @@ class FaqController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'question' => 'required',
-            'answer' => 'required',
-            'active' => 'required',
-            'faq_type_id' => 'required|exists:faq_types,id',
+            'faq_type_id' => ['required', 'exists:faq_types,id'],
+            'question' => ['required', 'string', 'unique:faqs,question'],
+            'answer' => ['required', 'string', 'unique:faqs,answer'],
+            'active' => ['required'],
         ]);
 
         Faq::create([
@@ -67,7 +68,22 @@ class FaqController extends Controller
     public function update(Request $request, $id)
     {
         $faq = Faq::findOrFail($id);
-        // dd($request);
+
+        $request->validate([
+            'faq_type_id' => ['required', 'exists:faq_types,id'],
+            'question' => [
+                'required',
+                'string',
+                Rule::unique('faqs', 'question')->ignore($faq->id),
+            ],
+            'answer' => [
+                'required',
+                'string',
+                Rule::unique('faqs', 'answer')->ignore($faq->id),
+            ],
+            'active' => ['required'],
+        ]);
+
         $faq->update([
             'faq_type_id' => $request->faq_type_id,
             'question' => $request->question,
@@ -75,7 +91,8 @@ class FaqController extends Controller
             'active' => $request->active,
         ]);
 
-        return redirect()->route('faqs.index')
+        return redirect()
+            ->route('faqs.index')
             ->with('success', 'FAQ updated successfully.');
     }
 

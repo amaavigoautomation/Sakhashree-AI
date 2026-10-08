@@ -52,14 +52,14 @@
                                         <div class="row">
 
                                             {{-- Name --}}
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-3">
 
                                                 <div class="select-style-1">
                                                     <label for="name">Name</label>
                                                     <div class="select-position select-sm">
                                                         <select class="jSelectbox" id="name" name="name"
                                                             onchange="this.form.submit()">
-                                                            <option value="">All</option>
+                                                            <option value="">Select</option>
                                                             @foreach ($names as $name)
                                                                 <option value="{{ $name }}"
                                                                     {{ request('name') == $name ? 'selected' : '' }}>
@@ -76,12 +76,12 @@
                                             <div class="col-sm-3">
 
                                                 <div class="select-style-1">
-                                                    <label for="designation">Designation</label>
+                                                    <label for="designation">Profession</label>
                                                     <div class="select-position select-sm">
                                                         <select class="jSelectbox" id="designation" name="designation"
                                                             onchange="this.form.submit()">
 
-                                                            <option value="">select</option>
+                                                            <option value="">Select</option>
 
                                                             @foreach ($designations as $designation)
                                                                 <option value="{{ $designation }}"
@@ -107,7 +107,7 @@
                                                         <select class="jSelectbox" id="status" name="status"
                                                             onchange="this.form.submit()">
 
-                                                            <option value="">select</option>
+                                                            <option value="">Select</option>
 
                                                             <option value="1"
                                                                 {{ request('status') == '1' ? 'selected' : '' }}>
@@ -152,7 +152,7 @@
                         <thead>
                             <tr>
                                 <th>
-                                    <h6>Image</h6>
+                                    <h6>Testimonial Image</h6>
                                 </th>
 
                                 <th>
@@ -160,7 +160,7 @@
                                 </th>
 
                                 <th>
-                                    <h6>Designation</h6>
+                                    <h6>Profession </h6>
                                 </th>
 
                                 <th>

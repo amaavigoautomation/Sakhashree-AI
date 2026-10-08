@@ -43,21 +43,39 @@
                                         {{-- Name --}}
                                         <div class="col-sm-3">
                                             <div class="select-style-1">
-                                                <label for="name">Name</label>
-
+                                                <label for="name">Workshop Name</label>
                                                 <div class="select-position select-sm">
                                                     <select class="jSelectbox" id="name" name="name"
                                                         onchange="this.form.submit()">
-
-                                                        <option value="">all</option>
-
+                                                        <option value="">Select</option>
                                                         @foreach ($name as $workshopName)
                                                             <option value="{{ $workshopName }}"
                                                                 {{ request('name') == $workshopName ? 'selected' : '' }}>
                                                                 {{ $workshopName }}
                                                             </option>
                                                         @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
 
+
+                                        {{-- Latest Workshop --}}
+                                        <div class="col-sm-3">
+                                            <div class="select-style-1">
+                                                <label for="show_on_website">Show on Website - Max 2</label>
+                                                <div class="select-position select-sm">
+                                                    <select class="jSelectbox" id="show_on_website" name="show_on_website"
+                                                        onchange="this.form.submit()">
+                                                        <option value="">Select</option>
+                                                        <option value="1"
+                                                            {{ request('show_on_website') == '1' ? 'selected' : '' }}>
+                                                            Yes
+                                                        </option>
+                                                        <option value="0"
+                                                            {{ request('show_on_website') == '0' ? 'selected' : '' }}>
+                                                            No
+                                                        </option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -66,13 +84,13 @@
                                         {{-- City --}}
                                         <div class="col-sm-3">
                                             <div class="select-style-1">
-                                                <label for="city">City</label>
+                                                <label for="city">Location</label>
 
                                                 <div class="select-position select-sm">
                                                     <select class="jSelectbox" id="city" name="city"
                                                         onchange="this.form.submit()">
 
-                                                        <option value="">select</option>
+                                                        <option value="">Select</option>
 
                                                         @foreach ($cities as $city)
                                                             <option value="{{ $city }}"
@@ -95,7 +113,7 @@
                                                     <select class="jSelectbox" id="status" name="status"
                                                         onchange="this.form.submit()">
 
-                                                        <option value="">select</option>
+                                                        <option value="">Select</option>
 
                                                         <option value="active"
                                                             {{ request('status') == 'active' ? 'selected' : '' }}>
@@ -105,32 +123,6 @@
                                                         <option value="inactive"
                                                             {{ request('status') == 'inactive' ? 'selected' : '' }}>
                                                             Inactive
-                                                        </option>
-
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {{-- Latest Workshop --}}
-                                        <div class="col-sm-2">
-                                            <div class="select-style-1">
-                                                <label for="is_latest">Latest Event</label>
-
-                                                <div class="select-position select-sm">
-                                                    <select class="jSelectbox" id="is_latest" name="is_latest"
-                                                        onchange="this.form.submit()">
-
-                                                        <option value="">select</option>
-
-                                                        <option value="1"
-                                                            {{ request('is_latest') == '1' ? 'selected' : '' }}>
-                                                            Yes
-                                                        </option>
-
-                                                        <option value="0"
-                                                            {{ request('is_latest') == '0' ? 'selected' : '' }}>
-                                                            No
                                                         </option>
 
                                                     </select>
@@ -165,27 +157,31 @@
                         <thead>
                             <tr>
                                 <th>
-                                    <h6>Image</h6>
+                                    <h6>Workshop Image</h6>
                                 </th>
 
                                 <th>
-                                    <h6>Name</h6>
+                                    <h6>Workshop Name</h6>
                                 </th>
 
                                 <th>
-                                    <h6>City</h6>
+                                    <h6>Website</h6>
                                 </th>
 
                                 <th>
-                                    <h6>Date</h6>
+                                    <h6>Location</h6>
+                                </th>
+
+                                <th>
+                                    <h6>Workshop Date</h6>
                                 </th>
 
                                 <th class="text-left">
-                                    <h6>Active</h6>
+                                    <h6>Status</h6>
                                 </th>
 
                                 <th class="text-center">
-                                    <h6>Action</h6>
+                                    <h6>Actions</h6>
                                 </th>
                             </tr>
                         </thead>
@@ -196,13 +192,19 @@
                                         @if (!empty($workshop->image_file))
                                             <img src="{{ asset('public/images/workshops/image_file/' . $workshop->id . '/' . $workshop->image_file) }}"
                                                 id="imageBox">
+                                        @else
+                                            <img src="{{ asset('dist/images/no-image.png') }}" id="imageBox"
+                                                alt="No Image">
                                         @endif
                                     </td>
                                     <td>
-                                        <p> {{ $workshop->name }} </p>
+                                        <p> {{ $workshop->name ?? '' }} </p>
                                     </td>
                                     <td>
-                                        <p> {{ $workshop->city }} </p>
+                                        <p> {{ $workshop->show_on_website ? 'Yes' : 'No' }} </p>
+                                    </td>
+                                    <td>
+                                        <p> {{ $workshop->city ?? '' }} </p>
                                     </td>
                                     <td>
                                         <p>

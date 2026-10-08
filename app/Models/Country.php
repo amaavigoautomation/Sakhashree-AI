@@ -24,6 +24,11 @@ class Country extends Model
         return $this->hasMany(City::class, 'country_id', 'id');
     }
 
+    public function users()
+    {
+        return $this->hasMany(User::class, 'country_id', 'id');
+    }
+
     public function timezones()
     {
         return $this->hasMany(Timezone::class, 'country_id', 'id');
@@ -36,6 +41,6 @@ class Country extends Model
 
     public function testimonials()
     {
-        return $this->hasMany(Testimonial::class);
+        return $this->hasMany(Testimonial::class, 'country_id', 'id');
     }
 }

@@ -45,18 +45,18 @@
                                         <div class="row">
 
                                             {{-- Name --}}
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-3">
 
                                                 <div class="select-style-1">
 
-                                                    <label for="name">Name</label>
+                                                    <label for="name">Testimonial Name</label>
 
                                                     <div class="select-position select-sm">
 
                                                         <select class="jSelectbox" id="name" name="name"
                                                             onchange="this.form.submit()">
 
-                                                            <option value="">All</option>
+                                                            <option value="">Select</option>
 
                                                             @foreach ($names as $name)
                                                                 <option value="{{ $name }}"
@@ -88,7 +88,7 @@
                                                         <select class="jSelectbox" id="country" name="country"
                                                             onchange="this.form.submit()">
 
-                                                            <option value="">select</option>
+                                                            <option value="">Select</option>
 
                                                             @foreach ($countries as $country)
                                                                 <option value="{{ $country }}"
@@ -120,7 +120,7 @@
                                                         <select class="jSelectbox" id="status" name="status"
                                                             onchange="this.form.submit()">
 
-                                                            <option value="">select</option>
+                                                            <option value="">Select</option>
 
                                                             <option value="1"
                                                                 {{ request('status') == '1' ? 'selected' : '' }}>
@@ -174,10 +174,10 @@
                         <thead>
                             <tr>
                                 <th>
-                                    <h6>Icon</h6>
+                                    <h6>Testimonial Image</h6>
                                 </th>
                                 <th>
-                                    <h6>Name</h6>
+                                    <h6>Testimonial Name</h6>
                                 </th>
 
                                 <th>
@@ -216,7 +216,7 @@
                                     </td>
 
                                     <td>
-                                        <p> {{ $testimonial->country ?? '-' }} </p>
+                                        <p> {{ $testimonial->country->name ?? '-' }} </p>
                                     </td>
 
                                     <td>

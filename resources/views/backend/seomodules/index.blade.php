@@ -32,7 +32,7 @@
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <div class="select-style-1">
-                                                <label for="page_name">Page Name</label>
+                                                <label for="page_name">Page</label>
                                                 <div class="select-position select-sm">
                                                     <select class="jSelectbox" id="page_name" name="page_name"
                                                         onchange="this.form.submit()">
@@ -50,7 +50,7 @@
 
                                         <div class="col-sm-6">
                                             <div class="select-style-1">
-                                                <label for="page_title">Page Title</label>
+                                                <label for="page_title">Meta Title</label>
                                                 <div class="select-position select-sm">
                                                     <select class="jSelectbox" id="page_title" name="page_title"
                                                         onchange="this.form.submit()">
@@ -106,17 +106,19 @@
                         <thead>
                             <tr>
                                 <th>
-                                    <h6>Page Name</h6>
+                                    <h6>Page</h6>
                                 </th>
-                                <th class="">
-                                    <h6>Page Title</h6>
+
+                                <th>
+                                    <h6>Meta Title</h6>
                                 </th>
-                                {{-- <th class=""><h6>Url</h6></th>  --}}
+
                                 <th class="text-left">
-                                    <h6>Active</h6>
+                                    <h6>Status</h6>
                                 </th>
+
                                 <th class="text-center">
-                                    <h6>Action</h6>
+                                    <h6>Actions</h6>
                                 </th>
                             </tr>
                         </thead>
@@ -129,7 +131,6 @@
                                     <td>
                                         <p> {{ $seomodule->page_title }} </p>
                                     </td>
-                                    {{-- <td><p> {{ $seomodule->page_url }} </p></td> --}}
 
                                     <td>
                                         @php

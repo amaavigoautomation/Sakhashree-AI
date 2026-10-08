@@ -15,14 +15,14 @@
 
                     <input type="hidden" name="id" value="{{ $event->id }}">
 
-                    <!-- Title & City -->
-                    <div class="row mt-15">
+                    <!-- Title & Location -->
+                    <div class="row">
 
                         <!-- Title -->
                         <div class="col-sm-6">
                             <div class="input-style-1">
                                 <label>
-                                    Title <span class="mandatory">*</span>
+                                    Event Title <span class="mandatory">*</span>
                                 </label>
 
                                 <input type="text" name="title" placeholder="Event Title"
@@ -33,31 +33,50 @@
                         <!-- City Name -->
                         <div class="col-sm-6">
                             <div class="input-style-1">
-                                <label>City Name</label>
+                                <label>Event Location <span class="mandatory">*</span></label>
 
-                                <input type="text" name="city_name" placeholder="City Name"
-                                    value="{{ old('city_name', $event->city_name) }}">
+                                <input type="text" name="city_name" placeholder="Event Location"
+                                    value="{{ old('city_name', $event->city_name) }}" required>
                             </div>
                         </div>
+
                     </div>
 
                     <hr>
 
-                    <!-- Date & Time -->
-                    <div class="row mt-15">
+                    <!-- Date, Day & Time -->
+                    <div class="row">
 
                         <!-- Date -->
                         <div class="col-sm-3">
                             <div class="input-style-1">
-                                <label>Date <span class="mandatory">*</span></label>
+                                <label>
+                                    Event Date <span class="mandatory">*</span>
+                                </label>
+
                                 <input type="date" name="date" value="{{ old('date', $event->date) }}" required>
+                            </div>
+                        </div>
+
+                        <!-- Day -->
+                        <div class="col-sm-3">
+                            <div class="input-style-1">
+                                <label>
+                                    Event Day <span class="mandatory">*</span>
+                                </label>
+
+                                <input type="text" name="day" placeholder="Event Day"
+                                    value="{{ old('day', $event->day) }}" required>
                             </div>
                         </div>
 
                         <!-- Start Time -->
                         <div class="col-sm-3">
                             <div class="input-style-1">
-                                <label>Start Time <span class="mandatory">*</span></label>
+                                <label>
+                                    Start Time <span class="mandatory">*</span>
+                                </label>
+
                                 <input type="time" name="start_time" value="{{ old('start_time', $event->start_time) }}"
                                     required>
                             </div>
@@ -66,31 +85,39 @@
                         <!-- End Time -->
                         <div class="col-sm-3">
                             <div class="input-style-1">
-                                <label>End Time <span class="mandatory">*</span></label>
+                                <label>
+                                    End Time <span class="mandatory">*</span>
+                                </label>
+
                                 <input type="time" name="end_time" value="{{ old('end_time', $event->end_time) }}"
                                     required>
                             </div>
                         </div>
 
-                        <!-- Day -->
-                        <div class="col-sm-3">
+                    </div>
+
+                    <!-- Time Zone & Video Link -->
+                    <div class="row">
+
+                        <!-- Time Code -->
+                        <div class="col-sm-6">
                             <div class="input-style-1">
-                                <label>Day <span class="mandatory">*</span></label>
-                                <input type="text" name="day" placeholder="Monday"
-                                    value="{{ old('day', $event->day) }}" required>
+                                <label>Time Zone</label>
+
+                                <input type="text" name="time_code" placeholder="eg: UTC, IST"
+                                    value="{{ old('time_code', $event->time_code) }}">
                             </div>
                         </div>
 
-                    </div>
-
-                    <div class="row mt-15">
-
-                        <!-- Time Code -->
-                        <div class="col-sm-3">
+                        <!-- Video Link -->
+                        <div class="col-sm-6" id="videoLinkSection">
                             <div class="input-style-1">
-                                <label>Time Code</label>
-                                <input type="text" name="time_code" placeholder="IST"
-                                    value="{{ old('time_code', $event->time_code) }}">
+
+                                <label>Video Link <span class="mandatory">*</span></label>
+
+                                <input type="url" name="video_link" id="video_link" placeholder="Enter Video Link"
+                                    value="{{ old('video_link', $event->video_link) }}">
+
                             </div>
                         </div>
 
@@ -99,12 +126,12 @@
                     <hr>
 
                     <!-- Description -->
-                    <div class="row mt-15">
+                    <div class="row">
 
                         <div class="col-sm-12">
                             <div class="input-style-1">
-                                <label>Description</label>
-                                <textarea name="description" rows="10" class="rich-editor" placeholder="Event Description">{!! $event->description !!}</textarea>
+                                <label>Event Description</label>
+                                <textarea name="description" rows="5" class="rich-editor" placeholder="Event Description">{!! old('description', $event->description) !!}</textarea>
                             </div>
                         </div>
 
@@ -112,25 +139,12 @@
 
                     <hr>
 
-                    <!-- Video Link -->
-                    <div class="row mt-15">
-                        <div class="col-sm-6">
-                            <div class="input-style-1">
-                                <label>Video Link</label>
-                                <input type="url" name="video_link" placeholder="Video Link"
-                                    value="{{ old('video_link', $event->video_link) }}">
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr>
-
-                    <!-- Image & Status -->
-                    <div class="row mt-15">
+                    <!-- Image, Status & Event Type -->
+                    <div class="row">
 
                         <!-- Image -->
-                        <div class="col-sm-3">
-                            <label>Image</label>
+                        <div class="col-sm-4">
+                            <label>Event Image</label>
 
                             <img id="selectedImage" class="addedImage"
                                 src="{{ $event->image_file
@@ -138,50 +152,59 @@
                                     : asset('dist/images/no-image.png') }}"
                                 alt="Event Image">
 
-                            <input type="file" name="image_file" id="imageInput" onchange="displayImage(this)">
+                            <input type="file" name="image_file" id="imageInput"
+                                accept="image/jpeg,image/jpg,image/png,image/webp" onchange="displayImage(this)">
+
+                            <small class="text-muted d-block mt-2">
+                                <strong>Maximum file size:</strong> 5 MB
+                            </small>
+
+                            <small class="text-muted d-block mt-2" id="imageRequirement">
+                                <strong>Image Requirements:</strong><br>
+                                Width: 800px × Height: 800px
+                            </small>
                         </div>
 
-                        <!-- Active & Past Event -->
-                        <div class="col-sm-9">
-
-                            <div class="row">
-
-                                <!-- Active -->
-                                <div class="col-sm-4">
-                                    <label>Active</label><br>
-
-                                    <label class="radio-inline">
-                                        <input type="radio" name="active" value="1"
-                                            {{ $event->active == 1 ? 'checked' : '' }}>
-                                        Yes
-                                    </label>
-
-                                    <label class="radio-inline">
-                                        <input type="radio" name="active" value="0"
-                                            {{ $event->active == 0 ? 'checked' : '' }}>
-                                        No
-                                    </label>
-                                </div>
-
-                                <!-- Past Event -->
-                                <div class="col-sm-4">
-                                    <label>Past Event</label><br>
-
-                                    <label class="radio-inline">
-                                        <input type="radio" name="is_past_event" value="1"
-                                            {{ $event->is_past_event == 1 ? 'checked' : '' }}>Yes</label>
-
-
-                                    <label class="radio-inline">
-                                        <input type="radio" name="is_past_event" value="0"
-                                            {{ $event->is_past_event == 0 ? 'checked' : '' }}>No</label>
-                                </div>
-                            </div>
+                        <!-- Active -->
+                        <div class="col-sm-4">
+                            <label>Status</label><br>
+                            <label class="radio-inline">
+                                <input type="radio" name="active" value="1"
+                                    {{ old('active', $event->active) == 1 ? 'checked' : '' }}>
+                                Active
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="active" value="0"
+                                    {{ old('active', $event->active) == 0 ? 'checked' : '' }}>
+                                Inactive
+                            </label>
                         </div>
+
+                        <!-- Past Event -->
+                        <div class="col-sm-4">
+                            <label>Event Type <span class="mandatory">*</span></label><br>
+
+                            <label class="radio-inline">
+                                <input type="radio" name="is_past_event" value="0"
+                                    {{ old('is_past_event', $event->is_past_event) == 0 ? 'checked' : '' }}
+                                    onchange="toggleEventType()">
+                                Upcoming Event
+                            </label>
+
+                            <label class="radio-inline">
+                                <input type="radio" name="is_past_event" value="1"
+                                    {{ old('is_past_event', $event->is_past_event) == 1 ? 'checked' : '' }}
+                                    onchange="toggleEventType()">
+                                Past Event
+                            </label>
+                        </div>
+
                     </div>
 
-                    <!-- Save Button -->
-                    <div class="row mt-15">
+                    <hr>
+
+                    <!-- Update Button -->
+                    <div class="row">
 
                         <div class="col-sm-3">
                             <button type="submit" class="main-btn primary-btn btn-hover btn-xs">
@@ -197,4 +220,46 @@
 
         </div>
     </section>
+    <script>
+        function toggleEventType() {
+
+            const isPastEvent = document.querySelector(
+                'input[name="is_past_event"]:checked'
+            ).value;
+
+            const videoLinkSection = document.getElementById('videoLinkSection');
+            const videoLink = document.getElementById('video_link');
+            const imageRequirement = document.getElementById('imageRequirement');
+
+            if (isPastEvent == '1') {
+
+                // Past Event
+                videoLinkSection.style.display = 'block';
+
+                videoLink.required = true;
+
+                imageRequirement.innerHTML = `
+                <strong>Image Requirements:</strong><br>
+                Width: 600px × Height: 400px
+            `;
+
+            } else {
+
+                // Upcoming Event
+                videoLinkSection.style.display = 'none';
+
+                videoLink.required = false;
+                videoLink.value = '';
+
+                imageRequirement.innerHTML = `
+                <strong>Image Requirements:</strong><br>
+                Width: 800px × Height: 800px
+            `;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleEventType();
+        });
+    </script>
 @endsection

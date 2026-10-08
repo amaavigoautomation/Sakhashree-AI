@@ -4,6 +4,7 @@
 <head>
     <?php $defaultImage = secure_asset('/'); ?>
     <base href="{{ url('/') }}/">
+    <meta name="base-url" content="{{ url('/') }}">
     <meta charset="UTF-8">
     <title>{{ !empty($seoData['page_title']) ? $seoData['page_title'] : 'Sakhashree Neeta | Spiritual Guide & Healer' }}
     </title>
@@ -20,7 +21,7 @@
     <meta property="og:title" content="{{ $seoData['page_title'] ?? 'Sakhashree Neeta | Spiritual Guide & Healer' }}" />
     <meta property="og:description"
         content="{{ $seoData['meta_description'] ?? 'Discover spiritual healing, workshops and guidance with Sakhashree Neeta.' }}" />
-    <meta property="og:url" content="{{ $seoData['page_url'] ?? 'Sakhashree' }}" />
+    <meta property="og:url" content="{{ url('/') }}" />
     <meta property="og:site_name" content="Sakhashree" />
 
 

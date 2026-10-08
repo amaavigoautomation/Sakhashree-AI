@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 
 class EventController extends Controller
 {
-    
+
     /**
      * Display a listing of the resource.
      */
@@ -60,18 +61,62 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
-            'date' => 'required',
-            'start_time' => 'required',
-            'end_time' => 'required',
-            'day' => 'required',
-            'time_code' => 'nullable',
-            'description' => 'nullable',
-            'video_link' => 'nullable',
-            'city_name' => 'nullable',
-            'image_file' => 'nullable|image|mimes:jpg,jpeg,png,webp,svg|max:2048',
-            'active' => 'nullable|boolean',
-            'is_past_event' => 'nullable|boolean',
+            'title' => [
+                'required',
+                'string',
+                'max:255',
+                'unique:events,title',
+            ],
+
+            'date' => [
+                'required',
+            ],
+
+            'start_time' => [
+                'required',
+            ],
+
+            'end_time' => [
+                'required',
+            ],
+
+            'day' => [
+                'required',
+            ],
+
+            'time_code' => [
+                'nullable',
+            ],
+
+            'description' => [
+                'nullable',
+            ],
+
+            'city_name' => [
+                'nullable',
+            ],
+
+            'is_past_event' => [
+                'required',
+                'boolean',
+            ],
+
+            'active' => [
+                'required',
+                'boolean',
+            ],
+
+            'video_link' => [
+                $request->is_past_event == 1 ? 'required' : 'nullable',
+                'url',
+            ],
+
+            'image_file' => [
+                'required',
+                'image',
+                'mimes:jpg,jpeg,png,webp',
+                'max:5120',
+            ],
         ]);
 
         $event = Event::create([
@@ -84,7 +129,7 @@ class EventController extends Controller
             'description' => $request->description,
             'video_link' => $request->video_link,
             'city_name' => $request->city_name,
-            'active' => $request->has('active') ? 1 : 0,
+            'active' => $request->active,
             'is_past_event' => $request->is_past_event,
         ]);
 
@@ -118,18 +163,62 @@ class EventController extends Controller
     public function update(Request $request, Event $event)
     {
         $request->validate([
-            'title' => 'required',
-            'date' => 'required',
-            'start_time' => 'required',
-            'end_time' => 'required',
-            'day' => 'required',
-            'time_code' => 'nullable',
-            'description' => 'nullable',
-            'video_link' => 'nullable',
-            'city_name' => 'nullable',
-            'image_file' => 'nullable|image|mimes:jpg,jpeg,png,webp,svg|max:2048',
-            'active' => 'nullable|boolean',
-            'is_past_event' => 'nullable|boolean',
+            'title' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('events', 'title')->ignore($event->id),
+            ],
+
+            'date' => [
+                'required',
+            ],
+
+            'start_time' => [
+                'required',
+            ],
+
+            'end_time' => [
+                'required',
+            ],
+
+            'day' => [
+                'required',
+            ],
+
+            'time_code' => [
+                'nullable',
+            ],
+
+            'description' => [
+                'nullable',
+            ],
+
+            'city_name' => [
+                'nullable',
+            ],
+
+            'is_past_event' => [
+                'required',
+                'boolean',
+            ],
+
+            'active' => [
+                'required',
+                'boolean',
+            ],
+
+            'video_link' => [
+                $request->is_past_event == 1 ? 'required' : 'nullable',
+                'url',
+            ],
+
+            'image_file' => [
+                'nullable',
+                'image',
+                'mimes:jpg,jpeg,png,webp',
+                'max:5120',
+            ],
         ]);
 
         $event->title = $request->title;

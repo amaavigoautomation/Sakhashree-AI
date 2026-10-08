@@ -11,7 +11,7 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    protected $fillable = ['role_id','admin_type_id','name','email','password','contact_no','alternate_no','its_seo_users','its_report_manager','image','active','created_at','updated_at'];
+    protected $guarded = ['id'];
 
     protected $hidden = [
         'password',
@@ -22,13 +22,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id', 'id');
+    }
+
     public function roles()
     {
         return $this->belongsTo(RolesRight::class, 'role_id', 'id');
     }
 
-    
+
     public function adminTypes()
     {
         return $this->belongsTo(AdminType::class,'admin_type_id', 'id');

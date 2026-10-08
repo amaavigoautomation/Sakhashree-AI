@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Workshop;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class WorkshopController extends Controller
 {
@@ -24,8 +25,8 @@ class WorkshopController extends Controller
             $WorkshopQuery->where('active', $status);
         }
 
-        if ($request->filled('is_latest')) {
-            $WorkshopQuery->where('is_latest', $request->is_latest);
+        if ($request->filled('show_on_website')) {
+            $WorkshopQuery->where('show_on_website', $request->show_on_website);
         }
 
         $workshops = $WorkshopQuery->orderBy('id', 'desc')->paginate(10);
@@ -47,20 +48,56 @@ class WorkshopController extends Controller
 
     public function store(Request $request)
     {
+        if ($request->input('show_on_website') == 1) {
+            $websiteWorkshopCount = Workshop::where('show_on_website', 1)->count();
+
+            if ($websiteWorkshopCount >= 2) {
+                return back()
+                    ->withInput()
+                    ->withErrors([
+                        'show_on_website' => 'Maximum 2 workshops can be shown on the website.',
+                    ]);
+            }
+        }
         $request->validate([
-            'name' => 'required|string',
-            'date' => 'required',
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                'unique:workshops,name',
+                function ($attribute, $value, $fail) {
+                    $wordCount = str_word_count(trim($value));
+
+                    if ($wordCount > 6) {
+                        $fail('Workshop name must contain a maximum of 6 words.');
+                    }
+                },
+            ],
+
+            'image_file' => [
+                'nullable',
+                'image',
+                'mimes:jpg,jpeg,png,webp',
+                'max:5120',
+            ],
+
+            'date' => 'required|date',
             'start_time' => 'required',
             'end_time' => 'required',
-            'city' => 'required|string',
+            'city' => 'required|string|max:255',
+
+            'is_latest' => 'required|boolean',
+            'active' => 'required|boolean',
+            'show_on_website' => 'required|boolean',
+
             'description' => [
                 'required',
                 'string',
                 function ($attribute, $value, $fail) {
                     $wordCount = str_word_count(strip_tags($value));
 
-                    if ($wordCount > 80) {
-                        $fail('Description must contain less than 80 words.');
+                    if ($wordCount > 15) {
+                        $fail('Description must contain less than 15 words.');
                     }
                 },
             ],
@@ -74,6 +111,7 @@ class WorkshopController extends Controller
             'city' => $request->input('city'),
             'is_latest' => $request->input('is_latest'),
             'active' => $request->input('active'),
+            'show_on_website' => $request->input('show_on_website'),
             'description' => $request->input('description'),
         ]);
 
@@ -108,17 +146,52 @@ class WorkshopController extends Controller
     public function update(Request $request, string $id)
     {
         $workshop = Workshop::findOrFail($id);
+        if ($request->input('show_on_website') == 1) {
+            $websiteWorkshopCount = Workshop::where('show_on_website', 1)
+                ->where('id', '!=', $workshop->id)
+                ->count();
 
+            if ($websiteWorkshopCount >= 2) {
+                return back()
+                    ->withInput()
+                    ->withErrors([
+                        'show_on_website' => 'Maximum 2 workshops can be shown on the website.',
+                    ]);
+            }
+        }
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('workshops', 'name')->ignore($workshop->id),
+                function ($attribute, $value, $fail) {
+                    $wordCount = str_word_count(trim($value));
+
+                    if ($wordCount > 6) {
+                        $fail('Workshop name must contain a maximum of 6 words.');
+                    }
+                },
+            ],
             'date' => 'required|date',
             'start_time' => 'required',
             'end_time' => 'required',
             'city' => 'required|string|max:255',
-            'description' => 'required|string',
+            'description' => [
+                'required',
+                'string',
+                function ($attribute, $value, $fail) {
+                    $wordCount = str_word_count(strip_tags($value));
+
+                    if ($wordCount > 15) {
+                        $fail('Description must contain less than 15 words.');
+                    }
+                },
+            ],
             'is_latest' => 'required|boolean',
             'active' => 'required|boolean',
-            'image_file' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'show_on_website' => 'required|boolean',
+            'image_file' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
         ]);
         $workshop->update([
             'name' => $request->input('name'),
@@ -128,6 +201,7 @@ class WorkshopController extends Controller
             'city' => $request->input('city'),
             'is_latest' => $request->input('is_latest'),
             'active' => $request->input('active'),
+            'show_on_website' => $request->input('show_on_website'),
             'description' => $request->input('description'),
         ]);
 

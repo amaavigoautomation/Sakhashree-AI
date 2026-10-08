@@ -18,6 +18,16 @@
 
                     <tbody>
 
+                        <tr>
+                            <th class="col-md-2">
+                                <h6>FAQ Category</h6>
+                            </th>
+
+                            <td>
+                                <p>{{ $faq->faqType->name ?? '' }}</p>
+                            </td>
+                        </tr>
+
                         <!-- Question -->
                         <tr>
                             <th class="col-md-2">
@@ -25,7 +35,7 @@
                             </th>
 
                             <td>
-                                <p>{{ $faq->question ?? '---' }}</p>
+                                <p>{{ $faq->question ?? '' }}</p>
                             </td>
                         </tr>
 
@@ -37,7 +47,7 @@
                             </th>
 
                             <td>
-                                <p>{{ $faq->answer ?? '---' }}</p>
+                                <p>{{ $faq->answer ?? '' }}</p>
                             </td>
                         </tr>
 
@@ -64,30 +74,6 @@
                                     {{ $data }}
                                 </div>
 
-                            </td>
-                        </tr>
-
-
-                        <!-- Created At -->
-                        <tr>
-                            <th>
-                                <h6>Created At</h6>
-                            </th>
-
-                            <td>
-                                <p>{{ $faq->created_at ?? '---' }}</p>
-                            </td>
-                        </tr>
-
-
-                        <!-- Updated At -->
-                        <tr>
-                            <th>
-                                <h6>Updated At</h6>
-                            </th>
-
-                            <td>
-                                <p>{{ $faq->updated_at ?? '---' }}</p>
                             </td>
                         </tr>
 

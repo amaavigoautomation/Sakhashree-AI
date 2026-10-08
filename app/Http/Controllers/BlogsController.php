@@ -10,6 +10,7 @@ use App\Models\BlogTag;
 use App\Models\BlogBlogTag;
 use App\Http\Controllers\BaseController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 
 
@@ -69,14 +70,30 @@ class BlogsController extends Controller
 
     public function store(Request $request)
     {
-
-        // dd($request);
-
         $request->validate([
-            'blog_author_id' => ['required'],
+            'blog_category_id' => ['required'],
+
+            'title' => [
+                'required',
+                'string',
+                'max:255',
+                'unique:blogs,title',
+            ],
+
+            'page_slug' => [
+                'required',
+                'string',
+                'max:255',
+                'unique:blogs,page_slug',
+            ],
+
+            'image_file' => [
+                'required',
+                'image',
+                'mimes:jpg,jpeg,png,webp',
+                'max:5120',
+            ],
         ]);
-
-
 
         $blog = Blog::create([
             'user_id' => Auth::id(),
@@ -161,6 +178,32 @@ class BlogsController extends Controller
         if (!empty($blogAuthor)) {
             $blogAuthorId = $blogAuthor->id;
         }
+
+        $request->validate([
+
+            'blog_category_id' => ['required'],
+
+            'title' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('blogs', 'title')->ignore($blog->id),
+            ],
+
+            'page_slug' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('blogs', 'page_slug')->ignore($blog->id),
+            ],
+
+            'image_file' => [
+                'nullable',
+                'image',
+                'mimes:jpg,jpeg,png,webp',
+                'max:5120',
+            ],
+        ]);
 
         $blog->update([
             'user_id' => Auth::id(),

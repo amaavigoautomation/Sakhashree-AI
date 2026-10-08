@@ -47,13 +47,13 @@
                                         <div class="row">
 
                                             {{-- Title --}}
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-3">
                                                 <div class="select-style-1">
-                                                    <label for="title">Title</label>
+                                                    <label for="title">News Title</label>
                                                     <div class="select-position select-sm">
                                                         <select class="jSelectbox" id="title" name="title" required
                                                             onchange="this.form.submit()">
-                                                            <option value="">All</option>
+                                                            <option value="">Select</option>
                                                             @foreach ($titles as $title)
                                                                 <option value="{{ $title }}"
                                                                     {{ request('title') == $title ? 'selected' : '' }}>
@@ -70,11 +70,11 @@
                                             {{-- Has Video --}}
                                             <div class="col-sm-3">
                                                 <div class="select-style-1">
-                                                    <label for="has_video">Has Video</label>
+                                                    <label for="has_video">Video Available</label>
                                                     <div class="select-position select-sm">
                                                         <select class="jSelectbox" id="has_video" name="has_video"
                                                             onchange="this.form.submit()">
-                                                            <option value="">select</option>
+                                                            <option value="">Select</option>
                                                             <option value="1"
                                                                 {{ request('has_video') == '1' ? 'selected' : '' }}> Yes
                                                             </option>
@@ -94,7 +94,7 @@
                                                     <div class="select-position select-sm">
                                                         <select class="jSelectbox" id="status" name="status"
                                                             onchange="this.form.submit()">
-                                                            <option value="">select</option>
+                                                            <option value="">Select</option>
                                                             <option value="1"
                                                                 {{ request('status') == '1' ? 'selected' : '' }}> Active
                                                             </option>
@@ -137,15 +137,15 @@
                         <thead>
                             <tr>
                                 <th>
-                                    <h6>Image/Video</h6>
+                                    <h6>Media</h6>
                                 </th>
 
                                 <th>
-                                    <h6>Has Video</h6>
+                                    <h6>Video Available</h6>
                                 </th>
 
                                 <th>
-                                    <h6>Title</h6>
+                                    <h6>News Title</h6>
                                 </th>
 
                                 <th class="text-left">
@@ -153,7 +153,7 @@
                                 </th>
 
                                 <th class="text-center">
-                                    <h6>Action</h6>
+                                    <h6>Actions</h6>
                                 </th>
                             </tr>
                         </thead>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class NewsController extends Controller
 {
@@ -37,8 +38,19 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
-             
+            'title' => [
+                'required',
+                'string',
+                'max:255',
+                'unique:news,title',
+            ],
+
+            'image_file' => [
+                'nullable',
+                'image',
+                'mimes:jpg,jpeg,png,webp',
+                'max:5120',
+            ],
         ]);
 
         $news = News::create([
@@ -68,11 +80,23 @@ class NewsController extends Controller
 
     public function update(Request $request, string $id)
     {
-
-        $request->validate([
-            'title' => 'required|string|max:255',
-        ]);
         $news = News::findOrFail($id);
+        $request->validate([
+            'title' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('news', 'title')->ignore($news->id),
+            ],
+
+            'image_file' => [
+                'nullable',
+                'image',
+                'mimes:jpg,jpeg,png,webp',
+                'max:5120',
+            ],
+        ]);
+
         $news->title = $request->input('title');
         $news->description = $request->input('description', '');
         $news->active = $request->input('active');

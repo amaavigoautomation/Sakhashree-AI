@@ -41,9 +41,6 @@ class SeoModulesController extends BaseController
 
     public function store(Request $request)
     {
-
-        // dd($request);
-
         $seoModule = SeoModule::create([
             'page_name' => $request->input('page_name'),
             'page_slug' => $request->input('page_slug'),
@@ -117,11 +114,6 @@ class SeoModulesController extends BaseController
         }
     }
 
-    public function destroy($id)
-    {
-        //
-    }
-
     public function getControllers()
     {
         $controllerPath = app_path('Http/Controllers');
@@ -132,76 +124,5 @@ class SeoModulesController extends BaseController
 
         return $controllers;
     }
-
-
-    /*For Setup API*/
-    // public function getSeoBySlug($slug){
-    //     $seomodule = SeoModule::where('page_slug',$slug)->first();
-
-    //     $seoData = [];
-    //     if(!empty($seomodule)){
-    //         $id = $seomodule->id;
-    //         $metaImage = $seomodule->meta_image;
-    //         $imagePath = $metaImage ? secure_asset("public/images/seomodules/meta_image/".$id."/".$metaImage) : secure_asset('dist/images/no-image.png');
-
-    //         $seomodule->meta_image = $imagePath;
-
-    //         return response()->json([
-    //             'success' => true,
-    //             'message' => 'SEO Data Found',
-    //             'data' => [$seomodule]
-    //         ],202);
-
-    //     }else{
-    //         return response()->json([
-    //             'success' => false,
-    //             'message' => 'SEO Data Not Found'
-    //         ], 404);
-    //     }
-
-
-    // }
-
-//     public function Seo(){
-//         $seo = SeoModule::where('active', true)->get();
-
-//         $seoArr = [];
-
-//         foreach ($seo as $key => $SEO) {
-//         $id = $SEO->id;
-//         $image = $SEO->meta_image;
-//         $imagePath = $image ? secure_asset("public/images/seomodules/meta_image/" . $id . "/" . $image) : secure_asset('dist/images/no-image.png');
-
-//         $seoArr[$key] = [
-//             'id' => $id,
-//             'page_name' => $SEO->page_name,
-//             'page_slug' => $SEO->page_slug,
-//             'page_title' => $SEO->page_title,
-//             'page_url' => $SEO->page_url,
-//             'link' => $SEO->link,
-//             'controller' => $SEO->controller,
-//             'action' => $SEO->action,
-//             // 'meta_description' => $SEO->meta_description,
-//             'meta_keyword' => $SEO->meta_keyword,
-//             'meta_image' => $imagePath,
-//             'active' => $SEO->active,
-//         ];
-//     }
-//         if (!empty($seoArr)) {
-//             return response()->json([
-//                 'success' => true,
-//                 'message' => 'SEO found.',
-//                 'data' => $seoArr,
-//             ], 200); // HTTP status code 200: OK
-//         } else {
-//             return response()->json([
-//                 'success' => false,
-//                 'message' => 'Data not found.',
-//             ], 404); // HTTP status code 404: Not Found
-//         }
-//    }
-
-    
-
 
 }

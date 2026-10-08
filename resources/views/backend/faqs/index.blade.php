@@ -53,11 +53,11 @@
 
                                             <div class="select-style-1">
 
-                                                <label for="faq_type_id">FAQ Type</label>
+                                                <label for="faq_type_id">FAQ Category</label>
                                                 <div class="select-position select-sm">
                                                     <select class="jSelectbox" id="faq_type_id" name="faq_type_id"
                                                         onchange="this.form.submit()">
-                                                        <option value="">All</option>
+                                                        <option value="">Select</option>
                                                         @foreach ($faqTypes as $faqType)
                                                             <option value="{{ $faqType->id }}"
                                                                 {{ request('faq_type_id') == $faqType->id ? 'selected' : '' }}>
@@ -142,7 +142,7 @@
                         <thead>
                             <tr>
                                  <th>
-                                    <h6>Faq Type</h6>
+                                    <h6>FAQ Category</h6>
                                 </th>
                                 <th>
                                     <h6>Question</h6>

@@ -43,7 +43,7 @@
                 progressBar: true,
                 newestOnTop: true,
                 positionClass: "toast-top-right",
-                preventDuplicates: false,
+                preventDuplicates: true,
                 timeOut: 5000,
                 extendedTimeOut: 1000,
                 showDuration: 300,
@@ -51,19 +51,6 @@
                 showMethod: "fadeIn",
                 hideMethod: "fadeOut"
             };
-
-            @if (session('success'))
-                toastr.success(@json(session('success')));
-            @endif
-
-            @if (session('error'))
-                toastr.error(@json(session('error')));
-            @endif
-
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
 
             @if ($errors->any())
                 @foreach ($errors->all() as $error)
@@ -466,7 +453,7 @@
                             let options = '<option value="">Select City</option>';
                             $.each(cities, function(_, city) {
                                 const selected = city.id == selectedCityId ? 'selected' :
-                                '';
+                                    '';
                                 options +=
                                     `<option value="${city.id}" ${selected}>${city.name}</option>`;
                             });

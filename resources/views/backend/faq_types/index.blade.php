@@ -1,184 +1,182 @@
 @extends('layouts.backend')
 
- @section('content')
-     <section class="section">
+@section('content')
+    <section class="section">
 
-         <div class="container-fluid">
+        <div class="container-fluid">
 
-             <!-- Breadcrumb -->
-             @include('partials.breadcrumb')
-
-
-             <!-- Create Button -->
-             <div class="right-mob-left">
-
-                 <a href="{{ route('faq_types.create') }}">
-
-                     <button type="button" class="main-btn primary-btn btn-hover btn-xs">
-
-                         Create
-
-                     </button>
-
-                 </a>
-
-             </div>
+            <!-- Breadcrumb -->
+            @include('partials.breadcrumb')
 
 
-             <!-- FAQ Type Section -->
-             <div class="card-style mt-20">
+            <!-- Create Button -->
+            <div class="right-mob-left">
 
-                  
+                <a href="{{ route('faq_types.create') }}">
 
+                    <button type="button" class="main-btn primary-btn btn-hover btn-xs">
 
-                 <!-- Table -->
-                 <div class="table-wrapper table-responsive mt-10">
+                        Create
 
-                     <table class="table striped-table">
+                    </button>
 
-                         <!-- Table Header -->
-                         <thead>
+                </a>
 
-                             <tr>
-
-                                 <th class="col-sm-2">
-                                     <h6>Image</h6>
-                                 </th>
-
-                                 <th>
-                                     <h6>Name</h6>
-                                 </th>
-
-                                 <th class="text-left">
-                                     <h6>Status</h6>
-                                 </th>
-
-                                 <th class="text-center">
-                                     <h6>Action</h6>
-                                 </th>
-
-                             </tr>
-
-                         </thead>
+            </div>
 
 
-                         <!-- Table Body -->
-                         <tbody>
-
-                             @foreach ($faqTypes as $faqType)
-                                 <tr>
+            <!-- FAQ Type Section -->
+            <div class="card-style mt-20">
 
 
-                                     <!-- Image -->
-                                     <td>
-
-                                         <p>
-
-                                             @if (!empty($faqType->icon))
-                                                 <img src="{{ asset('public/images/icon/' . $faqType->id . '/' . $faqType->icon) }}"
-                                                     id="imageBox" alt="{{ $faqType->icon }}">
-                                             @else
-                                                 <img src="{{ asset('dist/images/no-image.png') }}" id="imageBox"
-                                                     alt="No Image">
-                                             @endif
-
-                                         </p>
-
-                                     </td>
 
 
-                                     <!-- Name -->
-                                     <td>
+                <!-- Table -->
+                <div class="table-wrapper table-responsive mt-10">
 
-                                         <p>
-                                             {{ $faqType->name }}
-                                         </p>
+                    <table class="table striped-table">
 
-                                     </td>
+                        <!-- Table Header -->
+                        <thead>
+                            <tr>
 
+                                <th class="col-sm-2">
+                                    <h6>Category Icon</h6>
+                                </th>
 
-                                     <!-- Status -->
-                                     <td>
+                                <th>
+                                    <h6>FAQ Category Name</h6>
+                                </th>
 
-                                         @php
+                                <th class="text-left">
+                                    <h6>Status</h6>
+                                </th>
 
-                                             $active = $faqType->active;
+                                <th class="text-center">
+                                    <h6>Actions</h6>
+                                </th>
 
-                                             $checked = $active == 1 ? 'checked' : '';
-
-                                         @endphp
-
-
-                                         <input type="checkbox" id="toggle-{{ $faqType->id }}"
-                                             class="status-checkbox toggle-checkbox" data-id="{{ $faqType->id }}"
-                                             data-model="FaqType" {{ $checked }}>
-
-
-                                         <label for="toggle-{{ $faqType->id }}" class="toggle-label">
-
-                                             <span class="toggle-slider"></span>
-
-                                         </label>
-
-                                     </td>
+                            </tr>
+                        </thead>
 
 
-                                     <!-- Action -->
-                                     <td class="text-center">
+                        <!-- Table Body -->
+                        <tbody>
 
-                                         <!-- Edit -->
-                                         <a href="{{ route('faq_types.edit', $faqType->id) }}">
-
-                                             <i class="lni lni-pencil-alt"></i>
-
-                                         </a>
+                            @foreach ($faqTypes as $faqType)
+                                <tr>
 
 
-                                         <!-- View -->
-                                         {{-- <a href="{{ route('faq_types.show', $faqType->id) }}">
+                                    <!-- Image -->
+                                    <td>
+
+                                        <p>
+
+                                            @if (!empty($faqType->icon))
+                                                <img src="{{ asset('public/images/icon/' . $faqType->id . '/' . $faqType->icon) }}"
+                                                    id="imageBox" alt="{{ $faqType->icon }}">
+                                            @else
+                                                <img src="{{ asset('dist/images/no-image.png') }}" id="imageBox"
+                                                    alt="No Image">
+                                            @endif
+
+                                        </p>
+
+                                    </td>
+
+
+                                    <!-- Name -->
+                                    <td>
+
+                                        <p>
+                                            {{ $faqType->name }}
+                                        </p>
+
+                                    </td>
+
+
+                                    <!-- Status -->
+                                    <td>
+
+                                        @php
+
+                                            $active = $faqType->active;
+
+                                            $checked = $active == 1 ? 'checked' : '';
+
+                                        @endphp
+
+
+                                        <input type="checkbox" id="toggle-{{ $faqType->id }}"
+                                            class="status-checkbox toggle-checkbox" data-id="{{ $faqType->id }}"
+                                            data-model="FaqType" {{ $checked }}>
+
+
+                                        <label for="toggle-{{ $faqType->id }}" class="toggle-label">
+
+                                            <span class="toggle-slider"></span>
+
+                                        </label>
+
+                                    </td>
+
+
+                                    <!-- Action -->
+                                    <td class="text-center">
+
+                                        <!-- Edit -->
+                                        <a href="{{ route('faq_types.edit', $faqType->id) }}">
+
+                                            <i class="lni lni-pencil-alt"></i>
+
+                                        </a>
+
+
+                                        <!-- View -->
+                                        {{-- <a href="{{ route('faq_types.show', $faqType->id) }}">
 
                                              <i class="lni lni-list"></i>
 
                                          </a> --}}
 
-                                     </td>
+                                    </td>
 
 
-                                 </tr>
-                             @endforeach
+                                </tr>
+                            @endforeach
 
 
-                             <!-- No Records -->
-                             @if ($faqTypes->count() == 0)
-                                 <tr>
+                            <!-- No Records -->
+                            @if ($faqTypes->count() == 0)
+                                <tr>
 
-                                     <td colspan="4" class="text-center">
+                                    <td colspan="4" class="text-center">
 
-                                         <p>No FAQ Types Found.</p>
+                                        <p>No FAQ Types Found.</p>
 
-                                     </td>
+                                    </td>
 
-                                 </tr>
-                             @endif
+                                </tr>
+                            @endif
 
-                         </tbody>
+                        </tbody>
 
-                     </table>
+                    </table>
 
-                 </div>
+                </div>
 
-             </div>
+            </div>
 
 
-             <!-- Pagination -->
-             <div class="mt-30">
-             </div>
+            <!-- Pagination -->
+            <div class="mt-30">
+            </div>
 
-             @include('partials.pagination', [
-                 'items' => $faqTypes,
-             ])
+            @include('partials.pagination', [
+                'items' => $faqTypes,
+            ])
 
-         </div>
+        </div>
 
-     </section>
- @endsection
+    </section>
+@endsection

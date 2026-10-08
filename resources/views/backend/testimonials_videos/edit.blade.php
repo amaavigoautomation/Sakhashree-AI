@@ -10,32 +10,33 @@
 
             <div class="card-style mt-20">
 
-
-
                 <form action="{{ route('testimonials_videos.update', ['testimonials_video' => $testimonialVideo->id]) }}"
-                    enctype="multipart/form-data" method="POST">
+                    method="POST" enctype="multipart/form-data">
 
                     @csrf
                     @method('PUT')
 
-                    <!-- First Row -->
+                    <!-- Name, Profession & Video Link -->
                     <div class="row">
 
                         <!-- Name -->
                         <div class="col-sm-3">
                             <div class="input-style-1">
                                 <label>Name <span class="mandatory">*</span></label>
+
                                 <input type="text" name="name" value="{{ old('name', $testimonialVideo->name) }}"
-                                    placeholder="Enter Testimonial Video name" required>
+                                    required placeholder="Enter name">
                             </div>
                         </div>
 
                         <!-- Designation -->
                         <div class="col-sm-3">
                             <div class="input-style-1">
-                                <label>Designation <span class="mandatory">*</span></label>
+                                <label>Profession <span class="mandatory">*</span></label>
+
                                 <input type="text" name="designation"
-                                    value="{{ old('designation', $testimonialVideo->designation) }}" required>
+                                    value="{{ old('designation', $testimonialVideo->designation) }}" required
+                                    placeholder="Enter Profession">
                             </div>
                         </div>
 
@@ -43,8 +44,10 @@
                         <div class="col-sm-6">
                             <div class="input-style-1">
                                 <label>Video Link <span class="mandatory">*</span></label>
+
                                 <input type="text" name="video_link"
-                                    value="{{ old('video_link', $testimonialVideo->video_link) }}" required>
+                                    value="{{ old('video_link', $testimonialVideo->video_link) }}" required
+                                    placeholder="Enter video link">
                             </div>
                         </div>
 
@@ -52,12 +55,12 @@
 
                     <hr>
 
-                    <!-- Second Row -->
-                    <div class="row mt-15">
+                    <!-- Images & Status -->
+                    <div class="row">
 
-                        <!-- Image -->
-                        <div class="col-sm-3">
-                            <label>Image</label>
+                        <!-- Testimonial Image -->
+                        <div class="col-sm-4">
+                            <label>Testimonial Image</label>
 
                             <div>
                                 <img id="selectedImage" class="addedImage"
@@ -67,15 +70,24 @@
                                     alt="Selected Image">
                             </div>
 
-                            <input type="file" name="image" id="imageInput"
+                            <input type="file" name="image" id="imageInput" accept=".jpg,.jpeg,.png,.svg,.webp"
                                 onchange="displayImage(this, 'selectedImage', 'iconImage')">
 
                             <span id="iconImage">{{ $testimonialVideo->image }}</span>
+
+                            <small class="text-muted d-block mt-2">
+                                <strong>Maximum file size:</strong> 5 MB
+                            </small>
+
+                            <small class="text-muted d-block mt-2">
+                                <strong>Image Requirements:</strong><br>
+                                Width: 600px × Height: 350px
+                            </small>
                         </div>
 
-                        <!-- Facial Image -->
-                        <div class="col-sm-3">
-                            <label>Facial Image</label>
+                        <!-- Homepage Image -->
+                        <div class="col-sm-4">
+                            <label>Homepage Image</label>
 
                             <div>
                                 <img id="selectedImage" class="addedImage"
@@ -86,38 +98,58 @@
                             </div>
 
                             <input type="file" name="facial_image" id="facialImageInput"
+                                accept=".jpg,.jpeg,.png,.svg,.webp"
                                 onchange="displayImage(this, 'selectedImage', 'iconImage')">
 
                             <span id="iconImage">{{ $testimonialVideo->facial_image }}</span>
+
+                            <small class="text-muted d-block mt-2">
+                                <strong>Maximum file size:</strong> 5 MB
+                            </small>
+
+                            <small class="text-muted d-block mt-2">
+                                <strong>Image Requirements:</strong><br>
+                                Width: 250px × Height: 300px
+                            </small>
                         </div>
 
-                        <!-- Active Status (same as before) -->
-                        <div class="col-sm-6">
-                            <label>Active</label><br>
-
+                        <!-- Active -->
+                        <div class="col-sm-4">
+                            <label>Status</label>
+                            <br>
                             <label class="radio-inline">
-                                <input type="radio" name="active" value="1"
-                                    {{ old('active', $testimonialVideo->active) == 1 ? 'checked' : '' }}> Yes
+                                <input type="radio" name="active" class="radio-inline" value="1"
+                                    {{ old('active', $testimonialVideo->active) == 1 ? 'checked' : '' }}>
+                                Active
                             </label>
 
                             <label class="radio-inline">
-                                <input type="radio" name="active" value="0"
-                                    {{ old('active', $testimonialVideo->active) == 0 ? 'checked' : '' }}> No
+                                <input type="radio" name="active" class="radio-inline" value="0"
+                                    {{ old('active', $testimonialVideo->active) == 0 ? 'checked' : '' }}>
+                                Inactive
                             </label>
                         </div>
+
                     </div>
+
                     <hr>
-                    <!-- Buttons -->
-                    <div class="row mt-15">
+
+                    <!-- Update Button -->
+                    <div class="row">
 
                         <div class="col-sm-3">
                             <button type="submit" class="main-btn primary-btn btn-hover btn-xs">
                                 Update
                             </button>
                         </div>
+
                     </div>
+
                 </form>
+
             </div>
+
         </div>
+
     </section>
 @endsection

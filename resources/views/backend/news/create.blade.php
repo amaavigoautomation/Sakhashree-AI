@@ -9,34 +9,57 @@
             <div class="card-style mt-20">
 
                 <form method="POST" action="{{ route('news_listing.store') }}" enctype="multipart/form-data">
+
                     @csrf
 
+                    <!-- Title -->
                     <div class="row">
 
                         <div class="col-md-6">
                             <div class="input-style-1">
-                                <label>Title <span class="mandatory">*</span></label>
-                                <input type="text" name="title" placeholder="Enter title"
-                                    value="{{ old('title') }}"required>
+                                <label>News Title <span class="mandatory">*</span></label>
+                                <input type="text" name="title" placeholder="Enter News Title" value="{{ old('title') }}"
+                                    required>
                             </div>
                         </div>
 
-                        <div class="col-sm-2">
-                            <label>Active</label><br>
+                        <div class="col-sm-3">
+                            <label>Status</label><br>
                             <label class="radio-inline">
                                 <input type="radio" name="active" value="1"
                                     {{ old('active', 1) == 1 ? 'checked' : '' }}>
-                                Yes
+                                Active
                             </label>
                             <label class="radio-inline">
                                 <input type="radio" name="active" value="0"
                                     {{ old('active', 1) == 0 ? 'checked' : '' }}>
-                                No
+                                Inactive
                             </label>
                         </div>
 
-                        <div class="col-sm-2">
-                            <label>Has Video</label><br>
+                    </div>
+
+                    <hr>
+
+                    <!-- Description -->
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="input-style-1">
+                                <label>News Description</label>
+                                <textarea name="description" rows="5" class="rich-editor" placeholder="Enter News Description">{{ old('description') }}</textarea>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <!-- Has Video -->
+                    <div class="row">
+
+                        <div class="col-sm-3">
+                            <label>Video Available</label><br>
 
                             <label class="radio-inline">
                                 <input type="radio" name="has_video" value="1"
@@ -55,18 +78,7 @@
 
                     <hr>
 
-                    <div class="row">
-
-                        <!-- Description -->
-                        <div class="col-md-12">
-                            <div class="input-style-1">
-                                <label>Description</label>
-                                <textarea name="description" rows="5" class="rich-editor" placeholder="Enter description">{{ old('description') }}</textarea>
-                            </div>
-                        </div>
-
-                    </div>
-                    <hr>
+                    <!-- Video Link & Image -->
                     <div class="row">
 
                         {{-- Video Link --}}
@@ -81,7 +93,7 @@
                         {{-- Image --}}
                         <div class="col-md-3" id="imageField">
                             <div class="input-style-1">
-                                <label>Image</label>
+                                <label>News Image</label>
                                 <img id="selectedImage" class="addedImage" src="{{ asset('dist/images/no-image.png') }}"
                                     alt="Selected Image">
                                 <input type="file" name="image_file" id="imageInput" accept="image/*"
@@ -92,17 +104,21 @@
                     </div>
 
                     <hr>
-                    <div class="col-md-12 mt-20">
-                        <button type="submit" class="main-btn primary-btn btn-hover btn-xs">
-                            Save
-                        </button>
+
+                    <!-- Save Button -->
+                    <div class="row">
+
+                        <div class="col-sm-3">
+                            <button type="submit" class="main-btn primary-btn btn-hover btn-xs">
+                                Save
+                            </button>
+                        </div>
+
                     </div>
 
+                </form>
+
             </div>
-
-            </form>
-
-        </div>
 
         </div>
     </section>

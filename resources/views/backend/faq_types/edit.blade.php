@@ -5,70 +5,97 @@
 
         <div class="container-fluid">
 
-            <!-- Breadcrumb -->
             @include('partials.breadcrumb')
 
             <div class="card-style mt-20">
 
-                <form action="{{ route('faq_types.update', ['faq_type' => $faqType->id]) }}" enctype="multipart/form-data"
-                    method="POST">
+                <form action="{{ route('faq_types.update', ['faq_type' => $faqType->id]) }}" method="POST"
+                    enctype="multipart/form-data">
 
                     @csrf
                     @method('PUT')
 
-                    <!-- Name -->
-                    <div class="input-style-1">
-                        <label>Name <span class="mandatory">*</span></label>
+                    {{-- FAQ Category Information --}}
+                    <div class="row">
 
-                        <input type="text" name="name" value="{{ old('name', $faqType->name) }}"
-                            placeholder="Enter FAQ type name">
-
-                    </div>
-
-                    <!-- Icon -->
-                    <div class="col-sm-3">
-                        <label>Icon</label>
-                        <div>
-
-                            <img id="selectedImage" class="addedImage"
-                                src="{{ $faqType->icon ? asset('public/images/icon/' . $faqType->id . '/' . $faqType->icon) : asset('dist/images/no-image.png') }}"
-                                alt="Selected Icon">
+                        {{-- FAQ Category Name --}}
+                        <div class="col-sm-5">
+                            <div class="input-style-1">
+                                <label>
+                                    FAQ Category Name <span class="mandatory">*</span>
+                                </label>
+                                <input type="text" name="name" value="{{ old('name', $faqType->name) }}"
+                                    placeholder="Enter FAQ Category Name" required>
+                            </div>
                         </div>
-                        <input type="file" name="icon" id="imageInput" onchange="displayImage(this)">
-                        <span id="iconImage">{{ $faqType->icon }}</span>
+
+                        {{-- Status --}}
+                        <div class="col-sm-2">
+                            <label>Status</label>
+                            <br>
+                            <label class="radio-inline">
+                                <input type="radio" name="active" value="1"
+                                    {{ old('active', $faqType->active) == 1 ? 'checked' : '' }}>
+                                Active
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="active" value="0"
+                                    {{ old('active', $faqType->active) == 0 ? 'checked' : '' }}>
+                                Inactive
+                            </label>
+                        </div>
 
                     </div>
 
-                    <!-- Active -->
-                    <div class="row mt-15">
+                    <hr>
+
+                    {{-- Category Icon --}}
+                    <div class="row">
 
                         <div class="col-sm-4">
+                            <label>Category Icon</label>
+                            <img id="selectedImage" class="addedImage"
+                                src="{{ $faqType->icon
+                                    ? asset('public/images/icon/' . $faqType->id . '/' . $faqType->icon)
+                                    : asset('dist/images/no-image.png') }}"
+                                alt="Category Icon">
 
-                            <label>Active</label>
-                            <br>
+                            <input type="file" name="icon" id="imageInput"
+                                accept="image/jpeg,image/jpg,image/png,image/webp" onchange="displayImage(this)">
 
-                            <label class="radio-inline">
+                            <small class="text-muted d-block mt-2">
+                                <strong>Maximum file size:</strong> 5 MB
+                            </small>
 
-                                <input type="radio" name="active" class="radio-inline" value="1"
-                                    {{ old('active', $faqType->active) == 1 ? 'checked' : '' }}>Yes</label>
+                            <small class="text-muted d-block mt-2">
+                                <strong>Image Requirements:</strong><br>
+                                Width: 40px × Height: 40px
+                            </small>
 
-                            <label class="radio-inline">
-
-                                <input type="radio" name="active" class="radio-inline" value="0"
-                                    {{ old('active', $faqType->active) == 0 ? 'checked' : '' }}> No </label>
                         </div>
+
                     </div>
 
-                    <!-- Buttons -->
+                    <hr>
+
+                    {{-- Update --}}
                     <div class="row mt-15">
+
                         <div class="col-sm-3">
+
                             <button type="submit" class="main-btn primary-btn btn-hover btn-xs">
                                 Update
                             </button>
+
                         </div>
+
                     </div>
+
                 </form>
+
             </div>
+
         </div>
+
     </section>
 @endsection

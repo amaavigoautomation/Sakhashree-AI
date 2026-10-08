@@ -13,26 +13,30 @@
                         <div class="col-sm-4">
                             <div class="input-style-1">
                                 <label>name <span class="mandatory">*</span></label>
-                                <input type="text" name="name" value="{{ $blogcomments->name }}" placeholder="Enter Name" required="true"/>
+                                <input type="text" name="name" value="{{ $blogcomments->name }}"
+                                    placeholder="Enter Name" required="true" />
                             </div>
                         </div>
 
                         <div class="col-sm-4">
                             <div class="input-style-1">
                                 <label>email <span class="mandatory">*</span></label>
-                                <input type="email" name="email" value="{{ $blogcomments->email }}" placeholder="Enter email" required="true"/>
+                                <input type="email" name="email" value="{{ $blogcomments->email }}"
+                                    placeholder="Enter email" required="true" />
                             </div>
                         </div>
 
                         <div class="col-sm-4">
                             <label>Active</label><br>
                             <label class="radio-inline">
-                            <input type="radio" name="active" class="radio-inline" value="1" {{ $blogcomments->active == 1 ? 'checked' : '' }}> Yes
+                                <input type="radio" name="active" class="radio-inline" value="1"
+                                    {{ $blogcomments->active == 1 ? 'checked' : '' }}> Yes
                             </label>
-                           <label class="radio-inline">
-                           <input type="radio" name="active" class="radio-inline" value="0" {{ $blogcomments->active == 0 ? 'checked' : '' }}> No
-                           </label>
-                       </div>
+                            <label class="radio-inline">
+                                <input type="radio" name="active" class="radio-inline" value="0"
+                                    {{ $blogcomments->active == 0 ? 'checked' : '' }}> No
+                            </label>
+                        </div>
 
                     </div>
 
@@ -41,7 +45,7 @@
                         <div class="col-sm-12">
                             <div class="input-style-1">
                                 <label>Remark</label>
-                                <textarea name="remark" rows="10" class="form-control"> {{ $blogcomments->remark }}</textarea>
+                                <textarea name="remark" rows="5" class="form-control"> {{ $blogcomments->remark }}</textarea>
                             </div>
                         </div>
 

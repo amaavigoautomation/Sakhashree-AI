@@ -53,7 +53,7 @@
 
                                         <div class="col-sm-3">
                                             <div class="select-style-1">
-                                                <label for="blog_category_id">Category Name</label>
+                                                <label for="blog_category_id">Blog Category</label>
                                                 <div class="select-position select-sm">
                                                     <select class="jSelectbox" id="blog_category_id" name="blog_category_id"
                                                         onchange="this.form.submit()">
@@ -68,19 +68,23 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-6">
                                             <div class="select-style-1">
-                                                <label for="name">Title</label>
+                                                <label for="title">Blog Title</label>
+
                                                 <div class="select-position select-sm">
-                                                    <select class="jSelectbox" id="blog" name="id"
+                                                    <select class="jSelectbox" id="title" name="title"
                                                         onchange="this.form.submit()">
-                                                        <option value="">All</option>
-                                                        @foreach ($title as $titleId => $title)
-                                                            <option value="{{ $titleId }}"
-                                                                {{ request('id') == $titleId ? 'selected' : '' }}>
-                                                                {{ $title }}
+
+                                                        <option value="">Select</option>
+
+                                                        @foreach ($title as $blogTitle)
+                                                            <option value="{{ $blogTitle }}"
+                                                                {{ request('title') == $blogTitle ? 'selected' : '' }}>
+                                                                {{ $blogTitle }}
                                                             </option>
                                                         @endforeach
+
                                                     </select>
                                                 </div>
                                             </div>
@@ -120,13 +124,13 @@
                             <thead>
                                 <tr>
                                     {{-- <th class="col-sm-2">
-                                        <h6>Image</h6>
+                                        <h6>Blog Image</h6>
                                     </th> --}}
                                     <th class="col-sm-2">
-                                        <h6>Category</h6>
+                                        <h6>Blog Category</h6>
                                     </th>
                                     <th>
-                                        <h6>Title</h6>
+                                        <h6>Blog Title</h6>
                                     </th>
                                     <th class="text-left">
                                         <h6>Status</h6>

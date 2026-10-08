@@ -14,26 +14,31 @@
 
                 <div class="card-style mt-20">
 
+                    {{-- Basic Details --}}
                     <div class="row">
 
-                        {{-- Name --}}
-                        <div class="col-md-3">
+                        <!-- Workshop Name -->
+                        <div class="col-md-6">
                             <div class="input-style-1">
                                 <label>
                                     Workshop Name
                                     <span class="mandatory">*</span>
                                 </label>
 
-                                <input type="text" name="name" value="{{ old('name', $workshop->name) }}"
-                                    placeholder="Enter workshop name" required>
+                                <input type="text" name="name" id="workshopName" placeholder="Enter Workshop Name"
+                                    value="{{ old('name', $workshop->name) }}" required>
+
+                                <small>
+                                    <span id="nameWordCount">0</span>/6 words
+                                </small>
                             </div>
                         </div>
 
-                        {{-- Date --}}
+                        <!-- Workshop Date -->
                         <div class="col-md-3">
                             <div class="input-style-1">
                                 <label>
-                                    Date
+                                    Workshop Date
                                     <span class="mandatory">*</span>
                                 </label>
 
@@ -41,8 +46,24 @@
                             </div>
                         </div>
 
+                        <!-- Workshop Location -->
+                        <div class="col-md-3">
+                            <div class="input-style-1">
+                                <label>
+                                    Workshop Location
+                                    <span class="mandatory">*</span>
+                                </label>
 
-                        {{-- Start Time --}}
+                                <input type="text" name="city" placeholder="Enter Workshop Location"
+                                    value="{{ old('city', $workshop->city) }}" required>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <!-- Start Time -->
                         <div class="col-md-3">
                             <div class="input-style-1">
                                 <label>
@@ -55,8 +76,7 @@
                             </div>
                         </div>
 
-
-                        {{-- End Time --}}
+                        <!-- End Time -->
                         <div class="col-md-3">
                             <div class="input-style-1">
                                 <label>
@@ -69,46 +89,36 @@
                             </div>
                         </div>
 
+                    </div>
 
-                        {{-- City --}}
-                        <div class="col-md-3">
-                            <div class="input-style-1">
-                                <label>
-                                    City
-                                    <span class="mandatory">*</span>
-                                </label>
+                    <hr>
 
-                                <input type="text" name="city" value="{{ old('city', $workshop->city) }}"
-                                    placeholder="Enter city" required>
-                            </div>
-                        </div>
-
-                        <hr>
-
-
-                        {{-- Description --}}
+                    <!-- Workshop Description -->
+                    <div class="row">
                         <div class="col-md-12">
                             <div class="input-style-1">
                                 <label>
-                                    Description
-                                    {{-- <span class="mandatory">*</span> --}}
+                                    Workshop Description
+                                    <span class="mandatory">*</span>
                                 </label>
 
-                                <textarea name="description" id="description" rows="4" placeholder="Enter workshop description">{{ old('description', $workshop->description) }}</textarea>
+                                <textarea name="description" id="description" rows="4" placeholder="Enter workshop description" required>{{ old('description', $workshop->description) }}</textarea>
 
                                 <small>
                                     <span id="wordCount">0</span>/15 words
                                 </small>
                             </div>
                         </div>
+                    </div>
 
-                        <hr>
+                    <hr>
 
+                    <!-- Image and Options -->
+                    <div class="row">
 
-                        {{-- Image --}}
-                        <div class="col-sm-3">
-
-                            <label>Image</label>
+                        <!-- Workshop Image -->
+                        <div class="col-sm-4">
+                            <label>Workshop Image</label>
 
                             <br>
 
@@ -121,51 +131,87 @@
                                     alt="No Image">
                             @endif
 
-                            <input type="file" name="image_file" id="imgupload" onchange="displayImage(this)">
+                            <input type="file" name="image_file" id="imgupload"
+                                accept="image/jpeg,image/jpg,image/png,image/webp" onchange="displayImage(this)">
 
+                            <small class="text-muted d-block mt-2">
+                                <strong>Maximum file size:</strong> 5 MB
+                            </small>
+
+                            <small class="text-muted d-block mt-2">
+                                <strong>Image Requirements:</strong><br>
+                                Past Workshops — Width: 600px × Height: 400px<br>
+                                Workshops & Retreats Section — Width: 600px × Height: 350px
+                            </small>
                         </div>
 
-
-                        {{-- Latest --}}
+                        <!-- Upcoming Workshop -->
                         <div class="col-md-3">
-
-                            <label>Is Latest</label>
+                            <label>
+                                Upcoming Workshop
+                                <span class="mandatory">*</span>
+                            </label>
 
                             <div class="mt-10">
 
                                 <label class="radio-inline me-20">
                                     <input type="radio" name="is_latest" value="1"
-                                        {{ old('is_latest', $workshop->is_latest) == 1 ? 'checked' : '' }}>
+                                        {{ old('is_latest', $workshop->is_latest) == 1 ? 'checked' : '' }} required>
                                     Yes
                                 </label>
 
                                 <label class="radio-inline">
                                     <input type="radio" name="is_latest" value="0"
-                                        {{ old('is_latest', $workshop->is_latest) == 0 ? 'checked' : '' }}>
+                                        {{ old('is_latest', $workshop->is_latest) == 0 ? 'checked' : '' }} required>
                                     No
                                 </label>
 
                             </div>
                         </div>
 
-
-                        {{-- Active --}}
+                        <!-- Show on Website -->
                         <div class="col-md-3">
+                            <label>
+                                Show on Website
+                                <span class="mandatory">*</span>
+                                <small style="color: red;">(Max 2)</small>
+                            </label>
 
-                            <label>Active</label>
+                            <div class="mt-10">
+
+                                <label class="radio-inline me-20">
+                                    <input type="radio" name="show_on_website" value="1"
+                                        {{ old('show_on_website', $workshop->show_on_website) == 1 ? 'checked' : '' }}
+                                        required>
+                                    Yes
+                                </label>
+
+                                <label class="radio-inline">
+                                    <input type="radio" name="show_on_website" value="0"
+                                        {{ old('show_on_website', $workshop->show_on_website) == 0 ? 'checked' : '' }}
+                                        required>
+                                    No
+                                </label>
+
+                            </div>
+                        </div>
+
+                        <!-- Status -->
+                        <div class="col-md-2">
+                            <label>Status</label>
 
                             <div class="mt-10">
 
                                 <label class="radio-inline me-20">
                                     <input type="radio" name="active" value="1"
                                         {{ old('active', $workshop->active) == 1 ? 'checked' : '' }}>
-                                    Yes
+                                    Active
                                 </label>
 
                                 <label class="radio-inline">
                                     <input type="radio" name="active" value="0"
                                         {{ old('active', $workshop->active) == 0 ? 'checked' : '' }}>
-                                    No
+                                    Inactive
                                 </label>
 
                             </div>
@@ -175,14 +221,12 @@
 
                     <hr>
 
-                    {{-- Update Button --}}
+                    <!-- Update Button -->
                     <div class="row mt-15">
                         <div class="col-sm-12">
-
                             <button type="submit" class="main-btn primary-btn btn-hover btn-xs">
                                 Update
                             </button>
-
                         </div>
                     </div>
 
@@ -193,6 +237,36 @@
         </div>
     </section>
 
+    <script>
+        const workshopName = $('#workshopName');
+        const nameWordCount = $('#nameWordCount');
+        const maxNameWords = 6;
+
+        function updateNameWordCount() {
+
+            let text = workshopName.val().trim();
+
+            if (text === '') {
+                nameWordCount.text(0);
+                return;
+            }
+
+            let words = text.split(/\s+/);
+
+            if (words.length > maxNameWords) {
+                words = words.slice(0, maxNameWords);
+                workshopName.val(words.join(' '));
+            }
+
+            nameWordCount.text(words.length);
+        }
+
+        workshopName.on('input', function() {
+            updateNameWordCount();
+        });
+
+        updateNameWordCount();
+    </script>
 
     <script>
         $(document).ready(function() {

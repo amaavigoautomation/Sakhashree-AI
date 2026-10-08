@@ -3,135 +3,168 @@
 @section('content')
     <section class="section">
         <div class="container-fluid">
+
             @include('partials.breadcrumb')
+
             <form method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data">
+
+                @csrf
+
                 <div class="card-style mt-20">
-                    @csrf
+
+                    <input type="hidden" name="admin_type_id" value="2">
+                    <input type="hidden" name="country_id" value="{{ old('country_id') }}">
+                    <input type="hidden" name="calling_code" value="{{ old('calling_code') }}">
+
+                    {{-- Personal Information --}}
                     <div class="row mt-15">
-                        <div class="col-sm-3">
+
+                        <div class="col-sm-4">
+                            <div class="input-style-1">
+                                <label>
+                                    Full Name <span class="mandatory">*</span>
+                                </label>
+                                <input type="text" name="name" placeholder="Enter Full Name"
+                                    value="{{ old('name') }}" required>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
                             <div class="select-style-1">
-                               <label>Admin Type <span class="mandatory">*</span></label>
-                               <div class="select-position select-sm">
-                               <select class="jSelectbox" id="actionDropdown" name="admin_type_id" required>
-                                  <option value="">Select</option>
-                                      @foreach ($adminTypes as $adminType)
-                                     <option value="{{ $adminType->id }}">{{ $adminType->name }}</option>
-                                      @endforeach
-                               </select>
-                               </div>
-                            </div>
-                         </div>
+                                <label>
+                                    Calling Code <span class="mandatory">*</span>
+                                </label>
 
-                         <div class="col-sm-3">
-                            <div class="input-style-1">
-                            <label>Name <span class="mandatory">*</span></label>
-                            <input type="name"  name="name" placeholder="Enter Your name" required/>
+                                <div class="select-position select-sm">
+                                    <select name="country_id" id="country_id" class="jSelectbox" required>
+                                        <option value="">Select</option>
+                                        @foreach ($countries as $country)
+                                            <option value="{{ $country->id }}"
+                                                data-calling-code="{{ $country->calling_code }}"
+                                                {{ old('country_id') == $country->id ? 'selected' : '' }}>
+                                                {{ $country->name }} ({{ $country->calling_code }})
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <div class="input-style-1">
-                                <label>Contact <span class="mandatory">*</span></label>
-                                <input type="number"  name="contact_no" placeholder="Enter Your Contact" class="numeric" required />
+                                <label>
+                                    Contact Number <span class="mandatory">*</span>
+                                </label>
+
+                                <input type="text" name="contact_no" placeholder="Enter Contact Number" class="numeric"
+                                    value="{{ old('contact_no') }}" maxlength="12" inputmode="numeric"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 12)" required>
                             </div>
                         </div>
 
-                        <div class="col-sm-3">
-                            <div class="input-style-1">
-                            <label>Alternate No <span class="mandatory">*</span></label>
-                            <input type="number"  name="alternate_no" placeholder="Enter Alternate No" class="numeric" required />
-                            </div>
-                        </div>
                     </div>
 
                     <hr>
 
+                    {{-- Login Information --}}
                     <div class="row mt-15">
 
-                            <div class="col-sm-3">
-                                <div class="input-style-1">
-                                <label>Email/UserName <span class="mandatory">*</span></label>
-                                <input type="email"  name="email" placeholder="Enter Your User Name" required />
-                                </div>
-                            </div>
-
-                            {{-- <div class="col-sm-3">
-                                <div class="input-style-1">
-                                <label>Password <span class="mandatory">*</span></label>
-                                <input type="password"  name="password" placeholder="Enter Your Password" required />
-                                </div>
-                            </div> --}}
-
-                            <div class="col-sm-3">
-                                <label>Active </label><br>
-                                <label class="radio-inline">
-                                    <input type="radio" name="active" class="radio-inline" value="1"> Yes
+                        <div class="col-sm-4">
+                            <div class="input-style-1">
+                                <label>
+                                    Email Address / Username
+                                    <span class="mandatory">*</span>
                                 </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="active" class="radio-inline" value="0" checked> No
-                                </label>
+                                <input type="email" name="email" placeholder="Enter Email Address"
+                                    value="{{ old('email') }}" required>
                             </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="input-style-1">
+                                <label>
+                                    Password <span class="mandatory">*</span>
+                                </label>
+                                <input type="password" name="password" placeholder="Enter Password" required>
+                            </div>
+                        </div>
 
                     </div>
 
                     <hr>
-                        <div class="row mt-15">
 
-                            <div class="col-sm-3">
-                                <label>Image</label>
-                                <img id="bannerBox" class="addedImage" src="{{ asset('dist/images/no-image.png') }}"
-                                alt="Selected Image">
-                                <input type="file" name="image" id="imgupload" onchange="displayImage(this)">
-                            </div>
+                    {{-- Profile Information --}}
+                    <div class="row mt-15">
 
-                            <div class="col-sm-3">
-                                <label>Its Seo Users</label><br>
-                                <label class="radio-inline">
-                                    <input type="radio" name="its_seo_users" class="radio-inline" value="1"> Yes
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="its_seo_users" class="radio-inline" value="0" checked>
-                                    No
-                                </label>
-                            </div>
+                        <div class="col-sm-4">
+                            <label>Profile Image</label>
 
-                            <div class="col-sm-3">
+                            <img id="selectedImage" class="addedImage" src="{{ asset('public/images/no-image.png') }}"
+                                alt="Profile Image">
 
-                                <label>Its Report Manager</label><br>
-                                <label class="radio-inline">
-                                    <input type="radio" name="its_report_manager" class="radio-inline" value="1"> Yes
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="its_report_manager" class="radio-inline" value="0"
-                                        checked> No
-                                </label>
-                            </div>
+                            <input type="file" name="image" id="imgupload"
+                                accept="image/jpeg,image/jpg,image/png,image/webp" onchange="displayImage(this)">
 
+                            <small class="text-muted d-block mt-2">
+                                <strong>Maximum File Size:</strong> 5 MB
+                            </small>
+
+                            <small class="text-muted d-block mt-2">
+                                <strong>Image Requirements:</strong><br>
+                                Width: 64px × Height: 64px
+                            </small>
                         </div>
+
+                        <div class="col-sm-4">
+                            <label>
+                                Status <span class="mandatory">*</span>
+                            </label>
+
+                            <div class="mt-10">
+
+                                <label class="radio-inline me-20">
+                                    <input type="radio" name="active" value="1"
+                                        {{ old('active', 0) == 1 ? 'checked' : '' }} required>
+                                    Active
+                                </label>
+
+                                <label class="radio-inline">
+                                    <input type="radio" name="active" value="0"
+                                        {{ old('active', 0) == 0 ? 'checked' : '' }} required>
+                                    Inactive
+                                </label>
+
+                            </div>
+                        </div>
+
+                    </div>
 
                     <hr>
 
+                    {{-- Save --}}
                     <div class="row mt-15">
-                        <div class="col-sm-3">
-                            <button type="submit" class="main-btn primary-btn btn-hover btn-xs">Save</button>
+                        <div class="col-sm-12">
+                            <button type="submit" class="main-btn primary-btn btn-hover btn-xs">
+                                Save
+                            </button>
                         </div>
                     </div>
 
                 </div>
-                </div>
+
             </form>
+
+        </div>
     </section>
+    <script>
+        $('#country_id').on('change', function() {
+            let callingCode = $(this).find(':selected').data('calling-code') || '';
+
+            $('#calling_code').val(callingCode);
+        });
+
+        $(document).ready(function() {
+            $('#country_id').trigger('change');
+        });
+    </script>
 @endsection
-{{-- <script>
-    function displayImage(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                document.getElementById('selectedImage').setAttribute('src', e.target.result);
-            }
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-</script> --}}

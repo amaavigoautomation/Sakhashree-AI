@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TestimonialVideo;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class TestimonialVideoController extends Controller
 {
@@ -31,7 +32,7 @@ class TestimonialVideoController extends Controller
 
         $testimonialVideos = $query
             ->orderBy('id', 'asc')
-            ->paginate(10)
+            ->paginate(20)
             ->withQueryString();
 
         // Name dropdown values
@@ -70,11 +71,43 @@ class TestimonialVideoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'designation' => 'required',
-            'image' => 'required|mimes:jpg,jpeg,png,svg,webp|max:2048',
-            'video_link' => 'required',
-            'active' => 'required',
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                'unique:testimonial_video,name',
+            ],
+
+            'designation' => [
+                'required',
+                'string',
+                'max:255',
+                'unique:testimonial_video,designation',
+            ],
+
+            'image' => [
+                'required',
+                'image',
+                'mimes:jpg,jpeg,png,svg,webp',
+                'max:5120',
+            ],
+
+            'facial_image' => [
+                'nullable',
+                'image',
+                'mimes:jpg,jpeg,png,svg,webp',
+                'max:5120',
+            ],
+
+            'video_link' => [
+                'required',
+                'url',
+            ],
+
+            'active' => [
+                'required',
+                'boolean',
+            ],
         ]);
 
         $testimonialVideo = TestimonialVideo::create([
@@ -150,11 +183,44 @@ class TestimonialVideoController extends Controller
         }
 
         $request->validate([
-            'name' => 'required',
-            'designation' => 'required',
-            'image' => 'nullable|mimes:jpg,jpeg,png,svg,webp|max:2048',
-            'video_link' => 'required',
-            'active' => 'required',
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('testimonial_video', 'name')
+                    ->ignore($testimonialVideo->id),
+            ],
+
+            'designation' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('testimonial_video', 'designation')->ignore($testimonialVideo->id),
+            ],
+
+            'image' => [
+                'nullable',
+                'image',
+                'mimes:jpg,jpeg,png,svg,webp',
+                'max:5120',
+            ],
+
+            'facial_image' => [
+                'nullable',
+                'image',
+                'mimes:jpg,jpeg,png,svg,webp',
+                'max:5120',
+            ],
+
+            'video_link' => [
+                'required',
+                'url',
+            ],
+
+            'active' => [
+                'required',
+                'boolean',
+            ],
         ]);
 
         $testimonialVideo->update([
