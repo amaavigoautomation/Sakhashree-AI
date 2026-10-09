@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Country;
 use App\Models\WorkshopEnquiry;
 use Illuminate\Http\Request;
+use App\Exports\WorkshopEnquiriesExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class WorkshopEnquiryController extends Controller
 {
@@ -47,5 +49,13 @@ class WorkshopEnquiryController extends Controller
     {
         $workshopEnquiry = WorkshopEnquiry::findOrFail($id);
         return view('backend.workshops_enquiries.show', compact('workshopEnquiry'));
+    }
+
+    public function export()
+    {
+        return Excel::download(
+            new WorkshopEnquiriesExport,
+            'workshop_enquires.xlsx'
+        );
     }
 }

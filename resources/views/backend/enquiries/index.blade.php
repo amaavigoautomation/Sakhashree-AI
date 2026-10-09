@@ -5,7 +5,13 @@
         <div class="container-fluid">
 
             @include('partials.breadcrumb')
-
+            <div class="right-mob-left">
+                <a href="{{ route('enquiries.export') }}">
+                    <button type="button" class="main-btn primary-btn btn-hover btn-xs">
+                        Export to Excel
+                    </button>
+                </a>
+            </div>
             <div class="card-style mt-20">
 
                 <div class="table-wrapper table-responsive mt-10">

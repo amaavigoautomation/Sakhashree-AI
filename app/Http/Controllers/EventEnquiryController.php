@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Country;
 use App\Models\EventEnquiry;
 use Illuminate\Http\Request;
+use App\Exports\EventEnquiriesExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class eventEnquiryController extends Controller
 {
@@ -52,6 +54,14 @@ class eventEnquiryController extends Controller
             'country'
         ])->findOrFail($id);
 
-        return view('backend.events_enquiries.show',compact('eventEnquiry'));
+        return view('backend.events_enquiries.show', compact('eventEnquiry'));
+    }
+
+    public function export()
+    {
+        return Excel::download(
+            new EventEnquiriesExport,
+            'event_enquires.xlsx'
+        );
     }
 }

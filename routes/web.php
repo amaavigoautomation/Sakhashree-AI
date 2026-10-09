@@ -146,8 +146,13 @@ Route::middleware([CheckSession::class])->group(function () {
         'event-enquiries' => EventEnquiryController::class,
     ]);
 
+    Route::get('/enquiries/export', [EnquiryController::class, 'export'])->name('enquiries.export');
     Route::get('/enquiries', [EnquiryController::class, 'index'])->name('enquiries.index');
     Route::get('/enquiries/{id}', [EnquiryController::class, 'show'])->name('enquiries.show');
+    Route::get('/workshop-enquiries/export', [WorkshopEnquiryController::class, 'export'])->name('workshop_enquiries.export');
+    Route::get('/events-enquiries/export', [eventEnquiryController::class, 'export'])->name('events_enquiries.export');
+    Route::get('/spiritual-tour-enquiries/export', [SpiritualTourEnquiryController::class, 'export'])->name('spiritual_tour_enquiries.export');
+
 
     // Change Password Routes
     Route::get('/changepassword', [UsersController::class, 'showChangePasswordForm'])->name('users.changepassword');

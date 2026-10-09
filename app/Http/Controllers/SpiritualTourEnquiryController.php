@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Country;
 use App\Models\SpiritualTourEnquiry;
 use Illuminate\Http\Request;
+use App\Exports\SpiritualTourEnquiriesExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SpiritualTourEnquiryController extends Controller
 {
@@ -53,6 +55,14 @@ class SpiritualTourEnquiryController extends Controller
             'country'
         ])->findOrFail($id);
 
-        return view('backend.spiritual_tours_enquiries.show',compact('spiritualTourEnquiry'));
+        return view('backend.spiritual_tours_enquiries.show', compact('spiritualTourEnquiry'));
+    }
+
+    public function export()
+    {
+        return Excel::download(
+            new SpiritualTourEnquiriesExport,
+            'spiritual_tour_enquires.xlsx'
+        );
     }
 }

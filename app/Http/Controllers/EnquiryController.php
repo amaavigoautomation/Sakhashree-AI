@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Enquiry;
 use App\Rules\Recaptcha;
+use App\Exports\EnquiriesExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class EnquiryController extends Controller
 {
@@ -50,5 +52,12 @@ class EnquiryController extends Controller
         ]);
 
         return redirect()->route('thankyou');
+    }
+    public function export()
+    {
+        return Excel::download(
+            new EnquiriesExport,
+            'enquires.xlsx'
+        );
     }
 }
