@@ -87,9 +87,7 @@ class EnquiriesExport implements FromCollection, WithHeadings, WithMapping, Shou
                 // Title formatting
                 $sheet->getStyle('A1:G1')->getFont()->setBold(true)->setSize(16);
 
-                $sheet->getStyle('A1:G1')->getAlignment()
-                    ->setHorizontal(Alignment::HORIZONTAL_CENTER)
-                    ->setVertical(Alignment::VERTICAL_CENTER);
+
 
                 $sheet->getRowDimension(1)->setRowHeight(32);
 
@@ -101,6 +99,12 @@ class EnquiriesExport implements FromCollection, WithHeadings, WithMapping, Shou
 
                 // Add borders to the complete report
                 $lastRow = $sheet->getHighestRow();
+
+                // Center align all data rows
+                $sheet->getStyle("A3:G{$lastRow}")->getAlignment()
+                    ->setHorizontal(Alignment::HORIZONTAL_CENTER)
+                    ->setVertical(Alignment::VERTICAL_CENTER)
+                    ->setWrapText(true);
 
                 $sheet->getStyle("A1:G{$lastRow}")
                     ->getBorders()

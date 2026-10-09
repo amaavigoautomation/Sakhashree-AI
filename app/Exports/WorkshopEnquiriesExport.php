@@ -111,6 +111,13 @@ class WorkshopEnquiriesExport implements
                 // Add borders to the complete report
                 $lastRow = $sheet->getHighestRow();
 
+
+                // Center align all data rows
+                $sheet->getStyle("A3:G{$lastRow}")->getAlignment()
+                    ->setHorizontal(Alignment::HORIZONTAL_CENTER)
+                    ->setVertical(Alignment::VERTICAL_CENTER)
+                    ->setWrapText(true);
+
                 $sheet->getStyle("A1:G{$lastRow}")->getBorders()->getAllBorders()->setBorderStyle(
                     \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN
                 );
