@@ -22,7 +22,7 @@
                                 <th class="col-md-2">
                                     <h6>Workshop</h6>
                                 </th>
-                                <td>
+                                 <td>
                                     <p>{{ $workshopEnquiry->workshop->name ?? '---' }}</p>
                                 </td>
                             </tr>
@@ -54,6 +54,15 @@
                                 </th>
                                 <td>
                                     <p>
+                                        @php
+                                            $countryDetail = $workshopEnquiry->country?->countryDetails?->first();
+                                        @endphp
+
+                                        @if ($countryDetail?->icon_image)
+                                            <img src="{{ asset('public/images/country_details/icon_image/' . $countryDetail->id . '/' . $countryDetail->icon_image) }}"
+                                                alt="{{ $workshopEnquiry->country->name ?? '' }}" class="countryIcon">
+                                        @endif
+
                                         {{ $workshopEnquiry->calling_code ?? '' }}
                                         {{ $workshopEnquiry->mobile ?? '---' }}
                                     </p>
@@ -79,8 +88,6 @@
                                     <p>{{ $workshopEnquiry->description ?? '---' }}</p>
                                 </td>
                             </tr>
-
-                             
 
                         </tbody>
 

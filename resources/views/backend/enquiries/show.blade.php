@@ -14,7 +14,6 @@
                     <table class="table striped-table">
 
                         <tbody>
-
                             <tr>
                                 <th class="col-md-2">
                                     <h6>Name</h6>
@@ -30,6 +29,27 @@
                                 </th>
                                 <td>
                                     <p>{{ $enquiry->email ?? '---' }}</p>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th>
+                                    <h6>Mobile</h6>
+                                </th>
+                                <td>
+                                    <p>
+                                        @php
+                                            $countryDetail = $enquiry->country?->countryDetails?->first();
+                                        @endphp
+
+                                        @if ($countryDetail?->icon_image)
+                                            <img src="{{ asset('public/images/country_details/icon_image/' . $countryDetail->id . '/' . $countryDetail->icon_image) }}"
+                                                alt="{{ $enquiry->country->name ?? '' }}" class="countryIcon">
+                                        @endif
+
+                                        {{ $enquiry->calling_code ?? '' }}
+                                        {{ $enquiry->phone ?? '---' }}
+                                    </p>
                                 </td>
                             </tr>
 

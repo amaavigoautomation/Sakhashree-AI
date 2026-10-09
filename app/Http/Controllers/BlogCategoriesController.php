@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\BlogCategory;
 use App\Models\BlogTag;
+use Illuminate\Validation\Rule;
 
 
 
@@ -25,6 +26,13 @@ class BlogCategoriesController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+
+            'name' => ['required', 'string', 'max:255', Rule::unique('blog_categories', 'name'),],
+            'page_title' => ['nullable', 'string', 'max:255',],
+            'page_slug' => ['required', 'string', 'max:255', Rule::unique('blog_categories', 'page_slug'),],
+            'image_file' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120',],
+        ]);
         // dd($request);
         $blogcategory = BlogCategory::create([
             'name' => $request->input('name'),
@@ -77,6 +85,14 @@ class BlogCategoriesController extends Controller
             return redirect()->route('blogcategories.index')->with('error', 'blogcategories not found.');
         }
 
+
+        $request->validate([
+            'name' => ['required', 'string', 'max:255', Rule::unique('blog_categories', 'name')->ignore($blogcategory->id),],
+            'page_title' => ['nullable', 'string', 'max:255',],
+            'page_slug' => ['required', 'string', 'max:255', Rule::unique('blog_categories', 'page_slug')->ignore($blogcategory->id),],
+            'image_file' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120',],
+        ]);
+
         $blogcategory->update([
             'name' => $request->input('name'),
             'order' => $request->input('order'),
@@ -107,11 +123,11 @@ class BlogCategoriesController extends Controller
         // dd($blogs);
         $blogcategory = BlogCategory::where('active', true)->orderBy('order', 'asc')->get();
         $blogtags = BlogTag::where('active', true)
-        ->withCount(['blogs' => function ($query) {
-            $query->where('active', true);
-        }])
-        ->orderBy('id', 'desc')
-        ->get();
+            ->withCount(['blogs' => function ($query) {
+                $query->where('active', true);
+            }])
+            ->orderBy('id', 'desc')
+            ->get();
 
         // dd($category);
 
@@ -119,7 +135,7 @@ class BlogCategoriesController extends Controller
         $id = $category->id;
         $imagePath = $imageFile ? secure_asset("public/images/blogcategories/image_file/{$id}/{$imageFile}") : secure_asset("dist/img/logo.png");
 
-         $seoData = [
+        $seoData = [
             'page_title' => $category->page_title,
             'page_url' => $category->page_url,
             'meta_keyword' => $category->meta_keyword,
@@ -128,10 +144,11 @@ class BlogCategoriesController extends Controller
         ];
 
 
-        return view('frontend.blog_list', compact('category', 'blogs', 'blogcategory','blogtags','seoData'));
+        return view('frontend.blog_list', compact('category', 'blogs', 'blogcategory', 'blogtags', 'seoData'));
     }
 
-    public function reorder(Request $request){
+    public function reorder(Request $request)
+    {
 
         // dd($request);
         $dataArr = $request->data;
@@ -149,5 +166,4 @@ class BlogCategoriesController extends Controller
 
         return response()->json(['status' => 'success']);
     }
-
 }

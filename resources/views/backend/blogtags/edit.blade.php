@@ -23,19 +23,19 @@
           <!-- Page Title -->
          <div class="col-sm-4">
             <div class="input-style-1">
-            <label>Page Title <span class="mandatory">*</span></label>
-            <input type="text" id="page_title" name="page_title" placeholder="Enter Page Title" required="true" value="{{ $blogtag->page_title  }}" />
+            <label>Meta Title <span class="mandatory">*</span></label>
+            <input type="text" id="page_title" name="page_title" placeholder="Enter Meta Title" required="true" value="{{ $blogtag->page_title  }}" />
             </div>
          </div>
 
          <!-- Active Code -->
-         <div class="col-sm-3">
-             <label>Active</label><br>
+         <div class="col-sm-4">
+             <label>Status</label><br>
              <label class="radio-inline">
-             <input type="radio" name="active" class="radio-inline" value="1" {{ $blogtag->active == 1 ? 'checked' : '' }}> Yes
+             <input type="radio" name="active" class="radio-inline" value="1" {{ $blogtag->active == 1 ? 'checked' : '' }}> Active
              </label>
             <label class="radio-inline">
-            <input type="radio" name="active" class="radio-inline" value="0" {{ $blogtag->active == 0 ? 'checked' : '' }}> No
+            <input type="radio" name="active" class="radio-inline" value="0" {{ $blogtag->active == 0 ? 'checked' : '' }}> Inactive
             </label>
          </div>
       </div>
@@ -44,16 +44,16 @@
             <!-- Page Slug -->
      <div class="col-sm-6">
             <div class="input-style-1">
-            <label>Page Slug</label>
-            <input type="text" id="page_slug" data-model="blog-tags"  name="page_slug" placeholder="Enter Page Slug" value="{{ $blogtag->page_slug  }}"/>
+            <label>Meta Slug</label>
+            <input type="text" id="page_slug" data-model="blog-tags"  name="page_slug" placeholder="Enter Meta Slug" value="{{ $blogtag->page_slug  }}"/>
             </div>
      </div>
 
     <!-- Page Url -->
      <div class="col-sm-6">
             <div class="input-style-1">
-            <label>Page Url</label>
-            <input type="text" id="page_url" name="page_url" placeholder="Page Url" value="{{ $blogtag->page_url  }}" />
+            <label>Meta Url</label>
+            <input type="text" id="page_url" name="page_url" placeholder="Meta Url" value="{{ $blogtag->page_url  }}" />
             </div>
      </div>
      <div><hr></div>

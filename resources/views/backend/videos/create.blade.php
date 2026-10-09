@@ -22,8 +22,8 @@
 
                         <div class="col-sm-4">
                             <div class="input-style-1">
-                                <label>Title <span class="mandatory">*</span></label>
-                                <input type="text" name="title" placeholder="Enter title" required>
+                                <label>Video Title <span class="mandatory">*</span></label>
+                                <input type="text" name="title" placeholder="Enter Video title" required>
                             </div>
                         </div>
 
@@ -35,15 +35,15 @@
                         </div> --}}
 
                         <!-- Active -->
-                        <div class="col-sm-2">
-                            <label>Active</label><br>
+                        <div class="col-sm-4">
+                            <label>Status</label><br>
 
                             <label class="radio-inline">
-                                <input type="radio" name="active" value="1"> Yes
+                                <input type="radio" name="active" value="1"> Active
                             </label>
 
                             <label class="radio-inline">
-                                <input type="radio" name="active" value="0" checked> No
+                                <input type="radio" name="active" value="0" checked> Inactive
                             </label>
                         </div>
                     </div>
@@ -54,8 +54,8 @@
                     <div class="row mt-15">
                         <div class="col-sm-12">
                             <div class="input-style-1">
-                                <label>Description</label>
-                                <textarea rows="6" name="description" class="rich-editor" placeholder="Enter description"></textarea>
+                                <label>Video Description</label>
+                                <textarea rows="6" name="description" class="rich-editor" placeholder="Enter Video description"></textarea>
                             </div>
                         </div>
                     </div>
@@ -75,13 +75,24 @@
                     <hr>
 
                     <!-- Image -->
+
                     <div class="row mt-15">
-                        <div class="col-sm-3">
-                            <label>Image</label>
+                        <div class="col-sm-4">
+                            <label>Video Image</label>
                             <img id="selectedImage" class="addedImage" src="{{ asset('public/images/no-image.png') }}"
                                 alt="Selected Image">
 
-                            <input type="file" name="image_file" id="imgupload" onchange="displayImage(this)">
+                            <input type="file" name="image_file" id="imgupload" onchange="displayImage(this)"
+                                accept="image/jpeg,image/jpg,image/png,image/webp">
+
+                            <small class="text-muted d-block mt-2">
+                                <strong>Maximum file size:</strong> 5 MB
+                            </small>
+
+                            <small class="text-muted d-block mt-2">
+                                <strong>Image Requirements:</strong><br>
+                                Width: 600px × Height: 400px
+                            </small>
                         </div>
                     </div>
 

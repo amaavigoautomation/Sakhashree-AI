@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\BlogTag;
+use Illuminate\Validation\Rule;
 
 
 
@@ -22,6 +23,12 @@ class BlogTagsController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255', Rule::unique('blog_tags', 'name')],
+            'page_slug' => ['required', 'string', 'max:255', Rule::unique('blog_tags', 'page_slug')],
+            'page_title' => ['nullable', 'string', 'max:255'],
+        ]);
+
         $blogtags = BlogTag::create([
             'name' => $request->input('name'),
             'active' => $request->input('active'),
@@ -49,6 +56,13 @@ class BlogTagsController extends Controller
     public function update(Request $request, $id)
     {
         $blogtag = BlogTag::findOrFail($id);
+
+        $request->validate([
+            'name' => ['required', 'string', 'max:255', Rule::unique('blog_tags', 'name')->ignore($blogtag->id)],
+            'page_title' => ['nullable', 'string', 'max:255'],
+            'page_slug' => ['required', 'string', 'max:255', Rule::unique('blog_tags', 'page_slug')->ignore($blogtag->id)],
+
+        ]);
         $blogtag->update([
             'name' => $request->input('name'),
             'active' => $request->input('active'),
@@ -60,5 +74,4 @@ class BlogTagsController extends Controller
 
         return redirect()->route('blogtags.index')->with('success', 'BlogTags updated successfully!');
     }
-
 }

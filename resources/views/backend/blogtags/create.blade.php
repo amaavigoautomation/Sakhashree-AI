@@ -22,19 +22,19 @@
           <!-- Page Title -->
          <div class="col-sm-4">
             <div class="input-style-1">
-                <label for="page_title">Page Title <span class="mandatory">*</span></label>
-                <input type="text" id="page_title"  name="page_title" placeholder="Page Title" required />
+                <label for="page_title">Meta Title <span class="mandatory">*</span></label>
+                <input type="text" id="page_title"  name="page_title" placeholder="Meta Title" required />
             </div>
          </div>
 
          <!-- Active Code -->
          <div class="col-sm-4">
-             <label>Active</label><br>
+             <label>Status</label><br>
              <label class="radio-inline">
-             <input type="radio" name="active" class="radio-inline" value="1"> Yes
+             <input type="radio" name="active" class="radio-inline" value="1"> Active
              </label>
             <label class="radio-inline">
-            <input type="radio" name="active" class="radio-inline" value="0" checked> No
+            <input type="radio" name="active" class="radio-inline" value="0" checked> Inactive
             </label>
          </div>
        </div>
@@ -44,16 +44,16 @@
     <!-- Page Slug -->
      <div class="col-sm-6">
             <div class="input-style-1">
-            <label>Page Slug</label>
-            <input type="text" id="page_slug"  name="page_slug" placeholder="Enter Page Slug" />
+            <label>Meta Slug</label>
+            <input type="text" id="page_slug"  name="page_slug" placeholder="Enter Meta Slug" />
             </div>
      </div>
 
     <!-- Page Url -->
      <div class="col-sm-6">
             <div class="input-style-1">
-            <label>Page Url</label>
-            <input type="text" id="page_url" name="page_url" placeholder="Page Url" />
+            <label>Meta Url</label>
+            <input type="text" id="page_url" name="page_url" placeholder="Meta Url" />
             </div>
      </div>
      <div><hr></div>

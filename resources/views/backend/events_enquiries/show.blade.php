@@ -16,7 +16,7 @@
                     <table class="table striped-table">
 
                         <tbody>
-
+                            
                             {{-- Event --}}
                             <tr>
                                 <th class="col-md-2">
@@ -60,6 +60,15 @@
                                 </th>
                                 <td>
                                     <p>
+                                        @php
+                                            $countryDetail = $eventEnquiry->country?->countryDetails?->first();
+                                        @endphp
+
+                                        @if ($countryDetail?->icon_image)
+                                            <img src="{{ asset('public/images/country_details/icon_image/' . $countryDetail->id . '/' . $countryDetail->icon_image) }}"
+                                                alt="{{ $eventEnquiry->country->name ?? '' }}" class="countryIcon">
+                                        @endif
+
                                         {{ $eventEnquiry->calling_code ?? '' }}
                                         {{ $eventEnquiry->mobile ?? '---' }}
                                     </p>
@@ -86,30 +95,6 @@
                                 <td>
                                     <p>
                                         {{ $eventEnquiry->description ?? '---' }}
-                                    </p>
-                                </td>
-                            </tr>
-
-                            {{-- Created At --}}
-                            <tr>
-                                <th>
-                                    <h6>Created At</h6>
-                                </th>
-                                <td>
-                                    <p>
-                                        {{ $eventEnquiry->created_at ?? '---' }}
-                                    </p>
-                                </td>
-                            </tr>
-
-                            {{-- Updated At --}}
-                            <tr>
-                                <th>
-                                    <h6>Updated At</h6>
-                                </th>
-                                <td>
-                                    <p>
-                                        {{ $eventEnquiry->updated_at ?? '---' }}
                                     </p>
                                 </td>
                             </tr>

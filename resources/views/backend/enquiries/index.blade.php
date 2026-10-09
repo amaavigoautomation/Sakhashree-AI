@@ -5,6 +5,7 @@
         <div class="container-fluid">
 
             @include('partials.breadcrumb')
+            {{-- export button --}}
             <div class="right-mob-left">
                 <a href="{{ route('enquiries.export') }}">
                     <button type="button" class="main-btn primary-btn btn-hover btn-xs">
@@ -33,10 +34,9 @@
 
                             @foreach ($enquiries as $enquiry)
                                 <tr>
-
                                     <td>
-                                        {{ $enquiry->full_name ?? '---' }}
-                                    </td>
+                                        {{ $enquiry->full_name ?? '---' }} </td>
+
                                     <td>
                                         {{ $enquiry->email ?? '---' }}
                                     </td>
@@ -46,19 +46,26 @@
                                     </td>
 
                                     <td>
-                                        {{ $enquiry->phone ?? '---' }}
-                                    </td>
+                                        <p>
+                                            @php
+                                                $countryDetail = $enquiry->country?->countryDetails?->first();
+                                            @endphp
 
-                                    {{-- <td>
-                                        {{ $enquiry->description ?? '---' }}
-                                    </td> --}}
+                                            @if ($countryDetail?->icon_image)
+                                                <img src="{{ asset('public/images/country_details/icon_image/' . $countryDetail->id . '/' . $countryDetail->icon_image) }}"
+                                                    alt="{{ $enquiry->country->name ?? '' }}" class="countryIcon">
+                                            @endif
+
+                                            {{ $enquiry->calling_code ?? '' }}
+                                            {{ $enquiry->phone ?? '---' }}
+                                        </p>
+                                    </td>
 
                                     <td class="text-center">
                                         <a href="{{ route('enquiries.show', $enquiry->id) }}">
                                             <i class="lni lni-list" title="View Details"></i>
                                         </a>
                                     </td>
-
                                 </tr>
                             @endforeach
 

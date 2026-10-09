@@ -32,10 +32,10 @@
 
                                         <div class="col-sm-3">
                                             <div class="select-style-1">
-                                                <label for="title">Title</label>
+                                                <label for="title">Video Title</label>
                                                 <div class="select-position select-sm">
                                                     <select class="jSelectbox" name="title" onchange="this.form.submit()">
-                                                        <option value="">All</option>
+                                                        <option value="">Select</option>
                                                         @foreach ($titles as $title)
                                                             <option value="{{ $title->title }}"
                                                                 {{ request('title') == $title->title ? 'selected' : '' }}>
@@ -49,11 +49,11 @@
 
                                         <div class="col-sm-3">
                                             <div class="select-style-1">
-                                                <label for="active">Active</label>
+                                                <label for="active">Status</label>
                                                 <div class="select-position select-sm">
                                                     <select class="jSelectbox" id="active" name="active"
                                                         onchange="this.form.submit()">
-                                                        <option value="">select</option>
+                                                        <option value="">Select</option>
                                                         <option value="active"
                                                             {{ request('active') == 'active' ? 'selected' : '' }}>Active
                                                         </option>
@@ -67,7 +67,7 @@
 
                                         <div class="col-sm-2">
                                             <a href="{{ route('videos.index') }}">
-                                                <button type="button" class="main-btn dark-btn btn-hover btn-xs"
+                                                <button type="button" class="main-btn primary-btn btn-hover btn-xs"
                                                     style="margin-top:28px">Reset</button>
                                             </a>
                                         </div>
@@ -86,14 +86,14 @@
                                 {{-- <th class="text-left">
                                     <h6>Order</h6>
                                 </th> --}}
-                                <th class="">
+                                {{-- <th class="">
                                     <h6>Image</h6>
-                                </th>
+                                </th> --}}
                                 <th class="">
-                                    <h6>Title</h6>
+                                    <h6>Video Title</h6>
                                 </th>
                                 <th class="text-left">
-                                    <h6>Active</h6>
+                                    <h6>Status</h6>
                                 </th>
                                 <th class="text-center">
                                     <h6>Action</h6>
@@ -107,7 +107,7 @@
                                     {{-- <td class="text-left">
                                         <p>{{ $video->order }} </p>
                                     </td> --}}
-                                    <td>
+                                    {{-- <td>
                                         <p>
                                             @php
                                                 $firstImage = $video->image_file;
@@ -120,7 +120,7 @@
                                                 <img src="{{ $imagePath }}" id="imageBox">
                                             @endif
                                         </p>
-                                    </td>
+                                    </td> --}}
                                     <td>
                                         <p>{{ $video->title }} </p>
                                     </td>

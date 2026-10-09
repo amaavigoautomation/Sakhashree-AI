@@ -8,7 +8,8 @@
             @include('partials.breadcrumb')
 
             <div class="right-mob-left">
-                <a href="{{ route('workshop_enquiries.export') }}"><button type="button" class="main-btn primary-btn btn-hover btn-xs">Export to Excel</button></a>
+                <a href="{{ route('workshop_enquiries.export') }}"><button type="button"
+                        class="main-btn primary-btn btn-hover btn-xs">Export to Excel</button></a>
             </div>
 
             <div class="card-style mt-20">
@@ -26,9 +27,7 @@
                                 <th>
                                     <h6>Contact</h6>
                                 </th>
-                                {{-- <th>
-                                    <h6>Workshop Name</h6>
-                                </th> --}}
+
                                 <th>
                                     <h6>Enquiry Date</h6>
                                 </th>
@@ -45,23 +44,33 @@
                                 <tr>
                                     <td>
                                         <p>
-                                            {{ $enquiry->workshop->name ?? '-' }}
-                                        </p>
-                                    </td>
-
-                                    <td>
-                                        <p>{{ $enquiry->full_name ?? '-' }}</p>
-
+                                            {{ $enquiry->workshop->name ?? '-' }} </p>
                                     </td>
 
                                     <td>
                                         <p>
+                                            {{ $enquiry->full_name ?? '-' }}
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <p>
+                                            @php
+                                                $countryDetail = $enquiry->country?->countryDetails?->first();
+                                            @endphp
+
+                                            @if ($countryDetail?->icon_image)
+                                                <img src="{{ asset('public/images/country_details/icon_image/' . $countryDetail->id . '/' . $countryDetail->icon_image) }}"
+                                                    alt="{{ $enquiry->country->name ?? '' }}" class="countryIcon">
+                                            @endif
+
                                             {{ $enquiry->calling_code ?? '' }}
                                             {{ $enquiry->mobile ?? '-' }}
                                         </p>
 
-                                        <p>{{ $enquiry->email ?? '-' }}</p>
-
+                                        <p>
+                                            {{ $enquiry->email ?? '-' }}
+                                        </p>
                                     </td>
                                     <td>
                                         <p>
@@ -75,7 +84,6 @@
                                             <i class="lni lni-list"></i>
                                         </a>
                                     </td>
-
                                 </tr>
                             @endforeach
                         </tbody>

@@ -18,9 +18,9 @@
                                 <textarea name="description" id="description" class="form-control" rows="4" required></textarea>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="input-style-1">
-                                <label>Image</label>
+                                <label>Gallery Image</label>
                                 <img id="selectedImage" class="addedImage" src="{{ asset('dist/images/no-image.png') }}"
                                     alt="Selected Image">
                                 <input type="file" name="image_file" id="imageInput" accept="image/*"
@@ -29,12 +29,12 @@
                         </div>
 
                         <div class="col-sm-4">
-                            <label>Active</label><br>
+                            <label>Status</label><br>
                             <label class="radio-inline">
-                                <input type="radio" name="active" class="radio-inline" value="1" checked> Yes
+                                <input type="radio" name="active" class="radio-inline" value="1" checked> Active
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="active" class="radio-inline" value="0"> No
+                                <input type="radio" name="active" class="radio-inline" value="0"> Inactive
                             </label>
                         </div>
 

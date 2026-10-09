@@ -22,26 +22,32 @@
                                     <h6>Name</h6>
                                 </th>
                                 <th class="text-left">
-                                    <h6>Active</h6>
+                                    <h6>Status</h6>
                                 </th>
                                 <th class="text-center">
                                     <h6>Action</h6>
                                 </th>
-                            </tr>
+                             </tr>
                         </thead>
-                        <tbody id="sortableBody">
+                        <tbody id="">
                             @foreach ($blogcategory as $blogcategories)
                                 <tr data-id="{{ $blogcategories->id }}" data-model="BlogCategory">
                                     <td>
                                         <p>{{ $blogcategories->name }}</p>
                                     </td>
                                     <td class="text-center">
-                                        @php $checked = $blogcategories->active ? 'checked' : ''; @endphp
+                                        @php
+                                            $active = $blogcategories->active;
+                                            $checked = $active == 1 ? 'checked' : '';
+                                        @endphp
+
                                         <input type="checkbox" id="toggle-{{ $blogcategories->id }}"
                                             class="status-checkbox toggle-checkbox" data-id="{{ $blogcategories->id }}"
                                             data-model="BlogCategory" {{ $checked }}>
-                                        <label for="toggle-{{ $blogcategories->id }}" class="toggle-label"><span
-                                                class="toggle-slider"></span></label>
+
+                                        <label for="toggle-{{ $blogcategories->id }}" class="toggle-label">
+                                            <span class="toggle-slider"></span>
+                                        </label>
                                     </td>
                                     <td class="text-center">
                                         <a href="{{ route('blogcategories.edit', $blogcategories->id) }}">
@@ -51,6 +57,14 @@
 
                                 </tr>
                             @endforeach
+                            <!-- No Records -->
+                            @if ($blogcategory->count() == 0)
+                                <tr>
+                                    <td colspan="3" class="text-center">
+                                        <p>No Blog Categories Found.</p>
+                                    </td>
+                                </tr>
+                            @endif
                         </tbody>
 
                     </table>

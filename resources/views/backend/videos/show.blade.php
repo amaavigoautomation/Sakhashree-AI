@@ -22,21 +22,21 @@
 
 
                     <tr>
-                        <th class=''><h6>Title </h6></th>
+                        <th class=''><h6>video Title </h6></th>
                         <td class=''>
                             <p>{{ $videos->title }}</p>
                         </td>
                     </tr>
 
                     <tr>
-                        <th class=''><h6> Description </h6></th>
+                        <th class=''><h6>video Description </h6></th>
                         <td class=''>
                             <p>{!! $videos->description ?? '---' !!}</p>
                         </td>
                     </tr>
 
                    <tr>
-                        <th class=''><h6>Image</h6></th>
+                        <th class=''><h6>video Image</h6></th>
                         <td class=''>
                             <p>@php
                                 $firstImage = $videos->image_file;
@@ -51,7 +51,7 @@
                     </tr>
 
                     <tr>
-                    <th><h6>Active</h6></th>
+                    <th><h6>Status</h6></th>
                     <td>
                       @php if($videos->active == '1'){
                         $class = 'activelabel';

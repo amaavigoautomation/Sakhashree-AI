@@ -14,8 +14,8 @@
                             <label>Description <span class="mandatory">*</span></label>
                             <textarea name="description" class="form-control" rows="4" required>{{ $gallery->description }}</textarea>
                         </div>
-                        <div class="col-sm-3">
-                            <label>Image</label>
+                        <div class="col-sm-4">
+                            <label>gallery Image</label>
                             <div id="">
                                 <img id="selectedImage" class="addedImage"
                                     src="{{ $gallery->image_file ? asset('public/images/galleries/image_file/' . $gallery->image_file) : asset('public/images/no-image.png') }}"
@@ -26,14 +26,14 @@
                         </div>
 
                         <div class="col-sm-3">
-                            <label>Active</label><br>
+                            <label>Status</label><br>
                             <label class="radio-inline">
                                 <input type="radio" name="active" class="radio-inline" value="1"
-                                    {{ $gallery->active == 1 ? 'checked' : '' }}> Yes
+                                    {{ $gallery->active == 1 ? 'checked' : '' }}> Active
                             </label>
                             <label class="radio-inline">
                                 <input type="radio" name="active" class="radio-inline" value="0"
-                                    {{ $gallery->active == 0 ? 'checked' : '' }}> No
+                                    {{ $gallery->active == 0 ? 'checked' : '' }}> Inactive
                             </label>
                         </div>
                     </div>

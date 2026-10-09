@@ -68,6 +68,15 @@
                                     {{-- Contact --}}
                                     <td>
                                         <p>
+                                            @php
+                                                $countryDetail = $enquiry->country?->countryDetails?->first();
+                                            @endphp
+
+                                            @if ($countryDetail?->icon_image)
+                                                <img src="{{ asset('public/images/country_details/icon_image/' . $countryDetail->id . '/' . $countryDetail->icon_image) }}"
+                                                    alt="{{ $enquiry->country->name ?? '' }}" class="countryIcon">
+                                            @endif
+
                                             {{ $enquiry->calling_code ?? '' }}
                                             {{ $enquiry->mobile ?? '-' }}
                                         </p>
@@ -93,6 +102,7 @@
 
                                 </tr>
                             @endforeach
+
 
                         </tbody>
 

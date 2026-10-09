@@ -63,7 +63,7 @@ class WorkshopController extends Controller
             'name' => [
                 'required',
                 'string',
-                'max:255',
+                 'max:255',
                 'unique:workshops,name',
                 function ($attribute, $value, $fail) {
                     $wordCount = str_word_count(trim($value));

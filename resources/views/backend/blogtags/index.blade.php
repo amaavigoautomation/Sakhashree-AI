@@ -22,12 +22,12 @@
                                     <h6>Name</h6>
                                 </th>
                                 <th class="text-left">
-                                    <h6>Active</h6>
+                                    <h6>Status</h6>
                                 </th>
                                 <th class="text-center">
                                     <h6>Action</h6>
                                 </th>
-                            </tr>
+                            </tr>  
                         </thead>
                         <tbody>
                             @foreach ($blogtags as $blogtag)
