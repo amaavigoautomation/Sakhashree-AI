@@ -33,20 +33,15 @@
                         </div>
 
                         <!-- Active -->
-                        <div class="col-sm-2">
-                            <label>Status</label>
-                            <br>
-
+                        <div class="col-sm-3">
+                            <label>Status</label><br>
                             <label class="radio-inline">
-                                <input type="radio" name="active" class="radio-inline" value="1"
-                                    {{ old('active', 1) == 1 ? 'checked' : '' }}>
-                                Active
+                                <input type="radio" name="active" value="1"
+                                    {{ old('active', 0) == 1 ? 'checked' : '' }}> Active
                             </label>
-
                             <label class="radio-inline">
-                                <input type="radio" name="active" class="radio-inline" value="0"
-                                    {{ old('active') === '0' ? 'checked' : '' }}>
-                                Inactive
+                                <input type="radio" name="active" value="0"
+                                    {{ old('active', 0) == 0 ? 'checked' : '' }}> Inactive
                             </label>
                         </div>
                     </div>
