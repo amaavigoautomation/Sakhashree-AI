@@ -84,7 +84,7 @@
                                                     <select class="jSelectbox" id="status" name="status"
                                                         onchange="this.form.submit()">
 
-                                                        <option value="">All</option>
+                                                        <option value="">Select</option>
 
                                                         <option value="1"
                                                             {{ request('status') == '1' ? 'selected' : '' }}>
