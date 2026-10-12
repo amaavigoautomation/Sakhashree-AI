@@ -58,16 +58,24 @@
                     </div>
                     <hr>
                     <div class="row">
-
-                        <!-- Description -->
                         <div class="col-md-12">
                             <div class="input-style-1">
                                 <label>Tour Description</label>
-                                <textarea name="description" rows="5" class="rich-editor" placeholder="Enter Tour Description">{{ old('description') }}
-                            </textarea>
+                                <textarea name="description" rows="5" class="rich-editor" placeholder="Enter Tour Description">{{ old('description') }}</textarea>
                             </div>
                         </div>
+                    </div>
 
+                    <!-- Short Description (only for Past Journeys) -->
+                    <div class="row" id="shortDescriptionWrapper" style="display: none;">
+                        <div class="col-md-12">
+                            <div class="input-style-1">
+                                <label>Short Description</label>
+                                <textarea name="short_description" id="shortDescription" rows="3"
+                                    placeholder="Enter Short Description (Maximum 24 words)">{{ old('short_description') }}</textarea>
+                                <small class="text-muted"><span id="wordCount">0</span> / 24 words</small>
+                            </div>
+                        </div>
                     </div>
 
                     <hr>
@@ -80,8 +88,7 @@
                                     alt="Selected Image">
 
                                 <input type="file" name="image_file" id="imageInput"
-                                    accept="image/png, image/jpeg, image/webp, image/jpg"
-                                    onchange="validateAndDisplayImage(this)">
+                                    accept="image/png, image/jpeg, image/webp, image/jpg" onchange="displayImage(this)">
 
                                 <small class="text-muted d-block mt-2">
                                     <strong>Maximum file size:</strong> 5 MB
@@ -113,8 +120,9 @@
                                 No
                             </label>
                         </div>
-                        <!-- Active -->
-                        <div class="col-sm-2">
+
+                        <!-- Status -->
+                        <div class="col-sm-4">
                             <label>Status</label><br>
                             <label class="radio-inline">
                                 <input type="radio" name="active" value="1"
@@ -150,17 +158,8 @@
 
             function calculateDays() {
                 if (startDate.value && endDate.value) {
-                    const start = new Date(startDate.value);
-                    const end = new Date(endDate.value);
-
-                    const difference = end - start;
-
-                    if (difference >= 0) {
-                        const totalDays = Math.floor(difference / (1000 * 60 * 60 * 24)) + 1;
-                        days.value = totalDays;
-                    } else {
-                        days.value = '';
-                    }
+                    const diff = new Date(endDate.value) - new Date(startDate.value);
+                    days.value = diff >= 0 ? Math.floor(diff / (1000 * 60 * 60 * 24)) + 1 : '';
                 } else {
                     days.value = '';
                 }
@@ -168,50 +167,49 @@
 
             startDate.addEventListener('change', calculateDays);
             endDate.addEventListener('change', calculateDays);
-
             calculateDays();
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
 
-            const radios = document.querySelectorAll(
-                'input[name="is_upcoming"]'
-            );
-
-            const upcomingRequirement =
-                document.getElementById('upcomingImageRequirement');
-
-            const pastRequirement =
-                document.getElementById('pastImageRequirement');
+            /* ---------- 2. Upcoming / Past toggle ---------- */
+            const radios = document.querySelectorAll('input[name="is_upcoming"]');
+            const upcomingRequirement = document.getElementById('upcomingImageRequirement');
+            const pastRequirement = document.getElementById('pastImageRequirement');
+            const shortDescriptionWrapper = document.getElementById('shortDescriptionWrapper');
 
             function updateImageRequirement() {
-
-                const selected = document.querySelector(
-                    'input[name="is_upcoming"]:checked'
-                );
-
-                if (!selected) {
-                    return;
-                }
+                const selected = document.querySelector('input[name="is_upcoming"]:checked');
+                if (!selected) return;
 
                 if (selected.value === '1') {
-
                     upcomingRequirement.classList.remove('d-none');
                     pastRequirement.classList.add('d-none');
-
+                    shortDescriptionWrapper.style.display = 'none';
                 } else {
-
                     upcomingRequirement.classList.add('d-none');
                     pastRequirement.classList.remove('d-none');
+                    shortDescriptionWrapper.style.display = 'flex';
                 }
             }
 
             radios.forEach(function(radio) {
                 radio.addEventListener('change', updateImageRequirement);
             });
-
             updateImageRequirement();
+
+            /* ---------- 3. Short description 24 word limit ---------- */
+            const shortDesc = document.getElementById('shortDescription');
+            const wordCount = document.getElementById('wordCount');
+
+            function limitWords() {
+                let words = shortDesc.value.trim().split(/\s+/).filter(Boolean);
+                if (words.length > 24) {
+                    words = words.slice(0, 24);
+                    shortDesc.value = words.join(' ');
+                }
+                wordCount.textContent = words.length;
+            }
+
+            shortDesc.addEventListener('input', limitWords);
+            limitWords();
         });
     </script>
 @endsection

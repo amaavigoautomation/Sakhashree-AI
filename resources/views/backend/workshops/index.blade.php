@@ -208,7 +208,7 @@
                                     </td>
                                     <td>
                                         <p>
-                                            {{ $workshop->created_at ? $workshop->created_at->format('d-m-Y') : '-' }}
+                                            {{ $workshop->date ? \Carbon\Carbon::parse($workshop->date)->format('d-m-Y') : '-' }}
                                         </p>
                                     </td>
                                     <td class="text-center">

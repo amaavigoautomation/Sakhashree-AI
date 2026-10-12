@@ -45,7 +45,7 @@
                                 <input type="date" name="date" value="{{ old('date', $workshop->date) }}" required>
                             </div>
                         </div>
-
+                        
                         <!-- Workshop Location -->
                         <div class="col-md-3">
                             <div class="input-style-1">

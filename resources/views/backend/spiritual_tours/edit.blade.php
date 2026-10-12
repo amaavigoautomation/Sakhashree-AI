@@ -37,16 +37,16 @@
                         <div class="col-md-4">
                             <div class="input-style-1">
                                 <label>Start Date <span class="mandatory">*</span></label>
-                                <input type="date" name="start_date" value="{{ old('start_date', $tour->start_date?->format('Y-m-d')) }}"
-                                    required>
+                                <input type="date" name="start_date"
+                                    value="{{ old('start_date', $tour->start_date?->format('Y-m-d')) }}" required>
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="input-style-1">
                                 <label>End Date <span class="mandatory">*</span></label>
-                                <input type="date" name="end_date" value="{{ old('end_date', $tour->end_date?->format('Y-m-d')) }}"
-                                    required>
+                                <input type="date" name="end_date"
+                                    value="{{ old('end_date', $tour->end_date?->format('Y-m-d')) }}" required>
                             </div>
                         </div>
 
@@ -67,6 +67,14 @@
                             </div>
                         </div>
                     </div>
+                    {{-- Short Description --}}
+                    <div class="col-md-12 mt-15" id="shortDescriptionWrapper"
+                        style="{{ old('is_upcoming', $tour->is_upcoming) == 0 ? 'display:block;' : 'display:none;' }}">
+                        <div class="input-style-1">
+                            <label>Short Description</label>
+                            <textarea name="short_description" rows="3" placeholder="Enter Short Description (Maximum 24 words)">{{ old('short_description', $tour->short_description) }}</textarea>
+                        </div>
+                    </div>
                     <hr>
                     <div class="row">
                         <div class="col-md-4">
@@ -81,20 +89,20 @@
 
                                 <input type="file" name="image_file" id="imageInput"
                                     accept="image/png, image/jpeg, image/webp, image/jpg"
-                                    onchange="validateAndDisplayImage(this)">
+                                    onchange="displayImage(this)">
 
                                 <small class="text-muted d-block mt-2">
                                     <strong>Maximum file size:</strong> 5 MB
                                 </small>
 
-                                <small id="upcomingImageRequirement" class="text-muted d-block mt-2"
-                                    style="{{ $tour->is_upcoming == 1 ? '' : 'display:none;' }}">
+                                <small id="upcomingImageRequirement"
+                                    class="text-muted mt-2 {{ old('is_upcoming', $tour->is_upcoming) == 1 ? 'd-block' : 'd-none' }}">
                                     <strong>Image Requirements:</strong><br>
                                     Upcoming Tours — Width: 800px × Height: 800px
                                 </small>
 
-                                <small id="pastImageRequirement" class="text-muted d-block mt-2"
-                                    style="{{ $tour->is_upcoming == 0 ? '' : 'display:none;' }}">
+                                <small id="pastImageRequirement"
+                                    class="text-muted mt-2 {{ old('is_upcoming', $tour->is_upcoming) == 0 ? 'd-block' : 'd-none' }}">
                                     <strong>Image Requirements:</strong><br>
                                     Past Journeys — Width: 600px × Height: 400px
                                 </small>
@@ -117,7 +125,7 @@
                         </div>
 
                         <!-- Active -->
-                        <div class="col-sm-2">
+                        <div class="col-sm-4">
                             <label>Status</label><br>
 
                             <label class="radio-inline">
@@ -152,23 +160,51 @@
     </section>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const radios = document.querySelectorAll('input[name="is_upcoming"]');
+
+            const radios = document.querySelectorAll(
+                'input[name="is_upcoming"]'
+            );
+
             const upcoming = document.getElementById('upcomingImageRequirement');
             const past = document.getElementById('pastImageRequirement');
+            const shortDescriptionWrapper = document.getElementById('shortDescriptionWrapper');
 
             function updateRequirement() {
-                const selected = document.querySelector('input[name="is_upcoming"]:checked');
+
+                const selected = document.querySelector(
+                    'input[name="is_upcoming"]:checked'
+                );
+
                 if (!selected) return;
 
                 const isUpcoming = selected.value === '1';
 
-                upcoming.classList.toggle('d-none', !isUpcoming);
-                upcoming.classList.toggle('d-block', isUpcoming);
-                past.classList.toggle('d-none', isUpcoming);
-                past.classList.toggle('d-block', !isUpcoming);
+                if (isUpcoming) {
+
+                    upcoming.classList.remove('d-none');
+                    upcoming.classList.add('d-block');
+
+                    past.classList.remove('d-block');
+                    past.classList.add('d-none');
+
+                    shortDescriptionWrapper.style.display = 'none';
+
+                } else {
+
+                    upcoming.classList.remove('d-block');
+                    upcoming.classList.add('d-none');
+
+                    past.classList.remove('d-none');
+                    past.classList.add('d-block');
+
+                    shortDescriptionWrapper.style.display = 'block';
+                }
             }
 
-            radios.forEach(r => r.addEventListener('change', updateRequirement));
+            radios.forEach(function(radio) {
+                radio.addEventListener('change', updateRequirement);
+            });
+
             updateRequirement();
         });
     </script>

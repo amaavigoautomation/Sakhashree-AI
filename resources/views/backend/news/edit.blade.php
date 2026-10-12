@@ -118,7 +118,7 @@
                         </div>
 
                         {{-- Image --}}
-                        <div class="col-md-3" id="imageField"
+                        <div class="col-md-4" id="imageField"
                             style="{{ old('has_video', $news->has_video) == 1 ? 'display: none;' : '' }}">
                             <div class="input-style-1">
                                 <label>News Image</label>
@@ -129,6 +129,14 @@
                                     alt="Selected Image">
                                 <input type="file" name="image_file" id="imageInput" accept="image/*"
                                     onchange="displayImage(this)">
+                                <small class="text-muted d-block mt-2">
+                                    <strong>Maximum file size:</strong> 5 MB
+                                </small>
+                                <small class="text-muted d-block mt-2">
+                                    <strong>Image Requirements:</strong><br>
+                                    News Page — Width: 600px × Height: 400px<br>
+                                    News Details Page — Width: 800px × Height: 600px
+                                </small>
                             </div>
                         </div>
 

@@ -107,24 +107,46 @@ class SpiritualTourController extends Controller
                     }
                 },
             ],
+
+            'short_description' => [
+                'exclude_if:is_upcoming,1',
+                'nullable',
+                'string',
+                'max:255',
+                function ($attribute, $value, $fail) {
+                    $words = preg_split(
+                        '/\s+/',
+                        trim(strip_tags($value)),
+                        -1,
+                        PREG_SPLIT_NO_EMPTY
+                    );
+
+                    if (count($words) > 24) {
+                        $fail('Short Description must not exceed 24 words.');
+                    }
+                },
+            ],
         ], [
             'title.required' => 'Please enter a tour title.',
-                'title.string' => 'Tour title must contain valid text.',
-                'title.max' => 'Tour title must not exceed 255 characters.',
-                'title.regex' => 'Please enter a valid tour title.',
-                'title.unique' => 'This tour title already exists.',
+            'title.string' => 'Tour title must contain valid text.',
+            'title.max' => 'Tour title must not exceed 255 characters.',
+            'title.regex' => 'Please enter a valid tour title.',
+            'title.unique' => 'This tour title already exists.',
 
-                'location.required' => 'Please enter a tour location.',
-                'location.max' => 'Tour location must not exceed 255 characters.',
+            'location.required' => 'Please enter a tour location.',
+            'location.max' => 'Tour location must not exceed 255 characters.',
 
-                'image_file.image' => 'Please upload a valid image.',
-                'image_file.mimes' => 'Only JPG, JPEG, PNG, and WebP images are allowed.',
-                'image_file.max' => 'Image size must not exceed 5 MB.',
+            'image_file.image' => 'Please upload a valid image.',
+            'image_file.mimes' => 'Only JPG, JPEG, PNG, and WebP images are allowed.',
+            'image_file.max' => 'Image size must not exceed 5 MB.',
         ]);
 
         $tour = SpiritualTour::create([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
+            'short_description' => $request->input('is_upcoming', 0) == 0
+                ? $request->input('short_description')
+                : null,
             'start_date' => $request->input('start_date'),
             'end_date' => $request->input('end_date'),
             'location' => $request->input('location'),
@@ -220,24 +242,45 @@ class SpiritualTourController extends Controller
                     }
                 },
             ],
+            'short_description' => [
+                'exclude_if:is_upcoming,1',
+                'nullable',
+                'string',
+                'max:255',
+                function ($attribute, $value, $fail) {
+                    $words = preg_split(
+                        '/\s+/',
+                        trim(strip_tags($value)),
+                        -1,
+                        PREG_SPLIT_NO_EMPTY
+                    );
+
+                    if (count($words) > 24) {
+                        $fail('Short Description must not exceed 24 words.');
+                    }
+                },
+            ],
         ], [
             'title.required' => 'Please enter a tour title.',
-                'title.string' => 'Tour title must contain valid text.',
-                'title.max' => 'Tour title must not exceed 255 characters.',
-                'title.regex' => 'Please enter a valid tour title.',
-                'title.unique' => 'This tour title already exists.',
+            'title.string' => 'Tour title must contain valid text.',
+            'title.max' => 'Tour title must not exceed 255 characters.',
+            'title.regex' => 'Please enter a valid tour title.',
+            'title.unique' => 'This tour title already exists.',
 
-                'location.required' => 'Please enter a tour location.',
-                'location.max' => 'Tour location must not exceed 255 characters.',
+            'location.required' => 'Please enter a tour location.',
+            'location.max' => 'Tour location must not exceed 255 characters.',
 
-                'image_file.image' => 'Please upload a valid image.',
-                'image_file.mimes' => 'Only JPG, JPEG, PNG, and WebP images are allowed.',
-                'image_file.max' => 'Image size must not exceed 5 MB.',
+            'image_file.image' => 'Please upload a valid image.',
+            'image_file.mimes' => 'Only JPG, JPEG, PNG, and WebP images are allowed.',
+            'image_file.max' => 'Image size must not exceed 5 MB.',
         ]);
 
         $tour->update([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
+            'short_description' => $request->input('is_upcoming', 0) == 0
+                ? $request->input('short_description')
+                : null,
             'start_date' => $request->input('start_date'),
             'end_date' => $request->input('end_date'),
             'location' => $request->input('location'),
@@ -264,5 +307,4 @@ class SpiritualTourController extends Controller
             ->route('spiritual_tours_listing.index')
             ->with('success', 'Tour updated successfully!');
     }
-
 }

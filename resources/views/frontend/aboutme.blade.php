@@ -341,6 +341,9 @@
                                             <div class="pgcard">
                                                 <div class="pgcardimg"><img
                                                         src="{{ asset('public/images/galleries/image_file/' . $photo->image_file) }}">
+                                                    <small class="text-muted d-block mt-2">
+                                                        <strong>Maximum file size:</strong> 5 MB
+                                                    </small>
                                                 </div>
                                                 <div class="pgcardtitle">
                                                     <h6>{!! $photo->description ?? '' !!}</h6>

@@ -18,8 +18,8 @@
                         <div class="col-md-6">
                             <div class="input-style-1">
                                 <label>News Title <span class="mandatory">*</span></label>
-                                <input type="text" name="title" placeholder="Enter News Title" value="{{ old('title') }}"
-                                    required>
+                                <input type="text" name="title" placeholder="Enter News Title"
+                                    value="{{ old('title') }}" required>
                             </div>
                         </div>
 
@@ -91,13 +91,21 @@
                         </div>
 
                         {{-- Image --}}
-                        <div class="col-md-3" id="imageField">
+                        <div class="col-md-4" id="imageField">
                             <div class="input-style-1">
                                 <label>News Image</label>
                                 <img id="selectedImage" class="addedImage" src="{{ asset('dist/images/no-image.png') }}"
                                     alt="Selected Image">
                                 <input type="file" name="image_file" id="imageInput" accept="image/*"
                                     onchange="displayImage(this)">
+                                <small class="text-muted d-block mt-2">
+                                    <strong>Maximum file size:</strong> 5 MB
+                                </small>
+                                <small class="text-muted d-block mt-2">
+                                    <strong>Image Requirements:</strong><br>
+                                    News Page — Width: 600px × Height: 400px<br>
+                                    News Details Page — Width: 800px × Height: 600px
+                                </small>
                             </div>
                         </div>
 

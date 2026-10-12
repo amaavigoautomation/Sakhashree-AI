@@ -445,8 +445,9 @@
                                             </h6>
 
                                             <div>
-                                                Journey with Sakhashree Neeta
+                                                {{ $tour->short_description }}
                                             </div>
+
 
 
                                             <div class="d-flex gap-4 topmargin20">

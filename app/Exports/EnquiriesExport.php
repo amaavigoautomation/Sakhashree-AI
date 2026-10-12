@@ -56,7 +56,7 @@ class EnquiriesExport implements FromCollection, WithHeadings, WithMapping, Shou
             $enquiry->description ?? '-',
             $enquiry->created_at
                 ? Carbon::parse($enquiry->created_at)
-                ->format('d-m-Y h:i A') : '',
+                ->format('d-m-Y') : '',
         ];
     }
 

@@ -61,7 +61,7 @@ class EventEnquiriesExport implements
             $enquiry->email ?? '-',
             $enquiry->country_name ?? '-',
             $enquiry->description ?? '-',
-            $enquiry->created_at ? Carbon::parse($enquiry->created_at)->format('d-m-Y h:i A') : '',
+            $enquiry->created_at ? Carbon::parse($enquiry->created_at)->format('d-m-Y') : '',
         ];
     }
 

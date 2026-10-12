@@ -23,7 +23,7 @@ class GalleryController extends Controller
     {
         $request->validate([
             'description' => 'required|string',
-            'image_file'  => 'required|image|mimes:jpeg,png,jpg,svg,webp|max:2048',
+            'image_file'  => 'required|image|mimes:jpeg,png,jpg,svg,webp|max:5120',
         ]);
 
         $image = $request->file('image_file');
@@ -51,7 +51,7 @@ class GalleryController extends Controller
 
         $request->validate([
             'description' => 'required|string',
-            'image_file'  => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'image_file'  => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
         ]);
 
         $data = $request->only(['active', 'description']);
