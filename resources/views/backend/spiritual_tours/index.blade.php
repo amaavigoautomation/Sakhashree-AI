@@ -178,8 +178,10 @@
                                                 alt="{{ $tour->title }}" width="80" class="img-thumbnail rounded"
                                                 loading="lazy">
                                         @else
-                                            <span class="text-muted">—</span>
+                                            <img src="{{ asset('dist/images/no-image.png') }}" width="50"
+                                                height="50" alt="No Image">
                                         @endif
+
                                     </td>
 
                                     <td>
