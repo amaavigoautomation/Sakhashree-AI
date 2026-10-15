@@ -346,9 +346,9 @@ Topband start here
 /****************************************************************************************************
 Common Css start here
 ****************************************************************************************************/
-/* .maincontarea {
+.maincontarea {
   margin-top: 90px;
-} */
+}
 .mainheading {
   padding: 0px;
 }
@@ -1188,7 +1188,7 @@ Bootsrap Custom Table css start here
   background-image: url(../../img/arrow_left.png);
 }
 .carousel-control-next-icon {
-  background-image: url(../img/arrow_right.png);
+  background-image: url(../../img/arrow_right.png);
 }
 
 .stories-slider .carousel-control-next,
@@ -4004,7 +4004,6 @@ Media Query css start here
 
 
 @media (max-width: 1600px) {
-@media (max-width: 1600px) {
 
 .homecollageimg {
   background-position: right -20px top;
@@ -4872,6 +4871,5 @@ Media Query css start here
 }
 
 
-}
 }
 
