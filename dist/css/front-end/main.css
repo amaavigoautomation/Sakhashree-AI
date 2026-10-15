@@ -3511,8 +3511,6 @@ Inner page css start here
 }
 
 
-
-
 /****************************************************************************************************
 Media Query css start here
 ****************************************************************************************************/
@@ -3559,12 +3557,13 @@ Media Query css start here
 	font-size: 16px;
 	line-height: 22px;
 }
+
 .collagecontarea {
   margin-bottom: 30px;
 }
 .collageservice {
   bottom: 20px;
-  margin-right: -30px;
+  margin-right: -20px;
 }
 .collagetagline {
   font-size: 85px;
@@ -4005,19 +4004,39 @@ Media Query css start here
 
 
 @media (max-width: 1600px) {
+@media (max-width: 1600px) {
+
+.homecollageimg {
+  background-position: right -20px top;
+}
+.collageservice {
+    bottom: -35px;
+    margin-right: 40px;
+}
+}
+@media (max-width: 1560px) {
+  .homecollageimg {
+  background-position: right 23px top;
+}
+.collageservice {
+    bottom: -35px;
+    margin-right: 0px;
+}
+}
+@media (max-width: 1440px) {
 
 .homecollageimg {
   background-position: right -20px top;
 }
 
 }
-
 
 @media (max-width: 1380px) {
 
 .homecollageimg {
-  background-position: right -20px top;
+  background-position: right -60px top;
 }
+
 
 }
 
@@ -4686,7 +4705,7 @@ Media Query css start here
   gap: 20px;
 }
 .consultbtmbanner {
-  background: url(../../img/consultbtmbanner_mob.jpg) no-repeat bottom center #431C0B;
+  background: url(.././img/consultbtmbanner_mob.jpg) no-repeat bottom center #431C0B;
   padding: 20px 20px 250px 20px;
 }
 .about-collage {
@@ -4854,5 +4873,5 @@ Media Query css start here
 
 
 }
-
+}
 

@@ -14,31 +14,31 @@
                             <div class="topmargin30"><img src="dist/img/innercolhead.svg" class="img-fluid"></div>
                             <div class="innercolinfotext topmargin30">Spiritual healer <span
                                     class="innercolinfotextbold">Sakhashree Neeta</span> is a globally recognised authority
-                                in
-                                Chakra Healing and the creator of <span class="innercolinfotextbold">Rudraksha Ratna Chakra
-                                    Therapy (RRCT<sup>®️</sup>),</span> a unique healing system that uses Rudraksha beads
-                                and
-                                gemstones to balance and harmonise the chakras. For over two decades, she has dedicated her
-                                life
-                                to helping people overcome emotional pain, stress, anxiety, limiting beliefs, and life's
-                                challenges by realigning their thoughts, beliefs, and energy patterns, guiding them towards
-                                holistic health, inner strength, and spiritual awakening.<br><br>
+                                in Chakra Healing and the creator of <span class="innercolinfotextbold">Rudraksha Ratna
+                                    Chakra Therapy (RRCT<sup>®️</sup>),</span> a unique healing system that uses Rudraksha
+                                beads and gemstones to balance and harmonise the chakras. For over two decades, she has
+                                dedicated her life to helping people overcome emotional pain, stress, anxiety, limiting
+                                beliefs, and life's challenges by realigning their thoughts, beliefs, and energy patterns,
+                                guiding them towards holistic health, inner strength, and spiritual awakening.<br><br>
                                 People from all walks of life including CEOs, entrepreneurs, professionals, homemakers,
                                 students, and spiritual seekers from across India and around the world seek her guidance.
-                                Over
-                                the years, more than 20,000 testimonials have reflected the profound transformation
-                                experienced
-                                by those she has helped. Known for her compassionate approach and ability to listen without
-                                judgement, she is lovingly regarded by many as a mentor, and trusted friend, creating a safe
-                                space where people feel understood, supported, and empowered to transform their lives.<span
-                                    class="slider" id="slideOne1"><br>Sakhashree founded Rudraksha Ratna Chakra Therapy
-                                    (RRCT<sup>®️</sup>) after years of research into the subtle effects of Rudraksha and
-                                    gemstones on the human body, mind, and chakras. She created the world's first dedicated
-                                    Rudraksha website in the year 2000 and has been practising and teaching this sacred
-                                    science
-                                    ever since. Her expertise also includes personally sourcing authentic, premium-quality
-                                    Rudraksha from trusted farms in Nepal and Indonesia, ensuring that every seeker receives
-                                    genuine and spiritually potent Rudraksha for their healing journey.</span>
+                                Over the years, more than 20,000 testimonials have reflected the profound transformation
+                                experienced by those she has helped. Known for her compassionate approach and ability to
+                                listen without judgement, she is lovingly regarded by many as a mentor, and trusted friend,
+                                creating a safe space where people feel understood, supported, and empowered to transform
+                                their lives.<span class="slider" id="slideOne1"><br>Sakhashree founded Rudraksha Ratna
+                                    Chakra Therapy (RRCT<sup>®️</sup>) after years of research into the subtle effects of
+                                    Rudraksha and gemstones on the human body, mind, and chakras. She created the world's
+                                    first dedicated Rudraksha website in the year 2000 and has been practising and teaching
+                                    this sacred science ever since. Her expertise also includes personally sourcing
+                                    authentic, premium-quality Rudraksha from trusted farms in Nepal and Indonesia, ensuring
+                                    that every seeker receives genuine and spiritually potent Rudraksha for their healing
+                                    journey.
+                                    <br><br>Neeta Sakhashree, formerly known as Neeta Singhal, is the Founder of Rudra
+                                    Centre, Chakra Yog and Rudraksha Ratna Chakra Therapy<sup>®️</sup> (RRCT). Legally
+                                    divorced since 2017 and currently single, she independently leads her professional,
+                                    business and spiritual initiatives.
+                                </span>
                                 <span class="toggler read-more" id="toggler-slideOne1"><span class="expandSlider"
                                         id="" style="cursor:pointer;">Read More</span><span class="collapseSlider"
                                         id="" style="cursor:pointer;">Read Less</span></span>

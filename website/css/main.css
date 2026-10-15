@@ -277,7 +277,7 @@ Topband start here
 }
 .collagetagline {
   font-family: var(--secondry-font);
-  font-size: 75px;
+  font-size: 75px; 
   line-height: 70px;
   font-weight: 400;
   text-transform: uppercase;
@@ -292,20 +292,20 @@ Topband start here
 .collagetagline span {
   position: relative;
   top: -40px;
-  font-size: 18px;
+  font-size: 18px; 
   font-weight: 500;
   color: var(--brand-primary-color);
 }
 .collagetaglinesm {
   font-family: var(--secondry-font);
-  font-size: 28px;
+  font-size: 28px; 
   line-height: 34px;
   font-weight: 400;
   color: var(--brand-second-color);
   margin-bottom: 25px;
 }
 .collagetaglinetext {
-  font-size: 15px;
+  font-size: 15px; 
   color: var(--text-color);
   line-height: 22px;
   font-weight: 400;
@@ -968,7 +968,7 @@ Footer Css start here
 .footertext ul li {
   list-style-type: none;
   margin: 0px 0px;
-  padding: 0px 0px 5px 0px;
+  padding: 0px 0px 5px 0px; 
 }
 .socilaicons {
   padding: 0px;
@@ -1112,7 +1112,7 @@ Bootsrap Custom Table css start here
 .table-list th span {
   font-size: 12px;
   color: var(--gray-color);
-	font-weight: 400;
+	font-weight: 400;	
 }
 .table-list th:first-child{
 	border-top: solid 1px #C9CBD2;
@@ -1531,23 +1531,23 @@ Bootsrap Custom Table css start here
 Inner page css start here
 ****************************************************************************************************/
 .innercontbg {
-  background: url(../img/innercontbg.png) no-repeat left top #FAF3EB;
+  background: url(../img/innercontbg.png) no-repeat left top #FAF3EB; 
   border-radius: 0px 0px 40px 40px;
   position: relative;
   z-index: 1;
 }
 .innercontbg1 {
-  background: #FAF3EB;
+  background: #FAF3EB; 
   border-radius: 0px 0px 40px 40px;
   position: relative;
   z-index: 1;
 }
 .innermidcontarea {
   padding-top: 150px;
-  padding-bottom: 50px;
+  padding-bottom: 50px;  
 }
 .innermidcontarea1 {
-  padding-bottom: 50px;
+  padding-bottom: 50px;  
 }
 .breadcrumbarea {
   overflow-x: auto;
@@ -2447,7 +2447,7 @@ Inner page css start here
   background: linear-gradient(0deg,rgba(74, 38, 80, 1) 0%, rgba(141, 52, 138, 1) 100%);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center;  
   flex: 0 0 70px;
 }
 .contacticon img {
@@ -3134,7 +3134,7 @@ Inner page css start here
 .benefitsrrctarea {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-}
+} 
 .benefitsrrctarea .benefitsrrctcard {
   padding: 0px 20px;
 }
@@ -3185,8 +3185,8 @@ Inner page css start here
   margin: 10px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
 }
-.benefitsrrcttext ul li span {
-  color: var(--text-color);
+.benefitsrrcttext ul li span {  
+  color: var(--text-color); 
 }
 .whoisrrctarea {
   display: grid;
@@ -3229,8 +3229,8 @@ Inner page css start here
   color: var(--brand-primary-color);
   line-height: 18px;
 }
-.whoisrrctcont ul li span {
-  color: var(--text-color);
+.whoisrrctcont ul li span {  
+  color: var(--text-color); 
 }
 .whoisrrctcont h4 {
   font-family: var(--secondry-font);
@@ -3511,8 +3511,6 @@ Inner page css start here
 }
 
 
-
-
 /****************************************************************************************************
 Media Query css start here
 ****************************************************************************************************/
@@ -3522,11 +3520,11 @@ Media Query css start here
 .mainheading h1 {
   font-size: 56px;
   line-height: 60px;
-}
+}  
 .mainheading h2 {
   font-size: 36px;
   line-height: 38px;
-}
+}  
 .mainheading h3 {
   font-size: 30px;
   line-height: 32px;
@@ -3562,25 +3560,25 @@ Media Query css start here
 
 .collagecontarea {
   margin-bottom: 30px;
-}
+}  
 .collageservice {
   bottom: 20px;
-  margin-right: -30px;
-}
+  margin-right: -20px;
+}  
 .collagetagline {
-  font-size: 85px;
+  font-size: 85px; 
   line-height: 80px;
 }
 .collagetagline span {
   top: -45px;
-  font-size: 22px;
+  font-size: 22px; 
 }
 .collagetaglinesm {
-  font-size: 30px;
+  font-size: 30px; 
   line-height: 32px;
 }
 .collagetaglinetext {
-  font-size: 16px;
+  font-size: 16px; 
   line-height: 22px;
 }
 .collagebtnarea {
@@ -3764,7 +3762,7 @@ Media Query css start here
 }
 .contacticon {
   width: 75px;
-  height: 75px;
+  height: 75px;  
   flex: 0 0 75px;
 }
 .contacticon img {
@@ -4005,25 +4003,44 @@ Media Query css start here
 }
 
 @media (max-width: 1600px) {
-
+  
+.homecollageimg {
+  background-position: right -20px top;
+}
+.collageservice {
+    bottom: -35px;
+    margin-right: 40px;
+}
+}
+@media (max-width: 1560px) {
+  .homecollageimg {
+  background-position: right 23px top;
+}
+.collageservice {
+    bottom: -35px;
+    margin-right: 0px;
+}
+}
+@media (max-width: 1440px) {
+  
 .homecollageimg {
   background-position: right -20px top;
 }
 
 }
-
 
 @media (max-width: 1380px) {
-
+  
 .homecollageimg {
-  background-position: right -20px top;
+  background-position: right -60px top;
 }
+
 
 }
 
 
 @media (max-width: 1280px) {
-
+  
 .homecollageimg {
   background-position: right -100px top;
 }
@@ -4037,7 +4054,7 @@ Media Query css start here
 
 .homecollageimg {
   background-position: right -170px top;
-}
+}  
 .collagesertext {
   font-size: 16px;
 }
@@ -4113,7 +4130,7 @@ Media Query css start here
 }
 .collagecontarea {
   margin-bottom: 30px;
-}
+} 
 .collageservice {
   width: 100%;
   text-align: center;
@@ -4211,7 +4228,7 @@ Media Query css start here
 }
 .footertagline {
   flex-direction: column;
-  text-align: center;
+  text-align: center;  
   gap: 10px;
 }
 .innercontrightmar {
@@ -4376,7 +4393,7 @@ Media Query css start here
 .homecollagebg {
   background: #FEF3E6;
   background: linear-gradient(90deg,rgba(254, 243, 230, 1) 0%, rgba(253, 248, 242, 1) 50%, rgba(252, 246, 239, 1) 100%);
-}
+} 
 .logo img {
   height: 80px;
 }
@@ -4385,21 +4402,21 @@ Media Query css start here
   padding-bottom: 50px;
 }
 .collagetagline {
-  font-size: 38px;
+  font-size: 38px; 
   line-height: 36px;
   margin-top: 30px;
 }
 .collagetagline span {
   top: -18px;
-  font-size: 14px;
+  font-size: 14px; 
 }
 .collagetaglinesm {
-  font-size: 16px;
+  font-size: 16px; 
   line-height: 22px;
   margin-bottom: 15px;
 }
 .collagetaglinetext {
-  font-size: 13px;
+  font-size: 13px; 
   line-height: 18px;
 }
 .collageservice {
@@ -4549,7 +4566,7 @@ Media Query css start here
   border-radius: 0px 0px 20px 20px;
 }
 .innermidcontarea {
-  padding-top: 130px;
+  padding-top: 130px;  
   padding-bottom: 30px;
 }
 .innermidcontarea1 {
@@ -4850,7 +4867,7 @@ Media Query css start here
 
 .statsboxtext {
   font-size: 12px;
-}
+}  
 
 
 }
