@@ -5,6 +5,9 @@
 
     RewriteEngine On
 
+    # The chatbot reads the project-root data.json server-side; never serve it directly.
+    RewriteRule ^data\.json$ - [F,L,NC]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

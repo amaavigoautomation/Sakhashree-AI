@@ -44,6 +44,7 @@ use App\Http\Controllers\TestimonialReviewController;
 use App\Http\Controllers\EventEnquiryController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\SpiritualTourEnquiryController;
+use App\Http\Controllers\SakhashreeChatbotController;
 // Public Authentication Routes
 Route::get('/admin', fn() => view('backend.auth.login'));
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -52,6 +53,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Frontend Routes
 Route::get('/', [PageController::class, 'home'])->name('home');
+Route::post('/ai-guide/chat', [SakhashreeChatbotController::class, 'chat'])->middleware('throttle:12,1')->name('ai-guide.chat');
 // Route::get('/', [PageController::class, 'comingSoon']);
 Route::get('/about-me', [PageController::class, 'aboutme'])->name('about');
 Route::get('/discover_rudra_center', [PageController::class, 'discover_rudra_center'])->name('discover_rudra_center');

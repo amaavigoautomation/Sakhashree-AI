@@ -14,6 +14,11 @@ return [
     |
     */
 
+    'openai' => [
+        'key' => env('OPENAI_API_KEY'),
+        'chat_model' => env('OPENAI_CHAT_MODEL', 'gpt-4o-mini'),
+    ],
+
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],

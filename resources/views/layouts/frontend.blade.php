@@ -6,6 +6,7 @@
     <base href="{{ url('/') }}/">
     <meta name="base-url" content="{{ url('/') }}">
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ !empty($seoData['page_title']) ? $seoData['page_title'] : 'Sakhashree Neeta | Spiritual Guide & Healer' }}
     </title>
     <link rel="canonical" href="{{ !empty($seoData['page_url']) ? $seoData['page_url'] : '' }}">
@@ -106,6 +107,10 @@
 
         @include('partials.frontend.footer')
     </main>
+
+    @if (request()->routeIs('home'))
+        @include('partials.frontend.ai-guide-widget')
+    @endif
 
     <script src="{{ asset('dist/js/Frontend/menu.js') }} "></script>
     <script src="{{ asset('dist/js/Frontend/swiper.js') }} "></script>
