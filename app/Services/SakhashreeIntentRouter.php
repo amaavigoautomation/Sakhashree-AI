@@ -165,16 +165,15 @@ PROMPT;
             }
         }
 
-        $parts = [];
+        // Put meaningful visitor language first because keyword retrieval uses a bounded term list.
+        $parts = [$message];
+        foreach ($priorUserMessages as $priorMessage) {
+            $parts[] = $priorMessage;
+        }
         if ($summary !== '') {
-            $parts[] = 'Conversation summary: '.$summary;
+            $parts[] = $summary;
         }
-        if ($priorUserMessages !== []) {
-            $parts[] = 'Recent visitor messages: '.implode(' | ', $priorUserMessages);
-        }
-        $parts[] = 'Current follow-up: '.$message;
-        $parts[] = 'Find documented Sakhashree information or offerings relevant to the visitor’s full goal.';
 
-        return Str::limit(implode("\n", $parts), 1200);
+        return Str::limit(implode(' ', $parts), 1200);
     }
 }

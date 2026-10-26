@@ -79,7 +79,6 @@ class SakhashreeChatbotFlowTest extends TestCase
 
         $knowledge = Mockery::mock(SakhashreeKnowledgeService::class);
         $knowledge->shouldReceive('search')->once()->with($searchQuery, 7)->andReturn($retrievedSources);
-        $knowledge->shouldReceive('formatContext')->once()->with($retrievedSources)->andReturn('Awards page and documented chakra yoga information.');
         // The final model selected only source index 2; the irrelevant award must not be displayed.
         $knowledge->shouldReceive('publicSources')->once()->with([$source])->andReturn([
             ['title' => 'Chakra Yoga', 'url' => $source['url'], 'type' => 'Service'],
