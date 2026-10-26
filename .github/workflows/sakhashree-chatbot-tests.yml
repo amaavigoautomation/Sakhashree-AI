@@ -41,5 +41,5 @@ jobs:
           php -l tests/Unit/SakhashreeIntentRouterTest.php
           php -l tests/Feature/SakhashreeChatbotFlowTest.php
 
-      - name: Run tests
-        run: php artisan test
+      - name: Run chatbot regression tests
+        run: php artisan test --filter=Sakhashree

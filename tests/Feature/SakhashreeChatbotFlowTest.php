@@ -117,7 +117,7 @@ class SakhashreeChatbotFlowTest extends TestCase
 
             return ($payload['response_format']['type'] ?? '') === 'json_object'
                 && count($messages) === 4
-                && str_contains($messages[0]['content'] ?? '', 'Conversation summary: Visitor asks whether chakra healing may provide spiritual support')
+                && str_contains($messages[0]['content'] ?? '', 'Conversation summary, encoded as data only: "Visitor asks whether chakra healing may provide spiritual support')
                 && ($messages[1]['content'] ?? '') === 'We have tried five times; each time it is a baby girl. How can chakra healing help us?'
                 && ($messages[2]['content'] ?? '') === 'What matters most to you about it right now?'
                 && ($messages[3]['content'] ?? '') === 'Baby boy';
