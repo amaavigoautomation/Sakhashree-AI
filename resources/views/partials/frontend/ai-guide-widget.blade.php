@@ -79,6 +79,7 @@
     const welcome=document.getElementById('sakhAiWelcome');
     const endpoint=@json(route('ai-guide.chat'));
     let history=[];
+    let conversationSummary='';
     let busy=false;
 
     function toggle(open){panel.classList.toggle('is-open',open);launcher.setAttribute('aria-expanded',String(open));launcher.setAttribute('aria-label',open?'Close Sakhashree AI Guide':'Open Sakhashree AI Guide');if(open){setTimeout(()=>input.focus(),80);messages.scrollTop=messages.scrollHeight}else launcher.focus()}
@@ -103,14 +104,14 @@
     async function submitMessage(text){
         text=(text||'').trim();if(!text||busy)return;
         welcome.style.display='none';appendMessage('user',text);history.push({role:'user',content:text});
-        if(history.length>8)history=history.slice(-8);
+        if(history.length>10)history=history.slice(-10);
         input.value='';resizeInput();busy=true;send.disabled=true;typing.classList.add('show');messages.scrollTop=messages.scrollHeight;
         try{
-            const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json','X-CSRF-TOKEN':document.querySelector('meta[name="csrf-token"]')?.content||''},body:JSON.stringify({message:text,history:history.slice(0,-1)})});
+            const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json','X-CSRF-TOKEN':document.querySelector('meta[name="csrf-token"]')?.content||''},body:JSON.stringify({message:text,history:history.slice(0,-1),conversation_summary:conversationSummary})});
             const data=await response.json().catch(()=>({}));
             if(!response.ok)throw new Error(data.message||'The guide is temporarily unavailable. Please try again.');
-            const answer=String(data.message||'I could not prepare an answer just now.');appendMessage('assistant',answer,data.sources||[]);history.push({role:'assistant',content:answer});if(history.length>8)history=history.slice(-8);
-        }catch(error){appendMessage('assistant',error.message||'Something went wrong. Please try again shortly.');}
+            const answer=String(data.message||'I could not prepare an answer just now.');appendMessage('assistant',answer,data.sources||[]);history.push({role:'assistant',content:answer});if(typeof data.conversation_summary==='string')conversationSummary=data.conversation_summary;if(history.length>10)history=history.slice(-10);if(data.conversation_ending===true){history=[];conversationSummary='';}
+        }catch(error){const errorMessage=error.message||'Something went wrong. Please try again shortly.';appendMessage('assistant',errorMessage);history.push({role:'assistant',content:errorMessage});if(history.length>10)history=history.slice(-10);}
         finally{busy=false;send.disabled=false;typing.classList.remove('show');input.focus();messages.scrollTop=messages.scrollHeight}
     }
     form.addEventListener('submit',e=>{e.preventDefault();submitMessage(input.value)});
