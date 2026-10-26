@@ -63,16 +63,24 @@ class SakhashreeChatbotFlowTest extends TestCase
                 'conversation_ending' => false,
             ]);
 
+        $irrelevantSource = [
+            'type' => 'Article',
+            'title' => 'Awards and Recognition',
+            'content' => 'A general awards article that does not support a chakra-healing recommendation.',
+            'url' => 'https://sakhashree.epuratech.com/about-me',
+        ];
         $source = [
             'type' => 'Service',
             'title' => 'Chakra Yoga',
             'content' => 'Documented information about chakra yoga sessions and spiritual practice.',
             'url' => 'https://sakhashree.epuratech.com/discover_chakra_yog',
         ];
+        $retrievedSources = [$irrelevantSource, $source];
 
         $knowledge = Mockery::mock(SakhashreeKnowledgeService::class);
-        $knowledge->shouldReceive('search')->once()->with($searchQuery, 7)->andReturn([$source]);
-        $knowledge->shouldReceive('formatContext')->once()->with([$source])->andReturn('Documented chakra yoga information.');
+        $knowledge->shouldReceive('search')->once()->with($searchQuery, 7)->andReturn($retrievedSources);
+        $knowledge->shouldReceive('formatContext')->once()->with($retrievedSources)->andReturn('Awards page and documented chakra yoga information.');
+        // The final model selected only source index 2; the irrelevant award must not be displayed.
         $knowledge->shouldReceive('publicSources')->once()->with([$source])->andReturn([
             ['title' => 'Chakra Yoga', 'url' => $source['url'], 'type' => 'Service'],
         ]);
@@ -86,7 +94,7 @@ class SakhashreeChatbotFlowTest extends TestCase
                     'message' => [
                         'content' => json_encode([
                             'answer' => 'I understand this is important to you. Chakra healing cannot determine or guarantee a baby’s sex. If you are interested in spiritual reflection or emotional support, I can explain our documented chakra-yoga offering; for fertility questions, please speak with a qualified healthcare professional.',
-                            'source_indices' => [1],
+                            'source_indices' => [2],
                         ]),
                     ],
                 ]],
@@ -101,7 +109,7 @@ class SakhashreeChatbotFlowTest extends TestCase
             ->assertOk()
             ->assertJsonPath('decision', 'consultation')
             ->assertJsonPath('conversation_summary', $summary)
-            ->assertJsonPath('sources.0.title', 'Chakra Yoga');
+            ->assertJsonPath('sources', [['title' => 'Chakra Yoga', 'url' => 'https://sakhashree.epuratech.com/discover_chakra_yog', 'type' => 'Service']]);
 
         Http::assertSent(function (ClientRequest $request): bool {
             $payload = $request->data();
