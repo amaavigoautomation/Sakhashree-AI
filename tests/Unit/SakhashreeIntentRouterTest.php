@@ -93,6 +93,35 @@ class SakhashreeIntentRouterTest extends TestCase
         Http::assertSentCount(1);
     }
 
+    public function test_brief_acknowledgement_does_not_erase_existing_conversation_summary(): void
+    {
+        Http::fake([
+            'https://api.openai.com/v1/chat/completions' => Http::response([
+                'choices' => [[
+                    'message' => [
+                        'content' => json_encode([
+                            'intent' => 'conversation',
+                            'answer' => 'You’re welcome!',
+                            'search_query' => '',
+                            'conversation_summary' => '',
+                            'conversation_ending' => false,
+                        ]),
+                    ],
+                ]],
+            ], 200),
+        ]);
+
+        $summary = 'Visitor is comparing documented RRCT consultation options and has not yet asked about pricing.';
+        $result = app(SakhashreeIntentRouter::class)->route(
+            'Thanks',
+            [['role' => 'user', 'content' => 'Tell me about RRCT consultations.']],
+            $summary
+        );
+
+        $this->assertSame($summary, $result['conversation_summary']);
+        $this->assertFalse($result['conversation_ending']);
+    }
+
     public function test_goodbye_clears_the_conversation_summary(): void
     {
         Http::fake([
