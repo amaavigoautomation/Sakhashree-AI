@@ -17,6 +17,7 @@ return [
     'openai' => [
         'key' => env('OPENAI_API_KEY'),
         'chat_model' => env('OPENAI_CHAT_MODEL', 'gpt-4o-mini'),
+        'intent_model' => env('OPENAI_INTENT_MODEL', env('OPENAI_CHAT_MODEL', 'gpt-4o-mini')),
     ],
 
     'postmark' => [
