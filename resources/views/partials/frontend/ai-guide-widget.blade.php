@@ -100,6 +100,47 @@
     }
     function resizeInput(){input.style.height='auto';input.style.height=Math.min(input.scrollHeight,90)+'px'}
     input.addEventListener('input',resizeInput);
+
+    // Keep short answers in one bubble. Split longer answers into up to three
+    // natural chunks, preferring paragraph boundaries and then sentence boundaries.
+    function splitAssistantResponse(answer){
+        const text=String(answer||'').trim();
+        if(text.length<=360)return text?[text]:[];
+        const paragraphs=text.split(/\n\s*\n/).map(part=>part.trim()).filter(Boolean);
+        let units=paragraphs.length>1?paragraphs:[];
+        if(units.length<=1){
+            units=(text.match(/[^.!?]+[.!?]+(?:["'”’)]*)|[^.!?]+$/g)||[text]).map(part=>part.trim()).filter(Boolean);
+        }
+        if(units.length<=1)return [text];
+        const targetCount=Math.min(3,Math.max(2,Math.ceil(text.length/420)));
+        const chunks=[];
+        let current='';
+        for(let i=0;i<units.length;i++){
+            const unit=units[i];
+            const remainingUnits=units.length-i;
+            const remainingSlots=targetCount-chunks.length;
+            if(current && current.length>=220 && remainingUnits>=remainingSlots){
+                chunks.push(current.trim());
+                current=unit;
+            }else{
+                current=current?current+'\n\n'+unit:unit;
+            }
+        }
+        if(current.trim())chunks.push(current.trim());
+        // Merge overflow into the third bubble so the UI never floods the chat.
+        while(chunks.length>3)chunks[2]+='\n\n'+chunks.pop();
+        return chunks.length?chunks:[text];
+    }
+
+    const waitForNextBubble=()=>new Promise(resolve=>setTimeout(resolve,260));
+    async function appendAssistantResponse(answer,sources=[]){
+        const chunks=splitAssistantResponse(answer);
+        for(let i=0;i<chunks.length;i++){
+            if(i>0)await waitForNextBubble();
+            appendMessage('assistant',chunks[i],i===chunks.length-1?sources:[]);
+        }
+    }
+
     async function submitMessage(text){
         text=(text||'').trim();if(!text||busy)return;
         welcome.style.display='none';appendMessage('user',text);history.push({role:'user',content:text});
@@ -109,7 +150,7 @@
             const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json','X-CSRF-TOKEN':document.querySelector('meta[name="csrf-token"]')?.content||''},body:JSON.stringify({message:text,history:history.slice(0,-1)})});
             const data=await response.json().catch(()=>({}));
             if(!response.ok)throw new Error(data.message||'The guide is temporarily unavailable. Please try again.');
-            const answer=String(data.message||'I could not prepare an answer just now.');appendMessage('assistant',answer,data.sources||[]);history.push({role:'assistant',content:answer});if(history.length>8)history=history.slice(-8);
+            const answer=String(data.message||'I could not prepare an answer just now.');await appendAssistantResponse(answer,data.sources||[]);history.push({role:'assistant',content:answer});if(history.length>8)history=history.slice(-8);
         }catch(error){appendMessage('assistant',error.message||'Something went wrong. Please try again shortly.');}
         finally{busy=false;send.disabled=false;typing.classList.remove('show');input.focus();messages.scrollTop=messages.scrollHeight}
     }
